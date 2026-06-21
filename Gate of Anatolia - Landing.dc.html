@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#07060c; }
+  @keyframes emberrise { 0%{transform:translateY(0) scale(1);opacity:0} 12%{opacity:.85} 100%{transform:translateY(-260px) scale(.3);opacity:0} }
+  @keyframes twinkle { 0%,100%{opacity:.18} 50%{opacity:.9} }
+  @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+  @keyframes glowpulse { 0%,100%{opacity:.45;transform:translate(-50%,-50%) scale(.95)} 50%{opacity:.85;transform:translate(-50%,-50%) scale(1.05)} }
+  @keyframes ringexpand { 0%{transform:translate(-50%,-50%) scale(.7);opacity:.7} 100%{transform:translate(-50%,-50%) scale(1.6);opacity:0} }
+  @keyframes shimmer { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+  @keyframes cuebounce { 0%,100%{transform:translateY(0);opacity:.4} 50%{transform:translateY(9px);opacity:1} }
+  @keyframes badgeblink { 0%,100%{opacity:1} 50%{opacity:.55} }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="font-family:'Barlow',sans-serif; background:#07060c; color:#efe6d2; overflow-x:hidden; position:relative;">
+
+  <!-- TOP BAR -->
+  <div style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:linear-gradient(180deg,rgba(7,6,12,.92),rgba(7,6,12,0)); backdrop-filter:blur(6px);">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <svg width="30" height="30" viewBox="0 0 96 96" fill="none" stroke="#e3bb63" stroke-width="3"><g transform="translate(48 48)"><rect x="-15" y="-15" width="30" height="30"></rect><rect x="-15" y="-15" width="30" height="30" transform="rotate(45)"></rect><circle cx="0" cy="0" r="4" fill="#e3bb63"></circle></g></svg>
+      <span style="font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:.16em; text-transform:uppercase; font-size:18px; color:#efe6d2;">Gate of Anatolia</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button onClick="{{ toggleLang }}" style="cursor:pointer; font-family:'Press Start 2P',monospace; font-size:9px; color:#e3bb63; background:#14110f; border:1px solid #3a3128; padding:10px 12px; border-radius:4px;">{{ langBtn }}</button>
+      <a href="#indir" style="font-family:'Press Start 2P',monospace; font-size:10px; color:#0a0810; background:linear-gradient(180deg,#f7e2a6,#e3bb63); padding:11px 16px; border-radius:4px; text-decoration:none; box-shadow:0 4px 14px rgba(214,140,52,.4);">{{ top_download }}</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section style="position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 24px 80px; overflow:hidden; background:radial-gradient(125% 95% at 50% 0%,#241622 0%,#150f18 36%,#0b0810 70%,#07060c 100%);">
+    <div style="position:absolute; inset:0; opacity:.06; background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22130%22 height=%22130%22 viewBox=%220 0 130 130%22%3E%3Cg fill=%22none%22 stroke=%22%23e3bb63%22 stroke-width=%221.3%22%3E%3Crect x=%2232%22 y=%2232%22 width=%2266%22 height=%2266%22/%3E%3Crect x=%2232%22 y=%2232%22 width=%2266%22 height=%2266%22 transform=%22rotate(45 65 65)%22/%3E%3Ccircle cx=%2265%22 cy=%2265%22 r=%223.2%22/%3E%3C/g%3E%3C/svg%3E'); background-size:130px 130px;"></div>
+    <div style="position:absolute; inset:0; pointer-events:none;">{{ stars }}</div>
+    <div style="position:absolute; inset:0; pointer-events:none;">{{ embers }}</div>
+
+    <!-- watch -->
+    <div style="position:relative; margin-bottom:30px;">
+      <div style="position:absolute; left:50%; top:50%; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle,rgba(214,140,52,.4) 0%,rgba(176,58,42,.12) 45%,rgba(0,0,0,0) 70%); animation:glowpulse 4s ease-in-out infinite; pointer-events:none;"></div>
+      <div style="position:absolute; left:50%; top:50%; width:300px; height:300px; border-radius:50%; border:1px solid rgba(231,180,90,.4); animation:ringexpand 3.5s ease-out infinite; pointer-events:none;"></div>
+      <div style="position:relative; animation:floaty 6s ease-in-out infinite;">
+        <div style="position:relative; width:300px; height:300px;">
+          <div style="position:absolute; top:-30px; left:50%; transform:translateX(-50%); width:96px; height:64px; background:linear-gradient(#262931,#14161b); border-radius:16px 16px 8px 8px; box-shadow:inset 0 0 0 2px #0a0b0e;"></div>
+          <div style="position:absolute; bottom:-30px; left:50%; transform:translateX(-50%); width:96px; height:64px; background:linear-gradient(#14161b,#262931); border-radius:8px 8px 16px 16px; box-shadow:inset 0 0 0 2px #0a0b0e;"></div>
+          <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 210deg,#3c3f47,#16181d,#2c2f36,#101216,#3c3f47); box-shadow:0 0 0 2px #06070a, inset 0 3px 9px rgba(255,255,255,.14);"></div>
+          <div style="position:absolute; inset:13px; border-radius:50%; background:#0a0a0d; box-shadow:0 0 0 5px #c79c45,0 0 0 8px #6f5220, inset 0 0 24px rgba(0,0,0,.7);"></div>
+          <div style="position:absolute; inset:23px; border-radius:50%; overflow:hidden; background:#000;">
+            <img src="assets/menu.png" style="width:100%; height:100%; object-fit:cover; display:block; image-rendering:pixelated;" alt="">
+            <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 42%);"></div>
+          </div>
+          <div style="position:absolute; top:42%; right:-7px; width:13px; height:50px; background:linear-gradient(#e0c06a,#8a6726); border-radius:4px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px; position:relative;">
+      <svg width="16" height="16" viewBox="0 0 22 22"><polygon fill="#e3bb63" points="11,0 13.4,8.6 22,11 13.4,13.4 11,22 8.6,13.4 0,11 8.6,8.6"></polygon></svg>
+      <span style="font-family:'Press Start 2P',monospace; font-size:11px; letter-spacing:.12em; color:#e3bb63;">{{ hero_tag }}</span>
+      <svg width="16" height="16" viewBox="0 0 22 22"><polygon fill="#e3bb63" points="11,0 13.4,8.6 22,11 13.4,13.4 11,22 8.6,13.4 0,11 8.6,8.6"></polygon></svg>
+    </div>
+    <h1 style="margin:0; font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; font-size:clamp(54px,11vw,128px); line-height:.9; letter-spacing:.01em; background:linear-gradient(110deg,#b9892f,#f7e2a6,#e3bb63,#f7e2a6,#b9892f); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shimmer 6s linear infinite; filter:drop-shadow(0 6px 18px rgba(170,90,30,.4));">Gate of<br>Anatolia</h1>
+    <p style="font-family:'Cinzel',serif; font-weight:700; letter-spacing:.22em; text-transform:uppercase; font-size:clamp(12px,2vw,16px); color:#cbb896; margin:18px 0 6px;">{{ hero_subtitle }}</p>
+    <p style="font-size:clamp(15px,2.2vw,19px); color:#9a8f78; max-width:560px; margin:6px auto 32px; line-height:1.5;">{{ hero_desc }}</p>
+
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+      <a href="#oyna" style="display:flex; align-items:center; gap:12px; background:linear-gradient(180deg,#f7e2a6,#e3bb63); color:#0a0810; text-decoration:none; padding:15px 26px; border-radius:6px; box-shadow:0 8px 24px rgba(214,140,52,.45);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#0a0810"><path d="M8 5v14l11-7z"></path></svg>
+        <span style="font-family:'Press Start 2P',monospace; font-size:11px;">{{ hero_play }}</span>
+      </a>
+      <a href="#indir" style="display:flex; align-items:center; gap:12px; background:#14110f; border:1px solid #3a3128; color:#efe6d2; text-decoration:none; padding:15px 22px; border-radius:6px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#e3bb63"><path d="M3 20.5V3.5c0-.4.5-.7.9-.5l14.2 8.5c.4.2.4.8 0 1L3.9 21c-.4.2-.9-.1-.9-.5z"></path></svg>
+        <div style="text-align:left; line-height:1;"><div style="font-size:9px; color:#9a8f78; letter-spacing:.1em;">{{ hero_download_label }}</div><div style="font-family:'Oswald',sans-serif; font-weight:600; font-size:17px;">Google Play</div></div>
+      </a>
+    </div>
+
+    <div style="position:absolute; bottom:26px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; animation:cuebounce 2s ease-in-out infinite;">
+      <span style="font-family:'Press Start 2P',monospace; font-size:8px; color:#6f6557; letter-spacing:.1em;">{{ scroll }}</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e3bb63" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div style="position:relative; background:#0c0a12; border-top:1px solid #1c1722; border-bottom:1px solid #1c1722; overflow:hidden;">
+    <div style="display:flex; width:max-content; animation:marquee 24s linear infinite;">
+      <div style="display:flex; gap:54px; padding:18px 27px; align-items:center; font-family:'Press Start 2P',monospace; font-size:12px; color:#7a6f5c; white-space:nowrap;">
+        <span style="color:#e3bb63;">{{ stat_chapters }}</span><span>◆</span><span style="color:#e3bb63;">4 {{ stat_boss }}</span><span>◆</span><span style="color:#e3bb63;">5 {{ stat_sultan }}</span><span>◆</span><span style="color:#e3bb63;">{{ stat_arena }}</span><span>◆</span><span style="color:#e3bb63;">{{ stat_battle }}</span><span>◆</span>
+        <span style="color:#e3bb63;">{{ stat_chapters }}</span><span>◆</span><span style="color:#e3bb63;">4 {{ stat_boss }}</span><span>◆</span><span style="color:#e3bb63;">5 {{ stat_sultan }}</span><span>◆</span><span style="color:#e3bb63;">{{ stat_arena }}</span><span>◆</span><span style="color:#e3bb63;">{{ stat_battle }}</span><span>◆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYABLE -->
+  <section id="oyna" data-reveal style="position:relative; padding:90px 24px 100px; text-align:center; background:radial-gradient(120% 90% at 50% 0%,#1a1018 0%,#0b0810 60%,#07060c 100%); opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;">
+    <div style="display:inline-flex; align-items:center; gap:10px; margin-bottom:14px;">
+      <span style="width:30px; height:1px; background:#c79c45;"></span>
+      <span style="font-family:'Press Start 2P',monospace; font-size:10px; color:#e3bb63; letter-spacing:.1em;">{{ demo_label }}</span>
+      <span style="width:30px; height:1px; background:#c79c45;"></span>
+    </div>
+    <h2 style="margin:0 0 8px; font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; font-size:clamp(34px,6vw,62px); color:#efe6d2;">{{ demo_title }}</h2>
+    <p style="color:#9a8f78; font-size:16px; max-width:520px; margin:0 auto 30px;">{{ demo_desc }}</p>
+
+    <div ref="{{ rootRef2 }}" style="position:relative; width:100%; max-width:900px; margin:0 auto; aspect-ratio:900/460; border:2px solid #c79c45; border-radius:8px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.6), inset 0 0 0 1px #06070a; background:#0b0810; touch-action:none;">
+      <canvas ref="{{ canvasRef }}" style="position:absolute; inset:0; width:100%; height:100%; display:block; image-rendering:pixelated;"></canvas>
+
+      <!-- HUD -->
+      <div style="position:absolute; top:12px; left:14px; right:14px; display:flex; justify-content:space-between; align-items:flex-start; pointer-events:none;">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; align-items:center;">{{ heartsEl }}</div>
+          <div style="display:flex; align-items:center; gap:7px; font-family:'Press Start 2P',monospace; font-size:11px; color:#f7e2a6;">
+            <svg width="13" height="13" viewBox="0 0 22 22"><polygon fill="#e3bb63" points="11,0 14,8 22,11 14,14 11,22 8,14 0,11 8,8"></polygon></svg>{{ gold }}
+          </div>
+        </div>
+        <div style="font-family:'Press Start 2P',monospace; font-size:11px; color:#cbb896; text-align:right;">{{ hud_wave }} {{ wave }}</div>
+      </div>
+
+      <!-- start overlay -->
+      <sc-if value="{{ notStarted }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; background:rgba(7,6,12,.72); backdrop-filter:blur(2px);">
+          <div style="font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; font-size:clamp(28px,5vw,46px); color:#efe6d2; letter-spacing:.04em;">{{ overlay_ready }}</div>
+          <button onClick="{{ start }}" style="cursor:pointer; font-family:'Press Start 2P',monospace; font-size:13px; color:#0a0810; background:linear-gradient(180deg,#f7e2a6,#e3bb63); border:none; padding:16px 28px; border-radius:6px; box-shadow:0 8px 24px rgba(214,140,52,.5);">▶ {{ overlay_start }}</button>
+          <div style="font-family:'Press Start 2P',monospace; font-size:8px; color:#7a6f5c; line-height:1.8; max-width:440px;">{{ overlay_controls }}</div>
+        </div>
+      </sc-if>
+
+      <!-- game over overlay -->
+      <sc-if value="{{ over }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; background:rgba(20,6,8,.8); backdrop-filter:blur(2px);">
+          <div style="font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; font-size:clamp(30px,5vw,48px); color:#e05a4a;">{{ overlay_gameover }}</div>
+          <div style="font-family:'Press Start 2P',monospace; font-size:12px; color:#f7e2a6;">{{ hud_score }} {{ score }} · {{ hud_wave }} {{ wave }}</div>
+          <button onClick="{{ start }}" style="cursor:pointer; font-family:'Press Start 2P',monospace; font-size:12px; color:#0a0810; background:linear-gradient(180deg,#f7e2a6,#e3bb63); border:none; padding:14px 24px; border-radius:6px; margin-top:6px;">↻ {{ overlay_retry }}</button>
+        </div>
+      </sc-if>
+
+      <!-- touch controls -->
+      <div style="position:absolute; bottom:14px; left:14px; display:flex; gap:10px;">
+        <button onPointerDown="{{ pressLeft }}" onPointerUp="{{ releaseLeft }}" onPointerLeave="{{ releaseLeft }}" onPointerCancel="{{ releaseLeft }}" style="touch-action:none; user-select:none; width:52px; height:52px; border-radius:50%; border:2px solid #6f5220; background:rgba(20,17,15,.85); color:#e3bb63; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center;">◀</button>
+        <button onPointerDown="{{ pressRight }}" onPointerUp="{{ releaseRight }}" onPointerLeave="{{ releaseRight }}" onPointerCancel="{{ releaseRight }}" style="touch-action:none; user-select:none; width:52px; height:52px; border-radius:50%; border:2px solid #6f5220; background:rgba(20,17,15,.85); color:#e3bb63; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center;">▶</button>
+      </div>
+      <div style="position:absolute; bottom:14px; right:14px; display:flex; gap:10px;">
+        <button onPointerDown="{{ pressJump }}" style="touch-action:none; user-select:none; width:52px; height:52px; border-radius:50%; border:2px solid #6f5220; background:rgba(20,17,15,.85); color:#cbb896; font-family:'Press Start 2P',monospace; font-size:8px; cursor:pointer;">{{ btn_jump }}</button>
+        <button onPointerDown="{{ pressAttack }}" style="touch-action:none; user-select:none; width:62px; height:62px; border-radius:50%; border:2px solid #c79c45; background:radial-gradient(circle,#b03a2a,#6e1f17); color:#f7e2a6; font-family:'Press Start 2P',monospace; font-size:8px; cursor:pointer; box-shadow:0 0 16px rgba(176,58,42,.5);">{{ btn_sword }}</button>
+      </div>
+    </div>
+    <p style="font-family:'Press Start 2P',monospace; font-size:8px; color:#6f6557; margin-top:18px; line-height:2;">{{ controls_info }}</p>
+  </section>
+
+  <!-- FEATURES -->
+  <section style="padding:30px 24px 40px; max-width:1080px; margin:0 auto;">
+    <div data-reveal style="display:flex; flex-wrap:wrap; align-items:center; gap:48px; justify-content:center; padding:50px 0; opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;">
+      <div style="position:relative; width:280px; height:280px; flex:none;">
+        <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 210deg,#3c3f47,#16181d,#2c2f36,#101216,#3c3f47); box-shadow:0 0 0 2px #06070a;"></div>
+        <div style="position:absolute; inset:4%; border-radius:50%; background:#0a0a0d; box-shadow:0 0 0 5px #c79c45,0 0 0 8px #6f5220;"></div>
+        <div style="position:absolute; inset:7%; border-radius:50%; overflow:hidden; background:#000;"><img src="assets/dusk.png" style="width:100%; height:100%; object-fit:cover; image-rendering:pixelated;" alt=""><div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.14),transparent 42%);"></div></div>
+      </div>
+      <div style="flex:1; min-width:280px; max-width:440px;">
+        <div style="font-family:'Press Start 2P',monospace; font-size:10px; color:#e3bb63; margin-bottom:14px;">{{ feat1_label }}</div>
+        <h3 style="margin:0 0 12px; font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase; font-size:36px; color:#efe6d2;">{{ feat1_title }}</h3>
+        <p style="color:#9a8f78; font-size:17px; line-height:1.6;">{{ feat1_desc }}</p>
+      </div>
+    </div>
+
+    <div data-reveal style="display:flex; flex-wrap:wrap-reverse; align-items:center; gap:48px; justify-content:center; padding:50px 0; opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;">
+      <div style="flex:1; min-width:280px; max-width:440px; text-align:right;">
+        <div style="font-family:'Press Start 2P',monospace; font-size:10px; color:#e3bb63; margin-bottom:14px;">{{ feat2_label }}</div>
+        <h3 style="margin:0 0 12px; font-family:'Oswald',sans-serif; font-weight:600; text-transform:uppercase; font-size:36px; color:#efe6d2;">{{ feat2_title }}</h3>
+        <p style="color:#9a8f78; font-size:17px; line-height:1.6;">{{ feat2_desc }}</p>
+      </div>
+      <div style="position:relative; width:280px; height:280px; flex:none;">
+        <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 210deg,#3c3f47,#16181d,#2c2f36,#101216,#3c3f47); box-shadow:0 0 0 2px #06070a;"></div>
+        <div style="position:absolute; inset:4%; border-radius:50%; background:#0a0a0d; box-shadow:0 0 0 5px #c79c45,0 0 0 8px #6f5220;"></div>
+        <div style="position:absolute; inset:7%; border-radius:50%; overflow:hidden; background:#000;"><img src="assets/arena.png" style="width:100%; height:100%; object-fit:cover; image-rendering:pixelated;" alt=""><div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.14),transparent 42%);"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOSSES -->
+  <section data-reveal style="padding:80px 24px; background:radial-gradient(120% 100% at 50% 0%,#1c0f12 0%,#0b0810 62%,#07060c 100%); text-align:center; opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;">
+    <div style="font-family:'Press Start 2P',monospace; font-size:10px; color:#e05a4a; margin-bottom:14px;">{{ boss_section_label }}</div>
+    <h2 style="margin:0 0 40px; font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; font-size:clamp(32px,5.5vw,56px); color:#efe6d2;">{{ boss_section_title }}</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:28px; justify-content:center; max-width:920px; margin:0 auto;">
+      <div style="flex:1; min-width:260px; max-width:300px; background:#100c10; border:1px solid #2a1c1c; border-radius:10px; overflow:hidden; box-shadow:0 14px 40px rgba(0,0,0,.5);">
+        <div style="position:relative; height:230px; background:#000; overflow:hidden;"><img src="assets/dragon.png" style="width:100%; height:100%; object-fit:cover; image-rendering:pixelated;" alt=""><div style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 50%,#100c10);"></div></div>
+        <div style="padding:18px 20px 22px; text-align:left;">
+          <div style="font-family:'Press Start 2P',monospace; font-size:9px; color:#e05a4a; margin-bottom:8px;">{{ boss_chapter }} 24</div>
+          <h3 style="margin:0 0 8px; font-family:'Oswald',sans-serif; font-weight:600; font-size:24px; color:#efe6d2;">{{ boss1_name }}</h3>
+          <p style="margin:0; color:#8a8170; font-size:14px; line-height:1.5;">{{ boss1_desc }}</p>
+        </div>
+      </div>
+      <div style="flex:1; min-width:260px; max-width:300px; background:#100c10; border:1px solid #2a1c1c; border-radius:10px; overflow:hidden; box-shadow:0 14px 40px rgba(0,0,0,.5);">
+        <div style="position:relative; height:230px; background:#000; overflow:hidden;"><img src="assets/marshal.png" style="width:100%; height:100%; object-fit:cover; image-rendering:pixelated;" alt=""><div style="position:absolute; inset:0; background:linear-gradient(180deg,transparent 50%,#100c10);"></div></div>
+        <div style="padding:18px 20px 22px; text-align:left;">
+          <div style="font-family:'Press Start 2P',monospace; font-size:9px; color:#e05a4a; margin-bottom:8px;">{{ boss_chapter }} 22</div>
+          <h3 style="margin:0 0 8px; font-family:'Oswald',sans-serif; font-weight:600; font-size:24px; color:#efe6d2;">{{ boss2_name }}</h3>
+          <p style="margin:0; color:#8a8170; font-size:14px; line-height:1.5;">{{ boss2_desc }}</p>
+        </div>
+      </div>
+      <div style="flex:1; min-width:260px; max-width:300px; background:#100c10; border:1px solid #2a1c1c; border-radius:10px; overflow:hidden; box-shadow:0 14px 40px rgba(0,0,0,.5);">
+        <div style="position:relative; height:230px; background:#0a0a0d; display:flex; align-items:center; justify-content:center; overflow:hidden;"><img src="uploads/spr_warlord_east.png" style="height:80%; image-rendering:pixelated; filter:drop-shadow(0 8px 20px rgba(0,0,0,.6));" alt=""><div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 40%,rgba(176,58,42,.2),transparent 60%);"></div></div>
+        <div style="padding:18px 20px 22px; text-align:left;">
+          <div style="font-family:'Press Start 2P',monospace; font-size:9px; color:#e05a4a; margin-bottom:8px;">{{ boss_chapter }} 05</div>
+          <h3 style="margin:0 0 8px; font-family:'Oswald',sans-serif; font-weight:600; font-size:24px; color:#efe6d2;">{{ boss3_name }}</h3>
+          <p style="margin:0; color:#8a8170; font-size:14px; line-height:1.5;">{{ boss3_desc }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SULTANS -->
+  <section data-reveal style="padding:80px 0 90px; text-align:center; overflow:hidden; opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;">
+    <div style="font-family:'Press Start 2P',monospace; font-size:10px; color:#e3bb63; margin-bottom:14px;">{{ market_label }}</div>
+    <h2 style="margin:0 0 8px; font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; font-size:clamp(32px,5.5vw,56px); color:#efe6d2;">{{ market_title }}</h2>
+    <p style="color:#9a8f78; font-size:16px; max-width:520px; margin:0 auto 36px;">{{ market_desc }}</p>
+    <div style="display:flex; gap:20px; padding:0 24px; overflow-x:auto; justify-content:flex-start; max-width:1080px; margin:0 auto; scrollbar-width:none;">
+      <sc-for list="{{ sultans }}" as="s" hint-placeholder-count="5">
+        <div style="flex:none; width:184px; background:#100c12; border:1px solid #2a2230; border-radius:10px; padding:20px 16px; text-align:center;">
+          <div style="height:120px; display:flex; align-items:flex-end; justify-content:center; margin-bottom:14px;"><img src="{{ s.img }}" style="height:108px; image-rendering:pixelated; filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));" alt=""></div>
+          <div style="font-family:'Oswald',sans-serif; font-weight:600; font-size:19px; color:#efe6d2;">{{ s.name }}</div>
+          <div style="font-family:'Press Start 2P',monospace; font-size:7px; color:#8a8170; margin:6px 0 12px; letter-spacing:.06em;">{{ s.title }}</div>
+          <div style="display:inline-flex; align-items:center; gap:6px; font-family:'Press Start 2P',monospace; font-size:10px; color:#0a0810; background:linear-gradient(180deg,#f7e2a6,#e3bb63); padding:7px 12px; border-radius:4px;">{{ s.cost }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="indir" data-reveal style="position:relative; padding:100px 24px 70px; text-align:center; overflow:hidden; background:radial-gradient(120% 100% at 50% 100%,#241622 0%,#0b0810 60%,#07060c 100%); opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;">
+    <div style="position:absolute; inset:0; opacity:.05; background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22130%22 height=%22130%22 viewBox=%220 0 130 130%22%3E%3Cg fill=%22none%22 stroke=%22%23e3bb63%22 stroke-width=%221.3%22%3E%3Crect x=%2232%22 y=%2232%22 width=%2266%22 height=%2266%22/%3E%3Crect x=%2232%22 y=%2232%22 width=%2266%22 height=%2266%22 transform=%22rotate(45 65 65)%22/%3E%3C/g%3E%3C/svg%3E'); background-size:130px 130px;"></div>
+    <h2 style="margin:0 0 10px; font-family:'Oswald',sans-serif; font-weight:700; text-transform:uppercase; font-size:clamp(38px,7vw,80px); line-height:.92; background:linear-gradient(180deg,#f7e2a6,#e3bb63 50%,#b9892f); -webkit-background-clip:text; background-clip:text; color:transparent;">{{ cta_title }}</h2>
+    <p style="color:#9a8f78; font-size:17px; max-width:480px; margin:14px auto 32px;">{{ cta_desc }}</p>
+    <a href="#oyna" style="display:inline-flex; align-items:center; gap:12px; background:linear-gradient(180deg,#f7e2a6,#e3bb63); color:#0a0810; text-decoration:none; padding:17px 30px; border-radius:6px; box-shadow:0 10px 30px rgba(214,140,52,.5); animation:badgeblink 3s ease-in-out infinite;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#0a0810"><path d="M3 20.5V3.5c0-.4.5-.7.9-.5l14.2 8.5c.4.2.4.8 0 1L3.9 21c-.4.2-.9-.1-.9-.5z"></path></svg>
+      <span style="font-family:'Press Start 2P',monospace; font-size:12px;">{{ cta_button }}</span>
+    </a>
+    <div style="margin-top:60px; padding-top:28px; border-top:1px solid #1c1722; display:flex; align-items:center; justify-content:center; gap:12px; color:#5a5247;">
+      <svg width="22" height="22" viewBox="0 0 96 96" fill="none" stroke="#6f5220" stroke-width="3"><g transform="translate(48 48)"><rect x="-15" y="-15" width="30" height="30"></rect><rect x="-15" y="-15" width="30" height="30" transform="rotate(45)"></rect></g></svg>
+      <span style="font-family:'Oswald',sans-serif; letter-spacing:.14em; text-transform:uppercase; font-size:14px;">Gate of Anatolia · 1071</span>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { started:false, over:false, gold:0, hp:5, wave:1, score:0, lang:'tr' };
+  canvasRef = React.createRef();
+  rootRef = React.createRef();
+  rootRef2 = React.createRef();
+  input = { left:false, right:false };
+  inView = true;
+
+  TR = {
+    top_download:'İNDİR', langBtn:'EN', hero_tag:'1071 · MALAZGİRT',
+    hero_subtitle:'Bir yetimin kılıcı · Bir milletin şafağı',
+    hero_desc:'Serhat boylarından Malazgirt ovasına. Bileğinde taşıdığın 24 bölümlük destansı bir pixel aksiyon-RPG. Wear OS için.',
+    hero_play:'HEMEN OYNA', hero_download_label:'İNDİR',
+    scroll:'AŞAĞI',
+    stat_chapters:'24 BÖLÜM', stat_boss:'BOSS', stat_sultan:'SULTAN', stat_arena:'SONSUZ ARENA', stat_battle:'PIXEL SAVAŞ',
+    demo_label:'OYNANABİLİR DEMO', demo_title:'Kılıcı Sen Kuşan',
+    demo_desc:'Akıncılar geçidi tuttu. Onları sen savur — tıpkı saatindeki gibi.',
+    overlay_ready:'Sefere Hazır mısın?', overlay_start:'BAŞLA',
+    overlay_controls:'◀ ▶ HAREKET · BOŞLUK ZIPLA · J / ENTER KILIÇ',
+    overlay_gameover:'Geçit Düştü', overlay_retry:'TEKRAR OYNA',
+    hud_wave:'DALGA', hud_score:'PUAN',
+    btn_jump:'ZIP', btn_sword:'KILIÇ',
+    controls_info:'MASAÜSTÜ: OK TUŞLARI + BOŞLUK + J · MOBİL: EKRAN TUŞLARI',
+    feat1_label:'BÖLÜM 01–24', feat1_title:'Destansı Sefer',
+    feat1_desc:'Serhat köyünden Malazgirt ovasına 24 elden çizilmiş bölüm. Uçurum geçitleri, yarasa mağaraları, kan nehirleri ve buzul ağızları — her biri yeni bir tehlike.',
+    feat2_label:'SONSUZ ARENA', feat2_title:'Dalga Dalga',
+    feat2_desc:'Hikâye bitince savaş bitmez. Sonsuz Arena\'da dalga dalga gelen düşmanlara karşı ne kadar dayanabilirsin? Her zafer altın, her altın yeni bir kahraman.',
+    boss_section_label:'EFSANEVİ DÜŞMANLAR', boss_section_title:'Bosslar Bekliyor',
+    boss_chapter:'BÖLÜM',
+    boss1_name:'Malazgirt Ejderhası',
+    boss1_desc:'Ağzından alev saçan son gölge. Ateş toplarından kaç, son nefese kadar kılıcını savur.',
+    boss2_name:'Demir Mareşal',
+    boss2_desc:'Parlak çeliğe bürünmüş son savunma. Yaylı oklarından sakın, indiği an darbeyi vur.',
+    boss3_name:'Yağmacı Han',
+    boss3_desc:'Köyünü yakan haydut. Sarı ışıkla parlar, hücumundan kaç ve sersemlediği an arkadan vur.',
+    market_label:'PAZAR YERİ', market_title:'Sultanları Yönet',
+    market_desc:'Altını biriktir, tarihe yön vermiş efsanevi liderlerin kilidini aç.',
+    cta_title:'Anadolu\'nun\nKapısını Arala',
+    cta_desc:'26 Ağustos 1071. Tarih cüret edeni hatırlar. Sefer seni bekliyor.',
+    cta_button:'GOOGLE PLAY\'DEN İNDİR',
+    sultan1_title:'SERHAT GAZİSİ', sultan1_cost:'ÜCRETSİZ',
+    sultan2_title:'FATİH SULTAN', sultan3_title:'ULU SULTAN',
+    sultan4_title:'DEVLET KURUCU', sultan5_title:'GAZİ KOMUTAN',
+  };
+
+  EN = {
+    top_download:'DOWNLOAD', langBtn:'TR', hero_tag:'1071 · MANZIKERT',
+    hero_subtitle:"An orphan's blade · A nation's dawn",
+    hero_desc:'From the frontier marches to the plains of Manzikert. A 24-chapter epic pixel action-RPG, forged for Wear OS.',
+    hero_play:'PLAY NOW', hero_download_label:'GET IT ON',
+    scroll:'SCROLL',
+    stat_chapters:'24 CHAPTERS', stat_boss:'BOSS', stat_sultan:'SULTANS', stat_arena:'ENDLESS ARENA', stat_battle:'PIXEL BATTLE',
+    demo_label:'PLAYABLE DEMO', demo_title:'Wield the Blade',
+    demo_desc:'Raiders hold the pass. Sweep them away — right from your watch.',
+    overlay_ready:'Ready for the Campaign?', overlay_start:'START',
+    overlay_controls:'◀ ▶ MOVE · SPACE JUMP · J / ENTER SWORD',
+    overlay_gameover:'The Gate Has Fallen', overlay_retry:'PLAY AGAIN',
+    hud_wave:'WAVE', hud_score:'SCORE',
+    btn_jump:'JUMP', btn_sword:'SWORD',
+    controls_info:'DESKTOP: ARROW KEYS + SPACE + J · MOBILE: ON-SCREEN BUTTONS',
+    feat1_label:'CHAPTER 01–24', feat1_title:'Epic Campaign',
+    feat1_desc:'24 hand-crafted levels from your burning village to the gates of Manzikert. Cliff passes, bat caves, rivers of blood, and frozen maws — each a new trial.',
+    feat2_label:'ENDLESS ARENA', feat2_title:'Wave After Wave',
+    feat2_desc:'When the story ends, the fight doesn\'t. How long can you stand against endless waves in the Arena? Every victory earns gold, every gold unlocks a new hero.',
+    boss_section_label:'LEGENDARY FOES', boss_section_title:'Bosses Await',
+    boss_chapter:'CHAPTER',
+    boss1_name:'Dragon of Manzikert',
+    boss1_desc:'The final shadow breathing fire. Dodge its fireballs and strike until its last breath.',
+    boss2_name:'Iron Marshal',
+    boss2_desc:'The last defense clad in gleaming steel. Beware its crossbow bolts — land your blow when it drops its guard.',
+    boss3_name:'Raider Khan',
+    boss3_desc:'The bandit who burned your village. Watch for the golden flash, evade his charge, and strike from behind.',
+    market_label:'MARKETPLACE', market_title:'Command the Sultans',
+    market_desc:'Save your gold and unlock legendary leaders who shaped history.',
+    cta_title:"Open the\nGate of Anatolia",
+    cta_desc:'August 26, 1071. History remembers the bold. Your campaign awaits.',
+    cta_button:'GET IT ON GOOGLE PLAY',
+    sultan1_title:'FRONTIER GAZİ', sultan1_cost:'FREE',
+    sultan2_title:'SULTAN CONQUEROR', sultan3_title:'SULTAN SUPREME',
+    sultan4_title:'STATE BUILDER', sultan5_title:'GAZİ COMMANDER',
+  };
+
+  get langData(){ return this.state.lang === 'tr' ? this.TR : this.EN; }
+
+  componentDidMount(){
+    this.IMG = {};
+    this.loadAll();
+    this.resetGame();
+    this.setupCanvas();
+    const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    const detected = browserLang.startsWith('tr') ? 'tr' : 'en';
+    this.setState({ lang: detected });
+    try {
+      this.ro = new ResizeObserver(()=>this.setupCanvas());
+      if(this.canvasRef.current) this.ro.observe(this.canvasRef.current);
+      this.io = new IntersectionObserver((es)=>{ es.forEach(e=>{ this.inView = e.isIntersecting; }); }, {threshold:0.04});
+      if(this.canvasRef.current) this.io.observe(this.canvasRef.current);
+    } catch(e){}
+    this.onKey = this.onKey.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
+    window.addEventListener('keydown', this.onKey);
+    window.addEventListener('keyup', this.onKeyUp);
+    this.last = performance.now();
+    this.raf = requestAnimationFrame(this.loop);
+    setTimeout(()=>this.setupReveal(), 60);
+  }
+  componentWillUnmount(){
+    cancelAnimationFrame(this.raf);
+    window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('keyup', this.onKeyUp);
+    this.ro && this.ro.disconnect();
+    this.io && this.io.disconnect();
+    this.revObs && this.revObs.disconnect();
+  }
+
+  loadAll(){
+    const all = [...this.P.walkE,...this.P.walkW,...this.P.atkE,...this.P.atkW,this.P.idleE,this.P.idleW,...this.P.enemies,this.P.tree,this.P.banner,this.P.chest];
+    all.forEach(src=>{ const im = new Image(); im.src = src; this.IMG[src] = im; });
+  }
+  img(src){ const i = this.IMG[src]; return (i && i.complete && i.naturalWidth) ? i : null; }
+
+  P = {
+    walkE:[0,1,2,3].map(i=>`uploads/spr_hero_walk_east_${i}.png`),
+    walkW:[0,1,2,3].map(i=>`uploads/spr_hero_walk_west_${i}.png`),
+    atkE:[0,1,2,3,4,5,6].map(i=>`uploads/spr_hero_atk_east_${i}.png`),
+    atkW:[0,1,2,3,4,5,6].map(i=>`uploads/spr_hero_atk_west_${i}.png`),
+    idleE:'uploads/spr_hero_east.png', idleW:'uploads/spr_hero_west.png',
+    enemies:['uploads/spr_warlord_west.png','uploads/spr_crusader_knight_west.png','uploads/spr_mongol_warrior_west.png','uploads/spr_archer_west.png'],
+    tree:'uploads/obj_tree.png', banner:'uploads/obj_banner.png', chest:'uploads/obj_chest.png'
+  };
+
+  setupCanvas(){
+    const c = this.canvasRef.current; if(!c) return;
+    const r = c.getBoundingClientRect(); if(!r.width || !r.height) return;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    c.width = Math.round(r.width * dpr); c.height = Math.round(r.height * dpr);
+    this.sx = c.width / 900; this.sy = c.height / 460;
+  }
+
+  resetGame(){
+    this.game = { hero:{x:180,y:330,vy:0,onGround:true,dir:1,state:'idle',f:0,ft:0,atkHit:false,inv:0},
+      enemies:[], parts:[], floats:[], gold:0, hp:5, wave:1, kills:0, score:0, spawnT:1100, over:false, shake:0, t:0 };
+  }
+  start(){ this.resetGame(); this.input.left=false; this.input.right=false; this.setState({started:true,over:false,gold:0,hp:5,wave:1,score:0}); }
+
+  onKey(e){
+    if(!this.inView) return;
+    const k = e.key;
+    if(!this.state.started || this.state.over){ if(k===' '||k==='Enter'){ e.preventDefault(); this.start(); } return; }
+    if(k==='ArrowLeft'||k==='a'||k==='A'){ this.input.left=true; e.preventDefault(); }
+    else if(k==='ArrowRight'||k==='d'||k==='D'){ this.input.right=true; e.preventDefault(); }
+    else if(k==='ArrowUp'||k==='w'||k==='W'||k===' '){ this.jump(); e.preventDefault(); }
+    else if(k==='j'||k==='J'||k==='k'||k==='K'||k==='Enter'){ this.attack(); e.preventDefault(); }
+  }
+  onKeyUp(e){ const k=e.key; if(k==='ArrowLeft'||k==='a'||k==='A') this.input.left=false; if(k==='ArrowRight'||k==='d'||k==='D') this.input.right=false; }
+
+  jump(){ const h=this.game.hero; if(h.onGround && h.state!=='attack'){ h.vy=-13.5; h.onGround=false; } }
+  attack(){ const h=this.game.hero; if(h.state!=='attack'){ h.state='attack'; h.f=0; h.ft=0; h.atkHit=false; } }
+
+  pressLeft=()=>{ if(this.state.started && !this.state.over) this.input.left=true; };
+  releaseLeft=()=>{ this.input.left=false; };
+  pressRight=()=>{ if(this.state.started && !this.state.over) this.input.right=true; };
+  releaseRight=()=>{ this.input.right=false; };
+  pressJump=()=>{ if(this.state.started && !this.state.over) this.jump(); };
+  pressAttack=()=>{ if(this.state.started && !this.state.over) this.attack(); };
+
+  loop=(t)=>{ const dt=Math.min(48, t-this.last); this.last=t; if(this.inView){ this.update(dt); this.draw(); } this.raf=requestAnimationFrame(this.loop); };
+
+  update(dt){
+    const g=this.game; const f=dt/16.6; g.t+=dt; const h=g.hero;
+    if(this.state.started && !g.over){
+      let moving=false;
+      if(h.state!=='attack'){
+        const sp=3.2*f;
+        if(this.input.left){ h.x-=sp; h.dir=-1; moving=true; }
+        if(this.input.right){ h.x+=sp; h.dir=1; moving=true; }
+      }
+      h.x=Math.max(60, Math.min(840, h.x));
+      h.vy+=0.9*f; h.y+=h.vy*f; if(h.y>=330){ h.y=330; h.vy=0; h.onGround=true; }
+      if(h.state==='attack'){ h.ft+=dt; if(h.ft>=42){ h.ft=0; h.f++; if(h.f>=7){ h.state='idle'; h.f=0; } } }
+      else if(!h.onGround){ h.state='jump'; }
+      else if(moving){ h.state='walk'; h.ft+=dt; if(h.ft>=110){ h.ft=0; h.f=(h.f+1)%4; } }
+      else { h.state='idle'; }
+      if(h.inv>0) h.inv-=dt;
+      if(h.state==='attack' && h.f>=3 && h.f<=5){
+        const reach=98;
+        g.enemies.forEach(e=>{ if(e.dead) return; const dx=e.x-h.x; if((h.dir>0 && dx>-12 && dx<reach)||(h.dir<0 && dx<12 && dx>-reach)){ e.dead=true; e.dt=0; g.gold+=5; g.score+=10; g.kills++; this.spark(e.x); this.float(e.x,'+5'); g.shake=6; } });
+      }
+      g.spawnT-=dt; if(g.spawnT<=0){ this.spawn(); g.spawnT=Math.max(520, 1450-g.wave*110); }
+      g.wave=1+Math.floor(g.kills/8);
+      g.enemies.forEach(e=>{ if(e.dead){ e.dt+=dt; return; } e.x-=e.spd*f; e.bob+=dt*0.012; const dx=e.x-h.x; if(Math.abs(dx)<38 && h.inv<=0){ g.hp--; h.inv=950; e.dead=true; e.dt=0; g.shake=11; this.spark(e.x); } });
+      g.enemies=g.enemies.filter(e=> e.x>-70 && !(e.dead && e.dt>260));
+      if(g.hp<=0){ g.over=true; this.input.left=false; this.input.right=false; }
+    }
+    g.parts.forEach(p=>{ p.x+=p.vx*f; p.y+=p.vy*f; p.vy+=0.4*f; p.life-=dt; });
+    g.parts=g.parts.filter(p=>p.life>0);
+    g.floats.forEach(fl=>{ fl.y-=0.6*f; fl.life-=dt; });
+    g.floats=g.floats.filter(fl=>fl.life>0);
+    if(g.shake>0) g.shake-=dt*0.045; if(g.shake<0) g.shake=0;
+    if(g.gold!==this.state.gold || g.hp!==this.state.hp || g.wave!==this.state.wave || g.over!==this.state.over){
+      this.setState({ gold:g.gold, hp:Math.max(0,g.hp), wave:g.wave, over:g.over, score:g.score });
+    }
+  }
+
+  spawn(){ const g=this.game; const src=this.P.enemies[(Math.random()*this.P.enemies.length)|0]; g.enemies.push({ x:930, y:330, src, spd:1.0+Math.min(1.7,g.wave*0.18)+Math.random()*0.4, bob:Math.random()*6, dead:false, dt:0 }); }
+  spark(x){ const g=this.game; for(let i=0;i<11;i++){ g.parts.push({ x, y:282, vx:(Math.random()-0.5)*6, vy:-Math.random()*5-1, life:380, c:Math.random()<0.5?'#f7e2a6':'#d68c34' }); } }
+  float(x,txt){ this.game.floats.push({ x, y:248, txt, life:680 }); }
+
+  drawSprite(ctx,src,cx,footY,dispH){ const im=this.img(src); if(!im) return; const sc=dispH/im.naturalHeight; const w=im.naturalWidth*sc; ctx.drawImage(im, cx-w/2, footY-dispH, w, dispH); }
+
+  draw(){
+    const c=this.canvasRef.current; if(!c) return; const ctx=c.getContext('2d'); const g=this.game;
+    ctx.imageSmoothingEnabled=false;
+    const shx=(Math.random()-0.5)*g.shake, shy=(Math.random()-0.5)*g.shake;
+    const sx=this.sx||1, sy=this.sy||1;
+    ctx.setTransform(sx,0,0,sy, shx*sx, shy*sy);
+    let sky=ctx.createLinearGradient(0,0,0,460); sky.addColorStop(0,'#2a1620'); sky.addColorStop(0.45,'#1a1018'); sky.addColorStop(1,'#0b0810');
+    ctx.fillStyle=sky; ctx.fillRect(0,0,900,460);
+    let sg=ctx.createRadialGradient(720,120,8,720,120,175); sg.addColorStop(0,'rgba(231,180,90,.85)'); sg.addColorStop(0.4,'rgba(200,110,50,.32)'); sg.addColorStop(1,'rgba(200,110,50,0)');
+    ctx.fillStyle=sg; ctx.fillRect(440,-70,460,380);
+    ctx.fillStyle='#e8c074'; ctx.beginPath(); ctx.arc(720,120,46,0,7); ctx.fill();
+    ctx.fillStyle='#1d1119'; ctx.beginPath(); ctx.moveTo(0,330); ctx.quadraticCurveTo(220,252,460,318); ctx.quadraticCurveTo(700,360,900,300); ctx.lineTo(900,330); ctx.lineTo(0,330); ctx.closePath(); ctx.fill();
+    ctx.fillStyle='#241a12'; ctx.fillRect(0,330,900,130);
+    ctx.fillStyle='#3a2a1c'; ctx.fillRect(0,330,900,6);
+    ctx.fillStyle='#16100b'; ctx.fillRect(0,394,900,66);
+    ctx.fillStyle='rgba(0,0,0,.18)'; for(let i=0;i<42;i++){ ctx.fillRect((i*47)%900, 346+(i*13%42), 3,3); }
+    this.drawSprite(ctx,this.P.banner,120,330,116);
+    this.drawSprite(ctx,this.P.tree,800,330,128);
+    this.drawSprite(ctx,this.P.chest,46,330,52);
+    g.enemies.forEach(e=>{ const bob=Math.abs(Math.sin(e.bob))*3; ctx.globalAlpha = e.dead ? Math.max(0,1-e.dt/260) : 1; this.drawSprite(ctx, e.src, e.x, 330-bob, 92); });
+    ctx.globalAlpha=1;
+    const h=g.hero; let src;
+    if(h.state==='attack') src=(h.dir>0?this.P.atkE:this.P.atkW)[Math.min(6,h.f)];
+    else if(h.state==='walk') src=(h.dir>0?this.P.walkE:this.P.walkW)[h.f%4];
+    else src=(h.dir>0?this.P.idleE:this.P.idleW);
+    const blink = h.inv>0 && (Math.floor(g.t/80)%2===0);
+    if(!blink) this.drawSprite(ctx, src, h.x, h.y, 100);
+    if(h.state==='attack' && h.f>=3 && h.f<=5){ ctx.strokeStyle='rgba(247,226,166,.55)'; ctx.lineWidth=5; ctx.beginPath(); const cx=h.x+h.dir*34, cy=h.y-56; ctx.arc(cx,cy,42, h.dir>0?-1.1:2.0, h.dir>0?1.1:4.2); ctx.stroke(); }
+    g.parts.forEach(p=>{ ctx.globalAlpha=Math.max(0,p.life/380); ctx.fillStyle=p.c; ctx.fillRect(p.x,p.y,3,3); });
+    ctx.globalAlpha=1;
+    ctx.font='14px "Press Start 2P", monospace'; ctx.textAlign='center';
+    g.floats.forEach(fl=>{ ctx.globalAlpha=Math.max(0,fl.life/680); ctx.fillStyle='#f7e2a6'; ctx.fillText(fl.txt, fl.x, fl.y); });
+    ctx.globalAlpha=1; ctx.textAlign='left';
+    let vg=ctx.createRadialGradient(450,230,170,450,230,470); vg.addColorStop(0,'rgba(0,0,0,0)'); vg.addColorStop(1,'rgba(0,0,0,.55)');
+    ctx.fillStyle=vg; ctx.fillRect(0,0,900,460);
+  }
+
+  setupReveal(){
+    const root=this.rootRef.current; if(!root) return;
+    const els=root.querySelectorAll('[data-reveal]');
+    this.revObs=new IntersectionObserver((ents)=>{ ents.forEach(en=>{ if(en.isIntersecting){ en.target.style.opacity='1'; en.target.style.transform='none'; this.revObs.unobserve(en.target); } }); }, {threshold:0.12});
+    els.forEach(el=>this.revObs.observe(el));
+  }
+
+  toggleLang=()=>{
+    this.setState({ lang: this.state.lang === 'tr' ? 'en' : 'tr' });
+  };
+
+  renderVals(){
+    const L = this.langData;
+    const sultans=[
+      {name:'Cengâver', title:L.sultan1_title, cost:L.sultan1_cost, img:'uploads/spr_hero_east.png'},
+      {name:'Alparslan', title:L.sultan2_title, cost:'◆ 120', img:'uploads/spr_alparslan_east.png'},
+      {name:'Melikşah', title:L.sultan3_title, cost:'◆ 200', img:'uploads/spr_meliksah_east.png'},
+      {name:'Tuğrul Bey', title:L.sultan4_title, cost:'◆ 300', img:'uploads/spr_tugrul_east.png'},
+      {name:'Kılıç Arslan', title:L.sultan5_title, cost:'◆ 420', img:'uploads/spr_kilicarslan_east.png'},
+    ];
+    const hp=this.state.hp, maxHp=5;
+    const heartsEl=Array.from({length:maxHp},(_,i)=>React.createElement('span',{key:i,style:{display:'inline-block',width:'15px',height:'15px',marginRight:'5px',background:i<hp?'linear-gradient(#ff6b5e,#b03a2a)':'#2a2420',boxShadow:i<hp?'0 0 6px rgba(220,80,60,.6)':'none',clipPath:'polygon(50% 100%,12% 58%,12% 28%,32% 16%,50% 30%,68% 16%,88% 28%,88% 58%)'}}));
+    const embers=Array.from({length:16},(_,i)=>{ const l=(i*6.3+5)%100, s=3+(i%4), d=8+(i%6)*2, dl=-(i*1.3); return React.createElement('div',{key:i,style:{position:'absolute',bottom:'-30px',left:l+'%',width:s+'px',height:s+'px',borderRadius:'50%',background:'radial-gradient(circle,#f7c873,#c0502a)',boxShadow:'0 0 10px #d68c34',animation:`emberrise ${d}s linear ${dl}s infinite`}}); });
+    const stars=Array.from({length:40},(_,i)=>{ const l=(i*9.7)%100, tp=(i*7.3)%55, s=1+(i%3), d=2+(i%4), dl=-(i*0.7); return React.createElement('div',{key:i,style:{position:'absolute',top:tp+'%',left:l+'%',width:s+'px',height:s+'px',borderRadius:'50%',background:'#f7e2a6',opacity:0.3,animation:`twinkle ${d}s ease-in-out ${dl}s infinite`}}); });
+    return {
+      canvasRef:this.canvasRef, rootRef:this.rootRef, rootRef2:this.rootRef2,
+      gold:this.state.gold, wave:this.state.wave, score:this.state.score,
+      started:this.state.started, over:this.state.over, notStarted:!this.state.started,
+      heartsEl, embers, stars, sultans,
+      toggleLang:this.toggleLang,
+      start:()=>this.start(),
+      pressLeft:this.pressLeft, releaseLeft:this.releaseLeft, pressRight:this.pressRight, releaseRight:this.releaseRight, pressJump:this.pressJump, pressAttack:this.pressAttack,
+      ...L,
+    };
+  }
+}
+</script>
+</body>
+</html>
