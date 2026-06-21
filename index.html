@@ -77,10 +77,6 @@
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="wrap hero-wrap">
       <div class="hero-content">
-        <div class="hero-logo">
-          <span class="hero-logo-glow" aria-hidden="true"></span>
-          <img src="logo.webp" alt="ZBD logo" width="100" height="100">
-        </div>
         <div class="eyebrow">WEAR OS SOFTWARE STUDIO</div>
         <h1>Software for<br><span class="grad">your wrist</span></h1>
         <p class="lead">ZBD is an independent software studio focused exclusively on smartwatches.
@@ -243,6 +239,32 @@
     </div>
   </section>
 
+  <!-- TREE -->
+  <section class="tree-section" aria-hidden="true">
+    <div class="tree-stage">
+      <svg class="tree-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle class="tree-disc" cx="200" cy="200" r="190"/>
+        <g class="tree-branches" fill="none" stroke="#f4f4f4" stroke-width="7" stroke-linecap="round">
+          <path d="M200 360 C200 300 196 260 192 230"/>
+          <path d="M192 230 C188 190 176 150 160 120"/>
+          <path d="M192 230 C200 188 206 150 210 112"/>
+          <path d="M210 112 C214 90 222 72 236 58"/>
+          <path d="M192 230 C214 196 244 168 272 150"/>
+          <path d="M272 150 C290 138 302 120 308 100"/>
+          <path d="M160 120 C150 100 146 80 150 58"/>
+          <path d="M210 112 C198 92 192 74 196 54"/>
+          <path d="M192 230 C170 196 142 172 118 158"/>
+        </g>
+        <g class="tree-buds" fill="#f4f4f4">
+          <circle cx="236" cy="56" r="6"/><circle cx="150" cy="56" r="6"/>
+          <circle cx="196" cy="52" r="6"/><circle cx="308" cy="98" r="6"/>
+          <circle cx="118" cy="156" r="6"/><circle cx="272" cy="150" r="5"/>
+        </g>
+      </svg>
+      <div class="leaves" id="leaves"></div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap">
@@ -261,5 +283,6 @@
   <script type="module" src="js/three-hero.js"></script>
   <script src="js/watch-faces.js"></script>
   <script src="js/reveal.js"></script>
+  <script src="js/tree-leaves.js" defer></script>
 </body>
 </html>
