@@ -3,243 +3,169 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZBD · Wear OS Studio — Apps for your wrist</title>
-  <meta name="description" content="Wear OS uygulamaları stüdyosu. SSH, namaz vakitleri, disko ışıkları ve destansı bir pixel oyun — hepsi bileğinde.">
+  <title>Wearga — Bileğin için yazılım · Wear OS stüdyosu</title>
+  <meta name="description" content="Wearga, Wear OS için odaklı ve güzel tasarlanmış uygulamalar geliştiren bir yazılım stüdyosu. SSH, namaz vakitleri, ışık şovu ve destansı bir pixel oyun.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Cinzel:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
 
-  <!-- Three.js (browser ESM via import map) -->
   <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
-    }
-  }
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
   </script>
 </head>
 <body>
 
-  <!-- ================= TOP BAR ================= -->
+  <!-- TOP BAR -->
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="ZBD Wear OS Studio">
-      <svg width="30" height="30" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3">
-        <g transform="translate(48 48)">
-          <rect x="-15" y="-15" width="30" height="30"></rect>
-          <rect x="-15" y="-15" width="30" height="30" transform="rotate(45)"></rect>
-          <circle cx="0" cy="0" r="4" fill="currentColor"></circle>
-        </g>
-      </svg>
-      <span class="brand-name">ZBD<small>Wear&nbsp;OS&nbsp;Studio</small></span>
+    <a class="brand" href="#top">
+      <span class="logo">W</span>
+      <span><b>Wearga</b><small>Wear OS Studio</small></span>
     </a>
     <nav class="nav">
-      <a href="#apps" data-i18n="nav_apps">Uygulamalar</a>
-      <a href="#demo" data-i18n="nav_demo">Oyun Demo</a>
-      <button id="langBtn" class="lang-btn" type="button">EN</button>
+      <a href="#services">Hizmetler</a>
+      <a href="#products">Ürünler</a>
+      <a href="#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="#products">Uygulamalar</a>
     </nav>
   </header>
 
-  <!-- ================= HERO (Three.js) ================= -->
+  <!-- HERO -->
   <section id="top" class="hero">
     <canvas id="three-canvas" aria-hidden="true"></canvas>
-    <div class="hero-vignette" aria-hidden="true"></div>
-
-    <div class="hero-content">
-      <div class="eyebrow">
-        <span class="eyebrow-dot"></span>
-        <span data-i18n="hero_tag">WEAR OS · BİLEĞİNDEKİ STÜDYO</span>
-      </div>
-      <h1 class="hero-title" data-i18n="hero_title">Bileğin için<br>tasarlandı</h1>
-      <p class="hero-sub" data-i18n="hero_sub">SSH'tan namaz vakitlerine, disko ışıklarından destansı bir pixel oyuna —
-        Wear OS için tasarlanmış uygulamalarım, tek bir yerde.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#apps" data-i18n="hero_explore">Uygulamaları Keşfet</a>
-        <a class="btn btn-ghost" href="#demo" data-i18n="hero_play">▶ Oyunu Oyna</a>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-content">
+        <div class="eyebrow">WEAR OS YAZILIM STÜDYOSU</div>
+        <h1>Bileğin için<br><span class="grad">yazılım üretiyoruz</span></h1>
+        <p class="lead">Wearga, yalnızca akıllı saatlere odaklanan bağımsız bir yazılım stüdyosu.
+          Yuvarlak ekran için sıfırdan tasarlanmış, hızlı ve zarif uygulamalar geliştiriyoruz.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#products">Ürünleri Gör</a>
+          <a class="btn btn-ghost" href="#services">Ne Yapıyoruz?</a>
+        </div>
+        <div class="hero-meta">
+          <div class="m"><b>4</b><span>Yayında uygulama</span></div>
+          <div class="m"><b>100%</b><span>Wear OS odaklı</span></div>
+          <div class="m"><b>∞</b><span>Bileğinde</span></div>
+        </div>
       </div>
     </div>
-
-    <a class="scroll-cue" href="#apps" aria-label="scroll">
-      <span data-i18n="scroll">KAYDIR</span>
+    <a class="scroll-cue" href="#services">KAYDIR
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
     </a>
   </section>
 
-  <!-- ================= APPS ================= -->
-  <section id="apps" class="apps">
-    <div class="section-head reveal">
-      <div class="section-label">
-        <span class="line"></span>
-        <span data-i18n="apps_label">UYGULAMALARIM</span>
-        <span class="line"></span>
+  <!-- SERVICES -->
+  <section id="services" class="s">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">NE YAPIYORUZ</div>
+        <h2 class="section-title">Akıllı saat yazılımında uzmanız</h2>
+        <p class="section-desc">Telefon uygulamasının küçültülmüş hali değil — baştan sona bilek için düşünülmüş deneyimler.</p>
       </div>
-      <h2 class="section-title" data-i18n="apps_title">Wear OS Koleksiyonu</h2>
-      <p class="section-desc" data-i18n="apps_desc">Her biri yuvarlak ekran için sıfırdan tasarlandı. Aşağıdaki canlı saat
-        önizlemeleri gerçek zamanlı çizilir.</p>
-    </div>
-
-    <div class="app-grid">
-
-      <!-- GATE OF ANATOLIA -->
-      <article class="app-card reveal" style="--accent:#e3bb63; --accent2:#b03a2a;">
-        <div class="watch">
-          <div class="watch-strap top"></div>
-          <div class="watch-strap bottom"></div>
-          <div class="watch-body">
-            <div class="watch-screen">
-              <canvas class="face" data-face="game" width="240" height="240"></canvas>
-            </div>
-            <span class="watch-crown"></span>
-          </div>
+      <div class="services">
+        <div class="service reveal">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12" rx="3"/><rect x="9" y="2" width="6" height="3" rx="1"/><rect x="9" y="19" width="6" height="3" rx="1"/></svg></div>
+          <h3>Native Wear OS</h3>
+          <p>Tiles, complications ve watch face entegrasyonlarıyla platforma tam uyumlu uygulamalar.</p>
         </div>
-        <div class="app-info">
-          <div class="app-chip" data-i18n="cat_game">OYUN</div>
-          <h3 class="app-name">Gate of Anatolia</h3>
-          <p class="app-tagline" data-i18n="app_gate">24 bölümlük destansı pixel aksiyon-RPG. Malazgirt 1071 — bileğinde.</p>
-          <div class="app-actions">
-            <a class="btn btn-primary sm" href="#demo" data-i18n="btn_playdemo">▶ Demoyu Oyna</a>
-          </div>
+        <div class="service reveal d1">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+          <h3>Akıcı performans</h3>
+          <p>Küçük ekran, küçük pil. Hafif, hızlı ve verimli kod yazıyoruz — gerektiğinde tamamen çevrimdışı.</p>
         </div>
-      </article>
-
-      <!-- WEARSSH -->
-      <article class="app-card reveal" style="--accent:#27e07a; --accent2:#0c8a4a;">
-        <div class="watch">
-          <div class="watch-strap top"></div>
-          <div class="watch-strap bottom"></div>
-          <div class="watch-body">
-            <div class="watch-screen">
-              <canvas class="face" data-face="ssh" width="240" height="240"></canvas>
-            </div>
-            <span class="watch-crown"></span>
-          </div>
+        <div class="service reveal d2">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Zarif tasarım</h3>
+          <p>Yuvarlak ekrana özel arayüzler. Her piksel düşünülerek, ilk bakışta okunaklı ve güzel.</p>
         </div>
-        <div class="app-info">
-          <div class="app-chip" data-i18n="cat_tools">ARAÇLAR</div>
-          <h3 class="app-name">WearSSH</h3>
-          <p class="app-tagline" data-i18n="app_ssh">Bileğinden tam SSH terminali. Sunucularına bağlan, komut çalıştır — her yerden.</p>
-          <div class="app-actions">
-            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.wearssh" target="_blank" rel="noopener" aria-label="Google Play'den indir"></a>
-          </div>
+        <div class="service reveal d3">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div>
+          <h3>Gizlilik önce</h3>
+          <p>Verini satmıyoruz. Mümkün olan her yerde veriler cihazında kalır, çevrimdışı çalışır.</p>
         </div>
-      </article>
-
-      <!-- VAKIT WEAR -->
-      <article class="app-card reveal" style="--accent:#1fd6a6; --accent2:#0e7d63;">
-        <div class="watch">
-          <div class="watch-strap top"></div>
-          <div class="watch-strap bottom"></div>
-          <div class="watch-body">
-            <div class="watch-screen">
-              <canvas class="face" data-face="vakit" width="240" height="240"></canvas>
-            </div>
-            <span class="watch-crown"></span>
-          </div>
-        </div>
-        <div class="app-info">
-          <div class="app-chip" data-i18n="cat_life">YAŞAM</div>
-          <h3 class="app-name">Vakit Wear</h3>
-          <p class="app-tagline" data-i18n="app_vakit">Namaz vakitleri, kıble pusulası ve zikirmatik. Tamamen çevrimdışı, complication destekli.</p>
-          <div class="app-actions">
-            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.vakitwear" target="_blank" rel="noopener" aria-label="Google Play'den indir"></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- WEAR DISCO -->
-      <article class="app-card reveal" style="--accent:#ff49d0; --accent2:#7a2bff;">
-        <div class="watch">
-          <div class="watch-strap top"></div>
-          <div class="watch-strap bottom"></div>
-          <div class="watch-body">
-            <div class="watch-screen">
-              <canvas class="face" data-face="disco" width="240" height="240"></canvas>
-            </div>
-            <span class="watch-crown"></span>
-          </div>
-        </div>
-        <div class="app-info">
-          <div class="app-chip" data-i18n="cat_enter">EĞLENCE</div>
-          <h3 class="app-name">Wear Disco</h3>
-          <p class="app-tagline" data-i18n="app_disco">Saatini akıcı renk geçişlerinden oluşan bir ışık şovuna çevir. Parti senin bileğinde.</p>
-          <div class="app-actions">
-            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.weardisco" target="_blank" rel="noopener" aria-label="Google Play'den indir"></a>
-          </div>
-        </div>
-      </article>
-
+      </div>
     </div>
   </section>
 
-  <!-- ================= PLAYABLE DEMO (Gate of Anatolia) ================= -->
-  <section id="demo" class="demo">
-    <div class="section-head reveal">
-      <div class="section-label gold">
-        <span class="line"></span>
-        <span data-i18n="demo_label">OYNANABİLİR DEMO</span>
-        <span class="line"></span>
+  <!-- PRODUCTS -->
+  <section id="products" class="s alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">ÜRÜNLERİMİZ</div>
+        <h2 class="section-title">Bileğindeki uygulamalar</h2>
+        <p class="section-desc">Her ürünün kendi sayfası var. Aşağıdaki canlı saat önizlemeleri gerçek zamanlı çiziliyor.</p>
       </div>
-      <h2 class="section-title" data-i18n="demo_title">Gate of Anatolia</h2>
-      <p class="section-desc" data-i18n="demo_desc">Akıncılar geçidi tuttu. Onları sen savur — tıpkı saatindeki gibi.</p>
-    </div>
+      <div class="products">
 
-    <div class="game-frame reveal">
-      <canvas id="game-canvas"></canvas>
+        <a class="product reveal" href="apps/anatolia/" style="--accent:#e3bb63; --accent2:#ff7a3a;">
+          <div class="watch"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
+            <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="game" width="220" height="220"></canvas></div><span class="watch-crown"></span></div></div>
+          <div class="chip">Oyun</div>
+          <h3>Gate of Anatolia</h3>
+          <p>24 bölümlük destansı pixel aksiyon-RPG. Malazgirt 1071 — bileğinde.</p>
+          <span class="open">Sayfayı aç <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-      <!-- HUD -->
-      <div class="hud">
-        <div class="hud-left">
-          <div id="hearts" class="hearts"></div>
-          <div class="hud-gold">
-            <svg width="13" height="13" viewBox="0 0 22 22"><polygon fill="#e3bb63" points="11,0 14,8 22,11 14,14 11,22 8,14 0,11 8,8"></polygon></svg>
-            <span id="gold">0</span>
-          </div>
-        </div>
-        <div class="hud-wave"><span data-i18n="hud_wave">DALGA</span> <span id="wave">1</span></div>
-      </div>
+        <a class="product reveal d1" href="apps/wearssh/" style="--accent:#27e07a; --accent2:#0c8a4a;">
+          <div class="watch"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
+            <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="ssh" width="220" height="220"></canvas></div><span class="watch-crown"></span></div></div>
+          <div class="chip">Araçlar</div>
+          <h3>WearSSH</h3>
+          <p>Bileğinden tam SSH terminali. Sunucularına bağlan, komut çalıştır — her yerden.</p>
+          <span class="open">Sayfayı aç <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-      <!-- start overlay -->
-      <div id="overlay-start" class="overlay">
-        <div class="overlay-title" data-i18n="overlay_ready">Sefere Hazır mısın?</div>
-        <button id="startBtn" class="btn btn-primary" type="button">▶ <span data-i18n="overlay_start">BAŞLA</span></button>
-        <div class="overlay-hint" data-i18n="overlay_controls">◀ ▶ HAREKET · BOŞLUK ZIPLA · J / ENTER KILIÇ</div>
-      </div>
+        <a class="product reveal d2" href="apps/vakitwear/" style="--accent:#1fd6a6; --accent2:#0e7d63;">
+          <div class="watch"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
+            <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="vakit" width="220" height="220"></canvas></div><span class="watch-crown"></span></div></div>
+          <div class="chip">Yaşam</div>
+          <h3>Vakit Wear</h3>
+          <p>Namaz vakitleri, kıble pusulası ve zikirmatik. Tamamen çevrimdışı.</p>
+          <span class="open">Sayfayı aç <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-      <!-- game over overlay -->
-      <div id="overlay-over" class="overlay over hidden">
-        <div class="overlay-title red" data-i18n="overlay_gameover">Geçit Düştü</div>
-        <div class="overlay-score"><span data-i18n="hud_score">PUAN</span> <span id="finalScore">0</span> · <span data-i18n="hud_wave">DALGA</span> <span id="finalWave">1</span></div>
-        <button id="retryBtn" class="btn btn-primary" type="button">↻ <span data-i18n="overlay_retry">TEKRAR OYNA</span></button>
-      </div>
+        <a class="product reveal d3" href="apps/weardisco/" style="--accent:#ff49d0; --accent2:#7a2bff;">
+          <div class="watch"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
+            <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="disco" width="220" height="220"></canvas></div><span class="watch-crown"></span></div></div>
+          <div class="chip">Eğlence</div>
+          <h3>Wear Disco</h3>
+          <p>Saatini akıcı renk geçişlerinden bir ışık şovuna çevir. Parti bileğinde.</p>
+          <span class="open">Sayfayı aç <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-      <!-- touch controls -->
-      <div class="touch left">
-        <button id="btnLeft" class="tbtn" type="button">◀</button>
-        <button id="btnRight" class="tbtn" type="button">▶</button>
-      </div>
-      <div class="touch right">
-        <button id="btnJump" class="tbtn small" type="button" data-i18n="btn_jump">ZIP</button>
-        <button id="btnAtk" class="tbtn atk" type="button" data-i18n="btn_sword">KILIÇ</button>
       </div>
     </div>
-    <p class="controls-info" data-i18n="controls_info">MASAÜSTÜ: OK TUŞLARI + BOŞLUK + J · MOBİL: EKRAN TUŞLARI</p>
   </section>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- CTA / CONTACT -->
+  <section id="contact" class="s cta-band">
+    <div class="wrap reveal">
+      <h2>Bir fikrin mi var?</h2>
+      <p>Wear OS için bir uygulama mı hayal ediyorsun, yoksa mevcut ürünlerimiz hakkında mı konuşmak istiyorsun? Bize yaz.</p>
+      <a class="btn btn-primary" href="mailto:hello@wearga.me">hello@wearga.me</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-mark">
-      <svg width="22" height="22" viewBox="0 0 96 96" fill="none" stroke="#6f5220" stroke-width="3">
-        <g transform="translate(48 48)"><rect x="-15" y="-15" width="30" height="30"></rect><rect x="-15" y="-15" width="30" height="30" transform="rotate(45)"></rect></g>
-      </svg>
-      <span>ZBD · Wear OS Studio</span>
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="logo">W</span><span><b>Wearga</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="apps/anatolia/">Gate of Anatolia</a>
+        <a href="apps/wearssh/">WearSSH</a>
+        <a href="apps/vakitwear/">Vakit Wear</a>
+        <a href="apps/weardisco/">Wear Disco</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 Wearga</p>
     </div>
-    <p class="footer-note" data-i18n="footer_note">Wear OS için sevgiyle yapıldı · © 2026</p>
   </footer>
 
   <script type="module" src="js/three-hero.js"></script>
   <script src="js/watch-faces.js"></script>
-  <script src="js/game.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/reveal.js"></script>
 </body>
 </html>
