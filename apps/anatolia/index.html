@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gate of Anatolia — Wear OS pixel aksiyon-RPG · Wearga</title>
+  <meta name="description" content="Gate of Anatolia: Wear OS için 24 bölümlük destansı pixel aksiyon-RPG. Malazgirt 1071. Oynanabilir demoyu hemen tarayıcında dene.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/app.css">
+  <link rel="stylesheet" href="anatolia.css">
+  <style>:root{ --accent:#e3bb63; --accent2:#ff7a3a; }</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="../../"><span class="logo">W</span><span><b>Wearga</b><small>Wear OS Studio</small></span></a>
+    <nav class="nav">
+      <a class="back-link" href="../../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Tüm uygulamalar</a>
+      <a class="btn btn-primary sm" href="#demo">▶ Demoyu Oyna</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="app-hero">
+    <div class="wrap">
+      <div class="app-hero-text">
+        <div class="chip">Oyun · Wear OS</div>
+        <h1>Gate of <span class="grad">Anatolia</span></h1>
+        <p class="lead">24 bölümlük destansı bir pixel aksiyon-RPG. Bir yetimin kılıcı, bir milletin şafağı —
+          1071 Malazgirt, tamamen bileğinde.</p>
+        <div class="app-hero-cta">
+          <a class="btn btn-primary" href="#demo">▶ Demoyu Oyna</a>
+          <a class="btn btn-ghost" href="#features">Özellikler</a>
+        </div>
+      </div>
+      <div class="app-hero-visual">
+        <div class="halo"></div>
+        <div class="watch lg"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
+          <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="game" width="280" height="280"></canvas></div><span class="watch-crown"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAYABLE DEMO -->
+  <section id="demo" class="s alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">OYNANABİLİR DEMO</div>
+        <h2 class="section-title">Kılıcı sen kuşan</h2>
+        <p class="section-desc">Akıncılar geçidi tuttu. Onları sen savur — tıpkı saatindeki gibi, şimdi tarayıcında.</p>
+      </div>
+
+      <div class="game-frame reveal">
+        <canvas id="game-canvas"></canvas>
+        <div class="hud">
+          <div class="hud-left">
+            <div id="hearts" class="hearts"></div>
+            <div class="hud-gold">
+              <svg width="13" height="13" viewBox="0 0 22 22"><polygon fill="#e3bb63" points="11,0 14,8 22,11 14,14 11,22 8,14 0,11 8,8"></polygon></svg>
+              <span id="gold">0</span>
+            </div>
+          </div>
+          <div class="hud-wave">DALGA <span id="wave">1</span></div>
+        </div>
+
+        <div id="overlay-start" class="overlay">
+          <div class="overlay-title">Sefere Hazır mısın?</div>
+          <button id="startBtn" class="btn btn-primary" type="button">▶ BAŞLA</button>
+          <div class="overlay-hint">◀ ▶ HAREKET · BOŞLUK ZIPLA · J / ENTER KILIÇ</div>
+        </div>
+
+        <div id="overlay-over" class="overlay over hidden">
+          <div class="overlay-title red">Geçit Düştü</div>
+          <div class="overlay-score">PUAN <span id="finalScore">0</span> · DALGA <span id="finalWave">1</span></div>
+          <button id="retryBtn" class="btn btn-primary" type="button">↻ TEKRAR OYNA</button>
+        </div>
+
+        <div class="touch left">
+          <button id="btnLeft" class="tbtn" type="button">◀</button>
+          <button id="btnRight" class="tbtn" type="button">▶</button>
+        </div>
+        <div class="touch right">
+          <button id="btnJump" class="tbtn small" type="button">ZIP</button>
+          <button id="btnAtk" class="tbtn atk" type="button">KILIÇ</button>
+        </div>
+      </div>
+      <p class="controls-info">MASAÜSTÜ: OK TUŞLARI + BOŞLUK + J · MOBİL: EKRAN TUŞLARI</p>
+    </div>
+  </section>
+
+  <!-- FEATURES (split) -->
+  <section id="features" class="s">
+    <div class="wrap">
+      <div class="split reveal" style="margin-bottom:60px;">
+        <div class="ring"><div class="inner"><img src="assets/dusk.png" alt="Destansı sefer"></div></div>
+        <div class="copy">
+          <div class="eyebrow">BÖLÜM 01–24</div>
+          <h3>Destansı Sefer</h3>
+          <p>Serhat köyünden Malazgirt ovasına 24 elden çizilmiş bölüm. Uçurum geçitleri, yarasa mağaraları,
+            kan nehirleri ve buzul ağızları — her biri yeni bir tehlike.</p>
+        </div>
+      </div>
+      <div class="split rev reveal">
+        <div class="ring"><div class="inner"><img src="assets/arena.png" alt="Sonsuz arena"></div></div>
+        <div class="copy">
+          <div class="eyebrow">SONSUZ ARENA</div>
+          <h3>Dalga Dalga</h3>
+          <p>Hikâye bitince savaş bitmez. Sonsuz Arena'da dalga dalga gelen düşmanlara ne kadar dayanabilirsin?
+            Her zafer altın, her altın yeni bir kahraman.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOSSES -->
+  <section class="s alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow" style="color:#e05a4a;">EFSANEVİ DÜŞMANLAR</div>
+        <h2 class="section-title">Bosslar bekliyor</h2>
+      </div>
+      <div class="bosses">
+        <div class="boss reveal">
+          <div class="boss-img"><img src="assets/dragon.png" alt="Malazgirt Ejderhası"></div>
+          <div class="boss-info"><div class="boss-tag">BÖLÜM 24</div><h3>Malazgirt Ejderhası</h3>
+            <p>Ağzından alev saçan son gölge. Ateş toplarından kaç, son nefese kadar kılıcını savur.</p></div>
+        </div>
+        <div class="boss reveal d1">
+          <div class="boss-img"><img src="assets/marshal.png" alt="Demir Mareşal"></div>
+          <div class="boss-info"><div class="boss-tag">BÖLÜM 22</div><h3>Demir Mareşal</h3>
+            <p>Parlak çeliğe bürünmüş son savunma. Yaylı oklarından sakın, indiği an darbeyi vur.</p></div>
+        </div>
+        <div class="boss reveal d2">
+          <div class="boss-img sprite"><img src="uploads/spr_warlord_east.png" alt="Yağmacı Han"></div>
+          <div class="boss-info"><div class="boss-tag">BÖLÜM 05</div><h3>Yağmacı Han</h3>
+            <p>Köyünü yakan haydut. Sarı ışıkla parlar, hücumundan kaç ve sersemlediği an arkadan vur.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="s app-cta">
+    <div class="wrap reveal">
+      <h2>Anadolu'nun kapısını arala</h2>
+      <p>26 Ağustos 1071. Tarih cüret edeni hatırlar. Sefer seni bekliyor.</p>
+      <a class="btn btn-primary" href="#demo">▶ Demoyu Oyna</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../"><span class="logo">W</span><span><b>Wearga</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../anatolia/">Gate of Anatolia</a>
+        <a href="../wearssh/">WearSSH</a>
+        <a href="../vakitwear/">Vakit Wear</a>
+        <a href="../weardisco/">Wear Disco</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 Wearga</p>
+    </div>
+  </footer>
+
+  <script src="../../js/watch-faces.js"></script>
+  <script src="../../js/reveal.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

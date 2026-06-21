@@ -1,0 +1,149 @@
+/* ============================================================
+   Wearga — shared design system (base.css)
+   Used by the company home and every app landing page.
+   Per-page accent via --accent / --accent2 on :root or a wrapper.
+   ============================================================ */
+
+:root{
+  --bg:#070710;
+  --bg2:#0c0c18;
+  --panel:#10101e;
+  --line:#1d1d2e;
+  --text:#eef0f7;
+  --muted:#9aa0b5;
+  --accent:#7c5cff;     /* default company accent (overridable) */
+  --accent2:#21d4fd;
+  --radius:18px;
+  --maxw:1160px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:'Barlow',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.55;
+}
+a{ color:inherit; text-decoration:none; }
+img{ display:block; max-width:100%; }
+section{ position:relative; }
+
+/* ---------- keyframes ---------- */
+@keyframes shimmer { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+@keyframes glowpulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+@keyframes cuebounce { 0%,100%{transform:translateX(-50%) translateY(0);opacity:.5} 50%{transform:translateX(-50%) translateY(8px);opacity:1} }
+@keyframes spin { to{ transform:rotate(360deg); } }
+@keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.topbar{
+  position:fixed; inset:0 0 auto 0; z-index:60;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px clamp(18px,4vw,40px);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 92%,transparent),transparent);
+  backdrop-filter:blur(10px);
+}
+.brand{ display:flex; align-items:center; gap:11px; color:var(--text); }
+.brand .logo{
+  width:34px; height:34px; border-radius:10px; flex:none;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:grid; place-items:center; color:#0a0a14; font-weight:800;
+  box-shadow:0 6px 20px color-mix(in srgb,var(--accent) 40%,transparent);
+}
+.brand b{ font-family:'Sora','Oswald',sans-serif; font-weight:700; letter-spacing:.02em; font-size:19px; }
+.brand small{ display:block; font-size:9px; letter-spacing:.26em; color:var(--muted); text-transform:uppercase; margin-top:1px; }
+.nav{ display:flex; align-items:center; gap:clamp(14px,2.4vw,26px); }
+.nav a{ font-weight:600; font-size:14px; color:var(--muted); transition:color .2s; }
+.nav a:hover{ color:var(--text); }
+@media(max-width:680px){ .nav a:not(.btn){ display:none; } }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; gap:9px; cursor:pointer; white-space:nowrap;
+  font-weight:700; font-size:15px; border:none; border-radius:12px; padding:13px 22px;
+  transition:transform .15s, box-shadow .25s, background .25s; font-family:inherit;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn.sm{ padding:10px 16px; font-size:14px; }
+.btn-primary{
+  color:#0a0a14;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 38%,transparent);
+}
+.btn-ghost{ color:var(--text); background:rgba(255,255,255,.04); border:1px solid var(--line); }
+.btn-ghost:hover{ border-color:color-mix(in srgb,var(--accent) 60%,var(--line)); }
+
+/* Google Play badge */
+.play-badge{
+  display:inline-block; width:180px; height:54px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='54' viewBox='0 0 180 54'%3E%3Crect x='.5' y='.5' width='179' height='53' rx='9' fill='%23000' stroke='%23a3a3a3'/%3E%3Cg transform='translate(15 12)'%3E%3Cpath d='M.5 1.2C.2 1.5 0 2 0 2.6v24.8c0 .6.2 1.1.5 1.4l.1.1L14.5 15v-.3L.6 1.1z' fill='%2300d3ff'/%3E%3Cpath d='M19 19.7l-4.5-4.5v-.4L19 10.3l.1.1 5.5 3.1c1.6.9 1.6 2.4 0 3.3z' fill='%23ffce00'/%3E%3Cpath d='M19.1 19.6L14.5 15 .5 29c.5.6 1.4.6 2.4.1z' fill='%23ff3a44'/%3E%3Cpath d='M19.1 10.4L2.9.9C1.9.4 1 .4.5 1L14.5 15z' fill='%2300f076'/%3E%3C/g%3E%3Ctext x='54' y='21' fill='%23fff' font-family='Arial' font-size='9'%3EGET IT ON%3C/text%3E%3Ctext x='54' y='40' fill='%23fff' font-family='Arial' font-weight='bold' font-size='17'%3EGoogle Play%3C/text%3E%3C/svg%3E");
+  background-size:contain; background-repeat:no-repeat; transition:transform .15s, filter .2s;
+}
+.play-badge:hover{ transform:translateY(-2px); filter:drop-shadow(0 8px 16px color-mix(in srgb,var(--accent) 45%,transparent)); }
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 clamp(18px,4vw,32px); }
+.section-head{ text-align:center; max-width:640px; margin:0 auto 54px; }
+.eyebrow{
+  display:inline-flex; align-items:center; gap:9px; margin-bottom:16px;
+  font-weight:700; font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+  color:transparent; background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text; background-clip:text;
+}
+.eyebrow::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 12px var(--accent); animation:glowpulse 2.4s ease-in-out infinite; }
+.section-title{
+  margin:0 0 14px; font-family:'Sora','Oswald',sans-serif; font-weight:700;
+  font-size:clamp(30px,5.4vw,52px); line-height:1.05; letter-spacing:-.01em; color:var(--text);
+}
+.section-desc{ color:var(--muted); font-size:17px; margin:0; }
+
+/* ============================================================
+   WATCH MOCKUP (round Wear OS preview with a live canvas face)
+   ============================================================ */
+.watch{ position:relative; width:200px; height:236px; flex:none; }
+.watch.lg{ width:280px; height:330px; }
+.watch-strap{ position:absolute; left:50%; transform:translateX(-50%); width:37%; height:23%;
+  background:linear-gradient(#2a2d36,#161820); box-shadow:inset 0 0 0 2px #0a0b0e; }
+.watch-strap.top{ top:-1%; border-radius:14px 14px 6px 6px; }
+.watch-strap.bottom{ bottom:-1%; background:linear-gradient(#161820,#2a2d36); border-radius:6px 6px 14px 14px; }
+.watch-body{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:200px; height:200px; border-radius:50%;
+  background:conic-gradient(from 210deg,#3c3f47,#16181d,#2c2f36,#101216,#3c3f47);
+  box-shadow:0 0 0 2px #06070a,0 20px 44px rgba(0,0,0,.55),inset 0 3px 9px rgba(255,255,255,.14); }
+.watch.lg .watch-body{ width:280px; height:280px; }
+.watch-screen{ position:absolute; inset:11px; border-radius:50%; overflow:hidden; background:#000;
+  box-shadow:0 0 0 5px var(--accent),0 0 0 8px #232334,inset 0 0 24px rgba(0,0,0,.7),
+             0 0 30px color-mix(in srgb,var(--accent) 40%,transparent); }
+.watch-screen .face{ width:100%; height:100%; display:block; }
+.watch-crown{ position:absolute; top:42%; right:-6px; width:11px; height:42px;
+  background:linear-gradient(var(--accent),#2a2a3a); border-radius:3px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{ border-top:1px solid var(--line); padding:54px 0 60px;
+  background:radial-gradient(120% 100% at 50% 100%,var(--bg2) 0%,var(--bg) 70%); }
+.footer .wrap{ display:flex; flex-wrap:wrap; gap:24px; align-items:center; justify-content:space-between; }
+.footer .brand small{ color:var(--muted); }
+.footer-links{ display:flex; gap:22px; flex-wrap:wrap; }
+.footer-links a{ color:var(--muted); font-size:14px; transition:color .2s; }
+.footer-links a:hover{ color:var(--text); }
+.footer-note{ width:100%; color:#5b6076; font-size:13px; margin-top:18px; }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.in{ opacity:1; transform:none; }
+.reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; } .reveal.d3{ transition-delay:.24s; }
+@media(prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; } *{ animation:none!important; } }

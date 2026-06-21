@@ -1,0 +1,57 @@
+/* ============================================================
+   Wearga — shared app landing layout (app.css)
+   Each app page sets --accent / --accent2 on :root.
+   ============================================================ */
+
+/* ---------- HERO ---------- */
+.app-hero{ position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden;
+  background:
+    radial-gradient(60% 80% at 85% 30%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%),
+    radial-gradient(70% 90% at 15% 80%,color-mix(in srgb,var(--accent2) 16%,transparent),transparent 70%),
+    radial-gradient(120% 90% at 50% 0%,var(--bg2) 0%,var(--bg) 70%); }
+.app-hero .wrap{ display:flex; align-items:center; gap:clamp(30px,6vw,80px); flex-wrap:wrap; }
+.app-hero-text{ flex:1; min-width:300px; }
+.app-hero-text .chip{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--accent2);
+  border:1px solid color-mix(in srgb,var(--accent) 45%,transparent); padding:7px 14px; border-radius:999px; }
+.app-hero-text h1{ font-family:'Sora','Oswald',sans-serif; font-weight:800; letter-spacing:-.02em;
+  font-size:clamp(40px,7vw,76px); line-height:1.02; margin:18px 0 0; }
+.app-hero-text h1 .grad{ background:linear-gradient(110deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text; background-clip:text; color:transparent; }
+.app-hero-text p.lead{ color:#c7cbe0; font-size:clamp(16px,2.2vw,20px); max-width:520px; margin:20px 0 30px; }
+.app-hero-cta{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+.app-hero-visual{ flex:none; display:grid; place-items:center; position:relative; }
+.app-hero-visual .halo{ position:absolute; width:120%; height:120%; border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 35%,transparent),transparent 60%);
+  filter:blur(10px); animation:glowpulse 4s ease-in-out infinite; }
+.app-hero-visual .watch{ animation:floaty 6s ease-in-out infinite; }
+
+/* ---------- SECTIONS ---------- */
+.s{ padding:clamp(70px,9vw,110px) 0; }
+.s.alt{ background:radial-gradient(120% 80% at 50% 0%,var(--bg2) 0%,var(--bg) 65%); }
+
+/* ---------- FEATURES ---------- */
+.features{ display:grid; gap:24px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+.feature{ background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.15));
+  border:1px solid var(--line); border-radius:var(--radius); padding:28px 24px; transition:.3s; }
+.feature:hover{ transform:translateY(-6px); border-color:color-mix(in srgb,var(--accent) 50%,var(--line));
+  box-shadow:0 20px 50px rgba(0,0,0,.5); }
+.feature .ico{ width:50px; height:50px; border-radius:13px; display:grid; place-items:center; margin-bottom:16px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 32%,transparent),color-mix(in srgb,var(--accent2) 28%,transparent));
+  color:var(--accent2); }
+.feature h3{ margin:0 0 8px; font-family:'Sora',sans-serif; font-size:19px; }
+.feature p{ margin:0; color:var(--muted); font-size:15px; }
+
+/* ---------- SHOWCASE STRIP (multiple watch faces) ---------- */
+.faces-row{ display:flex; gap:30px; justify-content:center; flex-wrap:wrap; }
+
+/* ---------- BIG CTA ---------- */
+.app-cta{ text-align:center;
+  background:radial-gradient(120% 120% at 50% 0%,color-mix(in srgb,var(--accent) 16%,var(--bg2)) 0%,var(--bg) 65%);
+  border-top:1px solid var(--line); }
+.app-cta h2{ font-family:'Sora',sans-serif; font-size:clamp(30px,5.4vw,50px); margin:0 0 12px; }
+.app-cta p{ color:var(--muted); max-width:480px; margin:0 auto 28px; font-size:17px; }
+
+/* ---------- back link in topbar ---------- */
+.back-link{ display:inline-flex; align-items:center; gap:7px; color:var(--muted); font-weight:600; font-size:14px; }
+.back-link:hover{ color:var(--text); }
