@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akıllı Saatleri Erişilebilir Kılmak: Wear OS Erişilebilirlik Özellikleri Rehberi · ZBD Studio</title>
+  <meta name="description" content="Wear OS erişilebilirlik ayarlarını keşfedin. Saatinizde TalkBack, büyütme hareketleri, renk düzeltme ve ses dengesini nasıl kullanacağınızı öğrenin.">
+  <meta name="keywords" content="Wear OS erişilebilirlik, akıllı saat TalkBack, Galaxy Watch işitme cihazı, Pixel Watch ekran büyüteci">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/wear-os-accessibility-features-guide.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/wear-os-accessibility-features-guide.html">
+  <meta property="og:title" content="Akıllı Saatleri Erişilebilir Kılmak: Wear OS Erişilebilirlik Özellikleri Rehberi · ZBD Studio">
+  <meta property="og:description" content="Wear OS erişilebilirlik ayarlarını keşfedin. Saatinizde TalkBack, büyütme hareketleri, renk düzeltme ve ses dengesini nasıl kullanacağınızı öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/wear-os-accessibility-features-guide.html">
+  <meta property="twitter:title" content="Akıllı Saatleri Erişilebilir Kılmak: Wear OS Erişilebilirlik Özellikleri Rehberi · ZBD Studio">
+  <meta property="twitter:description" content="Wear OS erişilebilirlik ayarlarını keşfedin. Saatinizde TalkBack, büyütme hareketleri, renk düzeltme ve ses dengesini nasıl kullanacağınızı öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Akıllı Saatleri Erişilebilir Kılmak: Wear OS Erişilebilirlik Özellikleri Rehberi",
+    "description": "Wear OS erişilebilirlik ayarlarını keşfedin. Saatinizde TalkBack, büyütme hareketleri, renk düzeltme ve ses dengesini nasıl kullanacağınızı öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-06-22",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/wear-os-accessibility-features-guide.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Geri Dön
+      </a>
+      <a href="../wear-os-accessibility-features-guide.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+      <div class="article-meta-top">
+        <span class="tag-badge">Rehberler</span>
+        <span>22 Haziran 2026</span>
+        <span>·</span>
+        <span>7 dk okuma</span>
+      </div>
+      <h1>Akıllı Saatleri Erişilebilir Kılmak: Wear OS Erişilebilirlik Özellikleri Rehberi</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Akıllı saatler, bilgiyi bize daha da yakınlaştırmak, teknolojiyi kesintisiz ve pratik hale getirmek için tasarlanmıştır. Ancak küçük dairesel ekranlar, minik metin seçenekleri ve kısık sesli hoparlörler; görme, işitme veya motor engeli olan kullanıcılar için varsayılan kurulumların kullanımını zorlaştırabilir. Neyse ki Google'ın Wear OS işletim sistemi, herkes için akıllı saatleri erişilebilir ve konforlu hale getiren zengin bir yerleşik erişilebilirlik özellikleri paketi barındırır.</p>
+        
+        <p>İster bir aile üyeniz için saat kuruyor olun, ister kendi cihazınızı okumayı ve kontrol etmeyi kolaylaştırmak isteyin; bu rehber, temel Wear OS erişilebilirlik araçlarını ve bunları nasıl yapılandıracağınızı açıklamaktadır.</p>
+
+        <img src="../../posts-images/settings_accessibility.png" alt="Wear OS Erişilebilirlik Ayarları Menüsü" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Görsel Geliştirmeler: Küçük Ekranları Kolayca Okuma</h2>
+        <p>Düşük görüşe sahip veya genel olarak göz yorgunluğu yaşayan kullanıcılar için, bir Wear OS saat kadranının varsayılan düzeni dar gelebilir. İşte görsel netliği artıracak araçlar:</p>
+        
+        <h3>1. Ekran Büyütme</h3>
+        <p>Büyütme hareketleri, herhangi bir ekrana yakınlaşmanızı sağlar. Etkinleştirildiğinde, ekrana üç kez dokunarak yakınlaştırabilirsiniz. Yakınlaştırılmış görünümde gezinmek için iki parmağınızı ekran üzerinde kaydırın ve normal boyuta dönmek için tekrar üç kez dokunun. Bu özellik, küçük bildirimleri okumak veya PIN kodlarını girmek için oldukça kullanışlıdır.</p>
+        
+        <h3>2. TalkBack (Ekran Okuyucu)</h3>
+        <p>TalkBack, Wear OS'in yerleşik ekran okuyucusudur. Aktif olduğunda, her işlem için sesli geri bildirim sağlar. Bir ögeye dokunmak adını sesli olarak okur, çift dokunmak ise onu etkinleştirir. Konuşma hızını ve ses düzeyini kendinize göre ayarlayabilirsiniz.</p>
+
+        <h3>3. Yazı Tipi Boyutu ve Yüksek Kontrastlı Metin</h3>
+        <p>Ekran ayarları altından genel yazı tipi boyutlarını ayarlayabilirsiniz. Wear OS ayrıca, renkli arka planlar üzerinde metnin öne çıkmasını sağlamak için beyaz metni siyahla (veya tam tersi) çevreleyen bir <strong>Yüksek Kontrastlı Metin</strong> modu içerir.</p>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Üç Kez Basma Kısayolunu Ayarlama</h4>
+          <p><strong>Ayarlar &gt; Erişilebilirlik &gt; Gelişmiş ayarlar</strong> bölümüne gidin. Erişilebilirlik işlemlerini (TalkBack veya Büyütme gibi) fiziksel Ana Sayfa düğmenize üç kez basılmasıyla ilişkilendirebilirsiniz. Bu, erişilebilirlik özelliğini bir saniyede açıp kapatmanızı sağlar.</p>
+        </div>
+
+        <h2>İşitsel Seçenekler: Daha Net Ses Profilleri</h2>
+        <p>Wear OS, işitme engeli olan bireylerin zorlanmadan iletişim kurması ve uyarılar alması için çeşitli ses ayarlarını destekler.</p>
+        <ul>
+          <li><strong>Mono Ses:</strong> Varsayılan olarak kulaklıklar veya saat hoparlörleri sesi stereo kanallardan verebilir. Tek taraflı işitme kaybınız varsa, sol ve sağ ses kanallarını birleştirmek için Mono Ses'i etkinleştirebilir ve her iki kulakta da tüm sesleri duyabilirsiniz.</li>
+          <li><strong>Ses Dengesi Kaydırıcısı:</strong> Sesi sol veya sağ kulağınıza daha fazla yönlendirmek için ses çıkış dengesini ihtiyacınıza göre ayarlayın.</li>
+          <li><strong>Gerçek Zamanlı Metin (RTT):</strong> Saatinizi arama yapmak için kullanıyorsanız, RTT aktif sesli aramalar sırasında metin girişi yoluyla iletişim kurmanızı sağlar.</li>
+        </ul>
+
+        <h2>Motor ve Etkileşim Ayarları: Alternatif Kontroller</h2>
+        <p>1.4 inçlik küçük bir ekrana hassas dokunuşlar yapmak zor olabilir. Wear OS, bunu hafifletmek için alternatif etkileşim kontrolleri sunar:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Özellik</th>
+              <th>Nasıl Çalışır</th>
+              <th>Hedef Kitle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dokunma ve Basılı Tutma Gecikmesi</strong></td>
+              <td>Saatin uzun basmayı algılaması için gereken süreyi ayarlar.</td>
+              <td>Uzun basmayı çok hassas veya yavaş bulan kullanıcılar.</td>
+            </tr>
+            <tr>
+              <td><strong>İşlem Yapma Süresi</strong></td>
+              <td>Geçici uyarı banner'larını (yeni mesajlar gibi) ekranda daha uzun süre tutar.</td>
+              <td>Bildirimleri kaybolmadan önce okumak için daha fazla zamana ihtiyaç duyan kullanıcılar.</td>
+            </tr>
+            <tr>
+              <td><strong>Hareketler</strong></td>
+              <td>Kartlar arasında kaydırma yapmak için bilek hareketlerine veya geri gitmek için sallama hareketlerine izin verir.</td>
+              <td>Elleri serbest kullanmak isteyenler veya sınırlı parmak becerisine sahip kullanıcılar.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Erişilebilirlik Ayarlarına Nasıl Erişilir?</h2>
+        <p>Bu araçları yapılandırmak oldukça basittir. Saatinizde şu adımları izleyin:</p>
+        <ol>
+          <li>Hızlı Ayarlar'ı açmak için aşağı kaydırın ve <strong>Ayarlar (Dişli)</strong> simgesine dokunun.</li>
+          <li>Aşağı kaydırın ve <strong>Erişilebilirlik</strong>'i seçin.</li>
+          <li>Düzenlemek istediğiniz kategoriyi seçin: <strong>Görsel</strong>, <strong>İşitme</strong> veya <strong>Etkileşim</strong>.</li>
+          <li>Gerekli özellikleri açın ve parametrelerini özelleştirin.</li>
+        </ol>
+        <p>Alternatif olarak, telefonunuzdaki tamamlayıcı uygulamayı açıp <strong>Saat Ayarları &gt; Erişilebilirlik</strong> bölümüne giderek bunları oradan da yapılandırabilirsiniz.</p>
+
+        <h2>Sonuç</h2>
+        <p>Erişilebilirlik sonradan düşünülen bir detay değil; Wear OS tasarımının temel bir yapı taşıdır. Büyütme hareketleri, TalkBack ve özel dokunma gecikmeleri gibi özelliklerden yararlanarak kullanıcılar akıllı saat arayüzlerini kişisel ihtiyaçlarına göre uyarlayabilirler. Pürüzsüz ve konforlu bir giyilebilir teknoloji deneyimi yaratmak için bugün bu ayarları özelleştirmeye biraz zaman ayırın!</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yayın Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, verimlilik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

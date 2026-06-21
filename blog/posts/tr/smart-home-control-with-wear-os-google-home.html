@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bilekten Otomasyon: Wear OS Google Home ile Akıllı Evinizi Kontrol Etme · ZBD Studio</title>
+  <meta name="description" content="Bileğinizden ışıkları, termostatları ve akıllı prizleri kontrol edin. Wear OS'te Google Home uygulamasını ve kartlarını nasıl yapılandıracağınızı ve kullanacağınızı öğrenin.">
+  <meta name="keywords" content="Google Home Wear OS, akıllı ışıkları akıllı saatle kontrol etme, Galaxy Watch akıllı ev, Pixel Watch ev otomasyonu">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/smart-home-control-with-wear-os-google-home.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/smart-home-control-with-wear-os-google-home.html">
+  <meta property="og:title" content="Bilekten Otomasyon: Wear OS Google Home ile Akıllı Evinizi Kontrol Etme · ZBD Studio">
+  <meta property="og:description" content="Bileğinizden ışıkları, termostatları ve akıllı prizleri kontrol edin. Wear OS'te Google Home uygulamasını ve kartlarını nasıl yapılandıracağınızı ve kullanacağınızı öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/smart-home-control-with-wear-os-google-home.html">
+  <meta property="twitter:title" content="Bilekten Otomasyon: Wear OS Google Home ile Akıllı Evinizi Kontrol Etme · ZBD Studio">
+  <meta property="twitter:description" content="Bileğinizden ışıkları, termostatları ve akıllı prizleri kontrol edin. Wear OS'te Google Home uygulamasını ve kartlarını nasıl yapılandıracağınızı ve kullanacağınızı öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Bilekten Otomasyon: Wear OS Google Home ile Akıllı Evinizi Kontrol Etme",
+    "description": "Bileğinizden ışıkları, termostatları ve akıllı prizleri kontrol edin. Wear OS'te Google Home uygulamasını ve kartlarını nasıl yapılandıracağınızı ve kullanacağınızı öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-05-25",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/smart-home-control-with-wear-os-google-home.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap" style="display: flex; align-items: center; justify-content: space-between;">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Dön
+      </a>
+      <a href="../smart-home-control-with-wear-os-google-home.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+    </div>
+    <div class="article-header-wrap" style="margin-top: 16px;">
+      <div class="article-meta-top">
+        <span class="tag-badge">İpuçları & Püf Noktaları</span>
+        <span>25 Mayıs 2026</span>
+        <span>·</span>
+        <span>6 dk okuma</span>
+      </div>
+      <h1>Bilekten Otomasyon: Wear OS Google Home ile Akıllı Evinizi Kontrol Etme</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Akıllı ev hayali, hayatı zahmetsizce kolaylaştırmaktır. Ancak sadece bir yatak ucu ışığını kapatmak için bile telefonunuzun kilidini açmak, bildirimleri geçmek ve bir uygulama açmak çoğu zaman fiziksel bir düğmeye basmaktan daha fazla çaba gerektirir. Gerçek kolaylık, evinizin kontrol merkezinin doğrudan bileğinizde takılı olmasıdır. Wear OS için resmi Google Home uygulamasıyla saatinizin ekranına hızlıca dokunarak ışıkları ayarlayabilir, akıllı prizleri izleyebilir, termostat ayarlarını değiştirebilir ve kapı zili uyarılarını alabilirsiniz.</p>
+        
+        <p>İster koltukta dinleniyor, ister elinizde alışveriş paketleri taşıyor veya karanlık çöktükten sonra eve dönüyor olun, çevrenizi bir Wear OS cihazından (Samsung Galaxy Watch, Google Pixel Watch veya TicWatch gibi) kontrol etmek inanılmaz derecede verimlidir. İşte bileğinizde Google Home uygulamasını nasıl yapılandıracağınıza ve kullanacağınıza dair bir kılavuz.</p>
+
+        <img src="../../posts-images/settings_apps.png" alt="Wear OS Hızlı Ayarlar ve Akıllı Kontrolcü Erişimi" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Başlarken: Gereksinimler ve Kurulum</h2>
+<figure style="text-align:center; margin: 36px auto;">
+          <img src="../../posts-images/apps/google-home-watch.jpg" alt="Google Home app on Wear OS controlling smart home devices" style="max-width:460px; width:100%; border-radius:20px; box-shadow:0 12px 40px rgba(0,0,0,0.6);">
+          <figcaption style="color:var(--muted); font-size:13px; margin-top:12px; font-style:italic;">Control your lights, thermostat, and smart plugs right from your wrist</figcaption>
+        </figure>
+        <p>Akıllı saatinizde Google Home kullanmak için kurulumunuzun şu koşulları karşıladığından emin olun:</p>
+        <ul>
+          <li>Saatiniz <strong>Wear OS 3 veya daha yüksek</strong> bir sürümü çalıştırmalıdır. Daha eski Android Wear sürümleri modern Google Home istemcisini desteklemez.</li>
+          <li>Akıllı saatiniz, akıllı ev ekosisteminizi kontrol eden Google Hesabı ile oturum açmış olmalıdır.</li>
+          <li>Akıllı ev cihazlarınız telefonunuzdaki Google Home uygulamasında zaten kurulmuş ve çalışıyor olmalıdır.</li>
+        </ul>
+        <p>Saat uygulamanız yüklü değilse saatinizde <strong>Play Store</strong>'u açın, "Google Home" kelimesini arayın ve <strong>Yükle</strong> seçeneğine dokunun. Açıldıktan sonra telefonunuzun ev veritabanıyla otomatik olarak senkronize olacaktır.</p>
+
+        <h2>Wear OS Google Home Arayüzünde Gezinme</h2>
+        <p>Saat uygulaması hızlı ve kompakt etkileşimler için tasarlanmıştır. Bileğinizde Google Home'u açtığınızda, önce <strong>Sık Kullanılanlar (Favorites)</strong> listenizi ve ardından odalarınızı görürsünüz. Arayüz kaydırma hareketleri için optimize edilmiştir:</p>
+        <ul>
+          <li><strong>Akıllı Işıklar:</strong> Bir ampulü açmak veya kapatmak için üzerine dokunun. Parlaklık yüzdelerini ayarlayabileceğiniz veya renk profillerini değiştirebileceğiniz bir kaydırıcıyı ortaya çıkarmak için cihaz kartında sola/sağa kaydırın.</li>
+          <li><strong>Termostatlar:</strong> Güncel sıcaklığı görmek için termostatınıza dokunun. Hedef sıcaklığı anında yükseltmek veya düşürmek için artı (+) ve eksi (-) simgelerine dokunun.</li>
+          <li><strong>Akıllı Prizler ve Fanlar:</strong> Bu kartlara dokunmak ikili (açık/kapalı) bir güç anahtarı görevi görerek bunları anında açıp kapatır.</li>
+          <li><strong>Kameralar ve Kapı Zilleri:</strong> Nest Kapı Zili veya uyumlu bir kameranız varsa, birisi zili çaldığında saat ekranınızda görsel uyarılar alabilirsiniz. Uyarıya dokunmak, ön kapınızdan gelen düşük gecikmeli canlı video akışını doğrudan saat ekranınızda görüntüler.</li>
+        </ul>
+
+        <h2>Hızlı Erişim İçin Google Home Kartlarını Ekleme</h2>
+        <p>Uygulamayı başlatmadan bile evinizi kontrol etmek için Wear OS <strong>Kartlar (Tiles)</strong> özelliğinden yararlanabilirsiniz. Saat kadranınızdan sola kaydırmak sizi anında bu panellere götürür. Google Home son derece özelleştirilebilir bir kart sunar:</p>
+        <ol>
+          <li>Döngünüzün sonuna gelene kadar sağdan sola kaydırın, ardından <strong>"+" (Kart ekle)</strong> seçeneğine dokunun.</li>
+          <li>Kategoriler arasında <strong>Google Home Sık Kullanılanlar (Google Home Favorites)</strong> kartını bulun ve eklemek için dokunun.</li>
+          <li>Eklendikten sonra karta basılı tutun ve <strong>Düzenle</strong> seçeneğine dokunun.</li>
+          <li>En sık etkileşime girdiğiniz 3 ila 5 akıllı cihazı seçin (örneğin Oturma Odası Işığı, Yatak Odası Vantilatörü, Ön Kapı Kilidi).</li>
+          <li>Kaydetmek için fiziksel yan düğmeye basın. Artık en yaygın akıllı ev kontrolleriniz sadece bir kaydırma uzaklığındadır.</li>
+        </ol>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Uzman İpucu: Ses Entegrasyonu</h4>
+          <p>Google Asistan'ın gücünü unutmayın. Bileğinizi kaldırıp simplemente *“Hey Google, tüm ışıkları kapat”* veya *“Termostatı 21 dereceye ayarla”* demeniz yeterlidir. Wear OS'teki Asistan, komutları yerel olarak işler ve Google Home bulutu aracılığıyla neredeyse anında yürütür.</p>
+        </div>
+
+        <h2>Akıllı Ev Kontrol Protokollerinin Karşılaştırılması</h2>
+        <p>Akıllı bir evi giyilebilir bir cihazdan yönetmek hız, erişilebilirlik ve güvenilirlik gerektirir. Cihazlarınızı Wear OS'ten kontrol etmenin farklı yöntemlerini karşılaştıralım:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Yöntem</th>
+              <th>Yürütme Hızı</th>
+              <th>Eller Serbest Yeteneği</th>
+              <th>En İyi Kullanım</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Google Home Uygulaması</strong></td>
+              <td>Orta (Uygulamanın açılmasını gerektirir)</td>
+              <td>Hayır</td>
+              <td>Detaylı oda ayarlamaları ve kameraları kontrol etme</td>
+            </tr>
+            <tr>
+              <td><strong>Sık Kullanılanlar Kartı</strong></td>
+              <td>Hızlı (1 kaydırma ve dokunma)</td>
+              <td>Hayır</td>
+              <td>Günlük 3-5 favori ışığınızı veya prizinizi açıp kapatma</td>
+            </tr>
+            <tr>
+              <td><strong>Google Asistan</strong></td>
+              <td>En Hızlı (Ses tetikleyici)</td>
+              <td>Evet</td>
+              <td>Toplu eylemler ("Evi kapat") veya eller doluyken yapılan görevler</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Bilekten Akıllı Ev Kurulumunuzu Optimize Etme</h2>
+        <p>Güvenilir ve hızlı bir akıllı ev deneyimi sağlamak için bu yapılandırmaları aklınızda bulundurun:</p>
+        <ul>
+          <li><strong>Sık Kullanılanlarınızı İğneleyin:</strong> Telefonunuzdaki Google Home uygulamasında Sık Kullanılanlar sekmesini düzenleyin. Saat uygulaması, telefonun sık kullanılanlar sırasını yansıtır; bu nedenle en çok kullandığınız cihazları en üste yerleştirmek saatinizde bitmek bilmeyen kaydırmaları önler.</li>
+          <li><strong>Saatinizi Bağlı Tutun:</strong> Saat Wi-Fi veya LTE'ye sahip olmadığı sürece arka plan eylemleri telefon üzerinden yönlendirilir. Komutlar yavaş geliyorsa saatinizin telefonunuza olan Bluetooth bağlantısının kararlı olup olmadığını kontrol edin.</li>
+          <li><strong>Cihazları Net Şekilde Adlandırın:</strong> Akıllı ev cihazlarınıza kısa, fonetik olarak anlaşılır adlar verin (örneğin "Philips Hue Ampul 39A" yerine "Koridor Işığı"). Bu, Google Asistan'ın ses tanıma başarı oranını önemli ölçüde artırır.</li>
+        </ul>
+
+        <h2>Son Sözler</h2>
+        <p>Akıllı evinizi Wear OS ve Google Home ile kontrol etmek, dijital otomasyon ile fiziksel konfor arasındaki köprüyü kurar. Hızlı erişim kartları, sesli kontroller ve canlı kamera bildirimleri ile ortamınızı gerçekten bileğinizden yönetebilirsiniz. Google Home uygulamasını bugün saatinize indirin ve modern bağlantılı bir evin kolaylığını deneyimleyin!</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, üretkenlik iş akışlarını ve giyilebilir donanım güncellemelerini inceliyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /* ============================================================
-   Wearga — shared design system (base.css)
+   ZBD — shared design system (base.css)
    Used by the company home and every app landing page.
    Per-page accent via --accent / --accent2 on :root or a wrapper.
    ============================================================ */
@@ -52,9 +52,11 @@ section{ position:relative; }
 .brand{ display:flex; align-items:center; gap:11px; color:var(--text); }
 .brand .logo{
   width:34px; height:34px; border-radius:10px; flex:none;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  display:grid; place-items:center; color:#0a0a14; font-weight:800;
+  display:grid; place-items:center; overflow:hidden;
   box-shadow:0 6px 20px color-mix(in srgb,var(--accent) 40%,transparent);
+}
+.brand .logo img{
+  width:34px; height:34px; border-radius:10px; object-fit:cover; display:block;
 }
 .brand b{ font-family:'Sora','Oswald',sans-serif; font-weight:700; letter-spacing:.02em; font-size:19px; }
 .brand small{ display:block; font-size:9px; letter-spacing:.26em; color:var(--muted); text-transform:uppercase; margin-top:1px; }

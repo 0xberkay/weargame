@@ -1,5 +1,5 @@
 // ============================================================
-// Wearga — graceful image gallery
+// ZBD — graceful image gallery
 // App icons and screenshot frames stay hidden until their image
 // actually loads, so missing files never show a broken icon.
 // Drop the files into the app folder and they appear automatically.

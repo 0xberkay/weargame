@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kablosuz ADB Kullanarak Wear OS'e Dışarıdan Uygulama Yükleme Rehberi · ZBD Studio</title>
+  <meta name="description" content="Uyumlu herhangi bir APK dosyasını yükleyin. Kablosuz ADB araçlarını kullanarak akıllı saatinize dışarıdan nasıl uygulama (APK) yükleyeceğinizi gösteren adım adım eğitim kılavuzu.">
+  <meta name="keywords" content="wear os dışarıdan uygulama yükleme, akıllı saate apk yükleme, adb saat uygulama yükleme, galaxy watch sideload">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/how-to-side-load-apps-on-wear-os.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/how-to-side-load-apps-on-wear-os.html">
+  <meta property="og:title" content="Kablosuz ADB Kullanarak Wear OS'e Dışarıdan Uygulama Yükleme Rehberi · ZBD Studio">
+  <meta property="og:description" content="Uyumlu herhangi bir APK dosyasını yükleyin. Kablosuz ADB araçlarını kullanarak akıllı saatinize dışarıdan nasıl uygulama (APK) yükleyeceğinizi gösteren adım adım eğitim kılavuzu.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/how-to-side-load-apps-on-wear-os.html">
+  <meta property="twitter:title" content="Kablosuz ADB Kullanarak Wear OS'e Dışarıdan Uygulama Yükleme Rehberi · ZBD Studio">
+  <meta property="twitter:description" content="Uyumlu herhangi bir APK dosyasını yükleyin. Kablosuz ADB araçlarını kullanarak akıllı saatinize dışarıdan nasıl uygulama (APK) yükleyeceğinizi gösteren adım adım eğitim kılavuzu.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Kablosuz ADB Kullanarak Wear OS'e Dışarıdan Uygulama Yükleme Rehberi",
+    "description": "Uyumlu herhangi bir APK dosyasını yükleyin. Kablosuz ADB araçlarını kullanarak akıllı saatinize dışarıdan nasıl uygulama (APK) yükleyeceğinizi gösteren adım adım eğitim kılavuzu.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-04-15",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/how-to-side-load-apps-on-wear-os.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Geri Dön</a>
+      <a href="../how-to-side-load-apps-on-wear-os.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none;">English</a>
+      <div class="article-meta-top">
+        <span class="tag-badge">Kılavuzlar</span>
+        <span>15 Nisan 2026</span>
+        <span>·</span>
+        <span>7 dk okuma</span>
+      </div>
+      <h1>Kablosuz ADB Kullanarak Wear OS'e Dışarıdan Uygulama Yükleme Rehberi</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Wear OS Google Play Store, akıllı saat ekranları için özel olarak tasarlanmış binlerce uygulama barındırır. Ancak bazen saat mağazasında resmi olarak bulunmayan bir uygulamayı yüklemek isteyebilirsiniz. Bu, bir mesajlaşma uygulamasının hafif (lite) sürümü, bir sağlık takipçisinin eski bir sürümü, özel bir dosya yöneticisi gibi bir araç veya test ettiğiniz bir beta uygulama olabilir. Bu yükleme işlemine <strong>dışarıdan yükleme</strong> (side-loading) denir.</p>
+        
+        <p>Akıllı saatlerde genellikle bilgisayarınıza doğrudan bağlanmak için standart bir USB bağlantı noktası bulunmadığından, dışarıdan yükleme işlemi Android'in yerleşik kablosuz Android Hata Ayıklama Köprüsü (ADB) arabirimini kullanır. Bu kılavuzda, Wear OS saatinize uyumlu herhangi bir APK'yı yüklemek için gereken önkoşulları, yapılandırma adımlarını ve terminal komutlarını ele alacağız.</p>
+
+        <img src="../../posts-images/settings_developer.png" alt="Wear OS Bağlantı ve Bluetooth Ayarları" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Önkoşullar: Hazırlanma</h2>
+        <p>Dışarıdan yükleme komutlarını çalıştırmadan önce aşağıdaki bileşenleri hazırladığınızdan emin olun:</p>
+        <ul>
+          <li><strong>Bir Android APK Dosyası:</strong> Yüklemek istediğiniz APK dosyasını indirin. Uygulama mimarisinin uyumlu olduğundan emin olun (eski saatler için genellikle 32-bit ARM, daha yeni Wear OS 4 ve 5 saatler için 64-bit ARM).</li>
+          <li><strong>Bilgisayarınızda ADB Kurulumu:</strong> Android SDK Platform Tools yazılımına ihtiyacınız var. Bilgisayarınızda yoksa, Android Geliştirici sitesinden resmi ZIP arşivini indirin, dosyaları çıkarın ve klasör yolunu sisteminizin Ortam Değişkenlerine (PATH) ekleyin.</li>
+          <li><strong>Yerel Ağ Erişimi:</strong> Hem saatiniz hem de bilgisayarınız aynı Wi-Fi ağına bağlı olmalıdır.</li>
+        </ul>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Güvenlik Uyarısı</h4>
+          <p>APK dosyalarını yalnızca güvenilir kaynaklardan (APKMirror gibi) indirin veya kendiniz derleyin. Kötü amaçlı uygulamaları dışarıdan yüklemek sağlık verilerinizi, şifrelerinizi tehlikeye atabilir ve akıllı saatinizin pil ömrünü kısaltabilir.</p>
+        </div>
+
+        <h2>Adım 1: Geliştirici Seçeneklerini ve Wi-Fi Hata Ayıklamayı Etkinleştirin</h2>
+        <p>Komut gönderebilmeniz için saatinizin hata ayıklama bağlantılarına izin vermesi gerekir. (Ayrıntılı bilgi için <a href="enable-wear-os-developer-options-debugging.html">Wear OS'te Geliştirici Seçenekleri Nasıl Etkinleştirilir</a> kılavuzumuzu okuyabilirsiniz).</p>
+        <ol>
+          <li><strong>Ayarlar</strong> > <strong>Sistem</strong> (veya <em>Saat Hakkında</em>) > <strong>Yazılım bilgileri</strong> bölümüne gidin.</li>
+          <li>Geliştirici seçenekleri açılana kadar <strong>Yapım numarası</strong> seçeneğine 7 kez dokunun.</li>
+          <li><strong>Ayarlar</strong> > <strong>Geliştirici seçenekleri</strong> bölümüne gidin, ardından <strong>ADB hata ayıklama</strong> özelliğini etkinleştirin.</li>
+          <li>Aşağı kaydırın ve <strong>Kablosuz hata ayıklama</strong> seçeneğini seçin. Bunu açın ve gösterilen IP adresini ve bağlantı noktasını (port) not edin (örneğin <code>192.168.1.15:5555</code>).</li>
+        </ol>
+
+        <h2>Adım 2: Bilgisayarınızı Saate Bağlayın</h2>
+        <p>Bir terminal penceresi açın (macOS/Linux'ta Terminal, Windows'ta Komut İstemi veya PowerShell) ve bağlantı protokollerini çalıştırın.</p>
+
+        <h3>Modern Saatler İçin (Wear OS 4 &amp; 5 / Pixel Watch 2+ / Galaxy Watch 6+):</h3>
+        <p>Bu cihazlar güvenli kablosuz eşleşme kullanır. Saatte, *Kablosuz hata ayıklama* altında <strong>Yeni cihaz eşle</strong> seçeneğine dokunun. Saat ekranınızda gösterilen eşleşme bağlantı noktasını ve eşleşme kodunu kullanın:</p>
+        <pre><code>adb pair [IP_ADRESI]:[ESLESME_PORTU]</code></pre>
+        <p>İstendiğinde eşleşme kodunu yazın. Eşleştikten sonra, önceki ekrandaki standart bağlantı noktasını kullanarak bağlantı komutunu çalıştırın:</p>
+        <pre><code>adb connect [IP_ADRESI]:[BAGLANTI_PORTU]</code></pre>
+
+        <h3>Eski Saatler İçin (Wear OS 3 ve Altı):</h3>
+        <p>Eşleşme kodları desteklenmiyorsa, doğrudan 5555 bağlantı noktası üzerinden bağlanın:</p>
+        <pre><code>adb connect [IP_ADRESI]:5555</code></pre>
+        <p>Saat ekranınıza bakın ve bilgisayarınızdan hata ayıklama yetkilendirmesine izin vermek için onay işaretine dokunun.</p>
+
+        <h2>Adım 3: APK Dosyasını Yükleyin</h2>
+        <p>Bağlandıktan sonra, bağlı cihaz listesini kontrol ederek bağlantının etkin olduğunu doğrulayın:</p>
+        <pre><code>adb devices</code></pre>
+        <p>Saatinizin IP'si ve portu <code>device</code> durumuyla görünmelidir. Şimdi yükleme komutunu çalıştırın. Dosya adı boşluk içeriyorsa tırnak işareti kullanın veya mutlak yolu belirtin:</p>
+        <pre><code>adb install "C:\Kullanicilar\Isim\Downloads\uygulama_adi.apk"</code></pre>
+        <p>Dosya boyutuna ve Wi-Fi hızına bağlı olarak aktarım 10 saniye ile bir dakika arasında sürebilir. Tamamlandığında terminalde <strong>Success</strong> yazısı görünecektir.</p>
+
+        <h2>Adım 4: Uygulama Arayüzünü Optimize Edin (İsteğe Bağlı)</h2>
+        <p>Birçok mobil APK, dikdörtgen akıllı telefon ekranları için tasarlandığından yuvarlak akıllı saat ekranlarında büyük görünebilir veya kenarları kesilebilir. Cihazın ekran yoğunluğunu (DPI) ölçeklendirerek bunu düzeltebilirsiniz:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Komut</th>
+              <th>Eylem</th>
+              <th>Kullanım Senaryosu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>adb shell wm density</code></td>
+              <td>Mevcut ekran yoğunluğunu sorgula</td>
+              <td>Değişiklik yapmadan önce varsayılan ayarları kontrol et</td>
+            </tr>
+            <tr>
+              <td><code>adb shell wm density 240</code></td>
+              <td>Öğeleri küçült (DPI'yı düşür)</td>
+              <td>Metinleri küçültür ve ekrandan taşan düğmeleri sığdırır</td>
+            </tr>
+            <tr>
+              <td><code>adb shell wm density reset</code></td>
+              <td>Ekran ayarlarını geri al</td>
+              <td>Saati fabrika varsayılan ölçeklendirmesine döndürür</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <p>Örneğin, <code>adb shell wm density 240</code> komutunu çalıştırırsanız, saat arayüzü öğeleri küçülür ve yuvarlak ekran sınırlarının dışındaki düğmelere tıklamanıza olanak tanır. Uygulamanın kurulum ekranlarını geçtikten sonra, <code>adb shell wm density reset</code> kullanarak eski haline döndürebilirsiniz.</p>
+
+        <h2>Dışarıdan Yüklenen Uygulamaları Kaldırma</h2>
+        <p>Uygulamaya artık ihtiyacınız yoksa, uygulama menüsünde simgeye basılı tutarak doğrudan saat üzerinden kaldırabilirsiniz. Alternatif olarak ADB kullanarak da kaldırabilirsiniz. İlk olarak uygulamanın paket adını bulun:</p>
+        <pre><code>adb shell pm list packages -3</code></pre>
+        <p>Uygulamanın tanımlayıcısını bulun ve kaldırma komutunu çalıştırın:</p>
+        <pre><code>adb uninstall paket.adi.buraya</code></pre>
+
+        <p>İşleminiz bittikten sonra, pil ömrünü korumak ve bağlantınızı güvende tutmak için saatinizdeki Geliştirici Seçenekleri'ne geri dönüp hem <strong>Wireless debugging</strong> ve <strong>ADB debugging</strong> özelliklerini devre dışı bıraktığınızdan emin olun.</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Editör Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, üretkenlik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyoruz.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

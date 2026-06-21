@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sahneye Hükmedin: Wear OS Akıllı Saatinizle Sunumları Nasıl Kontrol Edersiniz? · ZBD Studio</title>
+  <meta name="description" content="Sunum kumandasını bir kenara bırakın. Wear OS saatinizi nasıl eşleştireceğinizi ve PowerPoint veya Google Slides için nasıl uzaktan kumanda olarak kullanacağınızı öğrenin.">
+  <meta name="keywords" content="PPT kontrolcü Wear OS, slayt kumandası akıllı saat, sunum kumandası Galaxy Watch, Pixel Watch Bluetooth kumanda">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/powerpoint-controller-wear-os-guide.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/powerpoint-controller-wear-os-guide.html">
+  <meta property="og:title" content="Sahneye Hükmedin: Wear OS Akıllı Saatinizle Sunumları Nasıl Kontrol Edersiniz? · ZBD Studio">
+  <meta property="og:description" content="Sunum kumandasını bir kenara bırakın. Wear OS saatinizi nasıl eşleştireceğinizi ve PowerPoint veya Google Slides için nasıl uzaktan kumanda olarak kullanacağınızı öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/powerpoint-controller-wear-os-guide.html">
+  <meta property="twitter:title" content="Sahneye Hükmedin: Wear OS Akıllı Saatinizle Sunumları Nasıl Kontrol Edersiniz? · ZBD Studio">
+  <meta property="twitter:description" content="Sunum kumandasını bir kenara bırakın. Wear OS saatinizi nasıl eşleştireceğinizi ve PowerPoint veya Google Slides için nasıl uzaktan kumanda olarak kullanacağınızı öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Sahneye Hükmedin: Wear OS Akıllı Saatinizle Sunumları Nasıl Kontrol Edersiniz?",
+    "description": "Sunum kumandasını bir kenara bırakın. Wear OS saatinizi nasıl eşleştireceğinizi ve PowerPoint veya Google Slides için nasıl uzaktan kumanda olarak kullanacağınızı öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-05-15",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/powerpoint-controller-wear-os-guide.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap" style="display: flex; align-items: center; justify-content: space-between;">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Dön
+      </a>
+      <a href="../powerpoint-controller-wear-os-guide.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+    </div>
+    <div class="article-header-wrap" style="margin-top: 16px;">
+      <div class="article-meta-top">
+        <span class="tag-badge">İpuçları & Püf Noktaları</span>
+        <span>15 Mayıs 2026</span>
+        <span>·</span>
+        <span>6 dk okuma</span>
+      </div>
+      <h1>Sahneye Hükmedin: Wear OS Akıllı Saatinizle Sunumları Nasıl Kontrol Edersiniz?</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>İş veya okul için sunumlar hazırlıyorsanız, beden dilinin önemini bilirsiniz. Sahnede hareket etmek, doğal jestler kullanmak ve dinleyicilerle göz teması kurmak sunumunuzu çekici kılar. Ancak boşluk tuşuna basmak için sürekli dizüstü bilgisayarınıza geri yürümek veya plastik bir sunum kumandasına bağlı kalmak hareketlerinizi sınırlar. Çözüm zaten kolunuzda takılı: Wear OS akıllı saatiniz bir sunum kumandası olarak da görev yapabilir.</p>
+        
+        <p>Saatinizi Bluetooth aracılığıyla bilgisayarınıza bağlayarak PowerPoint slaytlarını, Google Slides'ı veya PDF sunumlarını kontrol edebilirsiniz. Slaytları ileri geri alabilir, kalan sunum sürenizi takip edebilir ve programa sadık kalmak için bileğinizde sessiz dokunsal titreşim uyarıları alabilirsiniz. İşte Wear OS cihazınızı (Samsung Galaxy Watch veya Google Pixel Watch gibi) bir sunum kumandası olarak nasıl yapılandıracağınıza dair bir kılavuz.</p>
+
+        <img src="../../posts-images/settings_bluetooth.png" alt="Bilgisayarlara Bağlanmak İçin Wear OS Bluetooth Eşleştirme Ekranı" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>PowerPoint Kontrolcülerinin Wear OS'te Çalışma Mantığı</h2>
+        <p>Wear OS'teki çoğu sunum kumandası uygulaması, standart HID (İnsan Arayüz Cihazı) Bluetooth profillerini kullanır. Bu, saatin bir Bluetooth klavye veya fareyi taklit ettiği anlamına gelir. Saatinizdeki "İleri" düğmesine dokunduğunuzda, eşleştirilmiş bilgisayara standart bir "Page Down" veya "Sağ Ok" klavye komutu gönderilir. Bu, bağlantıyı son derece güvenilir kılar ve özel sürücülere gerek kalmadan Windows, macOS ve Linux ile uyumlu olmasını sağlar.</p>
+
+        <h2>Adım Adım Kurulum Kılavuzları</h2>
+        <p>Sunumları saatinizden kontrol etmek için en yaygın üç yöntem şunlardır:</p>
+
+        <h3>Yöntem 1: Samsung PPT Controller (Galaxy Watch İçin En İyisi)</h3>
+        <p>Samsung Galaxy Watch modelleri, önceden yüklenmiş resmi bir uygulama olan <strong>PPT Controller</strong> ile birlikte gelir. Yapılandırılması oldukça basittir:</p>
+        <ol>
+          <li>Galaxy Saatinizde <strong>PPT Controller</strong> uygulamasını açın.</li>
+          <li>Saati Bluetooth eşleştirme moduna almak için <strong>Bağlan (Connect)</strong> seçeneğini seçin.</li>
+          <li>Bilgisayarınızda (Windows veya Mac) Bluetooth ayarlarını açın, yeni cihazları aratın ve saatinizi seçin. Eşleştirme pin kodunu onaylayın.</li>
+          <li>Bağlantı kurulduktan sonra bilgisayarınızda PowerPoint sunumunuzu başlatın.</li>
+          <li>Saat ekranınızı kullanın: İleri gitmek için sağ ok düğmesine, geri gitmek için sol ok düğmesine dokunun veya slaytlar arasında gezinmek için saatin fiziksel döner çerçevesini çevirin.</li>
+        </ol>
+
+        <h3>Yöntem 2: WearMouse (Evrensel Klavye/Fare Simülatörü)</h3>
+        <p>Google Pixel Watch, TicWatch veya Xiaomi Watch kullanıyorsanız Play Store'dan <strong>WearMouse</strong> (veya <em>Bluetooth Keyboard & Mouse for Wear OS</em>) uygulamasını indirebilirsiniz:</p>
+        <ol>
+          <li>Uygulamayı saatinize yükleyin ve açın. Bluetooth bağlantı modunu seçin.</li>
+          <li>Bilgisayarınızın standart Bluetooth ayarlarını kullanarak saati bilgisayarınızla eşleştirin.</li>
+          <li>Eşleştirildikten sonra uygulama farklı profiller seçmenize olanak tanır:
+            <ul>
+              <li><strong>Presentation Mode (Sunum Modu):</strong> Büyük ileri/geri düğmelerini görüntüler.</li>
+              <li><strong>Air Mouse Mode (Hava Faresi Modu):</strong> Saatin jiroskobunu kullanarak saati havada hareket ettirerek bilgisayar ekranındaki fare imlecini yönlendirin.</li>
+              <li><strong>Trackpad Mode (Dokunmatik Yüzey Modu):</strong> Saat ekranınızı bir touchpad'e dönüştürün.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Uzman İpucu: Bileğinizi Sessize Alın</h4>
+          <p>Sahneye çıkmadan önce saatinizde <strong>Rahatsız Etmeyin (DND)</strong> veya <strong>Sinema Modu</strong> özelliğini etkinleştirin. Bu, gelen kısa mesajların ve e-posta bildirimlerinin ekranınızda belirmesini engelleyerek dikkatiniz dağılmadan sunumunuza odaklanmanızı sağlar.</p>
+        </div>
+
+        <h2>Sunum Kontrolünün Wear OS'teki Temel Özellikleri</h2>
+        <p>Sunumlar için akıllı saat kullanmak, standart bir plastik kumandaya kıyasla çeşitli avantajlar sunar:</p>
+        <ul>
+          <li><strong>Dokunsal Zamanlayıcı Uyarıları:</strong> Saatinizdeki uygulama ayarlarından sunum sürenizi (örneğin 20 dakika) ayarlayabilirsiniz. Saat, sürenin yarısına geldiğinizde titreşecek ve son 5 dakikanız kaldığında tekrar titreşerek konuşma temponuzu ayarlamanıza yardımcı olacaktır.</li>
+          <li><strong>Slayt Numaralarını Görüntüleme:</strong> Saat ekranı güncel slayt numaranızı ve geçen süreyi göstererek bilgisayarınıza bakmadan ilerlemenizi izlemenizi sağlar.</li>
+          <li><strong>Sanal Lazer İşaretçi Simülasyonu:</strong> Bazı uygulamalar, parmağınızı saat ekranında sürüklediğinizde bilgisayar ekranına sanal bir kırmızı lazer işaretçi yansıtmak için saatin jiroskop sensörünü kullanır.</li>
+        </ul>
+
+        <h2>Uzaktan Sunum Uygulamaları Karşılaştırması</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Uygulama Adı</th>
+              <th>Desteklenen Saatler</th>
+              <th>Zamanlayıcı Uyarıları</th>
+              <th>Lazer İşaretçi Özelliği</th>
+              <th>En İyi Kullanım</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Samsung PPT Controller</strong></td>
+              <td>Galaxy Watch serisi</td>
+              <td>Evet</td>
+              <td>Hayır</td>
+              <td>Windows dizüstü bilgisayarı olan Galaxy Watch kullanıcıları</td>
+            </tr>
+            <tr>
+              <td><strong>WearMouse</strong></td>
+              <td>Tüm Wear OS saatler</td>
+              <td>Hayır</td>
+              <td>Evet (Air Mouse)</td>
+              <td>Evrensel markalar arası sunumlar</td>
+            </tr>
+            <tr>
+              <td><strong>Unified Remote</strong></td>
+              <td>Tüm Wear OS saatler</td>
+              <td>Hayır</td>
+              <td>Hayır</td>
+              <td>Karmaşık medya sunucusu ve slayt kontrolü</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Sorunsuz Bir Sunum Sağlamak İçin</h2>
+        <p>Sahnede teknik aksaklıklar yaşamamak için şu temel hazırlık adımlarını izleyin:</p>
+        <ul>
+          <li><strong>Saatin Uyku Modunu Kapatın:</strong> Konuşurken saat ekranının kararmasını önlemek için ekran zaman aşımını 5 dakikaya ayarlayın veya Her Zaman Açık Ekranı etkinleştirin.</li>
+          <li><strong>Pil Seviyesini Kontrol Edin:</strong> Bir Bluetooth klavyeyi taklit etmek ve ekranı aktif tutmak pil tüketir. Uzun bir sunuma başlamadan önce saatinizin en az %30 şarja sahip olduğundan emin olun.</li>
+          <li><strong>Menzilinizi Test Edin:</strong> Dinleyiciler gelmeden önce sahne alanında yürüyüş yapın. Saatin odanın her köşesinde bilgisayarınıza bağlı kalıp kalmadığını kontrol edin.</li>
+        </ul>
+
+        <h2>Son Sözler</h2>
+        <p>Wear OS akıllı saatiniz iş ve üretkenlik için son derece yetenekli bir araçtır. Onu bir Bluetooth sunum kumandası olarak eşleştirerek ellerinizi serbest bırakabilir, sahnede rahatça hareket edebilir ve sunumunuzu güvenle yapabilirsiniz. Saatinizin Play Store uygulamasını açın, bir kontrolcü uygulaması indirin ve bir sonraki sunumunuzda sahneye hükmedin!</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, üretkenlik iş akışlarını ve giyilebilir donanım güncellemelerini inceliyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

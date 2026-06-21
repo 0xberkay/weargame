@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wear OS Akıllı Saatlerle Uyku Kalitesi ve Uyku Apnesi Belirtilerini Takip Etme · ZBD Studio</title>
+  <meta name="description" content="Modern Wear OS sensörlerinin uyku döngülerinizi nasıl takip ettiğini, kesintileri nasıl algıladığını ve uyurken uyku apnesinin erken belirtilerini nasıl taradığını öğrenin.">
+  <meta name="keywords" content="uyku takibi Wear OS, uyku apnesi akıllı saat, Galaxy Watch uyku taraması, Pixel Watch uyku aşamaları">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/tracking-sleep-and-sleep-apnea-wear-os.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/tracking-sleep-and-sleep-apnea-wear-os.html">
+  <meta property="og:title" content="Wear OS Akıllı Saatlerle Uyku Kalitesi ve Uyku Apnesi Belirtilerini Takip Etme · ZBD Studio">
+  <meta property="og:description" content="Modern Wear OS sensörlerinin uyku döngülerinizi nasıl takip ettiğini, kesintileri nasıl algıladığını ve uyurken uyku apnesinin erken belirtilerini nasıl taradığını öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/tracking-sleep-and-sleep-apnea-wear-os.html">
+  <meta property="twitter:title" content="Wear OS Akıllı Saatlerle Uyku Kalitesi ve Uyku Apnesi Belirtilerini Takip Etme · ZBD Studio">
+  <meta property="twitter:description" content="Modern Wear OS sensörlerinin uyku döngülerinizi nasıl takip ettiğini, kesintileri nasıl algıladığını ve uyurken uyku apnesinin erken belirtilerini nasıl taradığını öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Wear OS Akıllı Saatlerle Uyku Kalitesi ve Uyku Apnesi Belirtilerini Takip Etme",
+    "description": "Modern Wear OS sensörlerinin uyku döngülerinizi nasıl takip ettiğini, kesintileri nasıl algıladığını ve uyurken uyku apnesinin erken belirtilerini nasıl taradığını öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-05-12",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/tracking-sleep-and-sleep-apnea-wear-os.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Blog'a Dön
+      </a>
+      <a href="../tracking-sleep-and-sleep-apnea-wear-os.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+      <div class="article-meta-top">
+        <div class="article-meta-top">
+        <span class="tag-badge">Sağlık & Yaşam</span>
+        <span>12 Mayıs 2026</span>
+        <span>·</span>
+        <span>7 dk okuma süresi</span>
+      </div>
+      <h1>Wear OS Akıllı Saatlerle Uyku Kalitesi ve Uyku Apnesi Belirtilerini Takip Etme
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Uyku, fiziksel ve zihinsel sağlığımızın temel taşıdır. Uyurken vücudumuz dokuları onarır, anıları pekiştirir ve temel hormonları düzenler. Ancak milyonlarca insan kalitesiz uykudan veya başta obstrüktif uyku apnesi olmak üzere teşhis edilmemiş uyku bozukluklarından muzdariptir. Geçmişte uyku sorunlarını teşhis etmek, klinik bir uyku laboratuvarında elektrotlarla kaplı bir gece geçirmeyi gerektiriyordu. Bugün, gelişmiş Wear OS sensörleri uyku yapınızı izlemenize ve olası solunum sorunlarını doğrudan bileğinizden taramanıza olanak tanır.</p>
+        
+        <p>Google Pixel Watch ve Samsung Galaxy Watch serisi gibi modern akıllı saatlerde bulunan gelişmiş biyometrik dizilerden yararlanarak, dinlenme alışkanlıklarınız hakkında laboratuvar düzeyinde bilgilere erişebilirsiniz. Bu rehberde, Wear OS'in uykunuzu nasıl takip ettiğini, uyku apnesi tespitinin arkasındaki bilimi ve genel sağlığınızı iyileştirmek için bu özellikleri nasıl kuracağınızı keşfedeceğiz.</p>
+
+        <img src="../../posts-images/settings_apps.png" alt="Erişilebilirlik ve Sağlığı Gösteren Wear OS Ayarları" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Bilimsel Arka Plan: Wear OS Uyku Aşamalarını Nasıl Çözer?</h2>
+<figure style="text-align:center; margin: 36px auto;">
+          <img src="../../posts-images/apps/sleep-tracking.jpg" alt="Sleep stage tracking on Wear OS smartwatch during night" style="max-width:460px; width:100%; border-radius:20px; box-shadow:0 12px 40px rgba(0,0,0,0.6);">
+          <figcaption style="color:var(--muted); font-size:13px; margin-top:12px; font-style:italic;">Automatic sleep stage tracking — deep sleep, light sleep, and REM visualization</figcaption>
+        </figure>
+        <p>Akıllı saatiniz sadece ne zaman uykuya daldığınızı ve ne zaman uyandığınızı bilmekle kalmaz; gecenizi belirli uyku aşamalarına ayırır. This is achieved by combining data from two primary sensors: the 3-axis accelerometer and the photoplethysmography (PPG) optical heart rate sensor. The accelerometer tracks physical movement (or the lack thereof), while the PPG sensor continuously monitors changes in your pulse rate and heart rate variability (HRV).</p>
+        
+        <p>Wear OS, yapay zeka algoritmalarını kullanarak bu sinyalleri işler ve uykunuzu dört farklı aşamaya ayırır:</p>
+        <ul>
+          <li><strong>Uyanık:</strong> Gece boyunca tamamen normal olan ve genellikle sabaha kadar unutulan kısa uyanıklık süreleri.</li>
+          <li><strong>Hafif Uyku:</strong> Kalp atış hızınızın ve nefesinizin yavaşladığı geçiş aşaması. Hafif uyku fiziksel iyileşmeyi kolaylaştırır ve gecenizin çoğunu oluşturur.</li>
+          <li><strong>Derin Uyku:</strong> Kas dokusunun onarımı, bağışıklık sisteminin güçlendirilmesi ve physical energy replenishment.</li>
+          <li><strong>REM (Hızlı Göz Hareketi) Uykusu:</strong> Rüyalarla ilişkili aşama. REM uykusu bilişsel işleme, duygusal düzenleme ve hafızanın pekiştirilmesi için gereklidir.</li>
+        </ul>
+
+        <h2>Bileğinizden Uyku Apnesi Belirtilerini Tespit Etme</h2>
+        <p>Obstrüktif Uyku Apnesi (OSA), uyku sırasında solunum yolunun geçici olarak tıkanarak solunumun tekrar tekrar durup başlamasına neden olduğu ciddi bir tıbbi durumdur. Bu durum, kandaki oksijen satürasyonu (SpO2) seviyelerinin düşmesine ve derin uykuyu bölen mikro uyanışlara yol açar. Bu nöbetler kişi uyurken gerçekleştiğinden, uyku apnesi vakalarının %80'ine kadar teşhis konulamamaktadır.</p>
+        
+        <p>Modern Wear OS saatleri, gece boyunca <strong>oksijen satürasyonu (SpO2) dalgalanmalarını</strong> ve <strong>solunum hızını</strong> izleyerek bununla mücadele eder. Sensör, ani kalp atış hızı artışlarının yanı sıra kan oksijeninde sık ve keskin düşüşler tespit ederse, bu solunum düzensizliklerini işaretleyebilir. Son Samsung Galaxy Watch modellerinde, FDA onaylı Uyku Apnesi özelliği, çok geceli bir dönem boyunca göreceli oksijen düşüşlerini takip ederek orta ila şiddetli OSA belirtilerini özel olarak izler.</p>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Tıbbi Sorumluluk Reddi</h4>
+          <p>Akıllı saat sensörleri uyku kalitesi ve solunum bozuklukları hakkında değerli göstergeler sağlasa da, bunlar sağlıklı yaşam cihazlarıdır ve klinik teşhisin yerini alamaz. Saatiniz sürekli olarak yüksek solunum bozuklukları veya düşük oksijen seviyeleri işaretliyorsa, resmi bir uyku çalışması için bir tıp uzmanına danışın.</p>
+        </div>
+
+        <h2>Wear OS Uyku Takipçilerinin Karşılaştırılması</h2>
+        <p>Hem Samsung Health hem de Fitbit (Pixel Watch'ta) mükemmel uyku metrikleri sunar, ancak verilerini ve özelliklerini farklı şekilde sunarlar. Yeteneklerini karşılaştıralım:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Özellik</th>
+              <th>Samsung Health (Galaxy Watch)</th>
+              <th>Fitbit / Google (Pixel Watch)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Uyku Aşamaları</strong></td>
+              <td>Yüzdelik dağılımla detaylı grafik.</td>
+              <td>Uyku aşaması karşılaştırmaları içeren doğru grafikler.</td>
+            </tr>
+            <tr>
+              <td><strong>Oksijen Takibi</strong></td>
+              <td>Gece boyunca sürekli SpO2 yüzdesi gösterimi.</td>
+              <td>Tahmini Oksijen Değişkenliği (EOV) grafiği.</td>
+            </tr>
+            <tr>
+              <td><strong>Uyku Apnesi Taraması</strong></td>
+              <td>FDA onaylı Uyku Apnesi tespit özelliği.</td>
+              <td>Değişkenleri ve solunum düzensizliklerini tanımlar.</td>
+            </tr>
+            <tr>
+              <td><strong>Uyku Koçluğu</strong></td>
+              <td>Bir "Uyku Hayvanı" ve 4 haftalık eğitim programı atar.</td>
+              <td>Uyku Profili (Fitbit Premium gerektirir).</td>
+            </tr>
+            <tr>
+              <td><strong>Horlama Algılama</strong></td>
+              <td>Horlama olaylarını kaydetmek için telefon mikrofonunu kullanır.</td>
+              <td>Belirli premium profillerde mevcuttur.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Uyku ve Oksijen Takibini Kurma</h2>
+        <p>Wear OS akıllı saatinizin uyku kalitenizi ve oksijen seviyenizi aktif olarak izlediğinden emin olmak için şu yapılandırma adımlarını izleyin:</p>
+        
+        <h3>Samsung Galaxy Watch'ta (Samsung Health):</h3>
+        <ol>
+          <li>Saatinizde <strong>Samsung Health</strong> uygulamasını açın, en alta kaydırın ve <strong>Ayarlar</strong> seçeneğine dokunun.</li>
+          <li><strong>Ölçüm</strong> seçeneğine dokunun ve hem <strong>Uyku sırasında kan oksijeni</strong> hem de <strong>Horlama algılama</strong> özelliklerinin açık olduğundan emin olun.</li>
+          <li>Uyku Apnesi taraması için telefonunuzda <strong>Samsung Health Monitor</strong> uygulamasını açın, Uyku Apnesi seçeneğini belirleyin ve kalibrasyon talimatlarını izleyin. Bu özellik, 10 günlük bir pencere içinde en az iki gece uykunuzun izlenmesini gerektirir.</li>
+        </ol>
+
+        <h3>Google Pixel Watch'ta (Fitbit):</h3>
+        <ol>
+          <li>Bağlı akıllı telefonunuzda <strong>Fitbit</strong> uygulamasını açın.</li>
+          <li>Profil simgenize dokunun ve Pixel Watch ayarlarınızı seçin.</li>
+          <li>Sağlık takibi izinlerinin verildiğinden ve uyku takibi özelliğinin aktif olduğundan emin olun. Saatiniz uyku sırasında SpO2 dalgalanmalarını ve kalp atış hızı eğilimlerini otomatik olarak kaydedecektir.</li>
+        </ol>
+
+        <h2>Saatinizi Gece Takibi İçin Optimize Etme</h2>
+        <p>Yatağa akıllı saatle girmek bazen kaba hissettirebilir ve pil yönetimi yaygın bir endişedir. Gece takibi deneyiminizi en üst düzeye çıkarmak için bazı pratik ipuçları:</p>
+        <ul>
+          <li><strong>Yatma Vakti/Uyku Modunu Etkinleştirin:</strong> Hızlı Ayarlar panelinizi aşağı kaydırın ve Yatma Vakti/Uyku Modunu etkinleştirin. Bu özellik, Her Zaman Açık Ekranı kapatır, uyandırmak için eğme özelliğini devre dışı bırakır, bildirimleri sessize alır ve fiziksel olarak basılmadığı sürece ekranı tamamen karanlık tutar.</li>
+          <li><strong>Saatin Oturuşunu Kontrol Edin:</strong> Doğru SpO2 ve kalp atış hızı ölçümleri için saatin bileğe tam oturması gerekir. Kayışın, sensörün cildinizle sürekli temas halinde kalacağı kadar sıkı olduğundan emin olun (bilek kemiğinizin yaklaşık bir parmak genişliği üzerinde).</li>
+          <li><strong>Akıllıca Şarj Edin:</strong> Saatinizin gecenin ortasında kapanmasını önlemek için bir şarj rutini oluşturun. Cihazınızı duş alırken veya yatmadan önce bir saat boyunca masanızda çalışırken şarj etmek genellikle geceyi çıkarmak için yeterlidir.</li>
+        </ul>
+
+        <p>Wear OS akıllı saatinizi özel bir gece sağlık monitörüne dönüştürerek, hayatınızın üçte birini geçirdiğiniz uyku süreniz hakkında kritik bir görünürlük elde edersiniz. Eğilimleri belirlemek, uyku hijyenini iyileştirmek ve solunum sağlığınızın kontrolünü proaktif bir şekilde ele almak için bu araçları kullanın.</p>
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçları, verimlilik iş akışları ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

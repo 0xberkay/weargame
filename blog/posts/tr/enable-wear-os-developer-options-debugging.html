@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wear OS'te Geliştirici Seçenekleri, USB ve Wi-Fi Hata Ayıklama Nasıl Etkinleştirilir · ZBD Studio</title>
+  <meta name="description" content="Gizli ayarları açın. Wear OS'te Geliştirici Seçeneklerini, ADB hata ayıklamayı ve kablosuz ağ hata ayıklamayı etkinleştirmek için adım adım kılavuz.">
+  <meta name="keywords" content="geliştirici seçeneklerini etkinleştir Wear OS, ADB kablosuz hata ayıklama akıllı saat, Galaxy Watch hata ayıklama ayarları, Pixel Watch geliştirici modu">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/enable-wear-os-developer-options-debugging.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/enable-wear-os-developer-options-debugging.html">
+  <meta property="og:title" content="Wear OS'te Geliştirici Seçenekleri, USB ve Wi-Fi Hata Ayıklama Nasıl Etkinleştirilir · ZBD Studio">
+  <meta property="og:description" content="Gizli ayarları açın. Wear OS'te Geliştirici Seçeneklerini, ADB hata ayıklamayı ve kablosuz ağ hata ayıklamayı etkinleştirmek için adım adım kılavuz.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/enable-wear-os-developer-options-debugging.html">
+  <meta property="twitter:title" content="Wear OS'te Geliştirici Seçenekleri, USB ve Wi-Fi Hata Ayıklama Nasıl Etkinleştirilir · ZBD Studio">
+  <meta property="twitter:description" content="Gizli ayarları açın. Wear OS'te Geliştirici Seçeneklerini, ADB hata ayıklamayı ve kablosuz ağ hata ayıklamayı etkinleştirmek için adım adım kılavuz.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- Language Router Script -->
+  <script>
+    (function() {
+      var pref = localStorage.getItem('pref_lang');
+      if (pref === 'en') {
+        window.location.replace('../' + window.location.pathname.split('/').pop());
+      } else if (!pref) {
+        var lang = (navigator.language || navigator.userLanguage).toLowerCase();
+        if (!lang.startsWith('tr')) {
+          window.location.replace('../' + window.location.pathname.split('/').pop());
+        }
+      }
+    })();
+  </script>
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Wear OS'te Geliştirici Seçenekleri, USB ve Wi-Fi Hata Ayıklama Nasıl Etkinleştirilir",
+    "description": "Gizli ayarları açın. Wear OS'te Geliştirici Seçeneklerini, ADB hata ayıklamayı ve kablosuz ağ hata ayıklamayı etkinleştirmek için adım adım kılavuz.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-04-18",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/enable-wear-os-developer-options-debugging.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+        <a href="../../" class="back-btn" style="margin: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Blog'a Geri Dön
+        </a>
+        <a href="../enable-wear-os-developer-options-debugging.html" onclick="localStorage.setItem('pref_lang', 'en')" style="color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none;">English</a>
+      </div>
+      <div class="article-meta-top">
+        <span class="tag-badge">Kılavuzlar</span>
+        <span>18 Nisan 2026</span>
+        <span>·</span>
+        <span>6 dk okuma süresi</span>
+      </div>
+      <h1>Wear OS'te Geliştirici Seçenekleri, USB ve Wi-Fi Hata Ayıklama Nasıl Etkinleştirilir</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Wear OS akıllı saatleri, Android'in özelleştirilmiş bir sürümüyle çalışan güçlü mikro bilgisayarlardır. Akıllı telefonlardaki gibi Google Pixel Watch, Samsung Galaxy Watch ve diğer Wear OS cihazlarında da Geliştirici Seçenekleri adında gizli bir kontrol paneli bulunur. Normal şartlarda bu ayarlar, kullanıcıların sistem kararsızlığına yol açabilecek ayarları yanlışlıkla değiştirmesini önlemek için gizlidir. Ancak, dışarıdan uygulama yüklemek (side-load), sistem geçişlerini özelleştirmek, performans ölçümlerini izlemek veya Android Hata Ayıklama Köprüsü (ADB) aracılığıyla özel bir uygulamayı hata ayıklamak istiyorsanız, bu menünün kilidini açmak ilk adımınızdır.</p>
+        
+        <p>Bu kapsamlı kılavuzda; Wear OS 3, Wear OS 4 ve en son Wear OS 5 sürümlerini çalıştıran Wear OS cihazlarında Geliştirici Seçeneklerini nasıl etkinleştireceğinizi, ADB hata ayıklamayı nasıl kuracağınızı ve kablosuz/Wi-Fi hata ayıklamayı nasıl yapılandıracağınızı göstereceğiz.</p>
+
+        <img src="../../posts-images/settings_developer.png" alt="Wear OS Ayarlar Ekranı" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>1. Bölüm: Wear OS'te Geliştirici Seçenekleri Nasıl Etkinleştirilir?</h2>
+        <p>Geliştirici menüsünün kilidini açmak, klasik bir Android yöntemini takip eder: belirli bir bilgi bloğuna üst üste birkaç kez dokunmak. Menü yapısı, One UI Watch çalıştıran bir Samsung Galaxy Watch'a mı yoksa saf Wear OS çalıştıran bir Google Pixel Watch'a mı sahip olduğunuza bağlı olarak biraz değişir, ancak temel adımlar tamamen aynıdır.</p>
+        
+        <ol>
+          <li>Fiziksel güç düğmesine basın veya uygulama çekmecesini ya da Hızlı Ayarlar'ı açmak için ana ekrandan aşağı kaydırın ve <strong>Ayarlar (dişli) simgesine</strong> dokunun.</li>
+          <li>Ayarlar menüsünün en altına gidin ve <strong>Sistem</strong> (veya Samsung Galaxy Watch'larda <strong>Saat hakkında</strong>) seçeneğine dokunun.</li>
+          <li>Saat hakkında seçeneğine dokunduysanız, bir sonraki adımda <strong>Yazılım bilgileri</strong> öğesine dokunmanız gerekir. Sistem öğesine dokunduysanız sonraki adıma geçin.</li>
+          <li>Yapım numarası (veya <em>Yazılım sürümü</em>) etiketli girişi bulun. Bu girişe hızlıca tam <strong>yedi (7) kez</strong> dokunun.</li>
+          <li>Ekranda <em>"Artık bir geliştirici olmaya X adım uzaktasınız."</em> diyen geçici bir geri sayım bildirimi göreceksiniz. Son bir mesajla <strong>"Geliştirici modu etkinleştirildi"</strong> veya <strong>"Artık bir geliştiricisiniz!"</strong> onaylanana kadar dokunmaya devam edin.</li>
+        </ol>
+
+        <p>Çalıştığını doğrulamak için geri düğmesine basarak ana Ayarlar ekranına dönün. En aşağıya kaydırdığınızda, Sistem ve Saat hakkında öğelerinin hemen altında yepyeni bir menü girişi fark edeceksiniz: <strong>Geliştirici seçenekleri</strong>.</p>
+
+        <h2>2. Bölüm: ADB ve Wi-Fi Hata Ayıklamayı Yapılandırma</h2>
+        <p>Çoğu akıllı saatte fiziksel USB bağlantı noktası bulunmadığı için veya yalnızca güç aktarımını destekleyen şarj stantları kullandıkları için saatinizi bir bilgisayara bağlamanın birincil yöntemi kablosuz hata ayıklamadır. İşte nasıl yapılandırılacağı:</p>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Ağ Gereksinimi</h4>
+          <p>Kablosuz hata ayıklamanın çalışabilmesi için Wear OS akıllı saatinizin ve bilgisayarınızın tamamen aynı yerel ağa (SSID) bağlı olması gerekir. Bilgisayarınızın, yerel istemciler arası iletişimi engelleyen bir misafir ağında veya VPN'de olmadığından emin olun.</p>
+        </div>
+
+        <h3>Kablosuz Hata Ayıklamayı Etkinleştirme Adımları:</h3>
+        <ol>
+          <li><strong>Ayarlar</strong> > <strong>Geliştirici seçenekleri</strong> bölümüne gidin.</li>
+          <li>Aşağı kaydırın ve <strong>ADB hata ayıklama</strong> seçeneğinin yanındaki anahtarı açın. Etkinleştirmek için ekrandaki uyarıyı onaylayın.</li>
+          <li>Biraz daha aşağı kaydırın ve <strong>Kablosuz hata ayıklama</strong> seçeneğine dokunun. (Eski Wear OS sürümlerinde bu seçenek <strong>Wi-Fi üzerinden hata ayıklama</strong> olarak adlandırılabilir).</li>
+          <li>Kablosuz hata ayıklama anahtarını "Açık" konumuna getirin.</li>
+          <li>Cihazın Wi-Fi ağınıza bağlanması ve IP adresini alması için bir süre bekleyin. Bağlandıktan sonra ekranda bir IP adresi ve bağlantı noktası numarası görüntülenecektir (örneğin, <code>192.168.1.15:5555</code>). Bunu not edin.</li>
+        </ol>
+
+        <h2>3. Bölüm: Bilgisayarınızda ADB ile Bağlanma</h2>
+        <p>Saatiniz bir hata ayıklama bağlantı noktası yayınladığına göre, standart Android SDK platform araçlarını (ADB) kullanarak bilgisayarınızı saate bağlayabilirsiniz.</p>
+        
+        <p>Bilgisayarınızda bir komut istemi, terminal veya PowerShell penceresi açın ve aşağıdaki komutları çalıştırın:</p>
+
+        <h3>Wear OS 4 ve Wear OS 5 İçin (Eşleştirme Gerektirir):</h3>
+        <p>Modern Wear OS sistemleri güvenli kablosuz eşleştirme kullanır. Saatinizdeki "Kablosuz hata ayıklama" ayarları altında <strong>Yeni cihaz eşleştir</strong> seçeneğine dokunun. Bu, bir eşleştirme kodu, bir IP adresi ve bir bağlantı noktası görüntüleyecektir. Bilgisayarınızda aşağıdaki komutu çalıştırın:</p>
+        
+        <pre><code>adb pair [IP_ADRESİ]:[ESLESTİRME_PORTU]</code></pre>
+        <p>Örnek: <code>adb pair 192.168.1.15:43215</code></p>
+        <p>İstendiğinde saat ekranınızda görüntülenen 6 haneli eşleştirme kodunu girin. Eşleştirildikten sonra, ana Kablosuz Hata Ayıklama ekranında gösterilen birincil IP adresini ve bağlantı noktasını kullanarak bağlantı komutunu çalıştırın:</p>
+        <pre><code>adb connect [IP_ADRESİ]:[BAGLANTI_PORTU]</code></pre>
+        <p>Örnek: <code>adb connect 192.168.1.15:5555</code></p>
+
+        <h3>Wear OS 3 ve Daha Eski Sürümler İçin (Eşleştirme Kodu Gerekmez):</h3>
+        <p>Eşleştirme kodu gerektirmeyen eski bir sistem kullanıyorsanız doğrudan bağlanabilirsiniz:</p>
+        <pre><code>adb connect [IP_ADRESİ]:5555</code></pre>
+        
+        <p>Saat ekranınıza bakın; <strong>"Hata ayıklamaya izin verilsin mi?"</strong> sorusunu içeren bir uyarı alacaksınız. <em>"Bu bilgisayardan her zaman izin ver"</em> kutusunu işaretleyin ve bağlantıyı yetkilendirmek için onay işaretine dokunun.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>İşletim Sistemi Sürümü</th>
+              <th>Hata Ayıklama Bağlantı Modu</th>
+              <th>Güvenlik Seviyesi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Wear OS 3 ve Altı</strong></td>
+              <td>Doğrudan IP Bağlantısı (Port 5555)</td>
+              <td>Temel ekrandan onay yetkilendirmesi</td>
+            </tr>
+            <tr>
+              <td><strong>Wear OS 4 / 5 (One UI 5 / 6)</strong></td>
+              <td>Güvenli ADB Eşleştirmesi (Dinamik Port)</td>
+              <td>6 haneli eşleştirme PIN'i + şifreleme</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Geliştirici Seçeneklerini Kullanmak İçin İpuçları</h2>
+        <ul>
+          <li><strong>Sistem Animasyonlarını Hızlandırın:</strong> Saatinizde hafif bir gecikme hissediyorsanız, Geliştirici Seçenekleri'nde çizim bölümüne gidin. <em>Pencere animasyon ölçeği</em>, <em>Geçiş animasyon ölçeği</em> ve <em>Animatör süre ölçeği</em> değerlerini <code>1.0x</code> yerine <code>0.5x</code> (veya kapalı) olarak değiştirin. Saatiniz anında çok daha akıcı hissettirecektir.</li>
+          <li><strong>Kullanımdan Sonra Hata Ayıklamayı Kapatın:</strong> ADB hata ayıklama ve Wi-Fi hata ayıklama özelliklerinin açık bırakılması, saatin Wi-Fi kartını aktif tutmasını ve dinleme betikleri çalıştırmasını gerektirdiğinden ciddi pil tüketimine neden olur. Testlerinizi veya uygulama yüklemenizi bitirir bitirmez Geliştirici Seçenekleri'nden her iki özelliği de kapatmayı unutmayın.</li>
+        </ul>
+
+        <p>Geliştirici Seçeneklerinin kilidini açmak, Wear OS akıllı saatiniz üzerinde tam kontrol sağlar. İster özel APK'ları test etmek, ister animasyon profillerinde ince ayarlar yapmak, ister bellek tüketimini izlemek isteyin, artık bunu güvenli ve verimli bir şekilde yapacak araçlara sahipsiniz.</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, üretkenlik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapılmıştır · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// Shared scroll-reveal for all Wearga pages.
+// Shared scroll-reveal for all ZBD pages.
 (function () {
   const els = document.querySelectorAll('.reveal');
   if (!els.length) return;

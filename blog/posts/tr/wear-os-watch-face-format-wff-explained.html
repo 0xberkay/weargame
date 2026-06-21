@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wear OS Saat Kadranı Formatını (WFF) Anlamak: Saat Tasarımının Geleceği · ZBD Studio</title>
+  <meta name="description" content="Wear OS Saat Kadranı Formatı (WFF) nedir? Bu yeni XML tabanlı formatın geliştiriciler ve kullanıcılar için pil ömrünü ve performansı nasıl artırdığını öğrenin.">
+  <meta name="keywords" content="Watch Face Format WFF, Wear OS 5 watch face design, smartwatch battery custom watch face, WFF XML format Wear OS">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/wear-os-watch-face-format-wff-explained.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/wear-os-watch-face-format-wff-explained.html">
+  <meta property="og:title" content="Wear OS Saat Kadranı Formatını (WFF) Anlamak: Saat Tasarımının Geleceği · ZBD Studio">
+  <meta property="og:description" content="Wear OS Saat Kadranı Formatı (WFF) nedir? Bu yeni XML tabanlı formatın geliştiriciler ve kullanıcılar için pil ömrünü ve performansı nasıl artırdığını öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/wear-os-watch-face-format-wff-explained.html">
+  <meta property="twitter:title" content="Wear OS Saat Kadranı Formatını (WFF) Anlamak: Saat Tasarımının Geleceği · ZBD Studio">
+  <meta property="twitter:description" content="Wear OS Saat Kadranı Formatı (WFF) nedir? Bu yeni XML tabanlı formatın geliştiriciler ve kullanıcılar için pil ömrünü ve performansı nasıl artırdığını öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Wear OS Saat Kadranı Formatını (WFF) Anlamak: Saat Tasarımının Geleceği",
+    "description": "Wear OS Saat Kadranı Formatı (WFF) nedir? Bu yeni XML tabanlı formatın geliştiriciler ve kullanıcılar için pil ömrünü ve performansı nasıl artırdığını öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-06-16",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/wear-os-watch-face-format-wff-explained.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Geri Dön
+      </a>
+      <a href="../wear-os-watch-face-format-wff-explained.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+      <div class="article-meta-top">
+        <span class="tag-badge">Güncellemeler</span>
+        <span>16 Haziran 2026</span>
+        <span>·</span>
+        <span>7 dk okuma</span>
+      </div>
+      <h1>Wear OS Saat Kadranı Formatını (WFF) Anlamak: Saat Tasarımının Geleceği</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Wear OS ile ilgili son güncellemeleri takip ediyorsanız, saat kadranlarının oluşturulma yöntemindeki değişikliği duymuş olabilirsiniz. Wear OS 5 ile Google, Google Play Store'a saat kadranı gönderimleri için <strong>Saat Kadranı Formatını (WFF - Watch Face Format)</strong> resmi olarak zorunlu standart olarak belirledi. Eski, yoğun kod içeren saat kadranları bu yeni yaklaşımın lehine olacak şekilde kademeli olarak kullanımdan kaldırılıyor.</p>
+        
+        <p>Peki Saat Kadranı Formatı tam olarak nedir ve Google neden bu kararı aldı? Bu makalede; WFF'nin arkasındaki teknik nedenleri, akıllı saatlerin pil ömrüne nasıl fayda sağladığını ve bunun geliştiriciler ile son kullanıcılar için ne anlama geldiğini açıklayacağız.</p>
+
+        <img src="../../posts-images/settings_home.png" alt="Wear OS Saat Arayüzü ve Düzeni" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Saat Kadranı Formatı (WFF) Nedir?</h2>
+        <p>Eski Wear OS sürümlerinde saat kadranları tam teşekküllü Android uygulamalarıydı. Java veya Kotlin dilinde yazılır, APK dosyalarının içine paketlenir ve doğrudan saat üzerinde özel kodlar çalıştırırlardı. Geliştiriciler tam özgürlüğe sahipti, ancak bu durum saat kadranlarının akrep ve yelkovanı çizmek, komplikasyonları takip etmek ve animasyonları görüntülemek için sürekli olarak aktif kod döngüleri çalıştırması anlamına geliyordu.</p>
+        <p><strong>Saat Kadranı Formatı (WFF)</strong>, Samsung ile ortaklaşa geliştirilen, bildirimsel (declarative) ve XML tabanlı bir çerçevedir. Yürütülebilir kod içermek yerine bir WFF saat kadranı; yalnızca görsel düzeni (renkler, metin yolları, resim yerleşimleri ve matematiksel ifadeler) tanımlayan metin tabanlı bir yapılandırma dosyasıdır. Wear OS işletim sistemi bu XML dosyasını okur ve kadranı yerel (native) olarak çizer.</p>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Pil Ömründe Devrim</h4>
+          <p>WFF özel arka plan kodları çalıştırmadığından, Wear OS sistemi saat kadranının çizilmesini düşük güçlü yardımcı işlemcilere (genellikle mikrodenetleyici veya MCU çipleri olarak adlandırılır) devredebilir. Bu sayede saat, güç tüketen ana uygulama işlemcisi uykudayken zamanı ve adım sayacını güncelleyebilir ve böylece muazzam miktarda pil tasarrufu sağlar.</p>
+        </div>
+
+        <h2>Neden WFF: Temel Avantajlar</h2>
+        <p>Kod tabanlı tasarımlardan bildirimsel XML profillerine geçiş yapmak, akıllı saat ekosistemi için birkaç önemli avantaj sağlar:</p>
+        
+        <h3>1. Önemli Ölçüde İyileştirilmiş Pil Ömrü</h3>
+        <p>Geleneksel Java/Kotlin saat kadranları, ana sistem CPU'sunun sürekli uyanık kalmasını ve kare yenilemelerini işlemesini gerektiriyordu. WFF saat kadranları ise ana işlemcide sıfır yürütülebilir kod çalıştırır. Çizim görevlerini ultra düşük güçlü donanımlara kaydırarak WFF, akıllı saat pil ömrünü uzatmaya yardımcı olur; özellikle de Her Zaman Açık Ekran (AOD) modları kullanılırken.</p>
+
+        <h3>2. Tavizsiz Güvenlik</h3>
+        <p>WFF dosyaları derlenmiş ikili dosyalar (binary) yerine saf XML yapılandırmaları olduğundan, kötü amaçlı kod yürütemez, yerel dosya sistemlerine erişemez veya yetkisiz arka plan verileri iletemez. Kullanıcılar, güvenlik ihlalleri konusunda endişelenmeden Play Store'dan özel saat kadranları indirebilir.</p>
+
+        <h3>3. Otomatik Performans Optimizasyonu</h3>
+        <p>Wear OS bir WFF dosyası aldığında, kare hızlarını ve grafik işlemlerini yerel olarak yönetir. Google sistem grafik motorunu güncellediğinde, her WFF saat kadranı, orijinal yaratıcısının kodunu güncellemesine gerek kalmadan bu performans iyileştirmelerini ve optimizasyonlarını anında kazanır.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Özellik karşılaştırması</th>
+              <th>Eski Saat Kadranları (Kotlin/Java)</th>
+              <th>Saat Kadranı Formatı (XML)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Yürütme Yöntemi</strong></td>
+              <td>Arka planda özel ikili kod çalıştırır.</td>
+              <td>Wear OS tarafından yerel olarak ayrıştırılır ve çizilir.</td>
+            </tr>
+            <tr>
+              <td><strong>Pil Etkisi</strong></td>
+              <td>Yüksek (derin CPU uyku durumlarını engeller).</td>
+              <td>Çok Düşük (düşük güçlü yardımcı işlemcilere devreder).</td>
+            </tr>
+            <tr>
+              <td><strong>Güvenlik Riski</strong></td>
+              <td>Orta (standart uygulama güvenlik kontrolleri gerektirir).</td>
+              <td>Sıfır (kod yürütemez veya verilere erişemez).</td>
+            </tr>
+            <tr>
+              <td><strong>Bakım</strong></td>
+              <td>Yüksek (yeni API sürümleri için güncellemeler gerektirir).</td>
+              <td>Düşük (işletim sistemi değişiklikleriyle otomatik olarak güncellenir).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Akıllı Saat Kullanıcıları İçin Ne Anlama Geliyor?</h2>
+        <p>Eğer günlük bir akıllı saat kullanıcısıysanız, en belirgin değişiklik, yıllar önce satın aldığınız eski saat kadranlarının yeni Wear OS 5 cihazlarına yüklenemeyebilecek olmasıdır. Google artık Play Store'un Wear OS 5'teki saat kadranı indirmelerini WFF kullanılarak oluşturulanlarla sınırlandırmasını şart koşuyor.</p>
+        <p>Bu durum başlangıçta can sıkıcı görünse de kazanç oldukça açıktır: saat kadranları daha net görünecek, daha akıcı çalışacak, daha hızlı yüklenecek ve önemli ölçüde daha az pil tüketecektir. Tasarımcılar popüler tasarımlarını aktif olarak yeni XML standardına güncelliyorlar, bu nedenle favori kadranlarınız muhtemelen geliştirilmiş verimlilikle geri dönecektir.</p>
+
+        <h2>Sonuç</h2>
+        <p>Saat Kadranı Formatı (WFF) temsil ettiği değer bakımından Wear OS için önemli bir evrimsel adımdır. Ana işlemcide kod yürütülmesini ortadan kaldırarak ve tasarım düzenlerini XML ile standartlaştırarak Google ve Samsung, akıllı saatlerin en büyük iki şikayetini ele aldı: pil tüketimi ve yavaş performans. Akıllı saat tasarımının geleceği temiz, güvenli ve son derece verimli!</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yayın Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, verimlilik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

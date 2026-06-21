@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sensör Doğruluğunu İyileştirme: Galaxy Watch'ta Pusula ve Barometre Nasıl Kalibre Edilir · ZBD Studio</title>
+  <meta name="description" content="Hatalı yükseklik veya yön bilgisi mi alıyorsunuz? İşte saatinizdeki altimetre, barometre ve pusulayı kalibre etmek için basit bir kılavuz.">
+  <meta name="keywords" content="galaxy watch pusula kalibrasyonu, akıllı saat barometre hatası, wear os altimetre kalibrasyonu, saat pusula sapması düzeltme">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/how-to-calibrate-galaxy-watch-sensors.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/how-to-calibrate-galaxy-watch-sensors.html">
+  <meta property="og:title" content="Sensör Doğruluğunu İyileştirme: Galaxy Watch'ta Pusula ve Barometre Nasıl Kalibre Edilir · ZBD Studio">
+  <meta property="og:description" content="Hatalı yükseklik veya yön bilgisi mi alıyorsunuz? İşte saatinizdeki altimetre, barometre ve pusulayı kalibre etmek için basit bir kılavuz.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/how-to-calibrate-galaxy-watch-sensors.html">
+  <meta property="twitter:title" content="Sensör Doğruluğunu İyileştirme: Galaxy Watch'ta Pusula ve Barometre Nasıl Kalibre Edilir · ZBD Studio">
+  <meta property="twitter:description" content="Hatalı yükseklik veya yön bilgisi mi alıyorsunuz? İşte saatinizdeki altimetre, barometre ve pusulayı kalibre etmek için basit bir kılavuz.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Sensör Doğruluğunu İyileştirme: Galaxy Watch'ta Pusula ve Barometre Nasıl Kalibre Edilir",
+    "description": "Hatalı yükseklik veya yön bilgisi mi alıyorsunuz? İşte saatinizdeki altimetre, barometre ve pusulayı kalibre etmek için basit bir kılavuz.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-03-08",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/how-to-calibrate-galaxy-watch-sensors.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Geri Dön</a>
+      <a href="../how-to-calibrate-galaxy-watch-sensors.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none;">English</a>
+      <div class="article-meta-top">
+        <span class="tag-badge">Sorun Giderme</span>
+        <span>08 Mart 2026</span>
+        <span>·</span>
+        <span>5 dk okuma</span>
+      </div>
+      <h1>Sensör Doğruluğunu İyileştirme: Galaxy Watch'ta Pusula ve Barometre Nasıl Kalibre Edilir</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Samsung Galaxy Watch 4, 5, 6, 7 ve Ultra dahil olmak üzere Galaxy Watch modelleri, gelişmiş çevre sensörleriyle donatılmıştır. Bunların arasında Dünya'nın manyetik alanına göre yönü ölçen bir manyetometre (pusula) ve atmosferik hava basıncını ölçen bir barometre yer alır. Barometre iki yönlü çalışır: yerel hava durumu değişikliklerini takip eder ve siz tırmandıkça hava basıncının nasıl düştüğünü ölçerek yükseklik değişikliklerini hesaplar (altimetre görevi görür).</p>
+        
+        <p>Ancak, bu sensörler son derece dinamik fiziksel alanları ölçtüğü için zamanla sapma gösterebilir. Pusula; ofis masaları, hoparlörler, arabalar veya metal saat kordonları tarafından üretilen elektromanyetik alanlardan kolayca etkilenebilir. Barometre ise klimalı binalardan sıcak dış havaya geçişten, fırtına cephelerinden ve uçak seyahatlerinden etkilenir. Haritanız yanlış yönü gösteriyorsa veya bir tepedeyken saatiniz deniz seviyesinin altında yüzdüğünüzü söylüyorsa, kalibrasyon zamanı gelmiştir.</p>
+
+        <img src="../../posts-images/settings_location.png" alt="Galaxy Watch Sensör Kalibrasyon Kılavuzu" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Galaxy Watch Sensörlerini Anlamak</h2>
+        <p>Kalibrasyon adımlarına geçmeden önce, bu sensörlerin ne işe yaradığını ve ne sıklıkla ayarlanmaları gerektiğini anlamak faydalı olacaktır:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Sensör</th>
+              <th>Temel Ölçüm</th>
+              <th>Parazit/Etkileşim Kaynağı</th>
+              <th>Kalibrasyon Tetikleyici</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Pusula (Manyetometre)</strong></td>
+              <td>Ana yön (Yönelim)</td>
+              <td>Mıknatıslar, çelik, elektronik kablolar.</td>
+              <td>Google Haritalar'da yanlış yön göstergeleri.</td>
+            </tr>
+            <tr>
+              <td><strong>Barometre</strong></td>
+              <td>Atmosferik basınç (hPa)</td>
+              <td>Hava durumu değişiklikleri, klima.</td>
+              <td>Hatalı fırtına veya hava durumu uyarıları.</td>
+            </tr>
+            <tr>
+              <td><strong>Altimetre</strong></td>
+              <td>Göreceli yükseklik (Feet/Metre)</td>
+              <td>Barometre sapması, değişen hava basıncı.</td>
+              <td>Doğa yürüyüşleri sırasında hatalı yükseklik takibi.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Galaxy Watch'ta Pusula Nasıl Kalibre Edilir</h2>
+        <p>Manyetik sensörler son derece hassastır. Pusula kartınızda "Pusulayı Kalibre Et" uyarısı görünüyorsa veya yön ibresi düzensiz bir şekilde dalgalanıyorsa şu adımları izleyin:</p>
+        <ol>
+          <li>Kalibrasyon sırasında büyük metal nesnelerden (araba, çelik masa veya bilgisayar gibi) ve elektronik cihazlardan uzakta durduğunuzdan emin olun. Güçlü manyetik tokalara sahip bir saat kordonu (Milano kordon gibi) takmayın.</li>
+          <li>Saatinizde <strong>Pusula</strong> uygulamasını açın (veya Pusula kartına kaydırın).</li>
+          <li>Saat bir sapma algılarsa, otomatik olarak saati yuvarlama hareketiyle hareket ettiren bir el grafiği gösterecektir.</li>
+          <li>Saati bileğinizde veya elinizde güvenli bir şekilde tutun.</li>
+          <li><strong>"8 Çizme" hareketini</strong> yapın: Kolunuzu pürüzsüz ve sürekli bir 8 çizecek şekilde sallarken aynı zamanda bileğinizi iki yana doğru döndürün. Temel olarak saati üç boyutlu düzlemin tüm yönlerine doğrultmuş olursunuz.</li>
+          <li>Kalibrasyon grafiği kaybolana ve pusula aktif yön derecenizi gösterene kadar bu hareketi 10-15 saniye boyunca tekrarlayın.</li>
+        </ol>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Profesyonel İpucu: Barometre Portunu Temizleme</h4>
+          <p>Barometre ölçümleriniz tamamen sabit kalıyorsa veya hata gösteriyorsa, fiziksel sensör girişini kontrol edin. Barometre, basıncı genellikle saat kasasının yanında veya arkasında bulunan mikroskobik bir iğne deliğinden okur (sensör kubbesinin veya yan düğmelerin yakınına bakın). Bu deliğin içinde ter, vücut yağı veya sabun kurumuşsa sensör atmosferik basıncı okuyamaz. Bu deliğe iğne veya tel sokmayın! Bunun yerine saati 5 dakika boyunca ılık temiz suya batırın ve ardından havayla kurumaya bırakın.</p>
+        </div>
+
+        <h2>Barometre ve Altimetre Nasıl Kalibre Edilir</h2>
+        <p>Yükseklik hesaplamaları doğrudan atmosferik hava basıncından türetildiğinden, altimetre kalibrasyonu bir baz basınç veya yükseklik koordinatı belirlenmesini gerektirir.</p>
+        <ol>
+          <li>Saatinizde <strong>Pusula</strong> uygulamasını açın ve pusula kadranını geçecek şekilde aşağı kaydırın. Bu, aktif yüksekliğinizi ve barometrik basıncınızı gösterecektir.</li>
+          <li>Ekranın en altına gidin ve <strong>Manuel kalibrasyon</strong> seçeneğine (veya Wear OS sürümüne bağlı olarak <strong>Kalibre et</strong> seçeneğine) dokunun.</li>
+          <li>Aktif bir Wi-Fi veya LTE bağlantınız varsa ve konum izinlerini onayladıysanız <strong>Otomatik kalibre et</strong> seçeneğine dokunun. Saat, GPS koordinatlarınızdaki tam deniz seviyesi basıncı için yerel meteoroloji veri tabanlarını sorgulayacak ve kendini kalibre edecektir.</li>
+          <li>Çevrimdışıysanız parametreleri manuel olarak girebilirsiniz. Tam yüksekliğiniz için topografik bir haritayı kontrol edin (örneğin, deniz seviyesinden 500 fit/150 metre yüksekte) veya yerel tam barometrik basınç için hava durumu raporuna bakın. Bu temel değeri girdiğinizde altimetre kendini buna göre ayarlayacaktır.</li>
+        </ol>
+
+        <h2>Özet</h2>
+        <p>Sensörler doğa maceraları için kritik öneme sahiptir. Pusulayı sıfırlamak için basit bir 8 çizme hareketi yaparak, altimetre için manuel olarak bir başlangıç yüksekliği belirleyerek ve fiziksel sensör bağlantı noktalarını kirden temiz tutarak, Galaxy Watch'unuzda hassas navigasyon ve takip sağlayabilirsiniz.</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Editör Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, üretkenlik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyoruz.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

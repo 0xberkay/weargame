@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Temassız Ödemeler İçin Wear OS'te Google Cüzdan Nasıl Kurulur ve Kullanılır · ZBD Studio</title>
+  <meta name="description" content="Cüzdanınızı geride bırakın. Wear OS saatinizde Google Cüzdan'ı kurma ve temassız NFC ödemeleri yapma konusunda adım adım bir kılavuz.">
+  <meta name="keywords" content="Google Cüzdan kurulumu Wear OS, akıllı saat NFC ödeme, Galaxy Watch temassız ödeme, Pixel Watch Google Pay">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/google-wallet-wear-os-setup-guide.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/google-wallet-wear-os-setup-guide.html">
+  <meta property="og:title" content="Temassız Ödemeler İçin Wear OS'te Google Cüzdan Nasıl Kurulur ve Kullanılır · ZBD Studio">
+  <meta property="og:description" content="Cüzdanınızı geride bırakın. Wear OS saatinizde Google Cüzdan'ı kurma ve temassız NFC ödemeleri yapma konusunda adım adım bir kılavuz.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/google-wallet-wear-os-setup-guide.html">
+  <meta property="twitter:title" content="Temassız Ödemeler İçin Wear OS'te Google Cüzdan Nasıl Kurulur ve Kullanılır · ZBD Studio">
+  <meta property="twitter:description" content="Cüzdanınızı geride bırakın. Wear OS saatinizde Google Cüzdan'ı kurma ve temassız NFC ödemeleri yapma konusunda adım adım bir kılavuz.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- Language Router Script -->
+  <script>
+    (function() {
+      var pref = localStorage.getItem('pref_lang');
+      if (pref === 'en') {
+        window.location.replace('../' + window.location.pathname.split('/').pop());
+      } else if (!pref) {
+        var lang = (navigator.language || navigator.userLanguage).toLowerCase();
+        if (!lang.startsWith('tr')) {
+          window.location.replace('../' + window.location.pathname.split('/').pop());
+        }
+      }
+    })();
+  </script>
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Temassız Ödemeler İçin Wear OS'te Google Cüzdan Nasıl Kurulur ve Kullanılır",
+    "description": "Cüzdanınızı geride bırakın. Wear OS saatinizde Google Cüzdan'ı kurma ve temassız NFC ödemeleri yapma konusunda adım adım bir kılavuz.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-06-20",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/google-wallet-wear-os-setup-guide.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+        <a href="../../" class="back-btn" style="margin: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Blog'a Geri Dön
+        </a>
+        <a href="../google-wallet-wear-os-setup-guide.html" onclick="localStorage.setItem('pref_lang', 'en')" style="color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none;">English</a>
+      </div>
+      <div class="article-meta-top">
+        <span class="tag-badge">Kılavuzlar</span>
+        <span>20 Haziran 2026</span>
+        <span>·</span>
+        <span>6 dk okuma süresi</span>
+      </div>
+      <h1>Temassız Ödemeler İçin Wear OS'te Google Cüzdan Nasıl Kurulur ve Kullanılır</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Modern bir akıllı saate sahip olmanın en büyük kolaylıklarından biri, hantal cüzdanınızı evde bırakmaktır. İster koşuya çıkın, ister sabah kahvenizi alın ya da toplu taşımaya binin, bileğinizle hızlıca ödeme yapmak fütüristik ve verimli hissettirir. Wear OS üzerindeki Google Cüzdan (eski adıyla Google Pay), dünya genelindeki milyonlarca terminalde hızlı, güvenli, temassız Yakın Alan İletişimi (NFC) işlemleri gerçekleştirmenizi sağlar.</p>
+        
+        <p>Bu kılavuzda, Wear OS cihazınızda Google Cüzdan'ı kullanarak ekran kilidi ayarlama (güvenlik gereksinimi), ödeme kartları ekleme ve güvenli ödeme yapma adımlarında size yol göstereceğiz.</p>
+
+        <img src="../../posts-images/settings_apps.png" alt="Wear OS Hızlı Ayarlar ve NFC geçişleri" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Gereksinimler: Başlamak İçin Ne Lazım?</h2>
+<figure style="text-align:center; margin: 36px auto;">
+          <img src="../../posts-images/apps/google-wallet-nfc.jpg" alt="Google Wallet NFC contactless payment on smartwatch at cafe terminal" style="max-width:460px; width:100%; border-radius:20px; box-shadow:0 12px 40px rgba(0,0,0,0.6);">
+          <figcaption style="color:var(--muted); font-size:13px; margin-top:12px; font-style:italic;">Google Wallet NFC payment — tap your watch to pay instantly</figcaption>
+        </figure>
+        <p>Devam etmeden önce cihazlarınızın şu minimum kriterleri karşıladığından emin olun:</p>
+        <ul>
+          <li>Wear OS 2 veya daha üzerini çalıştıran bir akıllı saat (Google Pixel Watch, Samsung Galaxy Watch 4 veya daha yenisi ya da TicWatch gibi).</li>
+          <li>Saatinizin ayarlarında yerleşik NFC donanımının etkinleştirilmiş olması.</li>
+          <li>En son Google Cüzdan ve saat yardımcı uygulamalarının yüklü olduğu eşleştirilmiş bir akıllı telefon.</li>
+          <li>Google Cüzdan işlemlerini destekleyen bir banka veya kredi kartı sağlayıcısı.</li>
+        </ul>
+
+        <h2>1. Adım: Saatinizde Güvenli Bir Ekran Kilidi Ayarlayın</h2>
+        <p>Güvenlik nedeniyle, akıllı saatinizde bir ekran kilidi (PIN veya Desen) oluşturmadığınız sürece Google Cüzdan çalışmayacaktır. Bu, saatinizin kaybolması veya çalınması durumunda yetkisiz kişilerin ödeme kartlarınızı kullanmasını önler.</p>
+        <ol>
+          <li>Saatinizin <strong>Ayarlar</strong> uygulamasını açın.</li>
+          <li>Aşağı kaydırın ve <strong>Güvenlik &gt; Kilit türü</strong> (veya <strong>Ekran kilidi</strong>) seçeneğini belirleyin.</li>
+          <li><strong>PIN</strong> veya <strong>Desen</strong> seçeneklerinden birini belirleyin ve güvenli şifrenizi ayarlayın.</li>
+        </ol>
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Akıllı Kilit Çalışma Şekli</h4>
+          <p>Endişelenmeyin —saate her baktığınızda bu kodu girmek zorunda değilsiniz. Sensörler saatin bileğinizde olduğunu algılar. Kodu yalnızca saati bileğinize takarken bir kez girmeniz gerekir. Saat bileğinizden çıkarıldığını algılarsa anında kilitlenir.</p>
+        </div>
+
+        <h2>2. Adım: Wear OS'te Google Cüzdan'ı Kurun ve Açın</h2>
+        <p>Google Cüzdan birçok Wear OS saatinde önceden yüklü olsa da, Play Store aracılığıyla indirmeniz veya güncellemeniz gerekebilir:</p>
+        <ol>
+          <li>Saatinizde <strong>Play Store</strong> uygulamasını açın.</li>
+          <li><strong>"Google Cüzdan"</strong> araması yapın.</li>
+          <li>Uygulamayı seçin ve <strong>Güncelle</strong> veya <strong>Yükle</strong> seçeneğine dokunun.</li>
+          <li>Yüklendikten sonra, uygulamayı uygulama çekmecenizden başlatın.</li>
+        </ol>
+
+        <h2>3. Adım: Telefonunuz Üzerinden Kart Ekleyin</h2>
+        <p>Yeni bir ödeme kartı kaydetmek için, kolaylık ve güvenlik amacıyla işlemleri telefonunuzun ekranından yapılandıracaksınız:</p>
+        <ol>
+          <li>Saatinizde Google Cüzdan'ı açın ve <strong>"+" (Kart ekle)</strong> simgesine dokunun.</li>
+          <li>Ekranda telefonunuzda devam etmenizi yönlendiren bir uyarı belirecektir. Telefonunuzun kilidini açın.</li>
+          <li>Google Cüzdan kurulum sihirbazı otomatik olarak başlayacaktır. <strong>Saate ekle</strong> seçeneğine dokunun.</li>
+          <li>Google Hesabınızla zaten bağlantılı olan mevcut bir kartı seçebilir veya telefonunuzun kamerasıyla kart ayrıntılarını yakalamak için <strong>Yeni kredi veya banka kartı</strong> seçeneğini belirleyebilirsiniz.</li>
+          <li>Kartın güvenlik kodunu doğrulayın, bankanın Hizmet Şartları'nı okuyun ve kabul edin.</li>
+          <li>Kimlik doğrulama adımını tamamlayın (genellikle SMS kodu, e-posta kodu veya banka uygulaması kontrolü yoluyla).</li>
+          <li>Doğrulandıktan sonra kart saatinizle senkronize edilecektir.</li>
+        </ol>
+
+        <h2>Temassız NFC Ödemeleri Nasıl Yapılır?</h2>
+        <p>Saatinizle ödeme yapmak inanılmaz derecede hızlıdır. Aktif bir ödeme terminali bulunan bir kasa önünde dururken:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>İşlem Adımı</th>
+              <th>Nasıl Yapılır</th>
+              <th>Geri Bildirim Göstergesi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Uygulamayı Başlatın</strong></td>
+              <td>Saatinizin fiziksel Ana Ekran veya yan düğmesine çift tıklayın (standart kısayol).</td>
+              <td>Birincil kartınız saat ekranında görüntülenir.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Terminale Yaklaştırın</strong></td>
+              <td>Saat ekranınızın üst yarısını temassız okuyucuya yaklaştırın.</td>
+              <td>Kısa bir titreşim bekleyin.</td>
+            </tr>
+            <tr>
+              <td><strong>3. İşlem Tamamlandı</strong></td>
+              <td>Ekranda bir onay görünene kadar saati sabit tutun.</td>
+              <td>Mavi bir onay işareti ve sesli uyarı başarıyı gösterir.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Güvenlik ve Gizlilik Önlemleri</h2>
+        <p>Google Cüzdan, işlem geçmişinizi ve kart bilgilerinizi korumak için sanal hesap numaraları (belirteçleştirme/tokenization) kullanır. Saatinizi bir ödeme terminaline yaklaştırdığınızda, sistem gerçek kredi kartı numaranız yerine şifrelenmiş bir belirteç (token) iletir. Bu, finansal bilgilerinizin gizli ve güvenli kalmasını sağlar.</p>
+
+        <h2>Sonuç</h2>
+        <p>Wear OS'te Google Cüzdan'ı kurmak, günlük hayatta büyük kolaylık sağlayan basit bir işlemdir. Bir ekran kilidi oluşturarak, kredi kartlarınızı bağlayarak ve çift basma kısayolunda ustalaşarak ödemelerinizi saniyeler içinde tamamlayabilirsiniz. Ağır cüzdanınızı geride bırakın ve bileğinizden NFC ile ödeme yapmanın rahatlığını çıkarın!</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, üretkenlik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapılmıştır · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

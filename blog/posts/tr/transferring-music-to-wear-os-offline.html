@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Müzik Dosyalarını Doğrudan Wear OS Akıllı Saatlere Aktarma ve Depolama · ZBD Studio</title>
+  <meta name="description" content="Kendi ses dosyalarınızı depolayın. Yerel MP3 ve AAC dosyalarını Android telefonunuzdan doğrudan Wear OS saatinizin hafızasına nasıl aktaracağınızı öğrenin.">
+  <meta name="keywords" content="müzik aktarma Wear OS, akıllı saat MP3 depolama, Galaxy Watch yerel müzik, Pixel Watch çevrimdışı ses dosyaları">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/transferring-music-to-wear-os-offline.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/transferring-music-to-wear-os-offline.html">
+  <meta property="og:title" content="Müzik Dosyalarını Doğrudan Wear OS Akıllı Saatlere Aktarma ve Depolama · ZBD Studio">
+  <meta property="og:description" content="Kendi ses dosyalarınızı depolayın. Yerel MP3 ve AAC dosyalarını Android telefonunuzdan doğrudan Wear OS saatinizin hafızasına nasıl aktaracağınızı öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/transferring-music-to-wear-os-offline.html">
+  <meta property="twitter:title" content="Müzik Dosyalarını Doğrudan Wear OS Akıllı Saatlere Aktarma ve Depolama · ZBD Studio">
+  <meta property="twitter:description" content="Kendi ses dosyalarınızı depolayın. Yerel MP3 ve AAC dosyalarını Android telefonunuzdan doğrudan Wear OS saatinizin hafızasına nasıl aktaracağınızı öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Müzik Dosyalarını Doğrudan Wear OS Akıllı Saatlere Aktarma ve Depolama",
+    "description": "Kendi ses dosyalarınızı depolayın. Yerel MP3 and AAC dosyalarını Android telefonunuzdan doğrudan Wear OS saatinizin hafızasına nasıl aktaracağınızı öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-04-08",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/transferring-music-to-wear-os-offline.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Blog'a Dön
+      </a>
+      <a href="../transferring-music-to-wear-os-offline.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+      <div class="article-meta-top">
+        <div class="article-meta-top">
+        <span class="tag-badge">Rehberler</span>
+        <span>8 Nisan 2026</span>
+        <span>·</span>
+        <span>6 dk okuma süresi</span>
+      </div>
+      <h1>Müzik Dosyalarını Doğrudan Wear OS Akıllı Saatlere Aktarma ve Depolama
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Spotify, YouTube Music veya Deezer gibi platformlar üzerinden müzik akışı yapmak son derece pratik olsa da bazı dezavantajları vardır. Şarkıları çevrimdışı kullanmak üzere indirmek için ücretli bir premium abonelik gerektirir, sürekli hücresel veya Wi-Fi veri akışı nedeniyle saat pilinizi tüketir ve ticari olmayan podcast'ler, sesli notlar veya kişisel MP3/AAC müzik kütüphaneleri gibi özel ses dosyalarını desteklemez. Neyse ki Wear OS, yerel ses dosyalarını doğrudan saatinize aktarmanıza ve kaydetmenize olanak tanıyan yerleşik bir dosya depolama sistemine sahiptir.</p>
+        
+        <p>16 GB ile 32 GB arasında dahili depolama alanına sahip modern Wear OS akıllı saatlerinde, yüzlerce yüksek kaliteli ses dosyasını depolamak için bolca yeriniz vardır. Bu rehberde, dosyaları kopyalamanın en iyi iki yolunu göstereceğiz: mobil yardımcı uygulamaları kullanmak ve evrensel kablosuz geliştirici araçlarını (ADB) kullanmak.</p>
+
+        <img src="../../posts-images/settings_developer.png" alt="Wear OS Ayarlar Menüsü Ekranı" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Yöntem 1: Galaxy Wearable Uygulaması ile Müzik Aktarma (Samsung Galaxy Watch)</h2>
+        <p>Bir Samsung Galaxy Watch 4, 5, 6, 7 veya Ultra sahibiyseniz, Samsung mobil yardımcı uygulamasının içine yerel bir içerik yönetim sistemi dahil etmiştir. Bu, aktarım için en kolay ve kullanıcı dostu yöntemdir:</p>
+        <ol>
+          <li>Eşleştirilmiş Android akıllı telefonunuzda <strong>Galaxy Wearable</strong> uygulamasını açın.</li>
+          <li><strong>Saat ayarları</strong> seçeneğine gidin ve dokunun.</li>
+          <li>Aşağı kaydırın ve <strong>İçerik yönetin</strong> seçeneğini belirleyin.</li>
+          <li><strong>Şarkı ekle</strong> üzerine dokunun.</li>
+          <li>Telefonunuz, hafızasında kayıtlı ses dosyalarını gösteren bir dosya tarayıcısı açacaktır. Parçaya, albüme veya sanatçıya göre göz atın ve kopyalamak istediğiniz şarkıları seçin.</li>
+          <li>Sağ üst köşedeki <strong>Saate ekle</strong> seçeneğine dokunun. Uygulama, ses dosyalarını sıkıştırıp saatinize gönderecektir.</li>
+        </ol>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Hız İpucu</h4>
+          <p>Bluetooth bağlantısı üzerinden ses aktarmak son derece yavaştır. Büyük dosyaların veya albümlerin aktarımını hızlandırmak için, aktar düğmesine basmadan önce hem telefonunuzun hem de saatinizin aynı Wi-Fi ağına bağlı olduğundan emin olun. Uygulama, hızlı aktarım için otomatik olarak Wi-Fi Direct özelliğine geçiş yapacaktır.</p>
+        </div>
+
+        <h2>Yöntem 2: ADB Wireless Kullanarak Uzaktan Müzik Aktarma (Evrensel Yöntem)</h2>
+        <p>Google Pixel Watch, TicWatch veya yerleşik bir medya yönetim aracı olmayan herhangi bir cihaza sahipseniz, dosyalarınızı Wi-Fi üzerinden geliştirici komutlarını kullanarak aktarabilirsiniz. Wear OS, Android'in dosya hiyerarşisini kullandığından, dosyaları doğrudan saatin yerel <code>/sdcard/Music/</code> dizinine gönderebilirsiniz.</p>
+
+        <h3>1. ADB ile Bağlanın:</h3>
+        <p>Saatinizde Geliştirici Seçenekleri ve Kablosuz Hata Ayıklama özelliklerinin etkinleştirildiğinden emin olun (bkz. <a href="enable-wear-os-developer-options-debugging.html">Geliştirici Seçenekleri Kurulum Rehberi</a>). Bilgisayarınızın terminalini açın ve saatinizle eşleştirin/bağlanın:</p>
+        <pre><code>adb connect [SAAT_IP_ADRESI]:[PORT]</code></pre>
+
+        <h3>2. Dosyaları Gönderin (Push):</h3>
+        <p>Bağlandıktan sonra, dosyaları bilgisayarınızın sürücüsünden doğrudan saatin yerel <code>/sdcard/Music/</code> dizinine göndermek için <code>adb push</code> komutunu kullanın:</p>
+        <pre><code>adb push "C:\yol\muzik\sarki.mp3" /sdcard/Music/</code></pre>
+        <p>Tüm bir müzik dizinini aktarmak için klasör adını hedefleyin:</p>
+        <pre><code>adb push "C:\yol\muzik_klasoru" /sdcard/Music/</code></pre>
+
+        <h2>Aktarılan Ses Dosyalarınızı Oynatma</h2>
+        <p>Şarkılarınız saatinize kopyalandıktan sonra, yerel depolama alanına göz atabilecek bir medya oynatıcı uygulamasına ihtiyacınız olacaktır. İşte Play Store'da bulunan en iyi oynatıcı önerileri:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Oynatıcı Uygulama Adı</th>
+              <th>Önemli Güçlü Yönleri</th>
+              <th>Fiyat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Samsung Music</strong></td>
+              <td>Galaxy Watch modellerinde önceden yüklüdür. Çok temizdir, saat kadranı bileşenleriyle entegre olur.</td>
+              <td>Ücretsiz</td>
+            </tr>
+            <tr>
+              <td><strong>Wear Media</strong></td>
+              <td>Yerleşik bir dosya yöneticisi içerir, özel klasör yapılarını işler, albüm resimlerini gösterir.</td>
+              <td>Ücretsiz / Ücretli reklam kaldırma</td>
+            </tr>
+            <tr>
+              <td><strong>VLC for Android</strong></td>
+              <td>Dışarıdan yüklenebilir (sideload), neredeyse tüm ses codec bileşenlerini destekler (FLAC ve AAC dahil).</td>
+              <td>Ücretsiz / Açık kaynaklı</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Saatinizdeki Boş Alanı Kontrol Etme</h2>
+        <p>Büyük müzik kütüphaneleri eklemeden önce akıllı saatinizdeki kullanılabilir alanı kontrol edin:</p>
+        <ol>
+          <li><strong>Hızlı Ayarlar</strong>'ı açmak için aşağı kaydırın ve <strong>Ayarlar (dişli) simgesine</strong> dokunun.</li>
+          <li>Aşağı kaydırın ve <strong>Depolama</strong> seçeneğini belirleyin (veya <strong>Saat Hakkında</strong> > <strong>Depolama</strong>).</li>
+          <li>Sistem güncellemeleri veya sağlık günlükleri için belleğin bitmediğinden emin olmak için kalan gigabaytları inceleyin.</li>
+        </ol>
+
+        <p>Yerel Wear OS depolama alanından yararlanarak akıcı bir şekilde çalan, pil tasarrufu sağlayan ve akıllı telefonunuzdan bağımsız olarak çalışan özelleştirilmiş bir çevrimdışı ses kütüphanesi oluşturabilirsiniz.</p>
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçları, verimlilik iş akışları ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

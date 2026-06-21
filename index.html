@@ -1,16 +1,55 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wearga — Bileğin için yazılım · Wear OS stüdyosu</title>
-  <meta name="description" content="Wearga, Wear OS için odaklı ve güzel tasarlanmış uygulamalar geliştiren bir yazılım stüdyosu. SSH, namaz vakitleri, ışık şovu ve destansı bir pixel oyun.">
+  <title>ZBD — Software for your wrist · Wear OS Studio</title>
+  <meta name="description" content="ZBD is a software studio building focused, beautifully designed apps for Wear OS. SSH, prayer times, a light show, and an epic pixel game.">
+  <meta name="keywords" content="Wear OS, Wear OS apps, Wear OS games, smartwatch development, Wear OS terminal, smartwatch prayer times, circular UI design, watch face complications, Android Wear, ZBD Studio">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wearga.me/">
+  <meta property="og:title" content="ZBD — Software for your wrist · Wear OS Studio">
+  <meta property="og:description" content="ZBD is a software studio building focused, beautifully designed apps for Wear OS. SSH, prayer times, a light show, and an epic pixel game.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/">
+  <meta property="twitter:title" content="ZBD — Software for your wrist · Wear OS Studio">
+  <meta property="twitter:description" content="ZBD is a software studio building focused, beautifully designed apps for Wear OS. SSH, prayer times, a light show, and an epic pixel game.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="logo.webp">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/blog.css">
+
+  <!-- JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ZBD Wear OS Studio",
+    "operatingSystem": "Wear OS",
+    "applicationCategory": "DeveloperApplication",
+    "description": "ZBD is a software studio building focused, beautifully designed apps for Wear OS, including SSH terminal, prayer times, and smartwatch games.",
+    "url": "https://wearga.me/",
+    "logo": "https://wearga.me/logo.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 
   <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
@@ -21,39 +60,46 @@
   <!-- TOP BAR -->
   <header class="topbar">
     <a class="brand" href="#top">
-      <span class="logo">W</span>
-      <span><b>Wearga</b><small>Wear OS Studio</small></span>
+      <span class="logo"><img src="logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
     </a>
     <nav class="nav">
-      <a href="#services">Hizmetler</a>
-      <a href="#products">Ürünler</a>
-      <a href="#contact">İletişim</a>
-      <a class="btn btn-primary sm" href="#products">Uygulamalar</a>
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="blog/">Blog</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary sm" href="#products">Apps</a>
     </nav>
   </header>
 
   <!-- HERO -->
   <section id="top" class="hero">
-    <canvas id="three-canvas" aria-hidden="true"></canvas>
     <div class="hero-grid" aria-hidden="true"></div>
-    <div class="wrap">
+    <div class="wrap hero-wrap">
       <div class="hero-content">
-        <div class="eyebrow">WEAR OS YAZILIM STÜDYOSU</div>
-        <h1>Bileğin için<br><span class="grad">yazılım üretiyoruz</span></h1>
-        <p class="lead">Wearga, yalnızca akıllı saatlere odaklanan bağımsız bir yazılım stüdyosu.
-          Yuvarlak ekran için sıfırdan tasarlanmış, hızlı ve zarif uygulamalar geliştiriyoruz.</p>
+        <div class="hero-logo">
+          <span class="hero-logo-glow" aria-hidden="true"></span>
+          <img src="logo.webp" alt="ZBD logo" width="100" height="100">
+        </div>
+        <div class="eyebrow">WEAR OS SOFTWARE STUDIO</div>
+        <h1>Software for<br><span class="grad">your wrist</span></h1>
+        <p class="lead">ZBD is an independent software studio focused exclusively on smartwatches.
+          We build fast, elegant apps designed from scratch for the round screen.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#products">Ürünleri Gör</a>
-          <a class="btn btn-ghost" href="#services">Ne Yapıyoruz?</a>
+          <a class="btn btn-primary" href="#products">View Products</a>
+          <a class="btn btn-ghost" href="#services">What We Do</a>
         </div>
         <div class="hero-meta">
-          <div class="m"><b>4</b><span>Yayında uygulama</span></div>
-          <div class="m"><b>100%</b><span>Wear OS odaklı</span></div>
-          <div class="m"><b>∞</b><span>Bileğinde</span></div>
+          <div class="m"><b>4</b><span>Published apps</span></div>
+          <div class="m"><b>100%</b><span>Wear OS focused</span></div>
+          <div class="m"><b>∞</b><span>On your wrist</span></div>
         </div>
       </div>
+      <div class="hero-canvas-frame">
+        <canvas id="three-canvas" aria-label="Interactive 3D watch with app launcher"></canvas>
+      </div>
     </div>
-    <a class="scroll-cue" href="#services">KAYDIR
+    <a class="scroll-cue" href="#services">SCROLL
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
     </a>
   </section>
@@ -62,30 +108,30 @@
   <section id="services" class="s">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">NE YAPIYORUZ</div>
-        <h2 class="section-title">Akıllı saat yazılımında uzmanız</h2>
-        <p class="section-desc">Telefon uygulamasının küçültülmüş hali değil — baştan sona bilek için düşünülmüş deneyimler.</p>
+        <div class="eyebrow">WHAT WE DO</div>
+        <h2 class="section-title">We specialize in smartwatch software</h2>
+        <p class="section-desc">Not a scaled-down phone app — experiences designed from the ground up for your wrist.</p>
       </div>
       <div class="services">
         <div class="service reveal">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12" rx="3"/><rect x="9" y="2" width="6" height="3" rx="1"/><rect x="9" y="19" width="6" height="3" rx="1"/></svg></div>
           <h3>Native Wear OS</h3>
-          <p>Tiles, complications ve watch face entegrasyonlarıyla platforma tam uyumlu uygulamalar.</p>
+          <p>Fully compatible with Tiles, complications, and watch face integrations.</p>
         </div>
         <div class="service reveal d1">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
-          <h3>Akıcı performans</h3>
-          <p>Küçük ekran, küçük pil. Hafif, hızlı ve verimli kod yazıyoruz — gerektiğinde tamamen çevrimdışı.</p>
+          <h3>Smooth performance</h3>
+          <p>Small screen, small battery. We write light, fast, efficient code — fully offline when needed.</p>
         </div>
         <div class="service reveal d2">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h3>Zarif tasarım</h3>
-          <p>Yuvarlak ekrana özel arayüzler. Her piksel düşünülerek, ilk bakışta okunaklı ve güzel.</p>
+          <h3>Elegant design</h3>
+          <p>Interfaces crafted for the round screen. Every pixel considered — readable and beautiful at a glance.</p>
         </div>
         <div class="service reveal d3">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div>
-          <h3>Gizlilik önce</h3>
-          <p>Verini satmıyoruz. Mümkün olan her yerde veriler cihazında kalır, çevrimdışı çalışır.</p>
+          <h3>Privacy first</h3>
+          <p>We don't sell your data. Your data stays on your device wherever possible, working offline.</p>
         </div>
       </div>
     </div>
@@ -95,48 +141,95 @@
   <section id="products" class="s alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">ÜRÜNLERİMİZ</div>
-        <h2 class="section-title">Bileğindeki uygulamalar</h2>
-        <p class="section-desc">Her ürünün kendi sayfası var. Aşağıdaki canlı saat önizlemeleri gerçek zamanlı çiziliyor.</p>
+        <div class="eyebrow">OUR PRODUCTS</div>
+        <h2 class="section-title">Apps on your wrist</h2>
+        <p class="section-desc">Each product has its own page. The live watch previews below are rendered in real time.</p>
       </div>
       <div class="products">
 
         <a class="product reveal" href="apps/anatolia/" style="--accent:#e3bb63; --accent2:#ff7a3a;">
           <div class="watch"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
             <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="game" width="220" height="220"></canvas></div><span class="watch-crown"></span></div></div>
-          <div class="chip">Oyun</div>
+          <div class="chip">Game</div>
           <h3>Gate of Anatolia</h3>
-          <p>24 bölümlük destansı pixel aksiyon-RPG. Malazgirt 1071 — bileğinde.</p>
-          <span class="open">Sayfayı aç <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <p>An epic 24-chapter pixel action-RPG. Malazgirt 1071 — on your wrist.</p>
+          <span class="open">Open page <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
 
         <a class="product reveal d1" href="apps/wearssh/" style="--accent:#27e07a; --accent2:#0c8a4a;">
           <div class="watch"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
             <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="ssh" width="220" height="220"></canvas></div><span class="watch-crown"></span></div></div>
-          <div class="chip">Araçlar</div>
+          <div class="chip">Tools</div>
           <h3>WearSSH</h3>
-          <p>Bileğinden tam SSH terminali. Sunucularına bağlan, komut çalıştır — her yerden.</p>
-          <span class="open">Sayfayı aç <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <p>A full SSH terminal on your wrist. Connect to your servers, run commands — from anywhere.</p>
+          <span class="open">Open page <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
 
         <a class="product reveal d2" href="apps/vakitwear/" style="--accent:#1fd6a6; --accent2:#0e7d63;">
           <div class="watch"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
             <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="vakit" width="220" height="220"></canvas></div><span class="watch-crown"></span></div></div>
-          <div class="chip">Yaşam</div>
+          <div class="chip">Lifestyle</div>
           <h3>Vakit Wear</h3>
-          <p>Namaz vakitleri, kıble pusulası ve zikirmatik. Tamamen çevrimdışı.</p>
-          <span class="open">Sayfayı aç <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <p>Prayer times, qibla compass, and digital tasbih. Fully offline.</p>
+          <span class="open">Open page <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
 
         <a class="product reveal d3" href="apps/weardisco/" style="--accent:#ff49d0; --accent2:#7a2bff;">
           <div class="watch"><div class="watch-strap top"></div><div class="watch-strap bottom"></div>
             <div class="watch-body"><div class="watch-screen"><canvas class="face" data-face="disco" width="220" height="220"></canvas></div><span class="watch-crown"></span></div></div>
-          <div class="chip">Eğlence</div>
+          <div class="chip">Entertainment</div>
           <h3>Wear Disco</h3>
-          <p>Saatini akıcı renk geçişlerinden bir ışık şovuna çevir. Parti bileğinde.</p>
-          <span class="open">Sayfayı aç <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <p>Turn your watch into a light show with smooth color transitions. Party on your wrist.</p>
+          <span class="open">Open page <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section id="blog-preview" class="s home-blog-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">INSIGHTS & GUIDES</div>
+        <h2 class="section-title">Wear OS Smartwatch Blog</h2>
+        <p class="section-desc">Useful guides, power-saving tips, and software recommendations for smartwatch owners.</p>
+      </div>
+      <div class="blog-grid">
+        
+        <a class="blog-card reveal" href="blog/posts/wear-os-hidden-features-and-tips.html">
+          <div class="card-meta">
+            <span class="card-tag">Tips & Tricks</span>
+            <span>June 21, 2026</span>
+          </div>
+          <h3>The Ultimate Wear OS Guide</h3>
+          <p>Discover 25 essential settings, gestures, and hidden features to unlock the full power of your Galaxy or Pixel Watch.</p>
+          <span class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="blog-card reveal d1" href="blog/posts/mastering-wear-os-customization.html">
+          <div class="card-meta">
+            <span class="card-tag">Guides</span>
+            <span>June 20, 2026</span>
+          </div>
+          <h3>Mastering Smartwatch Customization</h3>
+          <p>Learn how to personalize watch faces, configure complications, and organize swipe-left Tiles to build the perfect wrist layout.</p>
+          <span class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="blog-card reveal d2" href="blog/posts/wear-os-battery-saving-guide.html">
+          <div class="card-meta">
+            <span class="card-tag">Battery</span>
+            <span>June 15, 2026</span>
+          </div>
+          <h3>Smartwatch Battery Saving Guide</h3>
+          <p>Tired of your watch dying? Follow this simple, step-by-step guide to double the daily battery life of your Wear OS device.</p>
+          <span class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+      </div>
+      <div style="text-align: center; margin-top: 48px;" class="reveal d3">
+        <a class="btn btn-ghost" href="blog/">View All Articles</a>
       </div>
     </div>
   </section>
@@ -144,23 +237,24 @@
   <!-- CTA / CONTACT -->
   <section id="contact" class="s cta-band">
     <div class="wrap reveal">
-      <h2>Bir fikrin mi var?</h2>
-      <p>Wear OS için bir uygulama mı hayal ediyorsun, yoksa mevcut ürünlerimiz hakkında mı konuşmak istiyorsun? Bize yaz.</p>
-      <a class="btn btn-primary" href="mailto:hello@wearga.me">hello@wearga.me</a>
+      <h2>Got an idea?</h2>
+      <p>Dreaming of a Wear OS app, or want to talk about our existing products? Drop us a line.</p>
+      <a class="btn btn-primary" href="mailto:hello@zbd.me">hello@zbd.me</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap">
-      <a class="brand" href="#top"><span class="logo">W</span><span><b>Wearga</b><small>Wear OS Studio</small></span></a>
+      <a class="brand" href="#top"><span class="logo"><img src="logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
       <div class="footer-links">
         <a href="apps/anatolia/">Gate of Anatolia</a>
         <a href="apps/wearssh/">WearSSH</a>
         <a href="apps/vakitwear/">Vakit Wear</a>
         <a href="apps/weardisco/">Wear Disco</a>
+        <a href="blog/">Blog</a>
       </div>
-      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 Wearga</p>
+      <p class="footer-note">Made with love for Wear OS · © 2026 ZBD</p>
     </div>
   </footer>
 

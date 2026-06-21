@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Güvenliği Sağlayın: Wear OS'te Ekran Kilidi ve PIN Güvenliği Kurulumu · ZBD Studio</title>
+  <meta name="description" content="Verilerinizi güvende tutun. Wear OS'te ekran kilitlerini (PIN veya Desen) nasıl kuracağınızı ve bunun Google Cüzdan ödemeleriyle nasıl çalıştığını öğrenin.">
+  <meta name="keywords" content="wear os screen lock, smartwatch PIN lock, secure Galaxy Watch, Pixel Watch pattern security">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/wear-os-security-screen-lock-guide.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/wear-os-security-screen-lock-guide.html">
+  <meta property="og:title" content="Güvenliği Sağlayın: Wear OS'te Ekran Kilidi ve PIN Güvenliği Kurulumu · ZBD Studio">
+  <meta property="og:description" content="Verilerinizi güvende tutun. Wear OS'te ekran kilitlerini (PIN veya Desen) nasıl kuracağınızı ve bunun Google Cüzdan ödemeleriyle nasıl çalıştığını öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/wear-os-security-screen-lock-guide.html">
+  <meta property="twitter:title" content="Güvenliği Sağlayın: Wear OS'te Ekran Kilidi ve PIN Güvenliği Kurulumu · ZBD Studio">
+  <meta property="twitter:description" content="Verilerinizi güvende tutun. Wear OS'te ekran kilitlerini (PIN veya Desen) nasıl kuracağınızı ve bunun Google Cüzdan ödemeleriyle nasıl çalıştığını öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Güvenliği Sağlayın: Wear OS'te Ekran Kilidi ve PIN Güvenliği Kurulumu",
+    "description": "Verilerinizi güvende tutun. Wear OS'te ekran kilitlerini (PIN veya Desen) nasıl kuracağınızı ve bunun Google Cüzdan ödemeleriyle nasıl çalıştığını öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-04-05",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/wear-os-security-screen-lock-guide.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Geri Dön
+      </a>
+      <a href="../wear-os-security-screen-lock-guide.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+      <div class="article-meta-top">
+        <span class="tag-badge">İpuçları & Püf Noktaları</span>
+        <span>05 Nisan 2026</span>
+        <span>·</span>
+        <span>6 dk okuma</span>
+      </div>
+      <h1>Güvenliği Sağlayın: Wear OS'te Ekran Kilidi ve PIN Güvenliği Kurulumu</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Akıllı saatlerimiz son derece kişisel cihazlardır. Doğrudan bedenimizle temas halinde olan bu cihazlar; sağlık göstergelerimizi izler, özel mesaj önizlemelerini gösterir, kişisel e-postaları görüntüler ve takvim bildirimlerini senkronize eder. Dahası, Google Cüzdan veya Samsung Pay gibi modern mobil cüzdan teknolojileri aracılığıyla giyilebilir cihazlarımız aktif sanal kredi kartlarını da saklar. Saatinizi kaybederseniz veya bir spor salonu bankında unutursanız, herkes mesajlarınızı kolayca görebilir veya izinsiz alışveriş yapabilir.</p>
+        
+        <p>Bu nedenlerle, Wear OS saatinizde güvenli bir ekran kilidi deseni veya PIN kodu ayarlamak hayati önem taşır. Bu rehberde; akıllı vücut algılama özelliğinin saatinizi taktığınızda kilidini nasıl açık tuttuğunu, ekran güvenliğini nasıl kuracağınızı ve bunun temassız ödeme protokolleriyle nasıl bağlantılı olduğunu açıklayacağız.</p>
+
+        <img src="../../posts-images/settings_apps.png" alt="Wear OS Güvenlik Ayarları" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Vücut Algılama (On-Body Detection) Sihri</h2>
+        <p>Birçok akıllı saat sahibi, yalnızca saati kontrol etmek için günde onlarca kez 4 haneli bir kod girmek zorunda kalacaklarını düşünerek ekran kilidi kurmaktan kaçınır. Neyse ki Wear OS çok daha akıllıca çalışır. Güvenliği tamamen zahmetsiz hale getirmek için <strong>Vücut Algılama (On-Body Detection)</strong> özelliğini kullanır.</p>
+        
+        <p>Arka kapaktaki kalp atış hızı fotopletismografi (PPG) optik sensörlerini ve ivmeölçerleri kullanan saatiniz, cildinize tam olarak ne zaman temas ettiğini bilir. Saati bileğinize ilk taktığınızda PIN kodunuzu girmeniz veya deseninizi çizmeniz <strong>sadece bir kez</strong> yeterlidir. Sensörler cildinizle teması sürdürdüğü sürece saatin kilidi tamamen açık kalır. Kordonu çözüp saati bileğinizden çıkardığınız anda sensör devresi kesilir ve saat anında kilitlenir.</p>
+
+        <h2>Adım Adım: PIN veya Desen Güvenliğini Etkinleştirme</h2>
+        <p>Saatinizi kilitlemeye hazır mısınız? Güvenlik türünüzü seçmek ve yapılandırmak için şu talimatları izleyin:</p>
+        <ol>
+          <li>Hızlı ayarlar panelini açmak için aşağı kaydırın ve <strong>Ayarlar (dişli) simgesine</strong> dokunun.</li>
+          <li>Aşağı kaydırın ve <strong>Güvenlik</strong> (veya yeni cihazlarda <strong>Güvenlik ve gizlilik</strong>) bölümünü seçin.</li>
+          <li><strong>Kilit türü</strong> (veya <strong>Ekran kilidi</strong>) seçeneğine dokunun.</li>
+          <li>Tercih ettiğiniz güvenlik seçeneğini belirleyin:
+            <ul>
+              <li><strong>PIN:</strong> Klasik 4 haneli sayı kombinasyonu. Yuvarlak ekran numaratörlerinde oldukça okunaklıdır.</li>
+              <li><strong>Desen (Pattern):</strong> Noktaları birleştiren 3x3 bir ızgara. Hareket halindeyken çizilmesi kolaydır.</li>
+            </ul>
+          </li>
+          <li>İstediğiniz 4 haneli PIN kodunu girin veya deseninizi çizin, ardından bir kez daha tekrarlayarak onaylayın.</li>
+        </ol>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Temiz Sensörler</h4>
+          <p>Saat bileğinizdeyken sürekli olarak PIN kodunuzu yeniden girmenizi istiyorsa, arkadaki biyometrik camı silin. Ter birikmesi, kuru cilt veya gevşek bir saat kordonu saatin cilt temas algılamasını kaybetmesine neden olarak güvenli kilit durumunu zorlayabilir.</p>
+        </div>
+
+        <h2>Güvenlik ve Temassız Ödemeler (Google Cüzdan)</h2>
+        <p>NFC kullanarak mağazalarda temassız ödeme yapmak için Google Cüzdan (Google Pay) kullanmayı planlıyorsanız, <strong>Wear OS bir ekran kilidini zorunlu kılacaktır</strong>. Güvenlik nedenleriyle, aktif bir PIN veya desen kilidi olmadan saatinize ödeme kartı ekleyemez veya ödeme yapamazsınız.</p>
+        
+        <p>Saatinizde ödeme kartları kurmaya çalışırsanız, sistem sizi otomatik olarak önce bir kilit ayarlamaya yönlendirecektir. Daha sonra ekran kilidini devre dışı bırakırsanız, Google Cüzdan dolandırıcılığı önlemek için önbelleğe alınmış ödeme anahtarlarınızı saatin yerel belleğinden otomatik olarak silecektir.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Güvenlik Seviyesi</th>
+              <th>Kilit Yöntemi</th>
+              <th>Artıları</th>
+              <th>Eksileri</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Düşük / Yok</strong></td>
+              <td>Yok / Yalnızca Kaydır</td>
+              <td>Sıfır zorluk, anında erişim.</td>
+              <td>Bildirimler açıkta kalır, ödemeler devre dışı bırakılır, hırsızlık güvenliği yoktur.</td>
+            </tr>
+            <tr>
+              <td><strong>Orta-Yüksek</strong></td>
+              <td>Desen Kilidi (3x3 Izgara)</td>
+              <td>Hızlı kaydırma hareketi, hatırlanması gereken sayılar yoktur.</td>
+              <td>Arkadan izleyenlerin şifreyi görmesi kolaydır.</td>
+            </tr>
+            <tr>
+              <td><strong>Yüksek</strong></td>
+              <td>4 Haneli PIN Kilidi</td>
+              <td>Güvenli, standart bankacılık protokolü, çoğu kurumsal profil tarafından zorunlu kılınır.</td>
+              <td>Ekranda küçük sayılara dokunmayı gerektirir.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Ekran Kilidi Hatalarını Giderme</h2>
+        <ul>
+          <li><strong>Dövmeler ve Bilek Algılama:</strong> Bilek dövmelerindeki koyu mürekkep, saatin cilt sensörleri tarafından yayılan yeşil ışığı emebilir. Bileğinizde dövme varsa saat cildinizi algılamayabilir ve sürekli kilitlenebilir. Saati diğer bileğe veya kolun biraz daha yukarısına taşımak sorunu çözebilir.</li>
+          <li><strong>Kurumsal E-posta Politikaları:</strong> Saatinizle kurumsal bir e-posta hesabını (Outlook veya G Suite gibi) senkronize ediyorsanız, şirket yönetim politikası sizi karmaşık bir PIN kilidi türü kullanmaya zorlayabilir ve "yok" veya kaydırma seçeneklerini tamamen devre dışı bırakabilir.</li>
+        </ul>
+
+        <p>Wear OS cihazınızda bir PIN veya desen ayarlamak iki dakikadan az sürer, ancak mesajlarınızı, sağlık kayıtlarınızı ve finansal ayrıntılarınızı meraklı gözlerden korur.</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yayın Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, verimlilik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

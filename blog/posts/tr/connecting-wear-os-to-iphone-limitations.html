@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wear OS'i iPhone'a Bağlayabilir Misiniz? Kurulum Kılavuzu ve Temel Sınırlamalar · ZBD Studio</title>
+  <meta name="description" content="Wear OS akıllı saatler Apple iOS ile çalışır mı? Uyumluluğu, eski saatler için eşleştirme adımlarını ve önemli özellik sınırlamalarını tartışıyoruz.">
+  <meta name="keywords" content="Wear OS iPhone uyumluluğu, Galaxy Watch iOS eşleştirme, Pixel Watch iPhone senkronizasyonu, Wear OS iOS sınırlamaları">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/connecting-wear-os-to-iphone-limitations.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/connecting-wear-os-to-iphone-limitations.html">
+  <meta property="og:title" content="Wear OS'i iPhone'a Bağlayabilir Misiniz? Kurulum Kılavuzu ve Temel Sınırlamalar · ZBD Studio">
+  <meta property="og:description" content="Wear OS akıllı saatler Apple iOS ile çalışır mı? Uyumluluğu, eski saatler için eşleştirme adımlarını ve önemli özellik sınırlamalarını tartışıyoruz.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/connecting-wear-os-to-iphone-limitations.html">
+  <meta property="twitter:title" content="Wear OS'i iPhone'a Bağlayabilir Misiniz? Kurulum Kılavuzu ve Temel Sınırlamalar · ZBD Studio">
+  <meta property="twitter:description" content="Wear OS akıllı saatler Apple iOS ile çalışır mı? Uyumluluğu, eski saatler için eşleştirme adımlarını ve önemli özellik sınırlamalarını tartışıyoruz.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- Language Router Script -->
+  <script>
+    (function() {
+      var pref = localStorage.getItem('pref_lang');
+      if (pref === 'en') {
+        window.location.replace('../' + window.location.pathname.split('/').pop());
+      } else if (!pref) {
+        var lang = (navigator.language || navigator.userLanguage).toLowerCase();
+        if (!lang.startsWith('tr')) {
+          window.location.replace('../' + window.location.pathname.split('/').pop());
+        }
+      }
+    })();
+  </script>
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Wear OS'i iPhone'a Bağlayabilir Misiniz? Kurulum Kılavuzu ve Temel Sınırlamalar",
+    "description": "Wear OS akıllı saatler Apple iOS ile çalışır mı? Uyumluluğu, eski saatler için eşleştirme adımlarını ve önemli özellik sınırlamalarını tartışıyoruz.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-03-28",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/connecting-wear-os-to-iphone-limitations.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+        <a href="../../" class="back-btn" style="margin: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Blog'a Geri Dön
+        </a>
+        <a href="../connecting-wear-os-to-iphone-limitations.html" onclick="localStorage.setItem('pref_lang', 'en')" style="color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none;">English</a>
+      </div>
+      <div class="article-meta-top">
+        <span class="tag-badge">Kılavuzlar</span>
+        <span>28 Mart 2026</span>
+        <span>·</span>
+        <span>6 dk okuma süresi</span>
+      </div>
+      <h1>Wear OS'i iPhone'a Bağlayabilir Misiniz? Kurulum Kılavuzu ve Temel Sınırlamalar</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Akıllı saat topluluğunda en sık sorulan sorulardan biridir: <em>"iPhone kullanıyorum ama Android akıllı saatlerin yuvarlak tasarımını ve fiyatını tercih ediyorum. Bir Wear OS saati iOS'a bağlayabilir miyim?"</em></p>
+        
+        <p>Kısa cevap: <strong>Bu tamamen saatte çalışan Wear OS sürümüne bağlıdır.</strong> Eski saatler iPhone'lar ile eşleşebilirken, daha yeni platformlar iOS desteğini sonlandırdı. Bu kılavuzda, uyumluluk kurallarını, desteklenen cihazlar için eşleştirme adımlarını ve Apple'ın kapalı ekosisteminde bir Android saati kullanırken karşılaşacağınız özellik sınırlamalarını ele alacağız.</p>
+
+        <img src="../../posts-images/settings_bluetooth.png" alt="Wear OS Bluetooth ve Bağlantı Ayarları" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Uyumluluk Detayları: Android ve iOS</h2>
+        <p>Google, (Samsung ile ortaklaşa geliştirilen) Wear OS 3'ü piyasaya sürdüğünde, platform tek bir ortak uygulamadan üreticiye özel yardımcı uygulamalara geçiş yaptı. Sonuç olarak, iOS desteği önemli ölçüde değişti:</p>
+        
+        <ul>
+          <li><strong>Wear OS 3, 4 ve 5 (iOS ile Uyumsuz):</strong> Samsung Galaxy Watch 4, 5, 6, 7 ve Ultra ile Google Pixel Watch 1, 2 ve 3 gibi cihazlar bir iPhone'a bağlanamaz. Bu cihazları kurmak için gereken yardımcı uygulamalar (Galaxy Wearable ve Pixel Watch uygulamaları gibi) yalnızca Google Play Store'da mevcuttur ve Apple App Store'da bulunmaz. Resmi bir geçici çözüm yoktur.</li>
+          <li><strong>Wear OS 2 ve Daha Eski Sürümler (iOS ile Uyumlu):</strong> Wear OS 2.x veya daha eski sürümleri çalıştıran saatler (Fossil Gen 5, Moto 360 Gen 3 ve eski TicWatch modelleri gibi), Apple App Store'daki resmi Wear OS uygulamasını kullanarak iOS cihazlarına bağlanmaya devam edebilir.</li>
+        </ul>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Uyumluluk Özeti</h4>
+          <p>Eğer bir iPhone sahibiyseniz, Google Pixel Watch veya Samsung Galaxy Watch 4 ya da daha yeni bir model satın almayın. Bu cihazlar Android gerektirir ve iOS ile kurulamaz veya senkronize edilemez.</p>
+        </div>
+
+        <h2>Uyumlu Bir Saat iOS'a Nasıl Bağlanır?</h2>
+        <p>Uyumlu bir Wear OS 2 cihazınız varsa, iPhone'unuzla eşleştirmek için şu adımları izleyin:</p>
+        <ol>
+          <li>iPhone'unuzda <strong>App Store</strong>'u açın, <strong>"Wear OS by Google"</strong> araması yapın ve uygulamayı yükleyin.</li>
+          <li>iPhone ayarlarınızda Bluetooth'un etkinleştirildiğinden emin olun.</li>
+          <li>Akıllı saatinizi açın ve dilinizi seçin. Eğer daha önce eşleştirilmişse, önce saati fabrika ayarlarına sıfırlamanız gerekir.</li>
+          <li>iPhone'unuzda Wear OS uygulamasını başlatın ve <strong>Kurulumu Başlat</strong> seçeneğine dokunun.</li>
+          <li>Yakındaki Bluetooth cihazları listesinden saatinizin adını seçin ve her iki ekranda da gösterilen 6 haneli doğrulama kodlarını eşleştirin.</li>
+          <li>Google Hesabınızla oturum açmak ve bildirimleri senkronize etme izni vermek için iPhone'unuzdaki yönergeleri izleyin.</li>
+        </ol>
+
+        <h2>iOS Üzerinde Wear OS Kullanmanın Temel Sınırlamaları</h2>
+        <p>Uyumlu bir saati eşleştirseniz bile, Apple'ın iOS korumalı alan (sandbox) kısıtlamaları, üçüncü taraf akıllı saatlerin sistem işlemleriyle nasıl etkileşime gireceğini sınırlar. İşte karşılaşacaklarınız:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Özellik</th>
+              <th>Android'deki Durum</th>
+              <th>iOS'taki Durum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Bildirim Yansıtma</strong></td>
+              <td>Tam (tüm bildirimleri gösterir)</td>
+              <td>Tam (tüm bildirimleri gösterir)</td>
+            </tr>
+            <tr>
+              <td><strong>SMS/iMessage Cevaplama</strong></td>
+              <td>Tam klavye, ses ve şablon yanıtlar</td>
+              <td><strong>Engellendi</strong> (Apple API sınırları nedeniyle salt okunur bildirimler)</td>
+            </tr>
+            <tr>
+              <td><strong>Telefon Aramalarını Cevaplama</strong></td>
+              <td>Kabul etme, reddetme ve saatten konuşma</td>
+              <td><strong>Engellendi</strong> (Reddedilebilir, ancak cevaplama varsayılan olarak iPhone ahizesine yönlendirilir)</td>
+            </tr>
+            <tr>
+              <td><strong>Sesli Asistan</strong></td>
+              <td>Google Asistan / Bixby</td>
+              <td>Google Asistan (Saat uygulaması içinde çalışır; iOS görevlerini tetikleyemez)</td>
+            </tr>
+            <tr>
+              <td><strong>Fitness Senkronizasyonu</strong></td>
+              <td>Google Fit, Samsung Health vb. ile senkronize olur</td>
+              <td>Yalnızca iOS'taki Google Fit uygulamasıyla senkronize olur (Apple Sağlık'a veri yazamaz)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>iPhone Kullanıcıları İçin Daha İyi Alternatifler</h2>
+        <p>Bir iOS cihazı kullanıyorsanız ve yuvarlak ekranları tercih ediyorsanız, Wear OS'e alternatif olarak şunları düşünebilirsiniz:</p>
+        <ul>
+          <li><strong>Garmin Akıllı Saatler:</strong> Garmin Venu veya Fenix gibi cihazlar, sağlık verilerini Apple Sağlık'a göndererek ve uyarıları güvenilir şekilde göstererek mükemmel iOS uyumluluğu sunar.</li>
+          <li><strong>Hibrit Akıllı Saatler:</strong> Withings veya Fossil Hybrid gibi markalar, küçük E-ink ekranlar üzerinde fiziksel saat kollarına yer verir. Mükemmel pil ömrü sunarlar ve iPhone'larla sorunsuz bir şekilde entegre olurlar.</li>
+          <li><strong>Apple Watch:</strong> En iyi iOS deneyimi için Apple Watch; metin yanıtları, aramalar ve Siri rutinlerini destekleyerek en entegre seçenek olmaya devam etmektedir.</li>
+        </ul>
+
+        <p>Eski Wear OS saatleri iPhone'larla eşleşebilse de, özellik kısıtlamaları deneyim kalitesini düşürür. Daha yeni cihazlar için iOS uyumluluğu, Android ekosistemiyle derin entegrasyon lehine tamamen sonlandırılmıştır.</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, üretkenlik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapılmıştır · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Asistan Rutinleri Akıllı Saatte Nasıl Tetiklenir ve Kullanılır · ZBD Studio</title>
+  <meta name="description" content="Günlük görevlerinizi otomatikleştirin. Sesli komutlar ve kısayol kartlarını kullanarak Google Asistan rutinlerini Wear OS saatinizden nasıl tetikleyeceğinizi öğrenin.">
+  <meta name="keywords" content="Google Asistan rutinleri Wear OS, akıllı saat eylemlerini otomatikleştirme, sesli kontroller Pixel Watch, Galaxy Watch Google Asistan">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/using-google-assistant-routines-on-wear-os.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/using-google-assistant-routines-on-wear-os.html">
+  <meta property="og:title" content="Google Asistan Rutinleri Akıllı Saatte Nasıl Tetiklenir ve Kullanılır · ZBD Studio">
+  <meta property="og:description" content="Günlük görevlerinizi otomatikleştirin. Sesli komutlar ve kısayol kartlarını kullanarak Google Asistan rutinlerini Wear OS saatinizden nasıl tetikleyeceğinizi öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/using-google-assistant-routines-on-wear-os.html">
+  <meta property="twitter:title" content="Google Asistan Rutinleri Akıllı Saatte Nasıl Tetiklenir ve Kullanılır · ZBD Studio">
+  <meta property="twitter:description" content="Günlük görevlerinizi otomatikleştirin. Sesli komutlar ve kısayol kartlarını kullanarak Google Asistan rutinlerini Wear OS saatinizden nasıl tetikleyeceğinizi öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Google Asistan Rutinleri Akıllı Saatte Nasıl Tetiklenir ve Kullanılır",
+    "description": "Günlük görevlerinizi otomatikleştirin. Sesli komutlar ve kısayol kartlarını kullanarak Google Asistan rutinlerini Wear OS saatinizden nasıl tetikleyeceğinizi öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-06-14",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/using-google-assistant-routines-on-wear-os.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Blog'a Dön
+      </a>
+      <a href="../using-google-assistant-routines-on-wear-os.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+      <div class="article-meta-top">
+        <div class="article-meta-top">
+        <span class="tag-badge">İpuçları & Püf Noktaları</span>
+        <span>14 Haziran 2026</span>
+        <span>·</span>
+        <span>7 dk okuma süresi</span>
+      </div>
+      <h1>Google Asistan Rutinleri Akıllı Saatte Nasıl Tetiklenir ve Kullanılır
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Google Asistan, Wear OS'in en güçlü özelliklerinden biridir. "10 dakikalık bir zamanlayıcı ayarla" veya "hava nasıl?" gibi basit sesli komutlar yararlı olsa da, asistan çok daha fazlasını yapabilir. <strong>Google Asistan Rutinlerini</strong> akıllı saatinize entegre ederek, tek bir cümle veya dokunuşla karmaşık eylem dizilerini yürütebilirsiniz.</p>
+        
+        <p>Ofisten çıktığınızı, saatinize bastığınızı ve aynı anda partnerinize varış sürenizi mesaj attığınızı, evinizin oturma odası ışıklarını açtığınızı ve en sevdiğiniz akşam çalma listenizi başlattığınızı hayal edin. İşte bu rutinleri Wear OS akıllı saatinizden nasıl yapılandıracağınız ve tetikleyeceğiniz.</p>
+
+        <img src="../../posts-images/settings_apps.png" alt="Wear OS Ses ve Asistan Ayarları Paneli" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Google Asistan Rutinleri Nedir?</h2>
+        <p>Rutinler; birden fazla akıllı ev eylemini, telefon ayarları değişikliklerini ve bilgi güncellemelerini tek bir özel ifade veya program altında gruplandırmanıza olanak tanır. Google önceden yapılandırılmış şablonlar sunar ("Günaydın" veya "Yatma Vakti" gibi), ama telefonunuzdaki Google Home uygulaması aracılığıyla özel rutinler de tasarlayabilirsiniz.</p>
+
+        <h2>1. Adım: Akıllı Saatinizde Google Asistan'ı Etkinleştirin</h2>
+        <p>Saatinizde Google Asistan uygulamasını henüz kurmadıysanız, önce onu etkinleştirmeniz gerekir:</p>
+        <ol>
+          <li>Saatinizde Google Asistan uygulamasını açın (veya varsayılan kısayol olan Güç düğmesine uzun basın).</li>
+          <li>İstenirse, <strong>Başlarken</strong>'e dokunun ve telefonunuza bakın.</li>
+          <li>Ses izinizi (Voice Match) bağlamak ve gerekli takvim, konum ve cihaz kontrol izinlerini vermek için telefonunuzdaki adımları izleyin.</li>
+        </ol>
+
+        <h2>2. Adım: Telefonunuzda Özel Bir Rutin Oluşturun</h2>
+        <p>Rutinleri saatinizden tetikleyebilseniz de, creating or modifying them is best done in the Google Home app on your smartphone:</p>
+        <ol>
+          <li>Telefonunuzda <strong>Google Home</strong> uygulamasını başlatın.</li>
+          <li>Ekranın altındaki <strong>Otomasyonlar</strong> sekmesine dokunun.</li>
+          <li>Yeni bir otomasyon oluşturmak için <strong>"+" (Ekle)</strong> simgesine dokunun. <strong>Ev</strong> veya <strong>Kişisel</strong> seçeneğini belirleyin (saat tabanlı tetikleyiciler için Kişisel rutinler önerilir).</li>
+          <li>Bir **Başlatıcı** seçin (örneğin "Hadi çıkalım" gibi sesli bir komut).</li>
+          <li>Yürütülecek **Eylemler**'i seçin. Akıllı ev cihazlarını ayarlamayı, hava durumunu almayı, takvim etkinliklerini kontrol etmeyi, haberleri okumayı veya medya oynatmayı seçebilirsiniz.</li>
+          <li>Rutini Google hesabınızla senkronize etmek için <strong>Kaydet</strong>'e dokunun.</li>
+        </ol>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Profesyonel İpucu: Asistanı Fiziksel Bir Düğmeye Atayın</h4>
+          <p>Saatinizin <strong>Ayarlar &gt; Gelişmiş özellikler &gt; Tuşları özelleştir</strong> (veya düğme ayarları) bölümüne gidin. Ana sayfa tuşunuzun Çift basma veya Basılı tutma eylemini **Asistan**'ı başlatacak şekilde atayın. Bu, ekranları kaydırmaya gerek kalmadan sesli tetikleyicilerin anında başlatılmasını sağlar.</p>
+        </div>
+
+        <h2>3. Adım: Wear OS'te Rutinleri Tetikleme</h2>
+        <p>Bir rutin hesabınıza kaydedildikten sonra, onu akıllı saatinizde iki temel yöntem kullanarak yürütebilirsiniz:</p>
+
+        <h3>Yöntem A: Sesli Komutlar</h3>
+        <p>"Hey Google" diyerek veya özel donanım tuşunuzu basılı tutarak asistanı etkinleştirin. Rutininizin tetikleyici ifadesini net bir şekilde söyleyin. Örneğin, <em>"Hey Google, eve gidiyorum"</em> demek, o otomasyonda tanımlanan tüm eylemleri yürütecektir.</p>
+
+        <h3>Yöntem B: Google Home Kart Kısayolları</h3>
+        <p>Toplantılar sırasında sessiz kontrolleri tercih ediyorsanız, rutinleri Google Home kartını kullanarak yürütebilirsiniz:</p>
+        <ol>
+          <li>Kartlar listenize ulaşana kadar ana saat kadranınızdan sola kaydırın. Ekrana basılı tutun ve <strong>"+" (Kart ekle)</strong> seçeneğine dokunun.</li>
+          <li><strong>Google Home</strong> kartını seçin.</li>
+          <li>Bu kartı en fazla 5 hızlı kısayol gösterecek şekilde özelleştirebilirsiniz. Özel rutinlerinizi veya akıllı cihaz kontrollerinizi seçin.</li>
+          <li>Şimdi, sessizce tetiklemek için bu karta kaydırın ve rutin simgesine dokunun.</li>
+        </ol>
+
+        <h2>Akıllı Saat Kullanıcıları İçin Önerilen Rutinler</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Rutin Tetikleyici İfadesi</th>
+              <th>Eşzamanlı Eylemler</th>
+              <th>Wear OS'te Neden Harika?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>"Çalışma zamanı"</strong></td>
+              <td>Telefonu sessize al, odaklanma müziği çal, ilk toplantıyı duyur.</td>
+              <td>Telefonunuza dokunmadan zihniyetinizi ve çalışma alanınızı hazırlar.</td>
+            </tr>
+            <tr>
+              <td><strong>"Ofisten çıkıyorum"</strong></td>
+              <td>Trafik durumunu bildir, partnerine ETA mesajı at, ev klimasını aç.</td>
+              <td>İşe gidiş geliş iletişimlerini doğrudan bileğinizden otomatikleştirir.</td>
+            </tr>
+            <tr>
+              <td><strong>"Yatma vakti"</strong></td>
+              <td>Tüm ev ışıklarını kapat, ev güvenliğini kur, sabah alarmını sor.</td>
+              <td>Yataktan kalkmadan evinizin güvenliğini yatağınızın başından sağlar.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Yürütme Hatalarını Giderme</h2>
+        <p>Saatiniz "Anlayamadım" diyorsa veya rutininizi yürütemiyorsa şunları deneyin:</p>
+        <ul>
+          <li><strong>Hesap Senkronizasyonunu Kontrol Edin:</strong> Google Home uygulamanızda oturum açmış olan Google hesabının Wear OS saatinizdeki hesapla aynı olduğundan emin edin.</li>
+          <li><strong>Google Uygulamasını Güncelleyin:</strong> Saatinizde Play Store'u açın ve Google Asistan veya Google Home uygulamasında bekleyen güncellemeleri kontrol edin.</li>
+          <li><strong>İnternet Bağlantısını Doğrulayın:</strong> Akıllı ev kontrolleri, bulut sunucularıyla iletişim kurmak için aktif bir Wi-Fi, LTE veya telefona Bluetooth veri akışı gerektirir.</li>
+        </ul>
+
+        <h2>Sonuç</h2>
+        <p>Google Asistan Rutinleri, günlük iş akışlarınızı bileğinizdeki basit sesli girdilerle veya sessiz ekran dokunuşlarıyla yönetmenizi sağlar. Google Home uygulamasında özel otomasyonlar kurmak ve gemstones bunları Wear OS saatinizden başlatmak, günlük görevlerinizi kolaylaştırmaya yardımcı olur; böylece ekranda gezinmeye daha az, gününüze ise daha fazla odaklanabilirsiniz. Deneyin ve ilk rutininizi bugün oluşturun!</p>
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçları, verimlilik iş akışları ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

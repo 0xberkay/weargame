@@ -1,5 +1,5 @@
 // ============================================================
-// Wearga — live round watch-face previews (asset-free, procedural)
+// ZBD — live round watch-face previews (asset-free, procedural)
 // Any <canvas class="face" data-face="game|ssh|vakit|disco"> is drawn
 // in real time and clipped to a circle to mimic a Wear OS display.
 // Works from any folder depth (no external image dependencies).
@@ -90,7 +90,7 @@
   // ---------------------------------------------------------
   // VAKIT WEAR — prayer clock + crescent + qibla needle
   // ---------------------------------------------------------
-  const prayers = ['İmsak', 'Güneş', 'Öğle', 'İkindi', 'Akşam', 'Yatsı'];
+  const prayers = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
   function drawVakit(ctx, r, t) {
     const S = r * 2;
     const g = ctx.createRadialGradient(r, r * .7, 8, r, r, S);
@@ -109,7 +109,7 @@
     ctx.font = `700 ${Math.round(S * .15)}px Sora, Oswald, sans-serif`;
     ctx.fillText(`${hh}${sep}${mm}`, r, S * .56);
     ctx.fillStyle = '#1fd6a6'; ctx.font = `600 ${Math.round(S * .06)}px Barlow, sans-serif`;
-    ctx.fillText('Sıradaki · ' + prayers[Math.floor(t / 2) % prayers.length], r, S * .68);
+    ctx.fillText('Next · ' + prayers[Math.floor(t / 2) % prayers.length], r, S * .68);
     // qibla
     ctx.strokeStyle = 'rgba(31,214,166,.35)'; ctx.lineWidth = S * .012;
     ctx.beginPath(); ctx.arc(r, S * .83, S * .1, 0, 7); ctx.stroke();

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WearSSH — Bileğinden SSH terminali · Wearga</title>
-  <meta name="description" content="WearSSH: Wear OS için tam özellikli SSH istemcisi. Sunucularına bağlan, komut çalıştır, tiles ve complications ile bileğinden yönet.">
+  <title>WearSSH — SSH terminal on your wrist · ZBD</title>
+  <meta name="description" content="WearSSH: A full-featured SSH client for Wear OS. Connect to your servers, run commands, manage from your wrist with tiles and complications.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../logo.webp">
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/app.css">
   <style>:root{ --accent:#27e07a; --accent2:#0c8a4a; }</style>
@@ -15,9 +16,9 @@
 <body>
 
   <header class="topbar">
-    <a class="brand" href="../../"><span class="logo">W</span><span><b>Wearga</b><small>Wear OS Studio</small></span></a>
+    <a class="brand" href="../../"><span class="logo"><img src="../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
     <nav class="nav">
-      <a class="back-link" href="../../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Tüm uygulamalar</a>
+      <a class="back-link" href="../../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All apps</a>
       <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.wearssh" target="_blank" rel="noopener" aria-label="Google Play"></a>
     </nav>
   </header>
@@ -26,14 +27,14 @@
   <section class="app-hero">
     <div class="wrap">
       <div class="app-hero-text">
-        <img class="app-icon" src="icon.png" alt="WearSSH ikon">
-        <div class="chip">Araçlar · Wear OS</div>
+        <img class="app-icon" src="icon.png" alt="WearSSH icon">
+        <div class="chip">Tools · Wear OS</div>
         <h1>Wear<span class="grad">SSH</span></h1>
-        <p class="lead">Sunucularını bileğinden yönet. Tam özellikli bir SSH istemcisi —
-          gerçek terminal oturumu, artık akıllı saatinde.</p>
+        <p class="lead">Manage your servers from your wrist. A full-featured SSH client —
+          a real terminal session, now on your smartwatch.</p>
         <div class="app-hero-cta">
           <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.wearssh" target="_blank" rel="noopener" aria-label="Google Play"></a>
-          <a class="btn btn-ghost" href="#features">Özellikler</a>
+          <a class="btn btn-ghost" href="#features">Features</a>
         </div>
       </div>
       <div class="app-hero-visual">
@@ -48,30 +49,30 @@
   <section id="features" class="s alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">ÖZELLİKLER</div>
-        <h2 class="section-title">Terminal, bileğinde</h2>
-        <p class="section-desc">Telefonu çıkarmaya gerek yok. Sunucularına saatinden bağlan, kontrol et, müdahale et.</p>
+        <div class="eyebrow">FEATURES</div>
+        <h2 class="section-title">Terminal on your wrist</h2>
+        <p class="section-desc">No need to pull out your phone. Connect to your servers from your watch, control, and intervene.</p>
       </div>
       <div class="features">
         <div class="feature reveal">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg></div>
-          <h3>Tam SSH istemcisi</h3>
-          <p>Şifre veya SSH anahtarı ile güvenli bağlantı, gerçek interaktif terminal oturumu.</p>
+          <h3>Full SSH client</h3>
+          <p>Secure connection with password or SSH key, real interactive terminal session.</p>
         </div>
         <div class="feature reveal d1">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
-          <h3>Hızlı komutlar</h3>
-          <p>Sık kullandığın komutları kaydet, döngülerle uğraşmadan tek dokunuşla çalıştır.</p>
+          <h3>Quick commands</h3>
+          <p>Save your frequently used commands and run them with a single tap — no more typing loops.</p>
         </div>
         <div class="feature reveal d2">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/></svg></div>
-          <h3>Çoklu sunucu</h3>
-          <p>Tüm sunucularını kaydet, aralarında anında geçiş yap. Hepsi düzenli, hepsi elinin altında.</p>
+          <h3>Multi-server</h3>
+          <p>Save all your servers, switch between them instantly. Organized and always at your fingertips.</p>
         </div>
         <div class="feature reveal d3">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
           <h3>Tiles & complications</h3>
-          <p>Watch face'ine ekle, en sevdiğin sunucuya tek dokunuşla bağlan — saniyeler içinde.</p>
+          <p>Add to your watch face, connect to your favorite server with a single tap — in seconds.</p>
         </div>
       </div>
     </div>
@@ -81,13 +82,13 @@
   <section class="s screens">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">EKRAN GÖRÜNTÜLERİ</div>
-        <h2 class="section-title">Saatinde böyle görünür</h2>
+        <div class="eyebrow">SCREENSHOTS</div>
+        <h2 class="section-title">How it looks on your watch</h2>
       </div>
       <div class="screens-row reveal">
-        <div class="shot"><img src="shot-1.png" alt="WearSSH ekran görüntüsü 1"></div>
-        <div class="shot"><img src="shot-2.png" alt="WearSSH ekran görüntüsü 2"></div>
-        <div class="shot"><img src="shot-3.png" alt="WearSSH ekran görüntüsü 3"></div>
+        <div class="shot"><img src="shot-1.png" alt="WearSSH screenshot 1"></div>
+        <div class="shot"><img src="shot-2.png" alt="WearSSH screenshot 2"></div>
+        <div class="shot"><img src="shot-3.png" alt="WearSSH screenshot 3"></div>
       </div>
     </div>
   </section>
@@ -95,22 +96,22 @@
   <!-- CTA -->
   <section class="s app-cta">
     <div class="wrap reveal">
-      <h2>Sunucuların artık bileğinde</h2>
-      <p>Sunucu çöktüğünde telefonu aramana gerek yok. Saatinden bağlan, sorunu çöz.</p>
+      <h2>Your servers, now on your wrist</h2>
+      <p>No need to grab your phone when a server goes down. Connect from your watch and fix the issue.</p>
       <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.wearssh" target="_blank" rel="noopener" aria-label="Google Play" style="margin:0 auto;"></a>
     </div>
   </section>
 
   <footer class="footer">
     <div class="wrap">
-      <a class="brand" href="../../"><span class="logo">W</span><span><b>Wearga</b><small>Wear OS Studio</small></span></a>
+      <a class="brand" href="../../"><span class="logo"><img src="../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
       <div class="footer-links">
         <a href="../anatolia/">Gate of Anatolia</a>
         <a href="../wearssh/">WearSSH</a>
         <a href="../vakitwear/">Vakit Wear</a>
         <a href="../weardisco/">Wear Disco</a>
       </div>
-      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 Wearga</p>
+      <p class="footer-note">Made with love for Wear OS · © 2026 ZBD</p>
     </div>
   </footer>
 

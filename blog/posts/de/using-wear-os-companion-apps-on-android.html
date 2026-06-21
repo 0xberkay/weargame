@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grundlegendes zu Wear OS Companion Apps: Einrichtung, Berechtigungen und Vorteile · ZBD Studio</title>
+  <meta name="description" content="Entfalten Sie Ihr volles Potenzial. Eine umfassende Erklärung von Begleit-Apps wie Galaxy Wearable oder Pixel Watch App und wie man Berechtigungen verwaltet.">
+  <meta name="keywords" content="smartwatch companion apps, Wear OS manager settings, Galaxy Wearable setup, Pixel Watch app permissions">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/de/using-wear-os-companion-apps-on-android.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/de/using-wear-os-companion-apps-on-android.html">
+  <meta property="og:title" content="Grundlegendes zu Wear OS Companion Apps: Einrichtung, Berechtigungen und Vorteile · ZBD Studio">
+  <meta property="og:description" content="Entfalten Sie Ihr volles Potenzial. Eine umfassende Erklärung von Begleit-Apps wie Galaxy Wearable oder Pixel Watch App und wie man Berechtigungen verwaltet.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/de/using-wear-os-companion-apps-on-android.html">
+  <meta property="twitter:title" content="Grundlegendes zu Wear OS Companion Apps: Einrichtung, Berechtigungen und Vorteile · ZBD Studio">
+  <meta property="twitter:description" content="Entfalten Sie Ihr volles Potenzial. Eine umfassende Erklärung von Begleit-Apps wie Galaxy Wearable oder Pixel Watch App und wie man Berechtigungen verwaltet.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Grundlegendes zu Wear OS Companion Apps: Einrichtung, Berechtigungen und Vorteile",
+  "description": "Entfalten Sie Ihr volles Potenzial. Eine umfassende Erklärung von Begleit-Apps wie Galaxy Wearable oder Pixel Watch App und wie man Berechtigungen verwaltet.",
+  "image": "https://wearga.me/logo.webp",
+  "datePublished": "2026-03-30",
+  "author": {
+    "@type": "Organization",
+    "name": "ZBD Studio",
+    "url": "https://wearga.me"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ZBD Studio",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wearga.me/logo.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wearga.me/blog/posts/using-wear-os-companion-apps-on-android.html"
+  }
+}
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'de') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'de' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Tragen Sie OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Dienstleistungen</a>
+      <a href="../../../#products">Produkte</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">Kontakt</a>
+      <a class="btn btn-primary sm" href="../../../#products">Apps</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Zurück zum Blog
+      </a>
+      <div class="article-meta-top">
+        <span class="tag-badge">Führer</span>
+        <span>30. März 2026</span>
+        <span>·</span>
+        <span>6 Min. gelesen</span>
+      </div>
+      <h1>Grundlegendes zu Wear OS Companion Apps: Einrichtung, Berechtigungen und Vorteile</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Wenn Sie neu im Wear OS-Ökosystem sind, erinnern Sie sich vielleicht an die Tage, als eine einzige, einheitliche „Wear OS by Google“-Anwendung alle Android-Smartwatches verwaltete. Mit der Veröffentlichung von Wear OS 3 hat Google diese Verantwortung jedoch verlagert. Jetzt müssen Hersteller ihre eigenen dedizierten Begleitanwendungen entwickeln und vertreiben – wie z <strong>Galaxy tragbar</strong> App für Samsung, die <strong>Google Pixel Watch</strong> App für Google und <strong>Mobvoi Gesundheit</strong> für TicWatch.</p>
+        
+        <p>Diese mobilen Begleitanwendungen dienen als zentrale Brücke zwischen Ihrem Smartphone und Ihrer Smartwatch, steuern Einstellungen, synchronisieren Gesundheitsprotokolle, verwalten Dateiübertragungen und senden Benachrichtigungen. Sehen wir uns an, warum diese Begleitanwendungen wichtig sind, wie ihre Berechtigungen konfiguriert werden und wie Verbindungsprobleme verhindert werden.</p>
+
+        <img src="../../posts-images/settings_apps.png" alt="Wear OS Settings Screen Overview" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Hauptvorteile von Smartwatch Companion Apps</h2>
+        <p>Während Sie viele grundlegende Aktionen direkt auf dem runden Display Ihrer Uhr ausführen können, bietet die Begleitanwendung auf Ihrem Telefon eine viel komfortablere Umgebung für umfassende Konfigurationen. Zu den wichtigsten Fähigkeiten gehören:</p>
+        <ul>
+          <li><strong>Anpassung des Zifferblatts:</strong> Wählen Sie über den großen Bildschirm Ihres Telefons Hintergrundlayouts aus, entwerfen Sie Farbschemata und ordnen Sie einzelne Komplikationen des Zifferblatts zu.</li>
+          <li><strong>Benachrichtigungsverwaltung:</strong> Verhindern Sie, dass unwichtige Apps Ihr Handgelenk stören, und stellen Sie gleichzeitig sicher, dass wichtige Warnungen durchkommen.</li>
+          <li><strong>Gerätesicherung und -wiederherstellung:</strong> Speichern Sie Ihre benutzerdefinierten Kacheln, Layouteinstellungen und Systemeinstellungen in Ihrem Google- oder Samsung-Cloud-Konto, damit Sie sie problemlos wiederherstellen können, wenn Sie Ihre Uhr zurücksetzen.</li>
+          <li><strong>Meine Uhr finden:</strong> Lösen Sie einen lauten Klingelton auf Ihrer verlegten Uhr aus oder bestimmen Sie den letzten bekannten Standort auf einer Karte.</li>
+        </ul>
+
+        <h2>Verwalten von Android-App-Berechtigungen</h2>
+        <p>Da Begleit-Apps als Systembrücke fungieren, benötigen sie Zugriff auf verschiedene Android-Berechtigungen. Wenn Sie diese Berechtigungsanfragen während der Einrichtung ablehnen, funktionieren Funktionen wie Textantworten, Anrufe und Kalendererinnerungen nicht.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Um Erlaubnis gebeten</th>
+              <th>Warum die App es braucht</th>
+              <th>Konsequenz der Behinderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Benachrichtigungszugriff</strong></td>
+              <td>Liest eingehende Benachrichtigungen auf Ihrem Telefon, um sie an Ihr Handgelenk zu spiegeln.</td>
+              <td>Auf Ihrer Uhr werden keine Benachrichtigungen angezeigt.</td>
+            </tr>
+            <tr>
+              <td><strong>Standortzugriff</strong></td>
+              <td>Erforderlich für Bluetooth LE-Pairing-Scans und Wetteraktualisierungen.</td>
+              <td>Die Uhr kann keine Wetterinformationen synchronisieren oder die Verbindung wiederherstellen.</td>
+            </tr>
+            <tr>
+              <td><strong>Kontakte und Anrufprotokolle</strong></td>
+              <td>Synchronisiert Anrufer-ID-Namen und ermöglicht Ihnen, vom Handgelenk aus anzurufen.</td>
+              <td>Anrufe werden als unbekannte Nummern angezeigt; Dialer-App lässt sich nicht öffnen.</td>
+            </tr>
+            <tr>
+              <td><strong>SMS / Nachrichten</strong></td>
+              <td>Liest und schreibt Textantworten über die Tastatur der Uhr.</td>
+              <td>Textantworten können nicht angezeigt oder gesendet werden.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>So überprüfen und erteilen Sie Berechtigungen:</h3>
+        <ol>
+          <li>Drücken Sie auf Ihrem Smartphone lange auf das Symbol der Begleit-App Ihrer Uhr (z. B. <em>Galaxy tragbar</em> oder <em>Pixeluhr</em>).</li>
+          <li>Tippen Sie auf <strong>„App-Info“ (i)</strong> Klicken Sie auf die Schaltfläche, um die Systemeinstellungen zu öffnen.</li>
+          <li>Wählen <strong>Berechtigungen</strong>.</li>
+          <li>Gehen Sie die Liste durch und ändern Sie alle verweigerten Berechtigungen in <strong>"Erlauben"</strong> oder <strong>„Die ganze Zeit zulassen“</strong>.</li>
+          <li>Deaktivieren Sie den Schalter neben <strong>„App-Aktivität pausieren, wenn sie nicht verwendet wird“</strong> (oder <em>Entfernen Sie Berechtigungen, wenn die App nicht verwendet wird</em>), um zu verhindern, dass Android Berechtigungen automatisch widerruft.</li>
+        </ol>
+
+        <h2>Plötzliche Verbindungsabbrüche verhindern (Batterieeinstellungen)</h2>
+        <p>Die häufigste Beschwerde von Wear OS-Besitzern ist, dass ihre Uhr zufällig die Verbindung zu ihrem Telefon trennt. In den meisten Fällen ist dies nicht auf einen Hardwarefehler oder einen Bluetooth-Fehler zurückzuführen. Stattdessen liegt es meist daran, dass das Android-Betriebssystem die Begleit-App im Hintergrund beendet hat, um Batterie zu sparen.</p>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Von der Batterieoptimierung ausschließen</h4>
+          <p>Konfigurieren Sie Ihre Smartwatch-Begleit-App immer für die Ausführung <strong>Uneingeschränkt</strong> Batterieverbrauch. Wenn Sie die Einstellung „Optimiert“ belassen, schließt das Betriebssystem des Telefons die App schließlich, wenn das Telefon inaktiv ist, und trennt so die Verbindung zu Ihrer Uhr.</p>
+        </div>
+
+        <h3>So deaktivieren Sie die Batterieoptimierung:</h3>
+        <ol>
+          <li>Öffnen Sie das Telefon <strong>Einstellungen</strong> > <strong>Apps</strong>.</li>
+          <li>Wählen Sie Ihre Watch-Companion-App aus.</li>
+          <li>Tippen Sie auf <strong>Batterie</strong> oder <strong>Batterieverbrauch</strong>.</li>
+          <li>Ändern Sie die Einstellung von <em>Optimiert</em> Zu <strong>Uneingeschränkt</strong>.</li>
+        </ol>
+
+        <p>Durch die Konfiguration dieser Berechtigungs- und Akkueinstellungen wird eine zuverlässige, nahtlose Verbindung zwischen Ihrem Telefon und Ihrer Wear OS-Smartwatch gewährleistet.</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD-Redaktion</h5>
+              <p>Entdecken Sie Smartwatch-Tipps, Produktivitätsworkflows und Wearable-Hardware-Updates für den modernen Wear OS-Enthusiasten.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Tragen Sie OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Tor von Anatolien</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Tragen Sie Disco</a>
+        <a href="../">Blog</a>
+      </div>
+      <p class="footer-note">Mit Liebe für Wear OS erstellt · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

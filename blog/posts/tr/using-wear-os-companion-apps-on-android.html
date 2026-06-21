@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wear OS Yardımcı Uygulamalarını Anlamak: Kurulum, İzinler ve Avantajlar · ZBD Studio</title>
+  <meta name="description" content="Tüm potansiyeli ortaya çıkarın. Galaxy Wearable veya Pixel Watch App gibi yardımcı uygulamaların kapsamlı bir açıklaması ve izinlerin nasıl yönetileceği.">
+  <meta name="keywords" content="akıllı saat yardımcı uygulamaları, Wear OS yönetici ayarları, Galaxy Wearable kurulumu, Pixel Watch uygulama izinleri">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/using-wear-os-companion-apps-on-android.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/using-wear-os-companion-apps-on-android.html">
+  <meta property="og:title" content="Wear OS Yardımcı Uygulamalarını Anlamak: Kurulum, İzinler ve Avantajlar · ZBD Studio">
+  <meta property="og:description" content="Tüm potansiyeli ortaya çıkarın. Galaxy Wearable veya Pixel Watch App gibi yardımcı uygulamaların kapsamlı bir açıklaması ve izinlerin nasıl yönetileceği.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/using-wear-os-companion-apps-on-android.html">
+  <meta property="twitter:title" content="Wear OS Yardımcı Uygulamalarını Anlamak: Kurulum, İzinler ve Avantajlar · ZBD Studio">
+  <meta property="twitter:description" content="Tüm potansiyeli ortaya çıkarın. Galaxy Wearable veya Pixel Watch App gibi yardımcı uygulamaların kapsamlı bir açıklaması ve izinlerin nasıl yönetileceği.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Wear OS Yardımcı Uygulamalarını Anlamak: Kurulum, İzinler ve Avantajlar",
+    "description": "Tüm potansiyeli ortaya çıkarın. Galaxy Wearable veya Pixel Watch App gibi yardımcı uygulamaların kapsamlı bir açıklaması ve izinlerin nasıl yönetileceği.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-03-30",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/using-wear-os-companion-apps-on-android.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Blog'a Dön
+      </a>
+      <a href="../using-wear-os-companion-apps-on-android.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+      <div class="article-meta-top">
+        <div class="article-meta-top">
+        <span class="tag-badge">Rehberler</span>
+        <span>30 Mart 2026</span>
+        <span>·</span>
+        <span>6 dk okuma süresi</span>
+      </div>
+      <h1>Wear OS Yardımcı Uygulamalarını Anlamak: Kurulum, İzinler ve Avantajlar
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Wear OS ekosistemine yeniyseniz, tek bir birleşik "Wear OS by Google" uygulamasının tüm Android akıllı saatlerini yönettiği günleri hatırlıyor olabilirsiniz. Ancak Wear OS 3'ün piyasaya sürülmesiyle Google bu sorumluluğu değiştirdi. Artık üreticiler kendi özel yardımcı uygulamalarını oluşturmak ve dağıtmak zorundadır; Samsung için <strong>Galaxy Wearable</strong> uygulaması, Google için <strong>Google Pixel Watch</strong> uygulaması ve TicWatch için <strong>Mobvoi Health</strong> gibi.</p>
+        
+        <p>Bu mobil yardımcı uygulamalar, akıllı telefonunuz ile akıllı saatiniz arasındaki merkezi köprü görevi görerek ayarları kontrol eder, sağlık günlüklerini senkronize eder, dosya aktarımlarını yönetir ve bildirimleri iletir. Bu yardımcı uygulamaların neden gerekli olduğunu, izinlerinin nasıl yapılandırılacağını ve bağlantı kesilmesi sorunlarının nasıl önleneceğini inceleyelim.</p>
+
+        <img src="../../posts-images/settings_apps.png" alt="Wear OS Ayarlar Ekranına Genel Bakış" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Akıllı Saat Yardımcı Uygulamalarının Temel Avantajları</h2>
+        <p>Birçok temel işlemi doğrudan saatinizin dairesel ekranından gerçekleştirebilseniz de, telefonunuzdaki yardımcı uygulama derin yapılandırmalar için çok daha rahat bir ortam sunar. Önemli yetenekler şunlardır:</p>
+        <ul>
+          <li><strong>Saat Kadranı Özelleştirme:</strong> Select background layouts, design color schemes, and map individual watch face complications using your phone's large screen.</li>
+          <li><strong>Bildirim Yönetimi:</strong> Önemli olmayan uygulamaların bileğinizi titretmesini önlerken kritik uyarıların geçmesini sağlayın.</li>
+          <li><strong>Cihaz Yedekleme ve Kurtarma:</strong> Özel kartlarınızı, düzen tercihlerinizi ve sistem ayarlarınızı Google veya Samsung bulut hesabınıza kaydedin, böylece saatinizi sıfırladığınızda bunları kolayca geri yükleyebilirsiniz.</li>
+          <li><strong>Saatimi Bul:</strong> Yanlış yere koyduğunuz saatinizde yüksek sesli bir zil sesi tetikleyin veya harita üzerinde bilinen son konumunu tam olarak belirleyin.</li>
+        </ul>
+
+        <h2>Android Uygulama İzinlerini Yönetme</h2>
+        <p>Yardımcı uygulamalar bir sistem köprüsü görevi gördüğünden, çeşitli Android izinlerine erişim gerektirirler. Kurulum sırasında bu izin isteklerini reddederseniz metin yanıtları, aramalar ve takvim hatırlatıcıları gibi özellikler çalışmayacaktır.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>İstenen İzin</th>
+              <th>Uygulamanın Buna Neden İhtiyacı Var?</th>
+              <th>Devre Dışı Bırakmanın Sonucu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Bildirim Erişimi</strong></td>
+              <td>Telefonunuzdaki gelen uyarıları bileğinize yansıtmak için okur.</td>
+              <td>Saatinizde hiçbir bildirim görünmez.</td>
+            </tr>
+            <tr>
+              <td><strong>Konum Erişimi</strong></td>
+              <td>Bluetooth LE eşleştirme taramaları ve hava durumu güncellemeleri için gereklidir.</td>
+              <td>Saat hava durumu bilgilerini senkronize edemez veya yeniden bağlanamaz.</td>
+            </tr>
+            <tr>
+              <td><strong>Kişiler & Arama Günlükleri</strong></td>
+              <td>Arayan kimliği adlarını senkronize eder ve bileğinizden arama yapmanızı sağlar.</td>
+              <td>Aramalar bilinmeyen numaralar olarak görünür; arama uygulaması açılmaz.</td>
+            </tr>
+            <tr>
+              <td><strong>SMS / Mesajlar</strong></td>
+              <td>Saat klavyesinden gelen metin yanıtlarını okur ve yazar.</td>
+              <td>Metin yanıtları görüntülenemez veya gönderilemez.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>İzinleri Doğrulama ve Verme:</h3>
+        <ol>
+          <li>Akıllı telefonunuzda saatinizin yardımcı uygulamasının simgesine (örneğin <em>Galaxy Wearable</em> veya <em>Pixel Watch</em>) uzun basın.</li>
+          <li>Sistem ayarlarını açmak için <strong>"Uygulama Bilgisi" (i)</strong> düğmesine dokunun.</li>
+          <li><strong>İzinler</strong> seçeneğini belirleyin.</li>
+          <li>Listeyi inceleyin ve reddedilen izinleri <strong>"İzin ver"</strong> veya <strong>"Her zaman izin ver"</strong> olarak değiştirin.</li>
+          <li>Android'in izinleri otomatik olarak iptal etmesini önlemek için <strong>"Kullanılmıyorsa uygulama etkinliğini duraklat"</strong> (veya <em>Uygulama kullanılmıyorsa izinleri kaldır</em>) seçeneğinin yanındaki anahtarı kapatın.</li>
+        </ol>
+
+        <h2>Ani Bağlantı Kesilmelerini Önleme (Pil Ayarları)</h2>
+        <p>Wear OS sahiplerinin en sık karşılaştığı şikayet, saatlerinin telefonla olan bağlantısının rastgele kopmasıdır. Çoğu durumda bu durum bir donanım hatasından veya Bluetooth arızasından kaynaklanmaz. Bunun yerine, genellikle Android işletim sisteminin pil tasarrufu sağlamak için yardımcı uygulamayı arka planda kapatmasından kaynaklanır.</p>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Pil Optimizasyonundan Muaf Tutun</h4>
+          <p>Akıllı saat yardımcı uygulamanızı her zaman <strong>Kısıtlamasız</strong> pil kullanımıyla çalışacak şekilde yapılandırın. "Optimize edilmiş" olarak bırakırsanız, telefon boşta kaldığında telefonun işletim sistemi eninde sonunda uygulamayı kapatacak ve saatinizle olan bağlantıyı koparacaktır.</p>
+        </div>
+
+        <h3>Pil Optimizasyonunu Devre Dışı Bırakma:</h3>
+        <ol>
+          <li>Telefonun <strong>Ayarlar</strong> > <strong>Uygulamalar</strong> bölümünü açın.</li>
+          <li>Saatinizin yardımcı uygulamasını seçin.</li>
+          <li><strong>Pil</strong> veya <strong>Pil kullanımı</strong> seçeneğine dokunun.</li>
+          <li>Ayarı <em>Optimize edilmiş</em> yerine <strong>Kısıtlamasız</strong> olarak değiştirin.</li>
+        </ol>
+
+        <p>Bu izin ve pil ayarlarının yapılandırılması, telefonunuz ile Wear OS akıllı saatiniz arasında güvenilir ve sorunsuz bir bağlantı sağlar.</p>
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yazı İşleri Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçları, verimlilik iş akışları ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

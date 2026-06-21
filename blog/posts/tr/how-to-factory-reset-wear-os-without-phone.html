@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telefonsuz Sıfırlama: Wear OS Akıllı Saat Nasıl Fabrika Ayarlarına Döndürülür · ZBD Studio</title>
+  <meta name="description" content="Kilitlendiniz mi veya yeni bir telefona mı eşliyorsunuz? Bir Wear OS akıllı saati doğrudan kurtarma (recovery) menüsünden veya sistem ayarlarından nasıl zorla sıfırlayacağınızı öğrenin.">
+  <meta name="keywords" content="telefonsuz wear os sıfırlama, galaxy watch hard reset, pixel watch format atma, akıllı saat kurtarma menüsü sıfırlama">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/how-to-factory-reset-wear-os-without-phone.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/how-to-factory-reset-wear-os-without-phone.html">
+  <meta property="og:title" content="Telefonsuz Sıfırlama: Wear OS Akıllı Saat Nasıl Fabrika Ayarlarına Döndürülür · ZBD Studio">
+  <meta property="og:description" content="Kilitlendiniz mi veya yeni bir telefona mı eşliyorsunuz? Bir Wear OS akıllı saati doğrudan kurtarma (recovery) menüsünden veya sistem ayarlarından nasıl zorla sıfırlayacağınızı öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/how-to-factory-reset-wear-os-without-phone.html">
+  <meta property="twitter:title" content="Telefonsuz Sıfırlama: Wear OS Akıllı Saat Nasıl Fabrika Ayarlarına Döndürülür · ZBD Studio">
+  <meta property="twitter:description" content="Kilitlendiniz mi veya yeni bir telefona mı eşliyorsunuz? Bir Wear OS akıllı saati doğrudan kurtarma (recovery) menüsünden veya sistem ayarlarından nasıl zorla sıfırlayacağınızı öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Telefonsuz Sıfırlama: Wear OS Akıllı Saat Nasıl Fabrika Ayarlarına Döndürülür",
+    "description": "Kilitlendiniz mi veya yeni bir telefona mı eşliyorsunuz? Bir Wear OS akıllı saati doğrudan kurtarma (recovery) menüsünden veya sistem ayarlarından nasıl zorla sıfırlayacağınızı öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-03-20",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/how-to-factory-reset-wear-os-without-phone.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Geri Dön</a>
+      <a href="../how-to-factory-reset-wear-os-without-phone.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none;">English</a>
+      <div class="article-meta-top">
+        <span class="tag-badge">Sorun Giderme</span>
+        <span>20 Mart 2026</span>
+        <span>·</span>
+        <span>6 dk okuma</span>
+      </div>
+      <h1>Telefonsuz Sıfırlama: Wear OS Akıllı Saat Nasıl Fabrika Ayarlarına Döndürülür</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Eşleştirilmiş telefonunuz yakında olmadan Wear OS akıllı saatinizi fabrika ayarlarına sıfırlamanızı gerektiren çeşitli senaryolar olabilir. Belki akıllı telefonunuzu yükselttiniz ve artık eski cihaza erişiminiz yok ya da saatiniz sonsuz bir yeniden başlatma döngüsüne (bootloop) girdi. Alternatif olarak, saat ekranındaki kilit şifresini veya desenini unutmuş olabilirsiniz ve bu durum cihazınıza erişiminizi tamamen engelliyor olabilir. Geçmişte, Google’ın giyilebilir platformu sıfırlama işlemi için sürekli bir telefon bağlantısı gerekiyordu. Neyse ki modern Wear OS sürümleri (Wear OS 3, 4 ve 5 dahil), doğrudan donanım üzerinden bağımsız sıfırlama seçenekleri sunmaktadır.</p>
+        
+        <p>Bu kılavuzda, bir telefon olmadan akıllı saatinizi sıfırlamanın iki temel yöntemini anlatacağız: sistem ayarları menüsünü kullanma (saatin kilidi açıksa ve açılabiliyorsa) ve fiziksel Kurtarma Menüsüne (Recovery Menu) girme (saatiniz kilitliyse veya donmuşsa).</p>
+
+        <img src="../../posts-images/settings_main.png" alt="Wear OS Sistem Ayarları Ekranı" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Sıfırlamadan Önce: Google Cihaz Koruması Uyarısı</h2>
+        <p>Fabrika ayarlarına sıfırlama işlemine geçmeden önce, <strong>Fabrika Ayarlarına Sıfırlama Koruması (FRP)</strong> hakkında bilgi sahibi olmak kritik önem taşır. Hırsızlığı önlemek amacıyla Wear OS akıllı saatler kendilerini Google Hesabınıza bağlar. Google Hesabınızı cihazdan kaldırmadan saati sıfırlarsanız, ilk kurulum aşamasında saat sizden orijinal hesap e-postasını ve şifresini isteyecektir. Saati satıyor veya hediye ediyorsanız, sıfırlamadan önce ayarlar üzerinden Google Hesabınızı cihazdan sildiğinizden emin olun veya kurulum sırasında oturum açmaya hazır olun.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Sıfırlama Yöntemi</th>
+              <th>Önkoşullar</th>
+              <th>İdeal Senaryo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sistem Ayarları</strong></td>
+              <td>Ayarlar menüsüne erişim, saat PIN kodunun bilinmesi.</td>
+              <td>Satış öncesi temizlik, yeni bir telefona eşleme.</td>
+            </tr>
+            <tr>
+              <td><strong>Kurtarma Modu (Tuşlar)</strong></td>
+              <td>Fiziksel tuşların çalışması, saatin kapalı olması.</td>
+              <td>Unutulan saat PIN kodu, yeniden başlatma döngüsü, donmuş ekran.</td>
+            </tr>
+            <tr>
+              <td><strong>Cihazımı Bul (Web)</strong></td>
+              <td>Saatin Wi-Fi/LTE bağlantısı, Google hesabının aktif olması.</td>
+              <td>Kayıp veya çalınmış saat, uzaktan sıfırlama ihtiyacı.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Yöntem 1: Doğrudan Saat Ayarlarından Sıfırlama</h2>
+        <p>Akıllı saatiniz normal şekilde çalışıyorsa ve menülerinde gezinebiliyorsanız, sıfırlama işlemini doğrudan Ayarlar ekranından başlatabilirsiniz. Düzen, Samsung Galaxy Watch veya Google Pixel Watch kullanmanıza bağlı olarak biraz değişir.</p>
+
+        <h3>Samsung Galaxy Watch İçin (Wear OS 3, 4 &amp; 5)</h3>
+        <ol>
+          <li>Saat kadranında aşağı kaydırın ve <strong>Ayarlar (dişli)</strong> simgesine dokunun.</li>
+          <li>Aşağı kaydırın ve <strong>Genel</strong> seçeneğine dokunun.</li>
+          <li>Aşağı kaydırarak <strong>Sıfırla</strong> seçeneğini bulun ve seçin.</li>
+          <li>Saat, verilerinizi Samsung Cloud'a yedeklemenizi önerecektir. Yedeklemeye ihtiyacınız yoksa, aşağı kaydırın ve onaylamak için tekrar <strong>Sıfırla</strong> seçeneğine dokunun.</li>
+        </ol>
+
+        <h3>Google Pixel Watch ve Diğer Wear OS Cihazları İçin</h3>
+        <ol>
+          <li>Kurma koluna (crown) basın ve <strong>Ayarlar</strong>'a dokunun.</li>
+          <li>Aşağı kaydırın and <strong>Sistem</strong> seçeneğini belirleyin.</li>
+          <li>Aşağı kaydırın and <strong>Bağlantıyı kes &amp; sıfırla</strong> seçeneğine dokunun.</li>
+          <li>Verilerinizin silineceğini ve saatin eşleşmesinin kaldırılacağını belirten uyarıyı okuyun. Onaylamak ve biçimlendirme işlemini başlatmak için onay işareti simgesine dokunun.</li>
+        </ol>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Profesyonel İpucu: Sıfırlamak Yerine Aktarın</h4>
+          <p>Saatinizi yalnızca yeni bir telefonla eşleştirmek için sıfırlıyorsanız, uygulamalarınızı ve özel kadran düzenlerinizi silmek zorunda değilsiniz. Wear OS 4 ve 5'te, <strong>Ayarlar > Genel > Saati yeni telefona aktar</strong> seçeneğine gidin. Bu işlem, yerel akıllı saat verilerinizi silmeden eşleme profillerini aktarmak için güvenli bir Bluetooth bağlantısı başlatır.</p>
+        </div>
+
+        <h2>Yöntem 2: Donanım Kurtarma Menüsü ile Zorla Sıfırlama</h2>
+        <p>Kilit ekranı PIN kodunuzu unuttuysanız veya akıllı saatiniz bir önyükleme döngüsünde donup kaldıysa, donanım düzeyinde bir fabrika sıfırlaması yapmanız gerekecektir. Bu, başlangıç sırasında belirli bir fiziksel tuş kombinasyonunu gerektirir.</p>
+
+        <h3>Samsung Galaxy Watch'u Sert Sıfırlama (Hard Reset) (4, 5, 6 ve 7)</h3>
+        <ol>
+          <li>Saatin yan tarafındaki <strong>Güç (Home)</strong> ve <strong>Geri</strong> tuşlarına aynı anda basın ve basılı tutun.</li>
+          <li>Ekranda <strong>"Rebooting..."</strong> yazısını görene kadar basılı tutmaya devam edin, ardından her iki tuşu da bırakın.</li>
+          <li>Hemen ardından <strong>Güç (Home)</strong> tuşuna üç veya dört kez hızlıca basın. Bu işlem BIOS/Reboot Seçim Menüsünü tetikleyecektir.</li>
+          <li>Menü seçenekleri arasında gezinmek için Güç tuşuna basın ve <strong>Recovery</strong> seçeneği vurgulanana kadar ilerleyin.</li>
+          <li>Seçmek için Güç tuşuna 2 saniye boyunca basılı tutun. Saat, Android Recovery modunda yeniden başlayacaktır.</li>
+          <li><strong>Wipe data/factory reset</strong> seçeneğini vurgulamak için aşağı kaydırın, ardından onaylamak için sağa kaydırın (veya Güç tuşuna basın). <strong>Factory data reset</strong> seçeneğini vurgulayın ve sıfırlamayı tamamlamak için sağa kaydırın.</li>
+        </ol>
+
+        <h3>Google Pixel Watch'u Sert Sıfırlama (Hard Reset) (1, 2 ve 3)</h3>
+        <ol>
+          <li>Kurma kolunu basılı tutup kapatmayı seçerek Pixel Watch'unuzu kapatın (veya zorla yeniden başlatmak için her iki yan tuşu da 15 saniye basılı tutun).</li>
+          <li>Saati açın. Ekranda beyaz <strong>Google "G" logosu</strong> görünür görünmez, ekranın sol üst ve sağ alt köşelerine aynı anda dokunun.</li>
+          <li>Bu işlem saati Fastboot menüsünde başlatacaktır.</li>
+          <li>Seçenekler arasında gezinmek için yan tuşları kullanın, ekranda <strong>Recovery Mode</strong> görünene kadar ilerleyin ve seçmek için kurma koluna tıklayın.</li>
+          <li>Ünlem işaretli "Komut Yok" (No Command) ekranı göründüğünde, kurma kolu düğmesini basılı tutun ve aynı anda ekranı yukarı kaydırın.</li>
+          <li>Seçmek için <strong>Wipe data/factory reset</strong> seçeneğini belirleyin ve işlemi gerçekleştirmek için kurma koluna tıklayın.</li>
+        </ol>
+
+        <h2>Özet</h2>
+        <p>Kısayolları bildiğinizde, Wear OS saatinizi telefon olmadan sıfırlamak oldukça kolay bir işlemdir. İster basit bir temizlik için sistem ayarlarını kullanın, ister kilitlenmiş bir cihazı açmak için donanım kurtarma tuşlarını kullanın, saatinizi hızlıca fabrika ayarlarına döndürebilir ve temiz bir başlangıç yapabilirsiniz.</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Editör Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, üretkenlik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyoruz.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cómo configurar y utilizar Google Wallet en Wear OS para pagos sin contacto · ZBD Studio/title>
+  <meta name="description" content="Deja tu billetera atrás. Aquí hay una guía paso a paso para configurar Google Wallet y realizar pagos NFC sin contacto en su reloj Wear OS.">
+  <meta name="keywords" content="setup Google Wallet Wear OS, smartwatch NFC pay, Galaxy Watch contactless payment, Pixel Watch Google Pay">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/es/google-wallet-wear-os-setup-guide.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/es/google-wallet-wear-os-setup-guide.html">
+  <meta property="og:title" content="Cómo configurar y utilizar Google Wallet en Wear OS para pagos sin contacto · ZBD Studio">
+  <meta property="og:description" content="Deja tu billetera atrás. Aquí hay una guía paso a paso para configurar Google Wallet y realizar pagos NFC sin contacto en su reloj Wear OS.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/es/google-wallet-wear-os-setup-guide.html">
+  <meta property="twitter:title" content="Cómo configurar y utilizar Google Wallet en Wear OS para pagos sin contacto · ZBD Studio">
+  <meta property="twitter:description" content="Deja tu billetera atrás. Aquí hay una guía paso a paso para configurar Google Wallet y realizar pagos NFC sin contacto en su reloj Wear OS.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cómo configurar y utilizar Google Wallet en Wear OS para pagos sin contacto",
+  "description": "Deja tu billetera atrás. Aquí hay una guía paso a paso para configurar Google Wallet y realizar pagos NFC sin contacto en su reloj Wear OS.",
+  "image": "https://wearga.me/logo.webp",
+  "datePublished": "2026-06-20",
+  "author": {
+    "@type": "Organization",
+    "name": "ZBD Studio",
+    "url": "https://wearga.me"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ZBD Studio",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wearga.me/logo.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wearga.me/blog/posts/google-wallet-wear-os-setup-guide.html"
+  }
+}
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'es') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'es' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD/b><small>Use OS Studio/small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../#services">Servicios/a>
+      <a href="../../#products">Productos/a>
+      <a href="../" style="color: var(--text);">Blog/a>
+      <a href="../../#contact">Contacto/a>
+      <a class="btn btn-primary sm" href="../../#products">Aplicaciones/a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; width: 100%;">
+        <a href="../" class="back-btn" style="margin-bottom: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Back
+        </a>
+        <div style="display: flex; gap: 8px; font-size: 14px; font-weight: 600;">
+          <a href="../google-wallet-wear-os-setup-guide.html" onclick="localStorage.setItem('pref_lang', 'en')" style="color: var(--muted); text-decoration: none;">EN</a>
+          <span style="color: var(--line);">|</span>
+          <a href="../tr/google-wallet-wear-os-setup-guide.html" onclick="localStorage.setItem('pref_lang', 'tr')" style="color: var(--muted); text-decoration: none;">TR</a>
+          <span style="color: var(--line);">|</span>
+          <a href="../de/google-wallet-wear-os-setup-guide.html" onclick="localStorage.setItem('pref_lang', 'de')" style="color: var(--muted); text-decoration: none;">DE</a>
+          <span style="color: var(--line);">|</span>
+          <a href="../es/google-wallet-wear-os-setup-guide.html" onclick="localStorage.setItem('pref_lang', 'es')" style="color: var(--accent2); text-decoration: none;">ES</a>
+          <span style="color: var(--line);">|</span>
+          <a href="../fr/google-wallet-wear-os-setup-guide.html" onclick="localStorage.setItem('pref_lang', 'fr')" style="color: var(--muted); text-decoration: none;">FR</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Puerta de Anatolia/a>
+        <a href="../../../apps/wearssh/">UsarSSH/a>
+        <a href="../../../apps/vakitwear/">Ropa Vakit/a>
+        <a href="../../../apps/weardisco/">usar discoteca/a>
+        <a href="../../">Blog/a>
+      </div>
+      <p class="footer-note">Hecho con amor para Wear OS · © 2026 ZBD/p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>

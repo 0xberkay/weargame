@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wear OS Akıllı Saat Blogu · ZBD Studio</title>
+  <meta name="description" content="Wear OS cihazınızdan en iyi şekilde yararlanmak için akıllı saat ipuçları, pil tasarrufu kılavuzları ve uygulama önerileri okuyun.">
+  <link rel="canonical" href="https://wearga.me/blog/tr/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wearga.me/blog/tr/">
+  <meta property="og:title" content="Wear OS Akıllı Saat Blogu · ZBD Studio">
+  <meta property="og:description" content="Wear OS cihazınızdan en iyi şekilde yararlanmak için akıllı saat ipuçları, pil tasarrufu kılavuzları ve uygulama önerileri okuyun.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/tr/">
+  <meta property="twitter:title" content="Wear OS Akıllı Saat Blogu · ZBD Studio">
+  <meta property="twitter:description" content="Wear OS cihazınızdan en iyi şekilde yararlanmak için akıllı saat ipuçları, pil tasarrufu kılavuzları ve uygulama önerileri okuyun.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../logo.webp">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/blog.css">
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var currentLang = "tr";
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== currentLang) {
+        target = pref;
+      } else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== currentLang && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../'); }
+        else { window.location.replace('../' + target + '/'); }
+      }
+    })();
+  </script>
+  <style>
+    .lang-switcher-bar {
+      display: flex; align-items: center; justify-content: flex-end;
+      gap: 10px; padding: 8px 0; font-size: 13px; font-weight: 700;
+    }
+    .lang-switcher-bar a { color: var(--muted); text-decoration: none; padding: 3px 8px; border-radius: 6px; transition: all .2s; }
+    .lang-switcher-bar a:hover { color: var(--text); }
+    .lang-switcher-bar a.lang-active { color: var(--accent2); background: rgba(100,200,255,.08); }
+    .lang-switcher-bar span { color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../">
+      <span class="logo"><img src="../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../#services">Services</a>
+      <a href="../../#products">Products</a>
+      <a href="../" style="color: var(--text);">Blog</a>
+      <a href="../../#contact">Contact</a>
+      <a class="btn btn-primary sm" href="../../#products">Apps</a>
+    </nav>
+  </header>
+
+  <!-- BLOG HERO -->
+  <section class="blog-hero">
+    <div class="wrap">
+      <div class="eyebrow">İPUÇLARI VE KILAVUZLAR</div>
+      <h1>Wear OS <span class="grad">Akıllı Saat</span> Blogu</h1>
+      <p>Akıllı saat sahipleri için faydalı kılavuzlar, pil tasarrufu ipuçları ve yazılım önerileri.</p>
+    </div>
+  </section>
+
+  <!-- SEARCH & FILTER BAR -->
+  <section class="blog-filter-section">
+    <div class="wrap">
+    <!-- Language Switcher -->
+    <div class="lang-switcher-bar">
+      <span>🌐</span>
+      <a href="../" onclick="localStorage.setItem('pref_lang','en')" >EN</a>
+      <a href="../tr/" onclick="localStorage.setItem('pref_lang','tr')" class="lang-active">TR</a>
+      <a href="../de/" onclick="localStorage.setItem('pref_lang','de')" >DE</a>
+      <a href="../es/" onclick="localStorage.setItem('pref_lang','es')" >ES</a>
+      <a href="../fr/" onclick="localStorage.setItem('pref_lang','fr')" >FR</a>
+    </div>
+      <div class="filter-container">
+        <div class="search-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="blog-search" placeholder="Başlık, açıklama veya anahtar kelimeye göre makale ara...">
+        </div>
+        <div class="categories-tabs">
+          <button class="category-btn active" data-category="all">Tümü</button>
+          <button class="category-btn" data-category="updates">Güncellemeler</button>
+          <button class="category-btn" data-category="tips & tricks">İpuçları</button>
+          <button class="category-btn" data-category="guides">Kılavuzlar</button>
+          <button class="category-btn" data-category="battery">Pil</button>
+          <button class="category-btn" data-category="wellness">Sağlık</button>
+          <button class="category-btn" data-category="app lists">Uygulamalar</button>
+          <button class="category-btn" data-category="troubleshooting">Sorun Giderme</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG POSTS GRID -->
+  <section class="blog-section">
+    <div class="wrap">
+      <div class="blog-grid">
+        <a class="blog-card reveal" href="../posts/tr/how-to-customize-watch-faces-on-galaxy-watch.html">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>June 22, 2026</span>
+          </div>
+          <h2>Samsung Galaxy Watch'ta Saat Kadranları Nasıl Özelleştirilir: Tam Kılavuz</h2>
+          <p>Akıllı saatinizi kişiselleştirin. Samsung Galaxy Watch 4, 5, 6 ve 7'de saat kadranlarını nasıl özelleştireceğinizi, komplikasyonları nasıl değiştireceğinizi ve renkleri nasıl düzenleyeceğinizi öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/best-wear-os-tiles-for-productivity.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>June 22, 2026</span>
+          </div>
+          <h2>Gününüzü Güçlendirin: Maksimum Üretkenlik için En İyi Wear İşletim Sistemi Kutuları</h2>
+          <p>En iyi Wear OS kutucuklarıyla verimliliğinizi artırın. Takvimleri nasıl yöneteceğinizi, yapılacaklar listelerini nasıl kontrol edeceğinizi ve alışkanlıklarınızı doğrudan bileğinizden nasıl takip edeceğinizi öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/wear-os-accessibility-features-guide.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>June 22, 2026</span>
+          </div>
+          <h2>Akıllı Saatleri Erişilebilir Hale Getirmek: Wear OS Erişilebilirlik Özellikleri Kılavuzu</h2>
+          <p>Wear OS erişilebilirlik ayarlarını keşfedin. Saatinizde TalkBack'i, büyütme hareketlerini, renk düzeltmeyi ve ses dengesini nasıl kullanacağınızı öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/wear-os-hidden-features-and-tips.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">User Guides</span>
+            <span>June 21, 2026</span>
+          </div>
+          <h2>Ultimate Wear OS Kullanıcı Kılavuzu: 25 Ayar, Hareket ve Gizli Özellikler</h2>
+          <p>Samsung Galaxy Watch veya Google Pixel Watch cihazınızın tüm potansiyelini açığa çıkarmak için 25 temel ayarı, gizli özelliği ve el hareketlerini keşfedin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/wear-os-5-updates-and-features.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Güncellemeler</span>
+            <span>June 21, 2026</span>
+          </div>
+          <h2>Wear OS 5: Smartwatch Güncellemesi Hakkında Bilmeniz Gereken Her Şey</h2>
+          <p>Wear OS 5'teki yeni özellikleri keşfedin. Antrenman güç verimliliği, ızgara uygulaması başlatıcısı, ses değiştirici ve saat kadranı formatları hakkında bilgi edinin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/how-to-fix-wear-os-sync-and-connection-problems.html">
+          <div class="card-meta">
+            <span class="card-tag">Sorun Giderme</span>
+            <span>June 21, 2026</span>
+          </div>
+          <h2>Yaygın Wear OS Senkronizasyonu ve Bağlantı Sorunları Nasıl Düzeltilir</h2>
+          <p>Bağlantısı kesilmiş bir akıllı saatle mi mücadele ediyorsunuz? Wear OS bluetooth eşleştirme ve senkronizasyon sorunlarını kolayca düzeltmek için adım adım sorun giderme kılavuzumuzu okuyun.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/mastering-wear-os-customization.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>June 20, 2026</span>
+          </div>
+          <h2>Wear OS Özelleştirmesinde Uzmanlaşma: Saat Kadranları, Komplikasyonlar ve Parçalar Açıklanıyor</h2>
+          <p>Wear OS akıllı saatinizi özelleştirmek için takip edilmesi kolay bir kılavuz. Saat yüzlerini nasıl ayarlayacağınızı, komplikasyonları nasıl seçeceğinizi ve parçaları bir profesyonel gibi nasıl organize edeceğinizi öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/google-wallet-wear-os-setup-guide.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>June 20, 2026</span>
+          </div>
+          <h2>Temassız Ödemeler için Wear OS'ta Google Cüzdan Nasıl Kurulur ve Kullanılır</h2>
+          <p>Cüzdanınızı arkanızda bırakın. Wear OS saatinizde Google Cüzdan'ı kurmaya ve temassız NFC ödemeleri yapmaya ilişkin adım adım kılavuzu burada bulabilirsiniz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/galaxy-watch-vs-pixel-watch-features.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">Güncellemeler</span>
+            <span>June 18, 2026</span>
+          </div>
+          <h2>Samsung Galaxy Watch vs. Google Pixel Watch: Hangi Wear OS Watch En İyisidir?</h2>
+          <p>Galaxy Watch ile Google Pixel Watch'un kafa kafaya karşılaştırması. Sağlık takibini, yazılım özelliklerini, pili ve tasarımı karşılaştırıyoruz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/wear-os-notification-management-tips.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>June 17, 2026</span>
+          </div>
+          <h2>Odaklanma ve Sakinlik için Wear OS Bildirimleri Nasıl Yönetilir ve Sessizleştirilir</h2>
+          <p>Sürekli vızıltıdan bıktınız mı? Wear OS'de ana bildirim yönetimi. Akıllı saatinizde uyarıları nasıl susturacağınızı, filtreleyeceğinizi ve özelleştireceğinizi öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/wear-os-watch-face-format-wff-explained.html">
+          <div class="card-meta">
+            <span class="card-tag">Güncellemeler</span>
+            <span>June 16, 2026</span>
+          </div>
+          <h2>Wear OS Saat Yüzü Formatını (WFF) Anlamak: Saat Tasarımının Geleceği</h2>
+          <p>Wear OS Saat Yüzü Formatı (WFF) nedir? Bu yeni XML tabanlı formatın, geliştiriciler ve kullanıcılar için pil ömrünü ve performansı nasıl iyileştirdiğini öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/wear-os-battery-saving-guide.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">Battery Guides</span>
+            <span>June 15, 2026</span>
+          </div>
+          <h2>Wear OS Akıllı Saatinizde Pilden Nasıl Tasarruf Edilir: En İyi Kılavuz</h2>
+          <p>Akıllı saatinizin gün bitmeden ölmesinden bıktınız mı? Galaxy Watch, Pixel Watch ve diğer Wear OS cihazlarında pil tasarrufu sağlamaya yönelik kapsamlı, adım adım kılavuzumuzu okuyun.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/using-google-assistant-routines-on-wear-os.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>June 14, 2026</span>
+          </div>
+          <h2>Akıllı Saatinizden Google Asistan Rutinlerini Tetikleme ve Kullanma</h2>
+          <p>Günlük görevlerinizi otomatikleştirin. Sesli komutları ve kutucuk kısayollarını kullanarak Wear OS saatinizden Google Asistan rutinlerini nasıl tetikleyeceğinizi öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/wear-os-theater-and-bedtime-modes-explained.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>June 12, 2026</span>
+          </div>
+          <h2>Sinema Modu ve Uyku Vakti Modu: Wear OS Smartwatch Durumlarını Anlama</h2>
+          <p>Ekran tetikleyicilerini devre dışı bırakmak, bildirimleri susturmak ve gece boyunca pil tasarrufu sağlamak için Wear OS'de Sinema Modu ve Uyku Vakti (Uyku) Modunun nasıl kullanılacağını öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/why-use-wear-os-companion-apps.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>June 10, 2026</span>
+          </div>
+          <h2>Telefonsuz Yaşamak: Wear OS Dijital Sağlığın Kilidini Nasıl Açıyor?</h2>
+          <p>Ekran süresini azaltmak, bildirimleri filtrelemek ve daha sağlıklı, dikkat dağıtıcı olmayan bir dijital yaşam tarzının keyfini çıkarmak için Wear OS akıllı saatinizi nasıl kullanacağınızı keşfedin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/how-to-sync-google-calendar-with-wear-os.html">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>June 10, 2026</span>
+          </div>
+          <h2>Hiçbir Toplantıyı Kaçırmayın: Wear OS'de Google Takvim Nasıl Senkronize Edilir ve Görüntülenir</h2>
+          <p>Programınızı bileğinizden takip edin. Google Takvim etkinliklerinizi Wear OS'de senkronize etmek ve yönetmek için adım adım kılavuz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/top-offline-games-for-wear-os.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">Uygulamalar</span>
+            <span>June 8, 2026</span>
+          </div>
+          <h2>Wear OS Akıllı Saatlerinde Oynanabilecek En İyi 10 Bağımsız Çevrimdışı Oyun</h2>
+          <p>İşe gidip gelirken sıkıldınız mı? Wear OS için bağlantı olmadan doğrudan bileğinizde oynayabileceğiniz en iyi bağımsız, çevrimdışı oyunlara göz atın.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/top-wear-os-apps-and-games.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">Uygulamalar</span>
+            <span>June 5, 2026</span>
+          </div>
+          <h2>Akıllı Saatinizi Güçlendirecek En İyi Wear OS Uygulamaları ve Oyunları</h2>
+          <p>Akıllı saatinizi güçlendirmek için sistem yöneticisi araçları, çevrimdışı yardımcı programlar ve retro RPG oyunları dahil en iyi Wear OS uygulamalarını ve oyunlarını keşfedin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/best-wear-os-apps-for-running.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">Uygulamalar</span>
+            <span>June 5, 2026</span>
+          </div>
+          <h2>Koşunuzu Hızlandırın: İlerlemenizi Takip Etmek için En İyi Wear OS Çalıştırma Uygulamaları</h2>
+          <p>Koşu performansınızı geliştirin. Strava, Nike Run Club ve Adidas Running dahil en iyi Wear OS koşu uygulamalarını inceliyoruz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/how-to-use-whatsapp-on-wear-os.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>June 3, 2026</span>
+          </div>
+          <h2>Wear OS'de Bağımsız WhatsApp Nasıl Kullanılır: Metin ve Sesli Not Gönderin</h2>
+          <p>Wear OS'de resmi WhatsApp uygulamasını kullanmaya ilişkin eksiksiz bir kılavuz. Bileğinizden sohbetlere nasıl yanıt vereceğinizi, sesli mesaj göndereceğinizi ve arama yapmayı öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/best-weather-apps-for-wear-os.html">
+          <div class="card-meta">
+            <span class="card-tag">Uygulamalar</span>
+            <span>May 30, 2026</span>
+          </div>
+          <h2>Fırtınanın Önünde Kalın: Wear OS için En İyi Hava Durumu Uygulamaları ve Parçalar</h2>
+          <p>Asla yağmura yakalanmayın. Özelleştirilebilir saat komplikasyonlarıyla Wear OS için en doğru hava durumu uygulamalarını ve kutucuklarını keşfedin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/how-to-use-spotify-offline-on-wear-os.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>May 28, 2026</span>
+          </div>
+          <h2>Telefon Olmadan Wear OS'ta Spotify Çevrimdışı Nasıl İndirilir ve Dinlenir</h2>
+          <p>Antrenmanlarınızda telefonunuzu yanınızda taşımadan müzik dinleyin. Spotify çalma listelerini çevrimdışı olarak Wear OS cihazınıza nasıl indireceğiniz aşağıda açıklanmıştır.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/smart-home-control-with-wear-os-google-home.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>May 25, 2026</span>
+          </div>
+          <h2>Bilek Tabanlı Otomasyon: Akıllı Evinizi Wear OS Google Home ile Kontrol Etme</h2>
+          <p>Işıkları, termostatları ve akıllı prizleri bileğinizden kontrol edin. Wear OS'de Google Home uygulamasını ve kutucuklarını yapılandırma ve kullanma.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/best-habit-tracker-apps-for-wear-os.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">Uygulamalar</span>
+            <span>May 22, 2026</span>
+          </div>
+          <h2>Bileğinizden Daha İyi Alışkanlıklar Oluşturun: En İyi Wear OS Alışkanlık Takip Uygulamaları</h2>
+          <p>Günlük rutinlerinizi takip edin. Tamamlamalarınızı doğrudan akıllı saatinizden kaydetmenize yardımcı olacak en iyi Wear OS alışkanlık izleme uygulamalarına göz atın.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/using-wear-os-as-camera-remote.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>May 20, 2026</span>
+          </div>
+          <h2>Wear OS Saatinizi Uzaktan Kamera Deklanşör Kontrolü Olarak Kullanma</h2>
+          <p>Mükemmel grup fotoğrafını çekin. Wear OS akıllı saatinizi uzaktan vizör ve kamera deklanşör düğmesi olarak kullanmaya yönelik adım adım kılavuz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/best-wear-os-apps-for-hikers.html">
+          <div class="card-meta">
+            <span class="card-tag">Uygulamalar</span>
+            <span>May 18, 2026</span>
+          </div>
+          <h2>Into the Wild: Yürüyüşçüler ve Kaşifler için En İyi Wear İşletim Sistemi Uygulamaları ve Araçları</h2>
+          <p>Yollara güvenli bir şekilde çıkın. Çevrimdışı haritalama, GPX rota görüntüleyici, altimetre ve pusula araçları dahil olmak üzere yürüyüşe yönelik en iyi Wear OS uygulamalarını keşfedin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/powerpoint-controller-wear-os-guide.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>May 15, 2026</span>
+          </div>
+          <h2>Odaya Komut Verme: Sunumları Wear OS Akıllı Saatinizden Nasıl Kontrol Edebilirsiniz?</h2>
+          <p>Sunum tıklayıcısını bırakın. Wear OS saatinizi nasıl eşleştireceğinizi ve onu PowerPoint veya Google Slaytlar için uzaktan kumanda olarak nasıl kullanacağınızı öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/tracking-sleep-and-sleep-apnea-wear-os.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>May 12, 2026</span>
+          </div>
+          <h2>Wear OS Akıllı Saatlerle Uyku Kalitesini ve Uyku Apnesi Belirtilerini Takip Etme</h2>
+          <p>Learn how modern Wear OS sensors can track your sleep cycles, detect disturbances, and scan for early signs of sleep apnea while you sleep.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/how-to-track-swimming-workouts-wear-os.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>May 10, 2026</span>
+          </div>
+          <h2>Suya Dayanıklı Fitness: Wear OS ile Yüzme Egzersizleri Nasıl Takip Edilir</h2>
+          <p>Dalmaya hazır mısınız? Galaxy Watch veya Pixel Watch'unuzda su kilidini nasıl yapılandıracağınız, turları nasıl takip edeceğiniz ve yüzme ölçümlerini nasıl görüntüleyeceğiniz aşağıda açıklanmıştır.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/samsung-health-vs-google-fit-wear-os.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>May 8, 2026</span>
+          </div>
+          <h2>Samsung Health vs. Google Fit: Wear OS'de Hangi Sağlık Platformu En İyisidir?</h2>
+          <p>Hangi fitness ekosistemini kullanmalısınız? İzleme, özellikler, entegrasyonlar ve doğruluk açısından Samsung Health ile Google Fit'i karşılaştırıyoruz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/tracking-heart-rate-variability-hrv-wear-os.html">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>May 5, 2026</span>
+          </div>
+          <h2>Stres ve Dinlenme: Wear OS'de Kalp Atış Hızı Değişkenliği (HRV) Nasıl Takip Edilir</h2>
+          <p>Vücudunuzun stres tepkisini anlayın. Akıllı saatinizde Kalp Atış Hızı Değişkenliği (HRV) ölçümlerini nasıl takip edeceğinizi ve yorumlayacağınızı öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/hydration-tracking-wear-os-guide.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>May 3, 2026</span>
+          </div>
+          <h2>Susuz Kalmayın: Akıllı Saatinizde Günlük Su Alımı Nasıl Kaydedilir ve Takip Edilir</h2>
+          <p>Sıvı alımı hedeflerinizi yolunda tutun. Su alımını doğrudan Wear OS kutucuklarından nasıl kaydedeceğinizi ve sıvı alımı hatırlatma uyarılarını nasıl yapılandıracağınızı keşfedin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/galaxy-watch-bia-body-composition-guide.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>April 30, 2026</span>
+          </div>
+          <h2>Samsung Galaxy Watch'ta Vücut Kompozisyonu (BIA) Nasıl Ölçülür ve Anlanır?</h2>
+          <p>Vücut yağını, kas kütlesini ve su ağırlığını ölçmek için Samsung Galaxy Watch'taki Biyoelektrik Empedans Analizi (BIA) sensörünü nasıl kullanacağınızı öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/wear-os-guided-breathing-apps.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>April 28, 2026</span>
+          </div>
+          <h2>Dakikalar İçinde Stresi Azaltın: Wear OS için En İyi Rehberli Solunum Uygulamaları</h2>
+          <p>Biraz sakinleşmeye mi ihtiyacınız var? Hareket halindeyken stres seviyenizi hızlı bir şekilde azaltmanıza yardımcı olacak Wear OS için en iyi rehberli nefes alma uygulamalarını ve kutucuklarını keşfedin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/how-to-use-wear-os-for-hiit.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>April 25, 2026</span>
+          </div>
+          <h2>Wear OS ile Yüksek Yoğunluklu Aralıklı Antrenman (HIIT) Antrenmanlarını Optimize Etme</h2>
+          <p>Aralıklarınızdan en iyi şekilde yararlanın. Wear OS cihazlarında özel HIIT antrenman profillerini, zamanlayıcılarını ve uyarılarını nasıl yapılandıracağınızı öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/tracking-cardio-fitness-vo2max-wear-os.html">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>April 22, 2026</span>
+          </div>
+          <h2>Wear OS ile Kardiyo Kondisyonunuzu (VO2 Max) Ölçme ve Geliştirme</h2>
+          <p>Aerobik dayanıklılığınızı takip edin. Wear OS'de Cardio Fitness puanınızı (VO2 Max) ölçmeye, anlamaya ve iyileştirmeye yönelik bir kılavuz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/pixel-watch-fitbit-syncing-tips.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">Sağlık</span>
+            <span>April 20, 2026</span>
+          </div>
+          <h2>Pixel Watch'ta Fitbit'ten En İyi Şekilde Faydalanma: Senkronizasyon, Analizler ve Kurulum</h2>
+          <p>Fitbit'in gücünü bileğinizde açığa çıkarın. Profilleri ayarlamaya, düzeltmeleri senkronize etmeye ve Pixel Watch'ta günlük hazırlık durumunu anlamaya yönelik ipuçlarımız.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/enable-wear-os-developer-options-debugging.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>April 18, 2026</span>
+          </div>
+          <h2>Wear OS'de Geliştirici Seçenekleri, USB ve Wi-Fi Hata Ayıklama Nasıl Etkinleştirilir</h2>
+          <p>Gizli ayarların kilidini açın. Wear OS'de Geliştirici Seçeneklerini, ADB hata ayıklamasını ve kablosuz ağ hata ayıklamasını etkinleştirmeye yönelik adım adım kılavuz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/how-to-side-load-apps-on-wear-os.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>April 15, 2026</span>
+          </div>
+          <h2>ADB Kablosuz Kullanarak Wear OS'de Yandan Yüklemeli Uygulamalara İlişkin Tam Kılavuz</h2>
+          <p>Uyumlu herhangi bir APK'yi yükleyin. Kablosuz ADB araçlarını kullanarak uygulamaları Wear OS saatinize yandan yükleme hakkında adım adım eğitim.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/wear-os-hybrid-interface-dual-chipset.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Güncellemeler</span>
+            <span>April 12, 2026</span>
+          </div>
+          <h2>Kaputun Altında: Wear OS Hibrit Arayüzü ve Çift Yonga Seti Teknolojisi Nasıl Çalışır?</h2>
+          <p>OnePlus Watch 2 ve diğer cihazlar nasıl günlerce pil ömrüne sahip oluyor? Wear OS hibrit arayüzünü ve çift yardımcı işlemci mimarisini açıklıyoruz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/how-to-connect-bluetooth-headphones-smartwatch.html">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>April 10, 2026</span>
+          </div>
+          <h2>Telefonsuz Müzik: Bluetooth Kulaklıkları Wear OS ile Eşleştirme ve Bağlama</h2>
+          <p>Telefonu evde bırak. Kablosuz kulaklıkları veya Bluetooth kulaklıkları doğrudan akıllı saatinizle eşleştirmek ve bağlamak için basit bir kılavuz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/transferring-music-to-wear-os-offline.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>April 8, 2026</span>
+          </div>
+          <h2>Müzik Dosyalarını Doğrudan Wear OS Akıllı Saatlere Aktarma ve Saklama</h2>
+          <p>Kendi ses dosyalarınızı saklayın. Yerel MP3 ve AAC dosyalarını Android telefonunuzdan doğrudan Wear OS saat belleğinize nasıl aktaracağınızı öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/wear-os-security-screen-lock-guide.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>April 5, 2026</span>
+          </div>
+          <h2>Kilitleyin: Wear OS'de Ekran Kilitlerini ve PIN Güvenliğini Ayarlama</h2>
+          <p>Verilerinizi güvende tutun. Wear OS'de ekran kilitlerini (PIN veya Desen) nasıl ayarlayacağınızı ve bunun Google Cüzdan ödemeleriyle nasıl çalıştığını öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/wear-os-google-translate-on-the-go.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>April 3, 2026</span>
+          </div>
+          <h2>Gerçek Zamanlı Çeviri: Wear OS Akıllı Saatlerinde Google Çeviri Nasıl Kullanılır?</h2>
+          <p>Güvenle seyahat edin. Hareket halindeyken yabancı dillerin şifresini çözmek için Wear OS bileğinizde Google Çeviri'yi kullanmayla ilgili eksiksiz bir adım adım yol tarifi.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/using-wear-os-companion-apps-on-android.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>March 30, 2026</span>
+          </div>
+          <h2>Wear OS Yardımcı Uygulamalarını Anlama: Kurulum, İzinler ve Avantajlar</h2>
+          <p>Tam potansiyelin kilidini açın. Galaxy Wearable veya Pixel Watch Uygulaması gibi yardımcı uygulamalar ve izinlerin nasıl yönetileceği hakkında kapsamlı bir açıklama.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/connecting-wear-os-to-iphone-limitations.html">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>March 28, 2026</span>
+          </div>
+          <h2>Wear OS'yi bir iPhone'a bağlayabilir misiniz? Kurulum Kılavuzu ve Temel Sınırlamalar</h2>
+          <p>Wear OS akıllı saatleri Apple iOS ile çalışır mı? Uyumluluğu, eski saatler için eşleştirme adımlarını ve önemli özellik sınırlamalarını tartışıyoruz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/wear-os-keyboard-voice-typing-tips.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>March 25, 2026</span>
+          </div>
+          <h2>Bileğinizle Daha Hızlı Yazın: Sesle Yazma, Hareketler ve Klavye İpuçları</h2>
+          <p>Mesajlara yanıt vermek acı verici olmamalıdır. Wear OS'de Gboard ve varsayılan klavye ipuçlarında, kaydırma hareketlerinde ve sesli diktede uzmanlaşın.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/how-to-fix-wear-os-overheating-issues.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">Sorun Giderme</span>
+            <span>March 22, 2026</span>
+          </div>
+          <h2>Akıllı Saatim Neden Sıcak? Wear OS Aşırı Isınması Nasıl Durdurulur ve Düzeltilir</h2>
+          <p>Saatiniz alışılmadık derecede sıcak mı hissediyor? Wear OS akıllı saatlerinin neden aşırı ısındığını ve termal kısıtlama ile pil tüketiminin nasıl önleneceğini öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/how-to-factory-reset-wear-os-without-phone.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">Sorun Giderme</span>
+            <span>March 20, 2026</span>
+          </div>
+          <h2>Telefonunuz Yakınlarda Olmadan Wear OS Akıllı Saatinizi Fabrika Ayarlarına Sıfırlama</h2>
+          <p>Kilitlendiniz mi veya yeni bir telefonla mı eşleştirildiniz? Wear OS akıllı saatini doğrudan kurtarma menüsünden veya sistem ayarlarından nasıl zorla sıfırlayacağınızı öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/troubleshooting-wear-os-gps-errors.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Sorun Giderme</span>
+            <span>March 18, 2026</span>
+          </div>
+          <h2>Smartwatch GPS Sorunlarını Düzeltme: Wear OS GPS Doğruluğu Hataları Nasıl Çözülür?</h2>
+          <p>Yanlış izleme yollarıyla mı mücadele ediyorsunuz? Wear OS akıllı saatlerinde GPS kilidi sorunlarını nasıl kalibre edeceğiniz ve gidereceğiniz aşağıda açıklanmıştır.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/galaxy-watch-water-lock-mode-guide.html">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>March 15, 2026</span>
+          </div>
+          <h2>Su Kilidi Modu Nedir? Samsung Galaxy Watch'ta Nasıl Kullanılır ve Devre Dışı Bırakılır</h2>
+          <p>Havuzda saat ekranınızı koruyun. Su Kilidi modu ve akıllı saatin hoparlörlerinden suyu nasıl çıkardığı hakkında bilmeniz gereken her şey.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/how-to-clean-and-maintain-smartwatch.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">İpuçları</span>
+            <span>March 12, 2026</span>
+          </div>
+          <h2>Taze Tutun: Wear OS Akıllı Saatinizi ve Kordonlarınızı Nasıl Temizler ve Bakımını Yaparsınız?</h2>
+          <p>Cilt tahrişini önleyin ve sensör doğruluğunu koruyun. Akıllı saatinizin gövdesi ve kordonları için en iyi temizlik uygulamalarını öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d2" href="../posts/tr/how-to-set-up-emergency-sos-wear-os.html" style="transition-delay: 0.16s;">
+          <div class="card-meta">
+            <span class="card-tag">Kılavuzlar</span>
+            <span>March 10, 2026</span>
+          </div>
+          <h2>Smartwatch Güvenliği: Wear OS'de Acil Yardım Nasıl Kurulur ve Tetiklenir</h2>
+          <p>Acil durumlara hazırlıklı olun. Wear OS akıllı saatlerinde düşme algılama, acil durum kişileri ve hızlı tetiklenen SOS uyarıları nasıl yapılandırılır?</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d3" href="../posts/tr/how-to-calibrate-galaxy-watch-sensors.html" style="transition-delay: 0.24s;">
+          <div class="card-meta">
+            <span class="card-tag">Sorun Giderme</span>
+            <span>March 8, 2026</span>
+          </div>
+          <h2>Sensör Doğruluğunu Artırma: Galaxy Watch'ta Pusula ve Barometre Nasıl Kalibre Edilir?</h2>
+          <p>Yanlış yükseklik veya yön yönleri? Saatinizdeki altimetreyi, barometreyi ve pusulayı kalibre etmek için basit bir kılavuz.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/how-to-fix-wear-os-app-crash.html" style="transition-delay: 0.32s;">
+          <div class="card-meta">
+            <span class="card-tag">Sorun Giderme</span>
+            <span>March 5, 2026</span>
+          </div>
+          <h2>Wear OS Uygulama Çökmelerinde Sorun Giderme: Kapatmaya Zorla, Önbelleğe Alma ve Yeniden Yükleme Kılavuzları</h2>
+          <p>Uygulamalar beklenmedik bir şekilde kapanıyor mu? Wear OS akıllı saat uygulamalarının çökmesini, donmasını veya gecikmesini önlemek için adım adım kılavuzumuzu okuyun.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal" href="../posts/tr/how-to-fix-wear-os-notification-delay.html">
+          <div class="card-meta">
+            <span class="card-tag">Sorun Giderme</span>
+            <span>March 3, 2026</span>
+          </div>
+          <h2>Smartwatch Gecikmesini Düzeltme: Wear OS'de Gecikmeli Bildirimler Nasıl Durdurulur</h2>
+          <p>Telefonunuza geldikten dakikalar sonra kısa mesaj mı alıyorsunuz? Wear OS'de pil optimizasyonunu nasıl devre dışı bırakacağınızı ve bildirim gecikmesini nasıl düzelteceğinizi öğrenin.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="blog-card reveal d1" href="../posts/tr/troubleshooting-wear-os-software-updates.html" style="transition-delay: 0.08s;">
+          <div class="card-meta">
+            <span class="card-tag">Sorun Giderme</span>
+            <span>March 1, 2026</span>
+          </div>
+          <h2>Wear OS Güncellemesi Başarısız mı Oldu? Sıkışmış Smartwatch Yazılım İndirmeleri Nasıl Onarılır</h2>
+          <p>Smartwatch güncellemeleri veya kurulumu kontrol ederken takılıp kaldı mı? Wear OS yazılım güncellemelerini Wi-Fi üzerinden zorunlu kılmak için sorun giderme kılavuzumuzu okuyun.</p>
+          <span class="read-more">Makaleyi Oku <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../"><span class="logo"><img src="../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../apps/wearssh/">WearSSH</a>
+        <a href="../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../apps/weardisco/">Wear Disco</a>
+        <a href="../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../js/reveal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var searchInput = document.getElementById('blog-search');
+      var categoryButtons = document.querySelectorAll('.category-btn');
+      var blogCards = document.querySelectorAll('.blog-card');
+      var activeCategory = 'all';
+      var searchQuery = '';
+      function filterPosts() {
+        blogCards.forEach(function(card) {
+          var title = card.querySelector('h2').textContent.toLowerCase();
+          var desc = card.querySelector('p').textContent.toLowerCase();
+          var tag = card.querySelector('.card-tag').textContent.toLowerCase();
+          var matchesCategory = (activeCategory === 'all' || tag === activeCategory);
+          var matchesSearch = (title.includes(searchQuery) || desc.includes(searchQuery));
+          card.style.display = (matchesCategory && matchesSearch) ? '' : 'none';
+        });
+      }
+      searchInput.addEventListener('input', function(e) {
+        searchQuery = e.target.value.toLowerCase().trim();
+        filterPosts();
+      });
+      categoryButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          categoryButtons.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          activeCategory = btn.getAttribute('data-category').toLowerCase();
+          filterPosts();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vakit Wear — Namaz vakitleri & kıble · Wearga</title>
-  <meta name="description" content="Vakit Wear: Wear OS için namaz vakitleri, kıble pusulası ve zikirmatik. Tamamen çevrimdışı çalışır, complication desteklidir.">
+  <title>Vakit Wear — Prayer times & qibla · ZBD</title>
+  <meta name="description" content="Vakit Wear: Prayer times, qibla compass, and digital tasbih for Wear OS. Fully offline with complication support.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../logo.webp">
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/app.css">
   <style>:root{ --accent:#1fd6a6; --accent2:#0e7d63; }</style>
@@ -15,9 +16,9 @@
 <body>
 
   <header class="topbar">
-    <a class="brand" href="../../"><span class="logo">W</span><span><b>Wearga</b><small>Wear OS Studio</small></span></a>
+    <a class="brand" href="../../"><span class="logo"><img src="../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
     <nav class="nav">
-      <a class="back-link" href="../../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Tüm uygulamalar</a>
+      <a class="back-link" href="../../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All apps</a>
       <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.vakitwear" target="_blank" rel="noopener" aria-label="Google Play"></a>
     </nav>
   </header>
@@ -26,14 +27,14 @@
   <section class="app-hero">
     <div class="wrap">
       <div class="app-hero-text">
-        <img class="app-icon" src="icon.png" alt="Vakit Wear ikon">
-        <div class="chip">Yaşam · Wear OS</div>
+        <img class="app-icon" src="icon.png" alt="Vakit Wear icon">
+        <div class="chip">Lifestyle · Wear OS</div>
         <h1>Vakit <span class="grad">Wear</span></h1>
-        <p class="lead">Namaz vakitleri, kıble pusulası ve zikirmatik — hepsi bileğinde.
-          İnternet olmadan da daima hazır.</p>
+        <p class="lead">Prayer times, qibla compass, and digital tasbih — all on your wrist.
+          Always ready, even without internet.</p>
         <div class="app-hero-cta">
           <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.vakitwear" target="_blank" rel="noopener" aria-label="Google Play"></a>
-          <a class="btn btn-ghost" href="#features">Özellikler</a>
+          <a class="btn btn-ghost" href="#features">Features</a>
         </div>
       </div>
       <div class="app-hero-visual">
@@ -48,30 +49,30 @@
   <section id="features" class="s alt">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">ÖZELLİKLER</div>
-        <h2 class="section-title">Manevi yardımcın, bileğinde</h2>
-        <p class="section-desc">Konumuna göre hassas vakitler, çevrimdışı çalışma ve sade bir arayüz.</p>
+        <div class="eyebrow">FEATURES</div>
+        <h2 class="section-title">Your spiritual companion, on your wrist</h2>
+        <p class="section-desc">Precise times based on your location, offline operation, and a clean interface.</p>
       </div>
       <div class="features">
         <div class="feature reveal">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h3>Hassas namaz vakitleri</h3>
-          <p>Konumuna göre otomatik, doğru vakitler. Bildirimlerle hiçbir namazı kaçırma.</p>
+          <h3>Precise prayer times</h3>
+          <p>Automatic, accurate times based on your location. Never miss a prayer with notifications.</p>
         </div>
         <div class="feature reveal d1">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 5-4 1 2-5z"/></svg></div>
-          <h3>Kıble pusulası</h3>
-          <p>Dünyanın neresinde olursan ol, sezgisel pusula ile kıbleyi anında bul.</p>
+          <h3>Qibla compass</h3>
+          <p>Wherever you are in the world, find the qibla instantly with an intuitive compass.</p>
         </div>
         <div class="feature reveal d2">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="4" r="1.6" fill="currentColor"/></svg></div>
-          <h3>Zikirmatik</h3>
-          <p>Dahili dijital tesbih ile zikirlerini takip et. Tek dokunuşla say, ekranı kapatma.</p>
+          <h3>Digital tasbih</h3>
+          <p>Track your dhikr with the built-in digital counter. Count with a single tap, no need to unlock.</p>
         </div>
         <div class="feature reveal d3">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12a7 7 0 1 0 7-7 5 5 0 1 1-7 7z"/></svg></div>
-          <h3>Çevrimdışı & complications</h3>
-          <p>İnternetsiz çalışır. Sıradaki vakti veya tesbihi watch face'inden tek bakışta gör.</p>
+          <h3>Offline & complications</h3>
+          <p>Works without internet. See the next prayer time or tasbih count at a glance on your watch face.</p>
         </div>
       </div>
     </div>
@@ -81,13 +82,13 @@
   <section class="s screens">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">EKRAN GÖRÜNTÜLERİ</div>
-        <h2 class="section-title">Saatinde böyle görünür</h2>
+        <div class="eyebrow">SCREENSHOTS</div>
+        <h2 class="section-title">How it looks on your watch</h2>
       </div>
       <div class="screens-row reveal">
-        <div class="shot"><img src="shot-1.png" alt="Vakit Wear ekran görüntüsü 1"></div>
-        <div class="shot"><img src="shot-2.png" alt="Vakit Wear ekran görüntüsü 2"></div>
-        <div class="shot"><img src="shot-3.png" alt="Vakit Wear ekran görüntüsü 3"></div>
+        <div class="shot"><img src="shot-1.png" alt="Vakit Wear screenshot 1"></div>
+        <div class="shot"><img src="shot-2.png" alt="Vakit Wear screenshot 2"></div>
+        <div class="shot"><img src="shot-3.png" alt="Vakit Wear screenshot 3"></div>
       </div>
     </div>
   </section>
@@ -95,22 +96,22 @@
   <!-- CTA -->
   <section class="s app-cta">
     <div class="wrap reveal">
-      <h2>Vakitler hep yanında</h2>
-      <p>Telefonunu çıkarmadan, tek bir bilek hareketiyle sıradaki namaza hazır ol.</p>
+      <h2>Prayer times always with you</h2>
+      <p>Without pulling out your phone, be ready for the next prayer with a simple wrist flick.</p>
       <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.zbd.vakitwear" target="_blank" rel="noopener" aria-label="Google Play" style="margin:0 auto;"></a>
     </div>
   </section>
 
   <footer class="footer">
     <div class="wrap">
-      <a class="brand" href="../../"><span class="logo">W</span><span><b>Wearga</b><small>Wear OS Studio</small></span></a>
+      <a class="brand" href="../../"><span class="logo"><img src="../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
       <div class="footer-links">
         <a href="../anatolia/">Gate of Anatolia</a>
         <a href="../wearssh/">WearSSH</a>
         <a href="../vakitwear/">Vakit Wear</a>
         <a href="../weardisco/">Wear Disco</a>
       </div>
-      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 Wearga</p>
+      <p class="footer-note">Made with love for Wear OS · © 2026 ZBD</p>
     </div>
   </footer>
 

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Odaklanma ve Sakinlik İçin Wear OS Bildirimleri Nasıl Yönetilir ve Sessize Alınır · ZBD Studio</title>
+  <meta name="description" content="Sürekli titreşimlerden sıkıldınız mı? Wear OS'te bildirim yönetimine hakim olun. Akıllı saatinizdeki uyarıları nasıl susturacağınızı, filtreleyeceğinizi ve özelleştireceğinizi öğrenin.">
+  <meta name="keywords" content="saat bildirimlerini kapatma, Wear OS bildirim ayarları, stop smartwatch vibrations, quiet Galaxy Watch alerts">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://wearga.me/blog/posts/tr/wear-os-notification-management-tips.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://wearga.me/blog/posts/tr/wear-os-notification-management-tips.html">
+  <meta property="og:title" content="Odaklanma ve Sakinlik İçin Wear OS Bildirimleri Nasıl Yönetilir ve Sessize Alınır · ZBD Studio">
+  <meta property="og:description" content="Sürekli titreşimlerden sıkıldınız mı? Wear OS'te bildirim yönetimine hakim olun. Akıllı saatinizdeki uyarıları nasıl susturacağınızı, filtreleyeceğinizi ve özelleştireceğinizi öğrenin.">
+  <meta property="og:image" content="https://wearga.me/logo.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://wearga.me/blog/posts/tr/wear-os-notification-management-tips.html">
+  <meta property="twitter:title" content="Odaklanma ve Sakinlik İçin Wear OS Bildirimleri Nasıl Yönetilir ve Sessize Alınır · ZBD Studio">
+  <meta property="twitter:description" content="Sürekli titreşimlerden sıkıldınız mı? Wear OS'te bildirim yönetimine hakim olun. Akıllı saatinizdeki uyarıları nasıl susturacağınızı, filtreleyeceğinizi ve özelleştireceğinizi öğrenin.">
+  <meta property="twitter:image" content="https://wearga.me/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../../logo.webp">
+  <link rel="stylesheet" href="../../../css/base.css">
+  <link rel="stylesheet" href="../../../css/blog.css">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Odaklanma ve Sakinlik İçin Wear OS Bildirimleri Nasıl Yönetilir ve Sessize Alınır",
+    "description": "Sürekli titreşimlerden sıkıldınız mı? Wear OS'te bildirim yönetimine hakim olun. Akıllı saatinizdeki uyarıları nasıl susturacağınızı, filtreleyeceğinizi ve özelleştireceğinizi öğrenin.",
+    "image": "https://wearga.me/logo.webp",
+    "datePublished": "2026-06-17",
+    "author": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "url": "https://wearga.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ZBD Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://wearga.me/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://wearga.me/blog/posts/tr/wear-os-notification-management-tips.html"
+    }
+  }
+  </script>
+  <!-- Browser Language Router -->
+  <script>
+    (function() {
+      var fn = window.location.pathname.split('/').pop();
+      var pref = localStorage.getItem('pref_lang');
+      var target = null;
+      if (pref && pref !== 'tr') { target = pref; }
+      else if (!pref) {
+        var ul = (navigator.language || navigator.userLanguage).toLowerCase().split('-')[0];
+        var sup = ['en','tr','de','es','fr'];
+        if (ul !== 'tr' && sup.includes(ul)) { target = ul; }
+      }
+      if (target) {
+        if (target === 'en') { window.location.replace('../' + fn); }
+        else { window.location.replace('../' + target + '/' + fn); }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="../../../">
+      <span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span>
+      <span><b>ZBD</b><small>Wear OS Studio</small></span>
+    </a>
+    <nav class="nav">
+      <a href="../../../#services">Hizmetler</a>
+      <a href="../../../#products">Ürünler</a>
+      <a href="../../" style="color: var(--text);">Blog</a>
+      <a href="../../../#contact">İletişim</a>
+      <a class="btn btn-primary sm" href="../../../#products">Uygulamalar</a>
+    </nav>
+  </header>
+
+  <!-- ARTICLE HEADER -->
+  <header class="article-header">
+    <div class="article-header-wrap">
+      <a href="../../" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Bloga Geri Dön
+      </a>
+      <a href="../wear-os-notification-management-tips.html" onclick="localStorage.setItem('pref_lang', 'en')" style="margin-left: auto; color: var(--muted); font-size: 14px; font-weight: 600;">English</a>
+      <div class="article-meta-top">
+        <span class="tag-badge">İpuçları & Püf Noktaları</span>
+        <span>17 Haziran 2026</span>
+        <span>·</span>
+        <span>6 dk okuma</span>
+      </div>
+      <h1>Odaklanma ve Sakinlik İçin Wear OS Bildirimleri Nasıl Yönetilir ve Sessize Alınır</h1>
+    </div>
+  </header>
+
+  <!-- ARTICLE CONTENT -->
+  <section class="article-body">
+    <div class="wrap">
+      <article class="article-content">
+        <p>Akıllı saatler bağlantıda kalmamıza yardımcı olmayı vaat eder, ancak kısa sürede sürekli bir dikkat dağınıklığı kaynağına dönüşebilirler. Her promosyon e-postası geldiğinde, bir haber uygulaması başlık geçtiğinde veya bir spam grup sohbeti güncellendiğinde bileğiniz titrediğinde, verimliliğiniz ve odaklanmanız zarar görür. Sürekli vızıldama duyusal yorgunluğa neden olur ve dikkat sürenizi parçalar.</p>
+        
+        <p>Neyse ki Wear OS, bildirimleriniz üzerinde ayrıntılı ve güçlü bir kontrol sağlar. Sıkı filtreler kurarak ve gürültüyü susturarak, saatinizi stresli bir dikkat dağıtıcıdan, sizi yalnızca kritik konularda uyaran huzurlu bir asistana dönüştürebilirsiniz. İşte Wear OS bildirim yönetiminde ustalaşma rehberiniz.</p>
+
+        <img src="../../posts-images/settings_sound.png" alt="Wear OS Sistem Ayarları Paneli" style="display: block; margin: 32px auto; max-width: 200px; border-radius: 50%; border: 5px solid var(--line); box-shadow: 0 12px 36px rgba(0,0,0,0.65);">
+
+        <h2>Altın Kural: Saatte Sessiz, Telefonda Sessiz</h2>
+        <p>Bir akıllı saate sahip olmanın en sinir bozucu yanlarından biri çift titreşimdir: masanızda telefonunuzun çaldığını duymak ve hemen ardından saatinizin bileğinizde titremesi. Wear OS'i, saatinizi taktığınızda telefon bildirimlerini akıllıca devre dışı bırakacak şekilde yapılandırabilirsiniz.</p>
+        
+        <h3>Saatiniz Kolunuzdayken Telefonunuzu Nasıl Sessize Alırsınız:</h3>
+        <ol>
+          <li>Telefonunuzda akıllı saat tamamlayıcı uygulamasını açın (örneğin Galaxy Wearable veya Pixel Watch uygulaması).</li>
+          <li><strong>Saat Ayarları &gt; Bildirimler</strong> bölümüne gidin.</li>
+          <li>Tap on <strong>Telefondaki bildirimleri sessize al</strong> (veya <strong>Show alerts only on watch</strong>).</li>
+          <li>Bu özelliği açın. Artık saatiniz bileğinizde olduğunu algıladığı sürece telefonunuz sessiz kalacak ve çift uyarılar ortadan kalkacaktır.</li>
+        </ol>
+
+        <h2>Filtreleme: Hangi Uygulamaların Bileğinizi Titretebileceğini Seçin</h2>
+        <p>Varsayılan bir Wear OS kurulumu, telefonunuzda yüklü olan her uygulamadan gelen uyarıları iletir. Sakinlik sağlamak için yalnızca kritik iletişimleri (aramalar, takvim uyarıları ve doğrudan mesajlaşma kanalları gibi) beyaz listeye almalı, sosyal medya akış güncellemelerini ve alışveriş uygulamalarını engellemelisiniz.</p>
+
+        <div class="tip-box">
+          <h4><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Akıllı Saat Sakinliği İçin 90/10 Kuralı</h4>
+          <p>Bildirim listenizi inceleyin ve %90'ını devre dışı bırakın. Bir uyarı acil dikkat veya 5 dakika içinde yanıt gerektirmiyorsa, bileğinize ait değildir. E-posta, haber ve sosyal medya bildirimlerini telefonunuzu veya bilgisayarınızı açmayı seçtiğiniz anlara saklayın.</p>
+        </div>
+
+        <h3>Uygulamaya Göre Bildirimler Nasıl Filtrelenir:</h3>
+        <ol>
+          <li>Telefonunuzun giyilebilir tamamlayıcı uygulamasında, <strong>Bildirimler &gt; Uygulama bildirimleri</strong> bölümüne gidin.</li>
+          <li>Telefonunuzda yüklü uygulamaların bir listesini göreceksiniz.</li>
+          <li>Gerçek zamanlı dikkat gerektirmeyen her uygulamanın anahtarını kapatın. Alışveriş uygulamalarına, oyun bildirimlerine ve e-posta istemcilerine özel olarak dikkat edin.</li>
+          <li>WhatsApp veya Slack gibi mesajlaşma uygulamaları için, doğrudan mesajları aktif tutarken grup sohbet bildirimlerini özel olarak sessize almak için telefonunuzdaki bu uygulamaların kendi ayarlarına gidebilirsiniz.</li>
+        </ol>
+
+        <h2>Ekran Uyanmasını ve Ses Tetikleyicilerini Önleme</h2>
+        <p>Uygulamaları filtreleseniz bile, yüz yüze toplantılar veya akşam yemekleri sırasında ekranınızın metin önizlemeleriyle aydınlanması dikkat dağıtıcı olabilir. Gizlilik için ekranınızı kapalı tutabilir ve metin önizlemelerini kısıtlayabilirsiniz.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Ayar Adı</th>
+              <th>Ne Yapar</th>
+              <th>Nasıl Yapılandırılır</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ekranı aç</strong></td>
+              <td>Yeni bir bildirim geldiğinde ekranı anında uyandırır.</td>
+              <td>Görsel dikkat dağınıklığını önlemek için Bildirim Ayarları altında bunu <strong>KAPALI</strong> konuma getirin.</td>
+            </tr>
+            <tr>
+              <td><strong>Önizlemeleri göster</strong></td>
+              <td>Ekranda detaylı gönderen adını ve mesaj içeriğini görüntüler.</td>
+              <td>Gizlilik için <strong>"Ayrıntıları gizle"</strong> veya <strong>"Yalnızca dokunulduğunda göster"</strong> olarak ayarlayın.</td>
+            </tr>
+            <tr>
+              <td><strong>Bildirimleri sesli oku</strong></td>
+              <td>Kulaklık bağlıyken gelen bildirimleri seslendirir.</td>
+              <td>Aramalar sırasında ani ses kesintilerini önlemek için bunu <strong>KAPALI</strong> konuma getirin.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Odaklanma Modlarını Kullanma: DND ve Sinema Modu</h2>
+        <p>Derin bir çalışma bloğu, sunum veya film sırasında mutlak, kesintisiz odaklanmaya ihtiyaç duyduğunuzda, bireysel uygulama ayarlarını manuel olarak düzenlemek pratik değildir. Bunun yerine, Wear OS sistem durumlarını kullanmayı öğrenin:</p>
+        <ul>
+          <li><strong>Rahatsız Etmeyin (DND):</strong> Gelen bildirimlerden kaynaklanan tüm titreşimleri ve ekran uyanma tetikleyicilerini engeller. DND durumunu telefonunuz ve saatiniz arasında gelişmiş ayarlar altından senkronize edebilirsiniz, böylece bir cihazda açmak her ikisini de susturur.</li>
+          <li><strong>Sinema Modu (Theater Mode):</strong> Uyarıları sessize alır, Her Zaman Açık Ekranı (AOD) devre dışı bırakır ve bileğinizi kaldırdığınızda veya ekrana dokunduğunuzda ekranın açılmasını önler. Ekran yalnızca fiziksel bir yan düğmeye basarsanız uyanır.</li>
+        </ul>
+        <p>Ana saat kadranınızdan aşağı kaydırarak <strong>Hızlı Ayarlar</strong> panelini açıp ilgili simgelere (DND için eksi işareti olan daire, Sinema Modu için drama maskeleri) dokunarak her iki moda da hızlıca erişin.</p>
+
+        <h2>Son Düşünceler</h2>
+        <p>Akıllı saatiniz size hizmet etmesi gereken bir araçtır, dikkatinizi dikte etmemelidir. Saati takarken telefonunuzu sessize alarak, gerekli olmayan uygulamalar için bildirimleri kapatarak ve mesaj önizlemelerini gizleyerek odaklanmış, sakin bir dijital yaşam tarzı geliştirebilirsiniz. Bugün ayarlarınızın kontrolünü elinize alın ve daha sessiz, daha sakin bir bileğin tadını çıkarın!</p>
+
+        <!-- AUTHOR -->
+        <div class="article-footer">
+          <div class="author-card">
+            <div class="author-avatar">Z</div>
+            <div class="author-info">
+              <h5>ZBD Yayın Ekibi</h5>
+              <p>Modern Wear OS meraklıları için akıllı saat ipuçlarını, verimlilik iş akışlarını ve giyilebilir donanım güncellemelerini keşfediyor.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../../"><span class="logo"><img src="../../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../../../apps/anatolia/">Gate of Anatolia</a>
+        <a href="../../../apps/wearssh/">WearSSH</a>
+        <a href="../../../apps/vakitwear/">Vakit Wear</a>
+        <a href="../../../apps/weardisco/">Wear Disco</a>
+        <a href="../../">Blog</a>
+      </div>
+      <p class="footer-note">Wear OS için sevgiyle yapıldı · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../../js/reveal.js"></script>
+</body>
+</html>
