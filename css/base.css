@@ -5,14 +5,14 @@
    ============================================================ */
 
 :root{
-  --bg:#070710;
-  --bg2:#0c0c18;
-  --panel:#10101e;
-  --line:#1d1d2e;
+  --bg:#04091a;
+  --bg2:#060e24;
+  --panel:#0c1830;
+  --line:#162845;
   --text:#eef0f7;
-  --muted:#9aa0b5;
-  --accent:#7c5cff;     /* default company accent (overridable) */
-  --accent2:#21d4fd;
+  --muted:#8a9ab8;
+  --accent:#1c6fff;
+  --accent2:#48c1ff;
   --radius:18px;
   --maxw:1160px;
 }

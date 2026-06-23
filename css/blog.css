@@ -6,7 +6,7 @@
 /* Blog Layout Adjustments */
 .blog-hero {
   padding: 120px 0 60px;
-  background: radial-gradient(120% 90% at 50% 0%, #171535 0%, #0d0c20 40%, #070710 80%);
+  background: radial-gradient(120% 90% at 50% 0%, #0d2040 0%, #060e22 40%, #04091a 80%);
   text-align: center;
   border-bottom: 1px solid var(--line);
 }
@@ -123,7 +123,7 @@
 /* Article Page Specifics */
 .article-header {
   padding: 140px 0 60px;
-  background: radial-gradient(120% 90% at 50% 0%, #171535 0%, #0d0c20 40%, #070710 80%);
+  background: radial-gradient(120% 90% at 50% 0%, #0d2040 0%, #060e22 40%, #04091a 80%);
   border-bottom: 1px solid var(--line);
 }
 .article-header-wrap {
@@ -268,7 +268,7 @@
 .article-content code {
   font-family: 'JetBrains Mono', monospace;
   font-size: 14.5px;
-  color: #21d4fd;
+  color: var(--accent2);
   background: rgba(255,255,255,0.03);
   padding: 2px 6px;
   border-radius: 4px;
