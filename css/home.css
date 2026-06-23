@@ -4,9 +4,11 @@
 
 /* ---------- HERO ---------- */
 .hero{ position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden;
-  background:radial-gradient(120% 90% at 80% 0%,#171535 0%,#0d0c20 45%,#070710 80%); }
-.hero-grid{ position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5;
-  background:radial-gradient(120% 80% at 50% 40%,transparent 45%,rgba(7,7,16,.85) 100%); }
+  background:radial-gradient(120% 90% at 80% 0%,#0d2040 0%,#060e22 45%,#04091a 80%); }
+.hero-grid{ position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.6;
+  background:
+    radial-gradient(circle, rgba(28,111,255,.14) 1px, transparent 1px) 0 0 / 44px 44px,
+    radial-gradient(120% 80% at 50% 40%,transparent 40%,rgba(4,9,26,.9) 100%); }
 .hero .wrap{ position:relative; z-index:2; }
 
 /* 2-column layout on desktop */
@@ -39,7 +41,7 @@
 .hero h1 .grad{ background:linear-gradient(110deg,var(--accent),var(--accent2),var(--accent));
   background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
   animation:shimmer 6s linear infinite; }
-.hero p.lead{ color:#c7cbe0; font-size:clamp(16px,2.2vw,20px); max-width:540px; margin:22px 0 32px; }
+.hero p.lead{ color:#b8c8e4; font-size:clamp(16px,2.2vw,20px); max-width:540px; margin:22px 0 32px; line-height:1.65; }
 .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; }
 .hero-meta{ display:flex; gap:30px; margin-top:46px; flex-wrap:wrap; }
 .hero-meta .m b{ font-family:'Sora',sans-serif; font-size:30px; display:block;
@@ -86,7 +88,7 @@
 .product:hover .open svg{ transform:translateX(4px); }
 
 /* ---------- CONTACT / CTA ---------- */
-.cta-band{ text-align:center; background:radial-gradient(120% 120% at 50% 0%,#171535 0%,#0b0a1c 60%,#070710 100%);
+.cta-band{ text-align:center; background:radial-gradient(120% 120% at 50% 0%,#0a1e40 0%,#060e28 60%,#04091a 100%);
   border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .cta-band h2{ font-family:'Sora',sans-serif; font-size:clamp(30px,5.4vw,50px); margin:0 0 14px; }
 .cta-band p{ color:var(--muted); max-width:520px; margin:0 auto 28px; font-size:17px; }
