@@ -26,6 +26,11 @@
   filter:blur(10px); animation:glowpulse 4s ease-in-out infinite; }
 .app-hero-visual .watch{ animation:floaty 6s ease-in-out infinite; }
 
+@media(max-width:768px){
+  .app-hero{ align-items:flex-start; padding-top:80px; }
+  .app-hero .wrap{ padding-bottom:40px; }
+}
+
 /* ---------- SECTIONS ---------- */
 .s{ padding:clamp(70px,9vw,110px) 0; }
 .s.alt{ background:radial-gradient(120% 80% at 50% 0%,var(--bg2) 0%,var(--bg) 65%); }

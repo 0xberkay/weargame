@@ -21,7 +21,8 @@
 
 /* mobile: stack, canvas below text */
 @media(max-width:860px){
-  .hero-wrap{ grid-template-columns:1fr; }
+  .hero{ align-items:flex-start; padding-top:80px; }
+  .hero-wrap{ grid-template-columns:1fr; padding-bottom:48px; }
   .hero-canvas-frame{ width:min(440px,90vw); margin:0 auto; aspect-ratio:1/1; }
 }
 /* logo badge in hero — glowing, floating */
