@@ -61,6 +61,18 @@
   <!-- CRT scanline + vignette overlay -->
   <div class="crt-overlay" aria-hidden="true"></div>
 
+  <!-- ===== ARCADE CABINET (the whole machine) ===== -->
+  <div class="arcade-cabinet">
+
+  <!-- MARQUEE — the lit sign on top of the cabinet -->
+  <div class="marquee">
+    <span class="bulbs top" aria-hidden="true"></span>
+    <h1 class="marquee-title">ZBD</h1>
+    <p class="marquee-sub">Smartwatch Studio</p>
+    <p class="marquee-coin"><b>INSERT COIN</b> · Apple Watch &amp; Wear OS</p>
+    <span class="bulbs bottom" aria-hidden="true"></span>
+  </div>
+
   <div class="cabinet">
 
   <!-- TOP BAR -->
@@ -84,7 +96,7 @@
     <div class="wrap hero-wrap">
       <div class="hero-content">
         <div class="eyebrow">APPLE WATCH &amp; WEAR OS STUDIO</div>
-        <h1>Software for<br><span class="grad">your wrist</span></h1>
+        <h2 class="hero-title">Software for<br><span class="grad">your wrist</span></h2>
         <p class="lead">A small studio obsessed with smartwatches. Every app we ship is built
           from the ground up for the wrist — Apple Watch and Wear OS, nothing ported, nothing watered down.</p>
         <div class="hero-cta">
@@ -97,8 +109,52 @@
           <div class="m"><b>0</b><span>Ads, ever</span></div>
         </div>
       </div>
-      <div class="hero-canvas-frame">
-        <canvas id="three-canvas" aria-label="Interactive 3D watch with app launcher"></canvas>
+
+      <!-- Pixel-art focal scene: a glowing watch on a wrist (original SVG art) -->
+      <div class="hero-scene" aria-hidden="true">
+        <svg viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+          <!-- starfield -->
+          <g fill="var(--accent2)" opacity=".7">
+            <rect x="14" y="16" width="3" height="3"/><rect x="138" y="28" width="3" height="3"/>
+            <rect x="40" y="8" width="3" height="3"/><rect x="120" y="10" width="3" height="3"/>
+            <rect x="8" y="60" width="3" height="3"/><rect x="150" y="74" width="3" height="3"/>
+          </g>
+          <g fill="var(--accent)" opacity=".85">
+            <rect x="26" y="40" width="3" height="3"/><rect x="132" y="54" width="3" height="3"/>
+            <rect x="70" y="6" width="3" height="3"/>
+          </g>
+          <!-- arm / wrist (pixel blocks) -->
+          <g fill="#2c353f">
+            <rect x="44" y="120" width="72" height="56"/>
+          </g>
+          <g fill="#222a32"><rect x="44" y="120" width="72" height="6"/></g>
+          <g fill="#3a4651"><rect x="48" y="126" width="64" height="4"/></g>
+          <!-- strap -->
+          <g fill="#171c22"><rect x="58" y="96" width="44" height="34"/></g>
+          <g fill="#0f1318"><rect x="58" y="96" width="44" height="4"/><rect x="58" y="126" width="44" height="4"/></g>
+          <!-- watch body (rounded square via stepped corners) -->
+          <g class="hs-float">
+            <g fill="var(--shadow)"><rect x="50" y="58" width="60" height="60"/></g>
+            <g fill="var(--accent)">
+              <rect x="52" y="56" width="56" height="4"/><rect x="52" y="116" width="56" height="4"/>
+              <rect x="48" y="60" width="4" height="56"/><rect x="108" y="60" width="4" height="56"/>
+            </g>
+            <!-- screen -->
+            <g fill="#06090c"><rect x="56" y="62" width="48" height="52"/></g>
+            <!-- on-screen mini watch face: ring + hands -->
+            <g fill="var(--accent2)">
+              <rect x="76" y="66" width="8" height="4"/><rect x="76" y="106" width="8" height="4"/>
+              <rect x="58" y="86" width="4" height="4"/><rect x="98" y="86" width="4" height="4"/>
+            </g>
+            <g fill="var(--accent)">
+              <rect x="78" y="78" width="4" height="12"/><rect x="80" y="86" width="12" height="4"/>
+              <rect x="78" y="86" width="4" height="4"/>
+            </g>
+            <!-- crown -->
+            <g fill="var(--accent)"><rect x="112" y="82" width="6" height="10"/></g>
+          </g>
+        </svg>
+        <p class="insert">▲ READY PLAYER ONE ▲</p>
       </div>
     </div>
     <a class="scroll-cue" href="#services">SCROLL
@@ -245,6 +301,27 @@
     </div>
   </section>
 
+  <!-- MINI LIVE CONSOLE — relocated interactive 3D watch -->
+  <section class="s console-section">
+    <div class="wrap">
+      <div class="console-stage reveal">
+        <div class="console-copy">
+          <div class="eyebrow">LIVE DEMO UNIT</div>
+          <h2 class="section-title">Spin the console</h2>
+          <p>A real-time 3D smartwatch running our app launcher. Drag to rotate it, then tap an app
+            tile to jump straight to its page.</p>
+          <span class="hint">► DRAG TO SPIN · TAP A TILE</span>
+        </div>
+        <div class="mini-cabinet">
+          <span class="tag">DEMO-01</span>
+          <div class="screen">
+            <canvas id="three-canvas" aria-label="Interactive 3D watch with app launcher"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA / CONTACT -->
   <section id="contact" class="s cta-band">
     <div class="wrap reveal">
@@ -298,6 +375,20 @@
   </footer>
 
   </div><!-- /.cabinet -->
+
+  <!-- CONTROL DECK — joystick + buttons on the cabinet body -->
+  <div class="control-deck" aria-hidden="true">
+    <div class="deck-stick">
+      <span class="ball"></span><span class="shaft"></span><span class="base"></span>
+    </div>
+    <span class="deck-label">Player <b>1</b></span>
+    <div class="deck-btns">
+      <span class="deck-btn g"></span><span class="deck-btn t"></span><span class="deck-btn a"></span>
+    </div>
+    <span class="deck-label"><b>ZBD</b> Arcade · © 2026</span>
+  </div>
+
+  </div><!-- /.arcade-cabinet -->
 
   <script type="module" src="js/three-hero.js"></script>
   <script src="js/watch-faces.js"></script>
