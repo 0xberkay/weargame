@@ -141,7 +141,91 @@
     ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(r, r, pr, 0, 7); ctx.fill();
   }
 
-  const drawers = { game: drawGame, ssh: drawSSH, vakit: drawVakit, disco: drawDisco };
+  // ---------------------------------------------------------
+  // WET WATCH — animated fluid metaballs with moving hole
+  // ---------------------------------------------------------
+  const WW_LIQUIDS = [
+    { color: '#3ec8ff', name: 'Water',   tag: 'Balanced flow' },
+    { color: '#86f000', name: 'Acid',    tag: 'Melts gates'   },
+    { color: '#ffb43a', name: 'Oil',     tag: 'Slippery'      },
+    { color: '#ffd23a', name: 'Honey',   tag: 'Sticky'        },
+    { color: '#ff6a2a', name: 'Lava',    tag: 'Heavy fall'    },
+    { color: '#c9d8e3', name: 'Mercury', tag: 'Scatters'      },
+  ];
+  const WW_GRAVITY = [0.18, 0.13, 0.15, 0.08, 0.28, 0.26];
+  const WW_VISC    = [0.97, 0.98, 0.99, 0.996, 0.96, 0.97];
+  const wwParticles = {};
+
+  function wwInit(r) {
+    const key = r;
+    if (wwParticles[key]) return wwParticles[key];
+    const S = r * 2, n = 18;
+    const ps = [];
+    for (let i = 0; i < n; i++) {
+      ps.push({ x: S * (.2 + Math.random()*.6), y: S * (.05 + Math.random()*.5),
+                vx: (Math.random()-.5)*2, vy: Math.random()*2, rad: 6+Math.random()*7 });
+    }
+    return (wwParticles[key] = ps);
+  }
+
+  function drawWetWatch(ctx, r, t) {
+    const S = r * 2;
+    const liqIdx = Math.floor(t / 5) % WW_LIQUIDS.length;
+    const liq = WW_LIQUIDS[liqIdx];
+    const grav = WW_GRAVITY[liqIdx], visc = WW_VISC[liqIdx];
+    const ps = wwInit(r);
+
+    // black screen (matches the real app)
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, S, S);
+
+    // shelves
+    ctx.fillStyle = '#0e2330';
+    ctx.beginPath(); ctx.roundRect(S*.12, S*.55, S*.34, S*.04, 3); ctx.fill();
+    ctx.beginPath(); ctx.roundRect(S*.55, S*.66, S*.32, S*.04, 3); ctx.fill();
+
+    // moving hole: dark disc + bright ring
+    const hx = r + Math.sin(t*1.1) * r*.26, hy = S*.8;
+    ctx.fillStyle = '#06202b';
+    ctx.beginPath(); ctx.arc(hx, hy, S*.072, 0, 7); ctx.fill();
+    ctx.strokeStyle = liq.color; ctx.lineWidth = S*.012;
+    ctx.beginPath(); ctx.arc(hx, hy, S*.072, 0, 7); ctx.stroke();
+
+    // simulate particles
+    for (const p of ps) {
+      p.vy += grav; p.vx *= visc; p.vy *= visc;
+      const adx = hx - p.x, ady = hy - p.y, dd = Math.hypot(adx, ady) || 1;
+      p.vx += (adx/dd)*.04;
+      p.x += p.vx * .6; p.y += p.vy * .6;
+      if (p.x>S*.12&&p.x<S*.46&&p.y+p.rad>S*.55&&p.y-p.rad<S*.6){p.y=S*.55-p.rad;p.vy*=-.3;}
+      if (p.x>S*.55&&p.x<S*.87&&p.y+p.rad>S*.66&&p.y-p.rad<S*.71){p.y=S*.66-p.rad;p.vy*=-.3;}
+      if (p.x<p.rad){p.x=p.rad;p.vx=Math.abs(p.vx)*.4;}
+      if (p.x>S-p.rad){p.x=S-p.rad;p.vx=-Math.abs(p.vx)*.4;}
+      const dx=p.x-hx,dy=p.y-hy;
+      if (dx*dx+dy*dy<(S*.085+p.rad)*(S*.085+p.rad) || p.y-p.rad>S+8){
+        p.x=S*(.3+Math.random()*.4);p.y=-p.rad;p.vx=(Math.random()-.5)*1.5;p.vy=.5;
+      }
+    }
+
+    // gooey blob via blur union
+    ctx.save();
+    ctx.filter = 'blur(' + (S*.018) + 'px)';
+    ctx.fillStyle = liq.color;
+    for (const p of ps) { ctx.beginPath(); ctx.arc(p.x,p.y,p.rad,0,7); ctx.fill(); }
+    ctx.restore();
+    // specular
+    ctx.fillStyle='rgba(255,255,255,.4)';
+    for (const p of ps){ if(p.rad<7)continue; ctx.beginPath(); ctx.arc(p.x-p.rad*.3,p.y-p.rad*.3,p.rad*.2,0,7); ctx.fill(); }
+
+    // HUD: percentage + liquid label
+    ctx.textAlign='center';
+    const cap = 8 + Math.floor((t % 5)/5*30);
+    ctx.font=`800 ${Math.round(S*.1)}px Sora,sans-serif`;
+    ctx.fillStyle=liq.color; ctx.fillText(cap+'% / 67%', r, S*.2);
+    ctx.font=`600 ${Math.round(S*.058)}px Sora,sans-serif`;
+    ctx.fillStyle='#aeb6bf'; ctx.fillText(liq.name+': '+liq.tag, r, S*.31);
+  }
+
+  const drawers = { game: drawGame, ssh: drawSSH, vakit: drawVakit, disco: drawDisco, wetwatch: drawWetWatch };
 
   let running = true;
   document.addEventListener('visibilitychange', () => { running = !document.hidden; });

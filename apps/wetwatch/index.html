@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wet Watch — Fluid Puzzle Adventure · ZBD</title>
+  <meta name="description" content="Wet Watch: A fluid physics puzzle game for Apple Watch and Wear OS. Pour, tilt, and trickle through 200+ handcrafted levels. 6 unique liquids, real-time metaball rendering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="../../logo.webp">
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/app.css">
+  <link rel="stylesheet" href="wetwatch.css">
+  <style>:root{ --accent:#00cfff; --accent2:#0077cc; }</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="../../"><span class="logo"><img src="../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+    <nav class="nav">
+      <a class="back-link" href="../../"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All apps</a>
+      <a class="play-badge" href="#coming-soon" aria-label="Google Play" style="pointer-events:none;opacity:.5;"></a>
+      <a class="btn btn-primary sm" href="#features">Explore</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="app-hero">
+    <div class="wrap">
+      <div class="app-hero-text">
+        <div class="platform-chips">
+          <span class="platform-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Apple Watch
+          </span>
+          <span class="platform-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24C14.6 7.9 12.88 7.5 11 7.5s-3.6.4-5.47 1.41L3.65 5.67c-.19-.28-.55-.37-.83-.22-.3.16-.42.54-.26.85L4.4 9.48C1.28 11.25 0 14.16 0 17h22c0-2.84-1.28-5.75-4.4-7.52zM7 15c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+            Wear OS
+          </span>
+          <span class="platform-chip" style="color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);">
+            ✦ Coming Soon
+          </span>
+        </div>
+        <h1>Wet <span class="grad">Watch</span></h1>
+        <p class="lead">Pour, tilt, and trickle your way through 200+ handcrafted levels. Six liquids, six physics engines — every drop counts.</p>
+        <div class="app-hero-cta">
+          <a class="btn btn-primary" href="#features">Explore Features</a>
+          <a class="btn btn-ghost" href="#liquids">Meet the Liquids</a>
+        </div>
+      </div>
+      <div class="app-hero-visual">
+        <div class="halo"></div>
+        <div class="fluid-hero-wrap">
+          <div class="fluid-canvas-box">
+            <canvas id="fluid-canvas" width="280" height="280"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="s" style="padding-top:0;padding-bottom:0;">
+    <div class="wrap">
+      <div class="stats-row reveal">
+        <div class="stat-pill"><div class="stat-num">200+</div><div class="stat-lbl">Levels</div></div>
+        <div class="stat-pill"><div class="stat-num">6</div><div class="stat-lbl">Liquids</div></div>
+        <div class="stat-pill"><div class="stat-num">7</div><div class="stat-lbl">Mechanics</div></div>
+        <div class="stat-pill"><div class="stat-num">2</div><div class="stat-lbl">Platforms</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 LIQUIDS -->
+  <section id="liquids" class="s alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">6 LIQUIDS · 6 PHYSICS</div>
+        <h2 class="section-title">Every drop behaves differently</h2>
+        <p class="section-desc">Each liquid has its own viscosity, gravity, cohesion, and color. Adapt your strategy or fail.</p>
+      </div>
+      <div class="liquids-grid">
+
+        <div class="liquid-card reveal" style="--lc:#00cfff;">
+          <div class="liquid-dot"></div>
+          <h3>Water</h3>
+          <div class="lc-sub">Cyan · Balanced</div>
+          <p>Stable, predictable flow. Your baseline — master it first, it's the foundation for everything else.</p>
+          <div class="physics-bars">
+            <div class="pbar-row"><span class="pbar-label">Speed</span><div class="pbar-track"><div class="pbar-fill" style="width:55%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Gravity</span><div class="pbar-track"><div class="pbar-fill" style="width:50%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Cohesion</span><div class="pbar-track"><div class="pbar-fill" style="width:50%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="liquid-card reveal d1" style="--lc:#ffa520;">
+          <div class="liquid-dot" style="--lc:#ffa520;"></div>
+          <h3>Oil</h3>
+          <div class="lc-sub">Amber · Slippery</div>
+          <p>Fast and frictionless. Slides off surfaces at high speed — precise tilting required to land the shot.</p>
+          <div class="physics-bars">
+            <div class="pbar-row"><span class="pbar-label">Speed</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#ffa520;width:85%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Gravity</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#ffa520;width:45%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Cohesion</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#ffa520;width:20%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="liquid-card reveal d2" style="--lc:#f5c518;">
+          <div class="liquid-dot" style="--lc:#f5c518;"></div>
+          <h3>Honey</h3>
+          <div class="lc-sub">Gold · Sticky</div>
+          <p>Thick and sluggish but highly cohesive. Clings to walls, forms a single blob — slow and deliberate.</p>
+          <div class="physics-bars">
+            <div class="pbar-row"><span class="pbar-label">Speed</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#f5c518;width:22%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Gravity</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#f5c518;width:35%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Cohesion</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#f5c518;width:95%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="liquid-card reveal d3" style="--lc:#ff6600;">
+          <div class="liquid-dot" style="--lc:#ff6600;"></div>
+          <h3>Lava</h3>
+          <div class="lc-sub">Orange · Heavy</div>
+          <p>Dense and sluggish with extreme gravity pull. Sinks fast, scorches everything it touches.</p>
+          <div class="physics-bars">
+            <div class="pbar-row"><span class="pbar-label">Speed</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#ff6600;width:30%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Gravity</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#ff6600;width:95%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Cohesion</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#ff6600;width:60%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="liquid-card reveal" style="--lc:#39e600;">
+          <div class="liquid-dot" style="--lc:#39e600;"></div>
+          <h3>Acid</h3>
+          <div class="lc-sub">Green · Agile</div>
+          <p>Light and fast. Melts gates in its path — open new routes, but it evaporates faster than others.</p>
+          <div class="physics-bars">
+            <div class="pbar-row"><span class="pbar-label">Speed</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#39e600;width:80%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Gravity</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#39e600;width:28%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Cohesion</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#39e600;width:40%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="liquid-card reveal d1" style="--lc:#c8d6e0;">
+          <div class="liquid-dot" style="--lc:#c8d6e0;"></div>
+          <h3>Mercury</h3>
+          <div class="lc-sub">Silver · Scattered</div>
+          <p>Heavy, metallic beads that scatter on impact. High cohesion keeps them together — until it doesn't.</p>
+          <div class="physics-bars">
+            <div class="pbar-row"><span class="pbar-label">Speed</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#c8d6e0;width:65%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Gravity</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#c8d6e0;width:88%"></div></div></div>
+            <div class="pbar-row"><span class="pbar-label">Cohesion</span><div class="pbar-track"><div class="pbar-fill" style="--lc:#c8d6e0;width:75%"></div></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / HOW TO PLAY -->
+  <section id="features" class="s">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">HOW TO PLAY</div>
+        <h2 class="section-title">Two ways to flow</h2>
+        <p class="section-desc">Switch control styles at any moment — even mid-level.</p>
+      </div>
+      <div class="controls-compare reveal">
+        <div class="ctrl-card">
+          <div class="ctrl-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="4"/><path d="M7 6H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2M17 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
+          <h3>Tilt Wrist</h3>
+          <p>The motion sensor guides your liquid naturally. Rotate your wrist and let physics do the work.</p>
+          <span class="ctrl-badge">Immersive</span>
+        </div>
+        <div class="ctrl-card">
+          <div class="ctrl-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V6a2 2 0 0 1 4 0v5"/><path d="M13 11V8a2 2 0 0 1 4 0v5"/><path d="M17 11a2 2 0 0 1 4 0v3a8 8 0 0 1-8 8H9a7 7 0 0 1-7-7v-1a2 2 0 0 1 4 0"/><path d="M9 11V6a2 2 0 0 0-4 0v5"/></svg></div>
+          <h3>Tap Screen</h3>
+          <p>Drag gestures give you surgical precision. Perfect for tight gaps and moving targets.</p>
+          <span class="ctrl-badge">Precise</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIAL MECHANICS -->
+  <section class="s alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">SPECIAL MECHANICS</div>
+        <h2 class="section-title">Expect the unexpected</h2>
+        <p class="section-desc">Modifiers that change the rules mid-pour. Learn them. Master them.</p>
+      </div>
+      <div class="mechanics-grid">
+
+        <div class="mechanic-card reveal">
+          <div class="mechanic-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          </div>
+          <h3>Reverse Start</h3>
+          <p>Gravity flips for the first 6 seconds. What falls up must come down — time your release.</p>
+        </div>
+
+        <div class="mechanic-card reveal d1">
+          <div class="mechanic-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>
+          </div>
+          <h3>Crosswind</h3>
+          <p>A gentle lateral oscillation pushes your stream left and right in a slow sine wave.</p>
+        </div>
+
+        <div class="mechanic-card reveal d2">
+          <div class="mechanic-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.93 10 12 17l7.07-7"/></svg>
+          </div>
+          <h3>Gravity Surge</h3>
+          <p>Every 7 seconds, gravity spikes to 2.2×. Predict the surge — or watch your liquid miss the hole.</p>
+        </div>
+
+        <div class="mechanic-card reveal d3">
+          <div class="mechanic-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h3>Shrinking Hole</h3>
+          <p>The target radius shrinks over time. Fill it fast before it becomes too small to hit.</p>
+        </div>
+
+        <div class="mechanic-card reveal">
+          <div class="mechanic-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
+          </div>
+          <h3>Moving Hole</h3>
+          <p>The target sways horizontally in a smooth arc. Lead the hole, not where it is.</p>
+        </div>
+
+        <div class="mechanic-card reveal d1">
+          <div class="mechanic-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+          </div>
+          <h3>Vortex</h3>
+          <p>A spinning force field above the hole curves every particle's trajectory. Aim wide, aim smart.</p>
+        </div>
+
+        <div class="mechanic-card reveal d2">
+          <div class="mechanic-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+          </div>
+          <h3>Wind Gusts</h3>
+          <p>Sudden lateral blasts every 4 seconds disrupt your stream without warning. Stay adaptive.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 200+ LEVELS -->
+  <section class="s">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">200+ LEVELS</div>
+        <h2 class="section-title">Endless depth</h2>
+        <p class="section-desc">Hand-tuned tutorials, procedurally generated challenges, and a relief stage every tenth level.</p>
+      </div>
+      <div class="archetypes-grid reveal">
+        <div class="archetype">
+          <div class="archetype-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="5" cy="6" r="2"/><circle cx="12" cy="4" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="8" cy="13" r="2"/><circle cx="16" cy="13" r="2"/><circle cx="12" cy="20" r="2"/></svg></div>
+          <h4>Peg Fields</h4>
+          <p>Navigate a dense field of obstacles without losing a drop.</p>
+        </div>
+        <div class="archetype">
+          <div class="archetype-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="11" width="18" height="3" rx="1.5"/></svg></div>
+          <h4>Single Shelf</h4>
+          <p>One platform, one chance. Bounce correctly or start over.</p>
+        </div>
+        <div class="archetype">
+          <div class="archetype-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8h8M9 13h8M3 18h8"/></svg></div>
+          <h4>Tiered Walls</h4>
+          <p>Cascading barriers that redirect your flow at every layer.</p>
+        </div>
+        <div class="archetype">
+          <div class="archetype-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 7h7M10 7l4 5M14 12h7M17 12l-4 5M13 17H3"/></svg></div>
+          <h4>Zigzag Shelves</h4>
+          <p>Alternating platforms demand split-second angle adjustments.</p>
+        </div>
+        <div class="archetype">
+          <div class="archetype-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 3v18M15 3v18"/></svg></div>
+          <h4>Vertical Chutes</h4>
+          <p>Narrow channels that amplify every tiny tilt error you make.</p>
+        </div>
+        <div class="archetype">
+          <div class="archetype-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M10 9h4M10 15h4"/></svg></div>
+          <h4>Enclosed Rooms</h4>
+          <p>Narrow gates that only Acid can melt. Plan the path first.</p>
+        </div>
+      </div>
+      <p class="reveal" style="text-align:center;color:var(--muted);font-size:14px;margin-top:36px;">
+        First 6 levels are hand-tuned tutorials. Every 10th level is a relief stage — easier, mechanic-free, pure water.
+      </p>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="s">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">FROM THE WRIST</div>
+        <h2 class="section-title">Real gameplay</h2>
+        <p class="section-desc">Captured straight from the watch — pour, aim, and fill the hole.</p>
+      </div>
+      <div class="shots-grid reveal">
+        <figure class="shot"><img loading="lazy" src="assets/shot1.png" alt="Wet Watch gameplay — moving hole" onerror="this.closest('.shot').style.display='none'"></figure>
+        <figure class="shot"><img loading="lazy" src="assets/shot2.png" alt="Wet Watch level select" onerror="this.closest('.shot').style.display='none'"></figure>
+        <figure class="shot"><img loading="lazy" src="assets/shot3.png" alt="Wet Watch peg field" onerror="this.closest('.shot').style.display='none'"></figure>
+        <figure class="shot"><img loading="lazy" src="assets/shot4.png" alt="Wet Watch acid level" onerror="this.closest('.shot').style.display='none'"></figure>
+        <figure class="shot"><img loading="lazy" src="assets/shot5.png" alt="Wet Watch tiered shelves" onerror="this.closest('.shot').style.display='none'"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- WATCH PREVIEWS -->
+  <section class="s alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">TWO PLATFORMS</div>
+        <h2 class="section-title">Wrist, your way</h2>
+        <p class="section-desc">Identical physics engine, natively adapted to both Apple Watch and Wear OS displays.</p>
+      </div>
+      <div class="watch-strip reveal">
+        <div class="watch-mini-wrap">
+          <div class="apple-watch-box">
+            <canvas class="face" data-face="wetwatch" width="120" height="145"></canvas>
+          </div>
+          <div class="watch-mini-label">Apple Watch</div>
+        </div>
+        <div class="watch-mini-wrap">
+          <div class="wear-watch-box">
+            <canvas class="face" data-face="wetwatch" width="130" height="130"></canvas>
+          </div>
+          <div class="watch-mini-label">Wear OS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="coming-soon" class="s app-cta">
+    <div class="wrap reveal">
+      <h2>Wet Watch is coming.</h2>
+      <p>Six liquids. Two platforms. 200+ levels. Stay tuned.</p>
+      <div class="store-btns">
+        <a class="apple-badge" href="#" aria-label="Download on App Store" style="opacity:.6;pointer-events:none;cursor:default;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="apple-badge-text">
+            <span class="apple-badge-sub">Coming to</span>
+            <span class="apple-badge-store">App Store</span>
+          </div>
+        </a>
+        <a class="play-badge" href="#" aria-label="Google Play" style="opacity:.6;pointer-events:none;cursor:default;"></a>
+      </div>
+      <p style="margin-top:20px;font-size:13px;color:var(--muted);">No data collected. No internet required. Motion sensor only for tilt controls.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="../../"><span class="logo"><img src="../../logo.webp" alt="ZBD" width="34" height="34"></span><span><b>ZBD</b><small>Wear OS Studio</small></span></a>
+      <div class="footer-links">
+        <a href="../anatolia/">Gate of Anatolia</a>
+        <a href="../wearssh/">WearSSH</a>
+        <a href="../vakitwear/">Vakit Wear</a>
+        <a href="../weardisco/">Wear Disco</a>
+        <a href="./">Wet Watch</a>
+      </div>
+      <p class="footer-note">Made with love for Wear OS · © 2026 ZBD</p>
+    </div>
+  </footer>
+
+  <script src="../../js/watch-faces.js"></script>
+  <script src="../../js/reveal.js"></script>
+  <script src="js/fluid.js"></script>
+</body>
+</html>

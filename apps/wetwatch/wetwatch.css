@@ -1,0 +1,210 @@
+/* ============================================================
+   Wet Watch — page-specific styles
+   ============================================================ */
+
+/* ---------- platform chips ---------- */
+.platform-chips { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+.platform-chip {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+  padding:6px 13px; border-radius:999px;
+  border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);
+  color:var(--accent2);
+}
+.platform-chip svg { flex:none; }
+
+/* ---------- fluid hero canvas ---------- */
+.fluid-hero-wrap {
+  position:relative; width:100%; max-width:680px; margin:0 auto;
+  display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap;
+}
+.fluid-canvas-box {
+  position:relative; width:280px; height:280px; flex:none;
+  border-radius:50%;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent),
+             0 0 60px color-mix(in srgb,var(--accent) 25%,transparent),
+             0 0 120px color-mix(in srgb,var(--accent2) 15%,transparent);
+  overflow:hidden;
+}
+#fluid-canvas { width:100%; height:100%; display:block; }
+
+/* ---------- multi-watch strip ---------- */
+.watch-strip {
+  display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-top:12px;
+}
+.watch-strip .watch-mini-label {
+  text-align:center; margin-top:10px;
+  font-size:11px; font-weight:600; letter-spacing:.07em; text-transform:uppercase;
+  color:var(--muted);
+}
+.watch-mini-wrap { display:flex; flex-direction:column; align-items:center; }
+
+/* Apple Watch shape */
+.apple-watch-box {
+  width:120px; height:145px; border-radius:34px;
+  background:#111;
+  border:2px solid color-mix(in srgb,var(--accent) 35%,transparent);
+  box-shadow:0 0 30px color-mix(in srgb,var(--accent) 20%,transparent);
+  overflow:hidden; position:relative;
+  flex:none;
+}
+.apple-watch-box canvas { width:100%; height:100%; display:block; }
+
+/* Wear OS round watch */
+.wear-watch-box {
+  width:130px; height:130px; border-radius:50%;
+  background:#111;
+  border:2px solid color-mix(in srgb,var(--accent) 35%,transparent);
+  box-shadow:0 0 30px color-mix(in srgb,var(--accent) 20%,transparent);
+  overflow:hidden; position:relative;
+  flex:none;
+}
+.wear-watch-box canvas { width:100%; height:100%; display:block; }
+
+/* ---------- liquids grid ---------- */
+.liquids-grid {
+  display:grid; gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+.liquid-card {
+  background:linear-gradient(160deg,rgba(255,255,255,.03),rgba(0,0,0,.18));
+  border:1px solid var(--line); border-radius:var(--radius);
+  padding:24px 20px; transition:.3s; position:relative; overflow:hidden;
+}
+.liquid-card::before {
+  content:""; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--lc,#00cfff),transparent);
+}
+.liquid-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,.5); }
+.liquid-card:hover { border-color:color-mix(in srgb,var(--lc,#00cfff) 45%,var(--line)); }
+.liquid-dot {
+  width:44px; height:44px; border-radius:50%; margin-bottom:14px;
+  background:radial-gradient(circle at 35% 35%,color-mix(in srgb,var(--lc) 90%,white),var(--lc));
+  box-shadow:0 0 20px color-mix(in srgb,var(--lc) 40%,transparent);
+  position:relative; overflow:hidden;
+}
+.liquid-dot::after {
+  content:""; position:absolute; top:8px; left:10px;
+  width:12px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,.45); transform:rotate(-25deg);
+}
+.liquid-card h3 { margin:0 0 5px; font-family:'Sora',sans-serif; font-size:18px; color:var(--text); }
+.liquid-card .lc-sub { font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+  color:var(--lc,#00cfff); margin-bottom:10px; }
+.liquid-card p { margin:0; color:var(--muted); font-size:14px; line-height:1.55; }
+
+/* ---------- physics bars ---------- */
+.physics-bars { margin-top:14px; display:flex; flex-direction:column; gap:6px; }
+.pbar-row { display:flex; align-items:center; gap:8px; }
+.pbar-label { font-size:10px; font-weight:600; color:var(--muted); width:56px; flex:none;
+  letter-spacing:.05em; text-transform:uppercase; }
+.pbar-track { flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,.08); overflow:hidden; }
+.pbar-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--lc),color-mix(in srgb,var(--lc) 60%,white)); }
+
+/* ---------- mechanics grid ---------- */
+.mechanics-grid {
+  display:grid; gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+.mechanic-card {
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(0,0,0,.15));
+  border:1px solid var(--line); border-radius:var(--radius);
+  padding:26px 22px; transition:.3s;
+}
+.mechanic-card:hover { transform:translateY(-5px); border-color:color-mix(in srgb,var(--accent) 50%,var(--line));
+  box-shadow:0 16px 44px rgba(0,0,0,.5); }
+.mechanic-icon {
+  width:48px; height:48px; border-radius:14px; display:grid; place-items:center;
+  font-size:22px; margin-bottom:14px;
+  background:linear-gradient(135deg,
+    color-mix(in srgb,var(--accent) 25%,transparent),
+    color-mix(in srgb,var(--accent2) 20%,transparent));
+  border:1px solid color-mix(in srgb,var(--accent) 20%,transparent);
+}
+.mechanic-card h3 { margin:0 0 8px; font-family:'Sora',sans-serif; font-size:17px; }
+.mechanic-card p { margin:0; color:var(--muted); font-size:14px; line-height:1.5; }
+
+/* ---------- level archetypes ---------- */
+.archetypes-grid {
+  display:grid; gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+}
+.archetype {
+  background:linear-gradient(160deg,rgba(255,255,255,.02),rgba(0,0,0,.2));
+  border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px 18px; text-align:center; transition:.3s;
+}
+.archetype:hover { border-color:color-mix(in srgb,var(--accent) 40%,var(--line)); transform:translateY(-4px); }
+.archetype-icon { font-size:30px; margin-bottom:10px; }
+.archetype h4 { margin:0 0 6px; font-family:'Sora',sans-serif; font-size:15px; }
+.archetype p { margin:0; color:var(--muted); font-size:13px; line-height:1.5; }
+
+/* ---------- controls comparison ---------- */
+.controls-compare {
+  display:grid; gap:24px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  max-width:700px; margin:0 auto;
+}
+.ctrl-card {
+  background:linear-gradient(160deg,rgba(255,255,255,.03),rgba(0,0,0,.2));
+  border:1px solid var(--line); border-radius:var(--radius);
+  padding:32px 28px; text-align:center; transition:.3s;
+}
+.ctrl-card:hover { border-color:color-mix(in srgb,var(--accent) 50%,var(--line)); transform:translateY(-6px); }
+.ctrl-icon { font-size:40px; margin-bottom:16px; }
+.ctrl-card h3 { margin:0 0 10px; font-family:'Sora',sans-serif; font-size:20px; }
+.ctrl-card p { margin:0; color:var(--muted); font-size:15px; line-height:1.6; }
+.ctrl-badge {
+  display:inline-block; margin-top:14px; padding:5px 12px; border-radius:999px;
+  font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  background:color-mix(in srgb,var(--accent) 18%,transparent);
+  color:var(--accent); border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+}
+
+/* ---------- store buttons ---------- */
+.store-btns { display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; margin-top:10px; }
+.apple-badge {
+  display:inline-flex; align-items:center; gap:10px;
+  background:#fff; color:#000; border-radius:10px;
+  padding:10px 18px; text-decoration:none; transition:.25s;
+  font-family:'Sora',sans-serif;
+}
+.apple-badge:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.4); }
+.apple-badge svg { flex:none; }
+.apple-badge-text { display:flex; flex-direction:column; line-height:1; }
+.apple-badge-sub { font-size:10px; font-weight:500; color:#555; }
+.apple-badge-store { font-size:17px; font-weight:700; color:#000; }
+
+/* ---------- screenshots gallery ---------- */
+.shots-grid {
+  display:grid; gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  max-width:920px; margin:0 auto;
+}
+.shot {
+  margin:0; border-radius:22px; overflow:hidden; background:#000;
+  border:1px solid color-mix(in srgb,var(--accent) 22%,var(--line));
+  box-shadow:0 14px 40px rgba(0,0,0,.5);
+  aspect-ratio:1/1; transition:.3s;
+}
+.shot:hover { transform:translateY(-6px) scale(1.02);
+  border-color:color-mix(in srgb,var(--accent) 50%,transparent);
+  box-shadow:0 22px 56px rgba(0,0,0,.6), 0 0 36px color-mix(in srgb,var(--accent) 18%,transparent); }
+.shot img { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ---------- stat pills ---------- */
+.stats-row {
+  display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin:40px 0;
+}
+.stat-pill {
+  background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(0,0,0,.2));
+  border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px 30px; text-align:center; min-width:130px;
+}
+.stat-pill .stat-num {
+  font-family:'Sora',sans-serif; font-size:clamp(28px,5vw,42px);
+  font-weight:800; letter-spacing:-.02em;
+  background:linear-gradient(110deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.stat-pill .stat-lbl { font-size:12px; font-weight:600; color:var(--muted);
+  text-transform:uppercase; letter-spacing:.07em; margin-top:4px; }
