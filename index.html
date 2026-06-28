@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/webp" href="logo.webp">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/home.css">
@@ -58,6 +58,11 @@
 </head>
 <body>
 
+  <!-- CRT scanline + vignette overlay -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <div class="cabinet">
+
   <!-- TOP BAR -->
   <header class="topbar">
     <a class="brand" href="#top">
@@ -78,12 +83,12 @@
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="wrap hero-wrap">
       <div class="hero-content">
-        <div class="eyebrow">APPLE WATCH & WEAR OS STUDIO</div>
+        <div class="eyebrow">APPLE WATCH &amp; WEAR OS STUDIO</div>
         <h1>Software for<br><span class="grad">your wrist</span></h1>
         <p class="lead">A small studio obsessed with smartwatches. Every app we ship is built
           from the ground up for the wrist — Apple Watch and Wear OS, nothing ported, nothing watered down.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#products">See Our Apps</a>
+          <a class="btn btn-primary" href="#products">Press Start</a>
           <a class="btn btn-ghost" href="#services">What We Build</a>
         </div>
         <div class="hero-meta">
@@ -139,8 +144,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">OUR PRODUCTS</div>
-        <h2 class="section-title">Apps on your wrist</h2>
-        <p class="section-desc">Each product has its own page. The live watch previews below are rendered in real time.</p>
+        <h2 class="section-title">Select Your App</h2>
+        <p class="section-desc">Each cartridge has its own page. The live watch previews below are rendered in real time.</p>
       </div>
       <div class="products">
 
@@ -292,9 +297,12 @@
     </div>
   </footer>
 
+  </div><!-- /.cabinet -->
+
   <script type="module" src="js/three-hero.js"></script>
   <script src="js/watch-faces.js"></script>
   <script src="js/reveal.js"></script>
   <script src="js/tree-leaves.js" defer></script>
+  <script src="js/pixel-cursor.js" defer></script>
 </body>
 </html>
