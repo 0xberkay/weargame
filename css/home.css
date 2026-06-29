@@ -27,7 +27,7 @@
   font-size:9px; letter-spacing:.12em; color:var(--accent2); }
 
 @media(max-width:860px){
-  .hero{ align-items:flex-start; padding-top:84px; }
+  .hero{ align-items:flex-start; padding-top:24px; }
   .hero-wrap{ grid-template-columns:1fr; padding-bottom:48px; gap:36px; }
   .hero-scene{ width:min(380px,82vw); margin:0 auto; order:-1; }
 }

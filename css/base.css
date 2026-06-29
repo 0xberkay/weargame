@@ -192,11 +192,11 @@ h1,h2,h3,.eyebrow,.btn,.chip,.brand b,.section-title,.card-tag{
    TOP BAR
    ============================================================ */
 .topbar{
-  position:fixed; inset:0 0 auto 0; z-index:60;
+  position:sticky; top:0; z-index:60;
   display:flex; align-items:center; justify-content:space-between;
   padding:14px clamp(14px,4vw,40px);
-  background:linear-gradient(180deg,var(--bg) 35%,transparent);
-  border-bottom:var(--px) solid transparent;
+  background:var(--bg);
+  border-bottom:var(--px) solid var(--line);
 }
 .brand{ display:flex; align-items:center; gap:11px; color:var(--text); }
 .brand .logo{
