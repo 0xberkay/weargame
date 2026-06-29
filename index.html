@@ -64,23 +64,10 @@
   <!-- ===== ARCADE CABINET (the whole machine) ===== -->
   <div class="arcade-cabinet">
 
-  <!-- MARQUEE — the lit sign on top of the cabinet -->
-  <div class="marquee">
+  <!-- MARQUEE — the lit sign on top of the cabinet (with nav) -->
+  <header class="marquee">
     <span class="bulbs top" aria-hidden="true"></span>
-    <h1 class="marquee-title">ZBD</h1>
-    <p class="marquee-sub">Smartwatch Studio</p>
-    <p class="marquee-coin"><b>INSERT COIN</b> · Apple Watch &amp; Wear OS</p>
-    <span class="bulbs bottom" aria-hidden="true"></span>
-  </div>
-
-  <div class="cabinet">
-
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <a class="brand" href="#top">
-      <span class="logo"><img src="logo.webp" alt="ZBD" width="34" height="34"></span>
-      <span><b>ZBD</b><small>Smartwatch Studio</small></span>
-    </a>
+    <a class="marquee-title" href="#top">ZBD</a>
     <nav class="nav">
       <a href="#services">Services</a>
       <a href="#products">Products</a>
@@ -88,7 +75,10 @@
       <a href="#contact">Contact</a>
       <a class="btn btn-primary sm" href="#products">Apps</a>
     </nav>
+    <span class="bulbs bottom" aria-hidden="true"></span>
   </header>
+
+  <div class="cabinet">
 
   <!-- HERO -->
   <section id="top" class="hero">
@@ -115,7 +105,6 @@
         <div class="hero-watch">
           <canvas id="three-canvas" aria-label="Live 3D smartwatch clock with app launcher"></canvas>
         </div>
-        <p class="insert">► DRAG TO SPIN · TAP AN APP</p>
       </div>
     </div>
     <a class="scroll-cue" href="#services">SCROLL
