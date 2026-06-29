@@ -41,65 +41,53 @@ const apps = [
   { name: 'WearSSH',  accent: '#27e07a', glyph: '⌘',  href: 'apps/wearssh/' },
   { name: 'Vakit',    accent: '#1fd6a6', glyph: '☾',  href: 'apps/vakitwear/' },
   { name: 'Disco',    accent: '#ff49d0', glyph: '✦',  href: 'apps/weardisco/' },
+  { name: 'Wet',      accent: '#00cfff', glyph: '💧', href: 'apps/wetwatch/' },
 ];
 
 // ============================================================
-// launcher tile texture — drawn on a 2D canvas
+// launcher icon texture — a round Apple-Watch-style app bubble
 // ============================================================
 function tileTexture(app) {
   const s = 256;
   const c = document.createElement('canvas');
   c.width = c.height = s;
   const x = c.getContext('2d');
+  const cx = s / 2, cy = s / 2, rad = s / 2 - 8;
 
-  // rounded background with accent glow
-  const r = 54;
+  // base disc
+  x.beginPath();
+  x.arc(cx, cy, rad, 0, Math.PI * 2);
   x.fillStyle = '#0c0a12';
-  roundRect(x, 8, 8, s - 16, s - 16, r);
   x.fill();
 
-  const grad = x.createRadialGradient(s / 2, s * 0.38, 20, s / 2, s / 2, s * 0.7);
+  // accent radial fill (glossy bubble)
+  const grad = x.createRadialGradient(cx, cy * 0.7, 12, cx, cy, rad);
   grad.addColorStop(0, app.accent);
   grad.addColorStop(1, 'rgba(0,0,0,0)');
-  x.globalAlpha = 0.45;
-  roundRect(x, 8, 8, s - 16, s - 16, r);
-  x.fill();
+  x.globalAlpha = 0.55;
   x.fillStyle = grad;
-  roundRect(x, 8, 8, s - 16, s - 16, r);
+  x.beginPath();
+  x.arc(cx, cy, rad, 0, Math.PI * 2);
   x.fill();
   x.globalAlpha = 1;
 
-  // accent border
-  x.lineWidth = 6;
+  // accent ring
+  x.lineWidth = 7;
   x.strokeStyle = app.accent;
-  roundRect(x, 11, 11, s - 22, s - 22, r - 3);
+  x.beginPath();
+  x.arc(cx, cy, rad - 4, 0, Math.PI * 2);
   x.stroke();
 
   // glyph
   x.fillStyle = '#fff';
-  x.font = '120px "Sora", system-ui, sans-serif';
+  x.font = '128px "Sora", system-ui, sans-serif';
   x.textAlign = 'center';
   x.textBaseline = 'middle';
-  x.fillText(app.glyph, s / 2, s * 0.43);
-
-  // label
-  x.font = '600 34px "Sora", system-ui, sans-serif';
-  x.fillStyle = '#e8eaf5';
-  x.fillText(app.name, s / 2, s * 0.82);
+  x.fillText(app.glyph, cx, cy + 4);
 
   const tex = new THREE.CanvasTexture(c);
   tex.anisotropy = 4;
   return tex;
-}
-
-function roundRect(x, px, py, w, h, r) {
-  x.beginPath();
-  x.moveTo(px + r, py);
-  x.arcTo(px + w, py, px + w, py + h, r);
-  x.arcTo(px + w, py + h, px, py + h, r);
-  x.arcTo(px, py + h, px, py, r);
-  x.arcTo(px, py, px + w, py, r);
-  x.closePath();
 }
 
 // ============================================================
@@ -149,20 +137,52 @@ const botStrap = new THREE.Mesh(strapGeo, strapMat); botStrap.position.set(0, -1
 
 watch.scale.setScalar(2.1);
 
-// ---------- launcher tiles (children of the screen, so they spin with it) ----------
+// ---------- live clock (Apple Watch style, top of the face) ----------
+const clockCanvas = document.createElement('canvas');
+clockCanvas.width = 320; clockCanvas.height = 120;
+const clockTex = new THREE.CanvasTexture(clockCanvas);
+clockTex.anisotropy = 4;
+const clockMesh = new THREE.Mesh(
+  new THREE.PlaneGeometry(0.92, 0.345),
+  new THREE.MeshBasicMaterial({ map: clockTex, transparent: true })
+);
+clockMesh.position.set(0, 0.58, 0.255);
+watch.add(clockMesh);
+
+function drawClock() {
+  const w = clockCanvas.width, h = clockCanvas.height;
+  const cx = clockCanvas.getContext('2d');
+  cx.clearRect(0, 0, w, h);
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2, '0');
+  const mm = String(now.getMinutes()).padStart(2, '0');
+  const colon = now.getSeconds() % 2 === 0 ? ':' : ' ';
+  cx.fillStyle = '#f7c873';
+  cx.font = '700 84px "JetBrains Mono", ui-monospace, monospace';
+  cx.textAlign = 'center';
+  cx.textBaseline = 'middle';
+  cx.shadowColor = 'rgba(247,200,115,.85)';
+  cx.shadowBlur = 22;
+  cx.fillText(hh + colon + mm, w / 2, h / 2);
+  clockTex.needsUpdate = true;
+}
+drawClock();
+let lastSec = -1;
+
+// ---------- launcher icons (children of the screen, so they spin with it) ----------
 const tiles = [];
-const TILE = 0.5;       // tile size in watch-local units
-const OFF = 0.4;        // grid offset from center
-const grid = [
-  [-OFF,  OFF], [OFF,  OFF],
-  [-OFF, -OFF], [OFF, -OFF],
+const TILE = 0.44;      // icon diameter in watch-local units
+// Apple-Watch-style honeycomb cluster: 2 over 3
+const layout = [
+  [-0.25,  0.16], [0.25, 0.16],
+  [-0.5,  -0.28], [0,   -0.28], [0.5, -0.28],
 ];
 apps.forEach((app, i) => {
   const m = new THREE.Mesh(
     new THREE.PlaneGeometry(TILE, TILE),
     new THREE.MeshBasicMaterial({ map: tileTexture(app), transparent: true })
   );
-  m.position.set(grid[i][0], grid[i][1], 0.255);
+  m.position.set(layout[i][0], layout[i][1], 0.255);
   m.userData = { app, baseScale: 1, hover: 0 };
   tiles.push(m);
   watch.add(m);
@@ -274,6 +294,10 @@ function frame() {
   if (!visible) return;
 
   const t = clock.getElapsedTime();
+
+  // refresh the on-screen clock once a second (blinking colon)
+  const nowSec = Math.floor(Date.now() / 1000);
+  if (nowSec !== lastSec) { lastSec = nowSec; drawClock(); }
 
   if (!reduceMotion) {
     if (!dragging) {
