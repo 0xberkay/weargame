@@ -181,7 +181,7 @@ for (let i = 0; i < SPARKS; i++) {
 const sparkGeo = new THREE.BufferGeometry();
 sparkGeo.setAttribute('position', new THREE.BufferAttribute(sp, 3));
 const sparks = new THREE.Points(sparkGeo, new THREE.PointsMaterial({
-  color: 0xf7c873, size: 0.07, transparent: true, opacity: 0.7,
+  color: 0x22d3c5, size: 0.07, transparent: true, opacity: 0.7,
   blending: THREE.AdditiveBlending, depthWrite: false,
 }));
 scene.add(sparks);
