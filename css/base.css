@@ -185,7 +185,6 @@ h1,h2,h3,.eyebrow,.btn,.chip,.brand b,.section-title,.card-tag{
 
 /* ---------- keyframes (no blink / no shimmer) ---------- */
 @keyframes cuebounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
-@keyframes float-y   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 @keyframes coin-spin { 0%{transform:scaleX(1)} 50%{transform:scaleX(.15)} 100%{transform:scaleX(1)} }
 
 /* ============================================================

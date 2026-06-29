@@ -1,12 +1,14 @@
 // ============================================================
 // ZBD · Wear OS Studio — Three.js hero scene
 // ONE central smartwatch you can spin (drag + inertia + idle drift),
-// with a mini app launcher rendered on its screen. Click an app
-// tile to open that app's page.
+// with an Apple-Watch-style honeycomb of circular app icons on its
+// screen. Click an icon to open that app's page.
 // ============================================================
 import * as THREE from 'three';
 
 const canvas = document.getElementById('three-canvas');
+const hintEl = document.getElementById('watch-hint');
+const DEFAULT_HINT = hintEl ? hintEl.textContent : '';
 
 // Respect reduced motion: render a single still frame.
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -34,72 +36,141 @@ fill.position.set(6, -3, 4);
 scene.add(fill);
 
 // ============================================================
-// app data — accent + launcher tile + link
+// app data — accent + drawn glyph + link
+// Real Play-Store icons are gated behind auth; these vector glyphs
+// reproduce each app's brand mark so they can be swapped 1:1 later.
 // ============================================================
 const apps = [
-  { name: 'Anatolia', accent: '#e3bb63', glyph: '🏰', href: 'apps/anatolia/' },
-  { name: 'WearSSH',  accent: '#27e07a', glyph: '⌘',  href: 'apps/wearssh/' },
-  { name: 'Vakit',    accent: '#1fd6a6', glyph: '☾',  href: 'apps/vakitwear/' },
-  { name: 'Disco',    accent: '#ff49d0', glyph: '✦',  href: 'apps/weardisco/' },
+  { name: 'Gate of Anatolia', accent: '#e3bb63', href: 'apps/anatolia/',  draw: drawSword   },
+  { name: 'WearSSH',          accent: '#27e07a', href: 'apps/wearssh/',   draw: drawTerminal},
+  { name: 'Vakit Wear',       accent: '#1fd6a6', href: 'apps/vakitwear/', draw: drawCrescent},
+  { name: 'Wear Disco',       accent: '#ff49d0', href: 'apps/weardisco/', draw: drawSparkle },
+  { name: 'Wet Watch',        accent: '#00cfff', href: 'apps/wetwatch/',  draw: drawDrop    },
 ];
 
+// ---------- colour helpers ----------
+function hexToRgb(h) { h = h.replace('#', ''); return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)]; }
+function mix(h, t, a) { const [r, g, b] = hexToRgb(h); return `rgb(${Math.round(r + (t - r) * a)},${Math.round(g + (t - g) * a)},${Math.round(b + (t - b) * a)})`; }
+const lighten = (h, a) => mix(h, 255, a);
+const darken  = (h, a) => mix(h, 0, a);
+
 // ============================================================
-// launcher tile texture — drawn on a 2D canvas
+// circular app-icon texture — drawn on a 2D canvas (Apple-Watch look)
 // ============================================================
-function tileTexture(app) {
+function iconTexture(app) {
   const s = 256;
   const c = document.createElement('canvas');
   c.width = c.height = s;
   const x = c.getContext('2d');
+  const cx = s / 2, r = s * 0.47;
 
-  // rounded background with accent glow
-  const r = 54;
-  x.fillStyle = '#0c0a12';
-  roundRect(x, 8, 8, s - 16, s - 16, r);
-  x.fill();
+  // base disc with vertical depth gradient
+  const g = x.createLinearGradient(0, cx - r, 0, cx + r);
+  g.addColorStop(0, lighten(app.accent, 0.30));
+  g.addColorStop(1, darken(app.accent, 0.34));
+  x.fillStyle = g;
+  x.beginPath(); x.arc(cx, cx, r, 0, 7); x.fill();
 
-  const grad = x.createRadialGradient(s / 2, s * 0.38, 20, s / 2, s / 2, s * 0.7);
-  grad.addColorStop(0, app.accent);
-  grad.addColorStop(1, 'rgba(0,0,0,0)');
-  x.globalAlpha = 0.45;
-  roundRect(x, 8, 8, s - 16, s - 16, r);
-  x.fill();
-  x.fillStyle = grad;
-  roundRect(x, 8, 8, s - 16, s - 16, r);
-  x.fill();
-  x.globalAlpha = 1;
+  // soft top sheen
+  const sheen = x.createRadialGradient(cx, cx - r * 0.55, 4, cx, cx - r * 0.4, r * 1.4);
+  sheen.addColorStop(0, 'rgba(255,255,255,0.40)');
+  sheen.addColorStop(0.55, 'rgba(255,255,255,0)');
+  x.fillStyle = sheen;
+  x.beginPath(); x.arc(cx, cx, r, 0, 7); x.fill();
 
-  // accent border
-  x.lineWidth = 6;
-  x.strokeStyle = app.accent;
-  roundRect(x, 11, 11, s - 22, s - 22, r - 3);
-  x.stroke();
+  // crisp rim
+  x.lineWidth = s * 0.014;
+  x.strokeStyle = 'rgba(255,255,255,0.30)';
+  x.beginPath(); x.arc(cx, cx, r - x.lineWidth / 2, 0, 7); x.stroke();
 
-  // glyph
+  // white glyph (with a subtle drop shadow for legibility)
+  x.save();
+  x.translate(cx, cx);
   x.fillStyle = '#fff';
-  x.font = '120px "Sora", system-ui, sans-serif';
-  x.textAlign = 'center';
-  x.textBaseline = 'middle';
-  x.fillText(app.glyph, s / 2, s * 0.43);
-
-  // label
-  x.font = '600 34px "Sora", system-ui, sans-serif';
-  x.fillStyle = '#e8eaf5';
-  x.fillText(app.name, s / 2, s * 0.82);
+  x.strokeStyle = '#fff';
+  x.shadowColor = 'rgba(0,0,0,0.30)';
+  x.shadowBlur = s * 0.03;
+  x.shadowOffsetY = s * 0.012;
+  app.draw(x, s);
+  x.restore();
 
   const tex = new THREE.CanvasTexture(c);
   tex.anisotropy = 4;
   return tex;
 }
 
-function roundRect(x, px, py, w, h, r) {
+// ---------- per-app glyphs (origin at icon centre, white fill/stroke) ----------
+function drawSword(x, s) {
+  const u = s / 256;
+  // blade
   x.beginPath();
-  x.moveTo(px + r, py);
-  x.arcTo(px + w, py, px + w, py + h, r);
-  x.arcTo(px + w, py + h, px, py + h, r);
-  x.arcTo(px, py + h, px, py, r);
-  x.arcTo(px, py, px + w, py, r);
-  x.closePath();
+  x.moveTo(0, -78 * u);
+  x.lineTo(11 * u, -54 * u);
+  x.lineTo(11 * u, 42 * u);
+  x.lineTo(-11 * u, 42 * u);
+  x.lineTo(-11 * u, -54 * u);
+  x.closePath(); x.fill();
+  // crossguard
+  x.fillRect(-34 * u, 42 * u, 68 * u, 14 * u);
+  // grip
+  x.fillRect(-7 * u, 56 * u, 14 * u, 34 * u);
+  // pommel
+  x.beginPath(); x.arc(0, 96 * u, 11 * u, 0, 7); x.fill();
+}
+
+function drawTerminal(x, s) {
+  const u = s / 256;
+  x.lineWidth = 16 * u; x.lineJoin = 'round'; x.lineCap = 'round';
+  // chevron ">"
+  x.beginPath();
+  x.moveTo(-40 * u, -34 * u);
+  x.lineTo(-2 * u, 4 * u);
+  x.lineTo(-40 * u, 42 * u);
+  x.stroke();
+  // underscore prompt
+  x.fillRect(8 * u, 30 * u, 46 * u, 14 * u);
+}
+
+function drawCrescent(x, s) {
+  const u = s / 256;
+  x.save();
+  x.beginPath(); x.arc(4 * u, 0, 62 * u, 0, 7); x.fill();
+  // carve the inner circle to leave a crescent
+  x.globalCompositeOperation = 'destination-out';
+  x.beginPath(); x.arc(28 * u, -10 * u, 54 * u, 0, 7); x.fill();
+  x.restore();
+}
+
+function drawSparkle(x, s) {
+  const u = s / 256;
+  const star = (cx, cy, R) => {
+    const r = R * 0.32;
+    x.beginPath();
+    x.moveTo(cx, cy - R);
+    x.quadraticCurveTo(cx + r * 0.4, cy - r * 0.4, cx + R, cy);
+    x.quadraticCurveTo(cx + r * 0.4, cy + r * 0.4, cx, cy + R);
+    x.quadraticCurveTo(cx - r * 0.4, cy + r * 0.4, cx - R, cy);
+    x.quadraticCurveTo(cx - r * 0.4, cy - r * 0.4, cx, cy - R);
+    x.closePath(); x.fill();
+  };
+  star(-8 * u, -6 * u, 60 * u);
+  star(46 * u, 44 * u, 26 * u);
+  star(-46 * u, 40 * u, 18 * u);
+}
+
+function drawDrop(x, s) {
+  const u = s / 256;
+  x.beginPath();
+  x.moveTo(0, -74 * u);
+  x.bezierCurveTo(46 * u, -14 * u, 52 * u, 24 * u, 52 * u, 36 * u);
+  x.arc(0, 36 * u, 52 * u, 0, Math.PI, false);
+  x.bezierCurveTo(-52 * u, 24 * u, -46 * u, -14 * u, 0, -74 * u);
+  x.closePath(); x.fill();
+  // highlight
+  x.save();
+  x.globalAlpha = 0.45;
+  x.beginPath(); x.ellipse(-16 * u, 24 * u, 9 * u, 16 * u, -0.3, 0, 7); x.fillStyle = '#fff'; x.fill();
+  x.restore();
 }
 
 // ============================================================
@@ -149,21 +220,21 @@ const botStrap = new THREE.Mesh(strapGeo, strapMat); botStrap.position.set(0, -1
 
 watch.scale.setScalar(2.1);
 
-// ---------- launcher tiles (children of the screen, so they spin with it) ----------
+// ---------- honeycomb of circular app icons (children of the watch, so they spin with it) ----------
 const tiles = [];
-const TILE = 0.5;       // tile size in watch-local units
-const OFF = 0.4;        // grid offset from center
+const TILE = 0.37;        // icon diameter in watch-local units
+// Apple-Watch-style honeycomb: two icons over three, half-offset rows
 const grid = [
-  [-OFF,  OFF], [OFF,  OFF],
-  [-OFF, -OFF], [OFF, -OFF],
+  [-0.205,  0.27], [0.205,  0.27],
+  [-0.41,  -0.10], [0.0,   -0.10], [0.41, -0.10],
 ];
 apps.forEach((app, i) => {
   const m = new THREE.Mesh(
     new THREE.PlaneGeometry(TILE, TILE),
-    new THREE.MeshBasicMaterial({ map: tileTexture(app), transparent: true })
+    new THREE.MeshBasicMaterial({ map: iconTexture(app), transparent: true })
   );
   m.position.set(grid[i][0], grid[i][1], 0.255);
-  m.userData = { app, baseScale: 1, hover: 0 };
+  m.userData = { app, hover: 0 };
   tiles.push(m);
   watch.add(m);
 });
@@ -200,6 +271,8 @@ let moved = 0;
 let last = { x: 0, y: 0 };
 let hoverTile = null;
 
+function setHint(t) { if (hintEl) hintEl.textContent = t; }
+
 function setNDC(e) {
   const rect = canvas.getBoundingClientRect();
   ndc.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
@@ -233,14 +306,15 @@ canvas.addEventListener('pointermove', (e) => {
     rotY += velY;
     rotX += velX;
   } else {
+    const prev = hoverTile;
     hoverTile = pickTile();
     canvas.style.cursor = hoverTile ? 'pointer' : '';
+    if (hoverTile !== prev) setHint(hoverTile ? hoverTile.userData.app.name : DEFAULT_HINT);
   }
 });
 
 canvas.addEventListener('pointerup', (e) => {
   dragging = false;
-  // cursor set via CSS
   // treat as click if pointer barely moved
   if (moved < 6) {
     setNDC(e);
@@ -249,8 +323,7 @@ canvas.addEventListener('pointerup', (e) => {
   }
 });
 
-canvas.addEventListener('pointerleave', () => { dragging = false; hoverTile = null; });
-// cursor set via CSS
+canvas.addEventListener('pointerleave', () => { dragging = false; hoverTile = null; setHint(DEFAULT_HINT); });
 
 function resize() {
   const w = canvas.clientWidth || window.innerWidth;
@@ -305,13 +378,13 @@ function frame() {
   watch.rotation.y = rotY;
   watch.rotation.x = rotX;
 
-  // tile hover pop
+  // icon hover pop
   tiles.forEach((m) => {
     const target = (m === hoverTile && !dragging) ? 1 : 0;
     m.userData.hover += (target - m.userData.hover) * 0.18;
-    const s = 1 + m.userData.hover * 0.16;
+    const s = 1 + m.userData.hover * 0.18;
     m.scale.setScalar(s);
-    m.position.z = 0.255 + m.userData.hover * 0.03;
+    m.position.z = 0.255 + m.userData.hover * 0.04;
   });
 
   renderer.render(scene, camera);
