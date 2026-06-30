@@ -25,7 +25,11 @@
 
   /* pixel metrics */
   --px:4px;             /* base pixel unit for stepped borders */
+
+  /* sticky header height — keep anchor scrolling & spacing in sync with it */
+  --header-h:74px;
 }
+@media(max-width:680px){ :root{ --header-h:62px; } }
 
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
@@ -46,6 +50,8 @@ body.pixel-cursor-on *:hover { cursor:none !important; }
 a{ color:inherit; text-decoration:none; }
 img{ display:block; max-width:100%; }
 section{ position:relative; }
+/* keep anchor jumps clear of the sticky topbar/marquee */
+[id]{ scroll-margin-top:calc(var(--header-h) + 14px); }
 
 /* Pixel heading font for titles / HUD labels */
 .pixel,
@@ -97,46 +103,38 @@ h1,h2,h3,.eyebrow,.btn,.chip,.brand b,.section-title,.card-tag{
 .arcade-cabinet::after{ right:0; border-left:2px solid rgba(0,0,0,.6); }
 @media(max-width:680px){ .arcade-cabinet::before,.arcade-cabinet::after{ width:8px; } }
 
-/* ---------- MARQUEE (the lit sign on top) ---------- */
+/* ---------- MARQUEE — slim sticky digital HUD bar on top of the cabinet ---------- */
 .marquee{
-  position:sticky; top:0; z-index:60; margin:0 0 var(--px);
-  padding:clamp(14px,2.6vw,26px) clamp(16px,4vw,40px);
-  text-align:center;
+  position:sticky; top:0; z-index:500; height:var(--header-h);
+  padding:0 clamp(16px,4vw,40px);
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
   background:
-    linear-gradient(180deg, #20262d 0%, #11151a 100%);
-  border:var(--px) solid var(--shadow);
+    linear-gradient(180deg, color-mix(in srgb,var(--panel2) 88%,transparent) 0%, color-mix(in srgb,var(--bg) 92%,transparent) 100%);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  border-bottom:1px solid color-mix(in srgb,var(--accent) 45%,transparent);
   box-shadow:
-    inset 0 0 0 2px var(--accent),
-    inset 0 0 40px color-mix(in srgb,var(--accent) 18%,transparent),
-    0 var(--px) 0 var(--shadow),
-    0 0 40px color-mix(in srgb,var(--accent) 22%,transparent);
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 18px 36px -20px rgba(0,0,0,.85),
+    0 1px 22px color-mix(in srgb,var(--accent) 20%,transparent);
 }
-/* marquee chase-light border (two rows of bulbs) */
-.marquee .bulbs{ position:absolute; left:8px; right:8px; height:6px; pointer-events:none;
-  background:repeating-linear-gradient(90deg,
-    var(--accent) 0 4px, transparent 4px 14px);
-  opacity:.9; image-rendering:pixelated; }
-.marquee .bulbs.top{ top:6px; } .marquee .bulbs.bottom{ bottom:6px; }
+/* thin chase-light reflection along the very bottom edge — the "screen" glow */
+.marquee::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent2), var(--accent), var(--accent2), transparent);
+  opacity:.75; pointer-events:none;
+}
 .marquee-title{
-  margin:6px 0 0; font-family:'Press Start 2P',monospace;
-  font-size:clamp(20px,5vw,46px); line-height:1; letter-spacing:.04em;
+  flex:none; font-family:'Press Start 2P',monospace; display:inline-block;
+  font-size:clamp(16px,3.2vw,22px); line-height:1; letter-spacing:.04em;
   color:var(--accent);
   text-shadow:
-    0 var(--px) 0 var(--shadow),
-    0 0 18px color-mix(in srgb,var(--accent) 70%,transparent),
-    0 0 40px color-mix(in srgb,var(--accent) 35%,transparent);
+    0 2px 0 var(--shadow),
+    0 0 14px color-mix(in srgb,var(--accent) 70%,transparent),
+    0 0 32px color-mix(in srgb,var(--accent) 30%,transparent);
 }
-.marquee-sub{
-  margin:12px 0 4px; font-family:'VT323',monospace;
-  font-size:clamp(15px,2.4vw,21px); letter-spacing:.34em; text-transform:uppercase;
-  color:var(--accent2);
-}
-.marquee-coin{ margin-top:6px; font-family:'Press Start 2P',monospace; font-size:9px;
-  letter-spacing:.1em; color:var(--muted); }
-.marquee-coin b{ color:var(--accent2); }
-.marquee .nav{ justify-content:center; margin-top:14px; }
-a.marquee-title{ display:inline-block; }
-@media(max-width:680px){ .marquee-sub{ letter-spacing:.2em; } }
+.marquee .nav{ margin-top:0; }
+@media(max-width:680px){ .marquee-title{ font-size:18px; } }
 
 /* page content sits inside an arcade cabinet "screen" bezel */
 .cabinet{
@@ -194,11 +192,23 @@ a.marquee-title{ display:inline-block; }
    TOP BAR
    ============================================================ */
 .topbar{
-  position:sticky; top:0; z-index:60;
+  position:sticky; top:0; z-index:500; height:var(--header-h);
   display:flex; align-items:center; justify-content:space-between;
-  padding:14px clamp(14px,4vw,40px);
-  background:linear-gradient(180deg,var(--bg) 35%,transparent);
-  border-bottom:var(--px) solid transparent;
+  padding:0 clamp(14px,4vw,40px);
+  background:
+    linear-gradient(180deg, color-mix(in srgb,var(--panel2) 88%,transparent) 0%, color-mix(in srgb,var(--bg) 92%,transparent) 100%);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  border-bottom:1px solid color-mix(in srgb,var(--accent2) 40%,transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 18px 36px -20px rgba(0,0,0,.85),
+    0 1px 22px color-mix(in srgb,var(--accent2) 16%,transparent);
+}
+.topbar::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent2), var(--accent), var(--accent2), transparent);
+  opacity:.7; pointer-events:none;
 }
 .brand{ display:flex; align-items:center; gap:11px; color:var(--text); }
 .brand .logo{
@@ -210,9 +220,60 @@ a.marquee-title{ display:inline-block; }
 .brand b{ font-size:13px; letter-spacing:.02em; color:var(--accent); }
 .brand small{ display:block; font-family:'VT323',monospace; font-size:13px; letter-spacing:.22em; color:var(--muted); text-transform:uppercase; margin-top:3px; }
 .nav{ display:flex; align-items:center; gap:clamp(10px,2.4vw,22px); }
-.nav a{ font-family:'VT323',monospace; font-weight:400; font-size:19px; letter-spacing:.04em; color:var(--muted); text-transform:uppercase; transition:color .12s; }
-.nav a:hover{ color:var(--accent); }
-@media(max-width:680px){ .nav a:not(.btn){ display:none; } }
+.nav a:not(.btn){
+  position:relative; padding:4px 1px;
+  font-family:'VT323',monospace; font-weight:400; font-size:19px; letter-spacing:.04em;
+  color:var(--muted); text-transform:uppercase; transition:color .15s, text-shadow .15s;
+}
+.nav a:not(.btn)::after{
+  content:""; position:absolute; left:0; right:100%; bottom:0; height:2px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent));
+  box-shadow:0 0 8px color-mix(in srgb,var(--accent2) 70%,transparent);
+  transition:right .2s ease;
+}
+.nav a:not(.btn):hover{ color:var(--text); text-shadow:0 0 10px color-mix(in srgb,var(--accent2) 60%,transparent); }
+.nav a:not(.btn):hover::after{ right:0; }
+
+/* ---------- mobile nav toggle (injected by js/reveal.js) ---------- */
+.nav-toggle{ display:none; }
+@media(max-width:680px){
+  .nav-toggle{
+    display:grid; place-items:center; flex:none; width:38px; height:34px;
+    background:linear-gradient(180deg,var(--panel2),var(--bg2));
+    border:1px solid color-mix(in srgb,var(--accent2) 50%,transparent);
+    box-shadow:0 0 0 1px var(--shadow), 0 4px 12px -4px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.1);
+    cursor:pointer;
+  }
+  .nav-toggle span{ position:relative; display:block; width:18px; height:2px; background:var(--accent2);
+    box-shadow:0 0 6px color-mix(in srgb,var(--accent2) 80%,transparent); transition:background .2s; }
+  .nav-toggle span::before, .nav-toggle span::after{
+    content:""; position:absolute; left:0; width:18px; height:2px; background:var(--accent2);
+    box-shadow:0 0 6px color-mix(in srgb,var(--accent2) 80%,transparent);
+    transition:transform .2s ease;
+  }
+  .nav-toggle span::before{ top:-6px; }
+  .nav-toggle span::after{ top:6px; }
+  .nav-toggle.open span{ background:transparent; }
+  .nav-toggle.open span::before{ transform:translateY(6px) rotate(45deg); }
+  .nav-toggle.open span::after{ transform:translateY(-6px) rotate(-45deg); }
+
+  .nav{
+    position:absolute; top:100%; left:0; right:0; z-index:499;
+    flex-direction:column; align-items:stretch; gap:0;
+    padding:6px clamp(14px,4vw,40px) 18px;
+    background:linear-gradient(180deg, color-mix(in srgb,var(--panel2) 97%,transparent), color-mix(in srgb,var(--bg) 99%,transparent));
+    backdrop-filter:blur(18px) saturate(150%);
+    -webkit-backdrop-filter:blur(18px) saturate(150%);
+    border-bottom:1px solid color-mix(in srgb,var(--accent2) 40%,transparent);
+    box-shadow:0 20px 32px -16px rgba(0,0,0,.85);
+    clip-path:inset(0 0 100% 0);
+    opacity:0; pointer-events:none;
+    transition:clip-path .22s ease, opacity .18s ease;
+  }
+  .nav.open{ clip-path:inset(0 0 0 0); opacity:1; pointer-events:auto; }
+  .nav a:not(.btn){ padding:13px 2px; border-bottom:1px solid rgba(255,255,255,.07); }
+  .nav a.btn{ margin-top:12px; justify-content:center; }
+}
 
 /* ============================================================
    BUTTONS — chunky pixel keys
